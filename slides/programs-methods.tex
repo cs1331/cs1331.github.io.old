@@ -1,0 +1,176 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{Programs and Methods}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Anatomy of a Java Program}
+
+
+It is customary for a progarmmer's first program in a new language to be ``Hello, World.''  Here's our \link{\code/HelloWorld.java}{{\tt HelloWorld.java}} program:
+\begin{lstlisting}[language=Java]
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item The first line declares our {\tt HelloWorld} class.  {\tt class} is the syntax for declaring a class, and prepending with the {\tt public} modifer means the class will be visible outside {\tt HelloWorld}'s package.
+\item Because we didn't declare a package explicitly, {\tt HelloWorld} is in the {\it default} package.  More on packages in a future lectrue.
+\item The code between the curly braces, {\tt \{ ... \}} define the contents of the {\tt HelloWorld} class, in this case a single method, {\tt main}
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt public static void main(String[] args)}}
+
+
+In order to make a class executable with the {\tt java} command, it must have a main method:
+\begin{lstlisting}[language=Java]
+public static void main(String[] args) { ... }
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item The {\tt public} modifier means we can call this method from outside the class.
+\item The {\tt static} modifer means the method can be called without instantiating an object of the class.  Static methods (and variables) are sometimes called {\it class} methods.
+\item {\tt void} is the return type.  In particular, main returns nothing.  Sometimes such subprograms are called {\it procedures} and distinguished from {\it functions}, which return values.
+\item After the method name, {\tt main}, comes the parameter list.  {\tt main} takes a single parameter of type {\tt String[]} - an array of {\tt String}s.  {\tt args} is the name of the parameter, which we can refer to within the body of {\tt main}
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Methods}
+
+The {\tt main} method is a special method that is used as the entry point for a Java program.  We can define other methods as well.  Consider this method from \link{\code/basics/NameParser.java}{NameParser.java}:
+
+\begin{lstlisting}[language=Java]
+public static String extractLastName(String name) {
+    int commaPos = name.indexOf(",");
+    int len = name.length();
+    String lastName = name.substring(0, commaPos).trim();
+    return lastName;
+}
+\end{lstlisting}
+Similar to our {\tt main} method but:
+\begin{itemize}
+\item {\tt return}s a {\tt String} value
+\item takes a single parameter of type {\tt String}
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Method Parameters}
+
+In this method:
+\begin{lstlisting}[language=Java]
+public static String extractLastName(String name) {
+    int commaPos = name.indexOf(",");
+    int len = name.length();
+    String lastName = name.substring(0, commaPos).trim();
+    return lastName;
+}
+\end{lstlisting}
+{\tt name} is a {\it parameter} (or {\it formal parameter}), a local scope variable within the {\tt extractLastName} method.  It is bound to a value when the method is called.  In the statement:
+
+\begin{lstlisting}[language=Java]
+String lastName = extractLastName(fullName);
+\end{lstlisting}
+the right-hand side, {\tt extractLastName(fullName)}, is a {\it method invocation} (or {\it method call}).  We say that {\tt fullName} is the {\it argument} (or {\it actual parameter}) to this invocation of the {\tt extractLastName} method.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Local Variables}
+
+Method parameters and variables declared inside the method are local to the method, invisible outside the method.  Local variables "shadow" variables of the same name in an enclosing scope.
+
+\begin{lstlisting}[language=Java]
+public class Methods {
+
+    // Note that static variables cannot appear inside methods
+    static String message = "Global message.";
+    static int a = 5;
+
+    public static int add(int a, int b) {
+        String message = "Adding " + a + " and " + b;
+        System.out.println(message);
+        return a + b;
+    }
+...
+\end{lstlisting}
+In the {\tt add} method, the parameter {\tt a} shadows the {\tt static} variable {\tt a}, and the local variable {\tt message} shadows the {\tt static} variable {\tt message}.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Methods as Expressions}
+
+Methods that return values are expressions which can be used anywhere a value of the method's return type can be used.  Given:
+
+\begin{lstlisting}[language=Java]
+public static int add(int a, int b) { ... }
+\end{lstlisting}
+which returns an {\tt int}, this:
+\begin{lstlisting}[language=Java]
+x + (x + y)
+\end{lstlisting}
+is equivalent to this:
+\begin{lstlisting}[language=Java]
+x + add(x, y)
+\end{lstlisting}
+See \link{\code/basics/Methods.java}{Methods.java}.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Closing Thoughts}
+
+Methods are subprograms with
+\begin{itemize}
+\item input (parameters),
+\item processing (a sequence of statements), and
+\item output (return value).
+\end{itemize}
+
+Methods are a powerful form of procedural abstraction, another step in the building of complex programs from simple parts.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+\end{document}

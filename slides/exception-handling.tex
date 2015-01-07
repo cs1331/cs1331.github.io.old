@@ -1,0 +1,310 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
+\newcommand{\lesson}{Exception Handling}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
+
+\author[Chris Simpkins] 
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Exceptions}
+
+
+An exception is
+\begin{itemize}
+\item an event that occurs during the execution of a program that disrupts the normal flow of instructions (\href{http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html}{Java Tutorial - Exceptions});
+\item a violation of the semantic constraints of a program;
+\item an object that is created when an exception occurs.
+\end{itemize}
+\vspace{.1in}
+An exception is said to be 
+\begin{itemize}
+\item {\it thrown} from the point where it occurred and
+\item {\it caught} at the point to which control is transferred (\href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-11.html}{JLS \S 11}).
+\end{itemize} 
+The basic syntax is:
+\begin{lstlisting}[language=Java]
+try {
+    // Code that may throw an exception
+} catch (Exception e) {
+    // Code that is executed if an exception is
+    // thrown in the try-block above
+}
+\end{lstlisting}
+We'll
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt try} Statements}
+
+
+In the example:
+\begin{lstlisting}[language=Java]
+try {
+    initFromFile(new File(employeeDataFile));
+} catch (FileNotFoundException e) {
+    System.out.println("Need an employee data file.");
+    System.out.println(e.getMessage());
+}
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item {\tt initFromFile()} declares that it {\tt throws FileNotFoundException}
+\item If {\tt initFromFile()} does in fact throw a {\tt FileNotFoundException}, control is transferred to the catch block.
+\item The {\tt FileNotFoundException} object that is thrown from {\tt initFromFile()} is bound to the variable {\tt e} in the catch block.
+\item The absence of the specified file is a violation of a semantic constraint of the {\tt initFromFile} method (which it propagates from {\tt FileReader} - more later).
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Run-Time Exception Handling}
+
+
+Throwing an exception causes a nonlocal transfer of control from the point where the exception is thrown to the nearest dynamically enclosing catch clause, if any, of a try statement (§14.20) that can handle the exception.
+\begin{quote}
+A statement or expression is dynamically enclosed by a catch clause if it appears within the try block of the try statement of which the catch clause is a part, or if the caller of the statement or expression is dynamically enclosed by the catch clause. -- \href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-11.html#jls-11.3}{JLS \S 11.3}
+\end{quote}
+More simply, a statement is dynamically enclosed by a catch clause if it is
+\begin{itemize}
+\item contained within the corresponding try block of the catch clasuse, or
+\item  within a method (or constructor) that is called within the corresponding try block of the catch clause. 
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Identifying a Dynamically Enclosing Catch Clause}
+
+
+\begin{lstlisting}[language=Java,escapechar=`]
+public Company(String employeeDataFile) {
+    employees = new ArrayList<Employee>(10);
+    try {
+        initFromFile(new File(employeeDataFile));
+    } `\colorbox{yellow}{catch (FileNotFoundException e) \{}`
+        System.out.println("Can't run without an employee data file.");
+        System.out.println(e.getMessage());
+    }
+}
+private void initFromFile(File empData) throws FileNotFoundException {
+    BufferedReader reader =
+        new BufferedReader(`\colorbox{yellow}{new FileReader(empData)}`);
+}
+\end{lstlisting}
+\vspace{-.1in}
+The highlighted statement in {\tt initFromFile} is dynamically enclosed by the highlighted catch clause in the {\tt Company} constructor because it is within a method that is called within the coresposnding try block of the catch clause (and the statement within the {\tt FileReader} constructor that acutally throws the exceptoin is also dynamically enclosed by the highlighted catch clause).
+
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Catch Block Parameters}
+
+\begin{lstlisting}[language=Java,escapechar=`]
+public Company(String employeeDataFile) {
+    employees = new ArrayList<Employee>(10);
+    try {
+        initFromFile(new File(employeeDataFile));
+    } `\colorbox{yellow}{catch (FileNotFoundException e) \{}`
+        System.out.println("Can't run without an employee data file.");
+        System.out.println(e.getMessage());
+    }
+}
+private void initFromFile(File empData) throws FileNotFoundException {
+    BufferedReader reader =
+        new BufferedReader(`\colorbox{yellow}{new FileReader(empData)}`);
+}
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item If {\tt new FileReader(empData)} throws a {\tt FileNotFoundException}, it will be caught in the catch block and bound to the catch block's parameter {\tt e}.
+\item The object {\tt e} has type {\tt FileNotFoundException} and can be used just like any other object.
+\item {\tt FileNotFoundException} is a standard library exception, so you can look up its API documentation just like any other standard library class.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Checked and Unchecked Exceptions}
+
+
+Checked exceptions are subclasses of {\tt Throwable} that are not subclasses of {\tt RuntimeException} or {\tt Error}.  The compiler requires that checked exceptions declared in the throws clauses of methods are handled by:
+\begin{itemize}
+\item a dynamically enclosing catch clause, or
+\item a {\tt throws} declaration on the enclosing method or constructor.
+\end{itemize}
+This rule is sometimes called ``catch or specify'' or ``catch or declare.''\\
+\vspace{.1in}
+Unchecked exceptions (subclasses of {\tt RuntimeException} or {\tt Error}) are not subject to the catch or declare rule.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Catch or Declare}
+
+
+For example, here are the two ways to deal with the {\tt FileNotFoundException} thrown by {\tt initFromFile}.\\
+\vspace{.1in}
+Catch:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java,escapechar=`]
+public Company(String employeeDataFile) {
+  // ...
+  try {
+    initFromFile(new File(employeeDataFile));
+  } `\colorbox{yellow}{catch (FileNotFoundException e) \{}`
+    System.out.println(e.getMessage());
+  }
+}
+\end{lstlisting}
+Declare:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java,escapechar=`]
+public Company(String employeeDataFile) `\colorbox{yellow}{throws FileNotFoundException \{}`
+  // ...
+  initFromFile(new File(employeeDataFile));
+}
+\end{lstlisting}
+
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Taking Advantage of Unchecked Exceptions}
+
+
+We've been using the Scanner class without having to handle exceptions because its methods throw unchecked exceptions.  But we can make use of these exceptions to make our code more robust.
+\begin{lstlisting}[language=Java]
+Scanner kbd = new Scanner(System.in);
+int number = 0;
+boolean isValidInput = false;
+while (!isValidInput) {
+    try {
+        System.out.print("Enter an integer: ");
+        number = kbd.nextInt();
+        // If nextInt() throws an exception, we won't get here
+        isValidInput = true;
+    } catch (InputMismatchException e) {
+        // This nextLine() consumes the token that
+        // nextInt() couldn't translate to an int.
+        String input = kbd.nextLine();
+        System.out.println(input + " is not an integer.");
+        System.out.println("Try again.");
+    }
+}
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Multiple Catch Clauses}
+
+
+Two important points in writing multiple catch clauses for a try statement:
+\begin{itemize}
+\item The exception type in a catch clause matches subclasses.
+\item The first catch clause that matches an exception is the (only) one that executes.
+\end{itemize}
+This means that you should order your catch clauses from most specific (most derived, lowest in exception class hierarchy) to least specific (highest in exception class hierarchy).
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Common Mistakes in Multiple Catch Clauses}
+
+
+What's wrong with this code?
+\begin{lstlisting}[language=Java]
+try {
+  initFromFile(new File(employeeDataFile));
+} catch (Exception e) {
+  System.out.println("Something bad happened: " + e.getMessage());
+} catch (IOException e) {
+  System.out.println(e.getMessage());
+  e.printStackTrace(System.out);
+  System.exit(0);
+} catch (FileNotFoundException e) {
+  System.out.println("Can't run without an employee data file.");
+  System.out.println(e.getMessage());
+  System.exit(0);
+} catch (ParseException e) {
+  String msg = "Malformed data caused exception: " + e.getMessage();
+  System.out.println(msg);
+  System.out.println("Full stack trace:");
+  e.printStackTrace(System.out);
+  System.exit(0);
+}
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Ivestigative Exercise}
+
+
+Let's conclude by asking ourselves a couple of questions.
+\begin{itemize}
+\item Can a method declare an unchecked exception in its {\tt throws} clause?
+\item If so, does code that calls the method then have to deal with the unchecked exception as if it were checked, that is, does the catch or declare rule apply?
+\end{itemize}
+Let's find out!
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

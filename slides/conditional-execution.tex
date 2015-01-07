@@ -1,0 +1,325 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{Conditional Execution}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Structured Programming}
+
+
+In reasoning about the flow of control to and from a statement, consider control flow issues:
+\begin{itemize}
+\item Multiple vs. single entry ("How did we get here?")
+\item Multiple vs. single exit ("Where do we go from here?")
+\item {\tt goto} considered harmful ({\tt goto} makes it hard to answer questions above)
+\end{itemize}
+
+Structured programming: block structure, single entry, single exit, no {\tt goto}.  All algorithms expressed by:
+\begin{itemize}
+\item Sequence - one statement after another
+\item Selection - conditional execution (not conditional jumping)
+\item Iteration - loops
+\end{itemize}
+
+Today we'll learn Java's support for conditional execution
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Boolean Values}
+
+
+There are 10 kinds of people:
+\pause
+\begin{itemize}
+\item Those who know binary,
+\pause
+\item and those who don't.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Boolean Values}
+
+
+In Java, boolean values have the {\tt boolean} type.  Four kinds of boolean expressions:
+\begin{itemize}
+\item {\tt boolean} literals: {\tt true} and {\tt false}
+\item {\tt boolean} variables
+\item expressions formed by combining non-{\tt boolean} expressions with comparison operators
+\item expressions formed by combining {\tt boolean} expressions with logical operators
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Boolean Expressions Formed From Comparisons}
+
+
+Simple boolean expressions formed with comparison operators:
+\begin{itemize}
+\item Equal to: {\tt ==}, like $=$ in math
+  \begin{itemize}
+    \item Remember, {\tt =} is assignment operator, {\tt ==} is comparison operator!
+  \end{itemize}
+\item Not equal to: {\tt !=}, like $\ne$ in math
+\item Greater than: {\tt >}, like $>$ in math
+\item Greater than or equal to: {\tt >=}, like $\ge$ in math
+\item ...
+\end{itemize}
+Examples:
+\begin{lstlisting}[language=Java]
+1 == 1 // true
+1 != 1 // false
+1 >= 1 // true
+1 > 1  // false
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Boolean Expressions Formed From Logical Combinators}
+
+
+Simple boolean expressions can be combined to form larger expressions using:
+\begin{itemize}
+\item And: {\tt \&\&}, like $\land$ in math
+\item Or: {\tt ||}, like $\lor$ in math
+\end{itemize}
+Examples:
+\begin{lstlisting}[language=Java]
+(1 == 1) &&  (1 != 1) // false
+(1 == 1) ||  (1 != 1) // true
+\end{lstlisting}
+
+Also, unary negation operator {\tt !}:
+
+\begin{lstlisting}[language=Java]
+!true     // false
+!(1 == 2) // true
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt if-else} Statement}
+
+
+Conditional execution:
+\begin{lstlisting}[language=Java,escapechar=`]
+if (`{\it booleanExpression}`)
+    // a single statement executed when booleanExpression is true
+else
+    // a single statement executed when booleanExpression is false
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item {\it booleanExpression} must be enclosed in parentheses
+\item {\tt else} not required
+\end{itemize}
+
+Example:
+\begin{lstlisting}[language=Java]
+if ((num % 2) == 0)
+    System.out.printf("I like %d.%n", num);
+else
+    System.out.printf("I'm ambivalent about %d.%n", num);
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Ternary If-Else Expression}
+
+
+The ordinary {\tt if-else} control structure is a statement, leading
+to conditional assignment code like this:
+\begin{lstlisting}[language=Java]
+String dinner = null;
+if (temp > 60) {
+    dinner = "grilled";
+} else {
+    dinner = "baked";
+}
+\end{lstlisting}
+
+The ternary operator combines the above into one expression (recall
+that expressions have values):
+
+\begin{lstlisting}[language=Java]
+String dinner = (temp > 60) ? "grilled" : "baked"
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Blocks}
+
+
+Java is block-structured.  You can enclose any number
+of statements in curly braces (\{ ... \}) to create a block.  Blocks
+are like single statements (not expressions - they don't have values).
+\begin{lstlisting}[language=Java]
+if ((num % 2) == 0) {
+    System.out.printf("%d is even.%n", num);
+    System.out.println("I like even numbers.");
+} else {
+    System.out.printf("%d is odd.%n", num);
+    System.out.println("I'm ambivalent about odd numbers.");
+}
+\end{lstlisting}
+The Java conventions recommend using braces always, even for single
+statements.  A very common error is adding statements to an if-branch
+and forgetting to add braces.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Multi-way {\tt if-else} Statements}
+
+
+This is hard to follow:
+\begin{lstlisting}[language=Java]
+if (color.toUpperCase().equals("RED")) {
+    System.out.println("Redrum!");
+} else {
+    if (color.toLowerCase().equals("yellow")) {
+        System.out.println("Submarine");
+    } else {
+        System.out.println("A Lack of Color");
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+This multi-way {\tt if-else} is equivalent, and clearer:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+if (color.toUpperCase().equals("RED")) {
+    System.out.println("Redrum!");
+} else if (color.toLowerCase().equals("yellow")) {
+    System.out.println("Submarine");
+} else {
+    System.out.println("A Lack of Color");
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Short-Circuit Evaluation}
+
+Here's a common idiom for testing an operand before using it:
+\begin{lstlisting}[language=Java]
+if ((kids !=0) && ((pieces / kids) >= 2))
+    System.out.println("Each kid may have two pieces.");
+\end{lstlisting}
+
+In this example Java uses short-circuit evaluation.  If
+\begin{quote}
+{\tt kids !=0}\\
+\end{quote}
+evaluates to {\tt false}, then the second sub-expression is not evaluated, thus avoiding a divide-by-zero error.
+
+\vspace{.1in}
+Note: You can force a complete evaluation by using {\tt \&} or {\tt |}, for example if you have side effects you want to ensure happen in the second expression.  We mention this fact for completeness but implore you not to write such code.\\
+
+See \link{\code/basics/Conditionals.java}{Conditionals.java} for examples.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt switch} Statement}
+
+Java provides {\tt switch} statement for multi-way branching.
+
+\begin{lstlisting}[language=Java]
+switch (expr) {
+case 1:
+    // executed only when case 1 holds
+    break;
+case 2:
+    // executed only when case 2 holds
+case 3:
+    // executed whenever case 2 or 3 hold
+    break;
+default:
+    // executed only when other cases don't hold
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item Execution jumps to the first matching case and continues until a {\tt break}, {\tt default}, or {\tt switch} statement's closing curly brace is reached
+\item Type of {\tt expr} can be {\tt char}, {\tt int}, {\tt short}, {\tt byte}, or {\tt String}
+\item In example above, what is type of {\tt expr}?
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Avoid the {\tt switch} Statement}
+
+The {\tt switch} statement is error-prone.
+\begin{itemize}
+\item {\tt switch} considered harmful.  97\% of fall-throughs
+  unwanted\footnote{Peter van der Linden, {\it Deep C Secrets}}
+\item Anachronism from ``structured assembly language'', a.k.a. C (a {\tt switch} is just a jump table)
+\end{itemize}
+
+You can do without the switch statement.  See
+
+\begin{itemize}
+\item \link{\code/basics/CharCountSwitch.java}{CharCountSwitch.java} for a {\tt switch} example,
+\item \link{\code/basics/CharCountIf.java}{CharCountIf.java} for the same program using an {\tt if} statement in place of the {\tt switch} statement, and
+\item  \link{\code/basics/CharCount.java}{CharCount.java} for the same program using standard library utility methods.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Closing Thoughts}
+
+
+\begin{itemize}
+\item Conditional execution straightforward, but watch out for side-effects in boolean assignments.
+\item Parenthesize your expressions to make them clear to the reader and to Java.
+\item Next we'll learn loops, and we'll have all the tools we need to implement any algorithm.\footnote{Actually we already have all the tools we need to implement any algorithm in a functional style, but we need loops for imperative algorithms.}
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+\end{document}

@@ -1,0 +1,297 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{Loops}
+
+\include{beamer-common}
+
+\usepackage{media9}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+\begin{center}
+\includemedia[
+  width=0.9\linewidth,height=0.6\linewidth,
+  activate=pageopen,
+  flashvars={
+    modestbranding=1 % no YT logo in control bar
+   &autohide=1       % controlbar autohide
+   &showinfo=0       % no title and other info before start
+  }
+]{}{http://www.youtube.com/v/mXPeLctgvQI?rel=0}   % Flash file
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Loops and Iteration}
+
+
+Algorithms often call for repeated action or iteration, e.g. :
+\begin{itemize}
+\item ``repeat ... while (or until) some condition is true'' (looping) or
+\item ``for each element of this array/list/etc. ...'' (iteration)
+\end{itemize}
+
+Java provides three iteration structures:
+\begin{itemize}
+\item {\tt while} loop
+\item {\tt do-while} loop
+\item {\tt for} iteration statement
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt while} and {\tt do-while}}
+
+{\tt while} loops are pre-test loops: the loop condition is tested before the loop body is executed
+\begin{lstlisting}[language=Java]
+while (condition) { // condition is any boolean expression
+      // loop body executes as long as condition is true
+}
+\end{lstlisting}
+
+{\tt do-while} loops are post-test loops: the loop condition is tested after the loop body is executed
+\begin{lstlisting}[language=Java]
+do {
+      // loop body executes as long as condition is true
+} while (condition)
+\end{lstlisting}
+The body of a {\tt do-while} loop will always execute at least once.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt for} Statements}
+
+
+The general {\tt for} statement syntax is:
+\begin{lstlisting}[language=Java, escapechar=`]
+for(`{\it initializer}`; `{\it condition}`; `{\it update}`) {
+     // body executed as long as condition is true
+}
+\end{lstlisting}
+\begin{itemize}
+\item {\it intializer} is a statement
+\begin{itemize}
+\item Use this statement to initialize value of the loop variable(s)
+\end{itemize}
+\item {\it condition} is tested before executing the loop body to determine whether the loop body should be executed.  When false, the loop exits just like a while loop
+\item {\it update} is a statement
+\begin{itemize}
+\item Use this statement to update the value of the loop variable(s) so that the {\it condition} converges to {\tt false}
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt for} Statement vs. {\tt while} Statement}
+
+
+The {\tt for} statement:
+\begin{lstlisting}[language=Java,escapechar=`]
+for(`\framebox{int i = 0}`; `\colorbox{gray}{i < 10}`; `\colorbox{yellow}{i++}`) {
+     // body executed as long as condition is true
+}
+\end{lstlisting}
+
+is equivalent to:
+\begin{lstlisting}[language=Java,escapechar=`]
+
+`\framebox{int i = 0}`
+while (`\colorbox{gray}{i < 10}`) {
+  // body
+  `\colorbox{yellow}{i++}`;
+}
+\end{lstlisting}
+
+
+{\tt for} is Java's primary iteration structure.  In the future we'll see generalized versions, but for now {\tt for} statements are used primarily to iterate through the indexes of data structures and to repeat code a particular number of times.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt for} Statement Examples}
+
+
+Here's an example from  \link{\code/basics/CharCount.java}{CharCount.java}.  We use the {\tt for} loop's index variable to visit each character in a {\tt String} and count the digits and letters:
+\begin{lstlisting}[language=Java]
+int digitCount = 0, letterCount = 0;
+for (int i = 0; i < input.length(); ++i) {
+    char c = input.charAt(i);
+    if (Character.isDigit(c)) digitCount++;
+    if (Character.isAlphabetic(c)) letterCount++;
+}
+\end{lstlisting}
+
+And here's a simple example of repeating an action a fixed number of times:
+\begin{lstlisting}[language=Java]
+for (int i = 0; i < 10; ++i)
+        System.out.println("Meow!");
+\end{lstlisting}
+
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt for} Statement Subtleties}
+
+
+Better to declare loop index in {\tt for} to limit it's scope.  Prefer:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+for (int i = 0; i < 10; ++i)
+\end{lstlisting}
+\vspace{-.1in}
+to:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+int i; // Bad.  Looop index variable visible outside loop.
+for (i = 0; i < 10; ++i)
+\end{lstlisting}
+
+You can have multiple loop indexes separated by commas:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+String mystery = "mnerigpaba", solved = ""; int len = mystery.length();
+for (int i = 0, j = len - 1; i < len/2; ++i, --j) {
+    solved = solved + mystery.charAt(i) + mystery.charAt(j);
+}
+\end{lstlisting}
+
+Note that the loop above is one loop, not nested loops.\\
+\vspace{.025in}
+Beware of common ``extra semicolon'' syntax error:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+for (int i = 0; i < 10; ++i); // oops!  semicolon ends the statement
+    print(meow);  // this will only execute once, not 10 times
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Forever}
+
+Note that in the context of programming, infinite means ``as long as the program is running.''
+Here are two idioms for infinite loops.  First with {\tt for}:
+\begin{lstlisting}[language=Java]
+for (;;) {
+    // ever
+}
+\end{lstlisting}
+
+and with {\tt while}:
+\begin{lstlisting}[language=Java]
+while (true) {
+    // forever
+}
+\end{lstlisting}
+
+Infinite loops are useful for things like game loops and operating system routines that poll input buffers or wait for incoming network connections.  In both of these cases the loop is inteded to run for the duration of the program.
+
+See \link{\code/Loops.java}{Loops.java} for loop examples.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt break} and {\tt continue}}
+
+
+Java provides two non-structured-programming ways to alter loop control flow:
+\begin{itemize}
+\item {\tt break} exits the loop, possibly to a labeled location in the program
+\item {\tt continue} skips the remainder of a loop body and continues with the next iteration
+\end{itemize}
+
+Consider the following while loop:
+\begin{lstlisting}[language=Java]
+boolean shouldContinue = true;
+while (shouldContinue) {
+    System.out.println("Enter some input (exit to quit):");
+    String input = System.console().readLine();
+    doSomethingWithInput(input); // We do something with "exit" too.
+    shouldContinue = (input.equalsIgnoreCase("exit")) ? false : true;
+}
+\end{lstlisting}
+We don't test for the termination sentinal, ``exit,'' until after we do something with it.  Situations like these often tempt us to use {\tt break} ...
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt break}ing out of a {\tt while} Loop}
+
+\vspace{-.05in}
+We could test for the sentinal and {\tt break} before processing:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+boolean shouldContinue = true;
+while (shouldContinue) {
+    System.out.println("Enter some input (exit to quit):");
+    String input = System.console().readLine();
+    if (input.equalsIgnoreCase("exit")) break;
+    doSomethingWithInput(input);
+}
+\end{lstlisting}
+\vspace{-.1in}
+But it's better to use structured programming:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+boolean shouldContinue = true;
+while (shouldContinue) {
+    System.out.println("Enter some input (exit to quit):");
+    String input = System.console().readLine();
+    if (input.equalsIgnoreCase("exit")) {
+        shouldContinue = false;
+    } else {
+        doSomethingWithInput(input);
+    }
+}
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Programming Exercise: Palindromes}
+
+Write a program that determines whether a {\tt String} is a palindrome.  A palindrome is a string of characters that reads the same when reversed, e.g. ``radar''.
+\begin{itemize}
+\item Your program should use the first command line argument as the {\tt String} to test
+\item You should ignore case, e.g. 'R' == 'r'
+\item You should ignore spaces, e.g. ``a but tuba'' is a palindrome
+\item Try to do this with a single {\tt for} loop
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+\end{document}

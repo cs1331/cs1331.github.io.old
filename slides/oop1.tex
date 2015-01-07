@@ -1,0 +1,416 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{Object-Oriented Programming, Part 1 of 3}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Introduction to Object-Oriented Programming}
+
+
+Today we'll learn how to combine all the elements of object-oriented programming in the design of a program that handles a company payroll.  Object-oriented programming requires three features:
+\begin{itemize}
+\item Data abstraction with classes (encapsulation)
+\item Inheritance
+\item Dynamic method binding
+\end{itemize}
+
+That last part, dynamic method binding, provides for {\it polymorphism}, which we'll learn today.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Class Hierarchies}
+
+\vspace{-.05in}
+Class hierarchies depict the superclass-subclass relationships between families of related classes.  Consider:
+\vspace{-.05in}
+\begin{center}
+\includegraphics[height=1.4in]{employee-class-hierarchy.pdf}
+\end{center}
+\vspace{-.2in}
+\begin{itemize}
+\item {\tt Employee} is the superclass of {\tt HourlyEmployee} and {\tt SalariedEmployee}
+\item {\tt Employee} is more general than {\tt HourlyEmployee} and {\tt SalariedEmployee}, e.g., there at least as many {\tt Employee}s as either {\tt HourlyEmployee}s or {\tt SalariedEmployee}s
+\item {\tt HourlyEmployee} and {\tt SalariedEmployee} are richer than {\tt Employee} becuse they extend {\tt Employee} with additional features
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{A {\tt SalariedEmployee} Class}
+
+
+Let's add {\tt SalariedEmployee} to our class hierarchy.  Here are the important pieces:
+\begin{lstlisting}[language=Java]
+public final class SalariedEmployee3 extends Employee3 {
+
+    private static final int MONTHS_PER_YEAR = 12;
+    private final double annualSalary;
+
+    public SalariedEmployee3(String aName, Date aHireDate,
+                            double anAnnualSalary) {
+        super(aName, aHireDate);
+        disallowZeroesAndNegatives(anAnnualSalary);
+        annualSalary = anAnnualSalary;
+    }
+    public double getAnnualSalary() {
+        return annualSalary;
+    }
+    public double monthlyPay() {
+        return annualSalary / MONTHS_PER_YEAR;
+    }
+    // ...
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Our {\tt Employee} Class Hierarchy}
+
+
+We now have all the classes in our hierarchy:
+\vspace{-.1in}
+\begin{center}
+\includegraphics[height=1.1in]{employee-class-hierarchy.pdf}
+\end{center}
+\vspace{-.2in}
+But our classes aren't well factored.
+\begin{itemize}
+\item {\tt SalariedEmployee3} and {\tt HourlyEmployee3} have duplicate copies of {\tt disallowZeroesAndNegatives}
+\item {\tt SalariedEmployee3} and {\tt HourlyEmployee3} both have {\tt monthlyPay} methods, but these methods are not polymorphic because they're not defined in {\tt Employee3}
+\end{itemize}
+
+Let's refactor our {\tt Employee} class hierarchy to give it a clean object-oriented design.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{A Company Spec}
+
+
+Before we make {\tt monthlyPay} polymorphic, we need an application to demonstrate why doing so is useful.  Let's design a {\tt Company} class with the following specs:
+
+\begin{itemize}
+\item A {\tt Company4} has exactly 9 employees (becuase we haven't learned about dynamically resized data structures yet)
+\item A company calculates its monthly payroll by adding up the monthly pay of each of its employees.
+\item A company can have any mix of hourly and salaried employees
+\end{itemize}
+
+That last bullet motivates the use of polymorphism.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Maintaining an Employee List}
+
+
+With our current class hierarchy, we need to maintain separate (partial) arrays of hourly and salaried employees.  Because they're partial arrays we also need to keep track of how many of each type of employee we have.
+\begin{lstlisting}[language=Java]
+public class Company { // no example code - hypothetical
+
+    private HourlyEmployee[] hourlyEmployees;
+    private int numHourlyEmployees;
+    private SalariedEmployee[] salariedEmployees;
+    private int numSalariedEmployees;
+
+    public Company() {
+        hourlyEmployees = ...;
+        salariedEmployees = ...;
+    }
+}
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Calculating Payroll the Hard Way}
+
+
+With our employee lists, calculating payroll is accomplished with two loops:
+\begin{lstlisting}[language=Java]
+public class Company { // hypothetical
+
+    public double monthlyPayroll() {
+        double payroll = 0.0;
+        for (int i = 0; i < numHourlyEmployees; ++i) {
+            payroll += hourlyEmployees[i].monthlyPay();
+        }
+        for (int i = 0; i < numSalariedEmployees; ++i) {
+            payroll += salariedEmployees[i].monthlyPay();
+        }
+        return payroll;
+    }
+    // ..
+}
+\end{lstlisting}
+Seems reasonable.  But ...
+\begin{itemize}
+\item What if we want to add a third type of employee?
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Calculating Payroll the Easy Way}
+
+
+We'd like to be able to calculate payroll with a single loop over all employees:
+\begin{lstlisting}[language=Java]
+public class Company4 {
+
+    public double monthlyPayroll() {
+        double payroll = 0.0;
+        for (Employee employee: employees) {
+            payroll += employee.monthlyPay();
+        }
+        return payroll;
+    }
+    // ..
+}
+\end{lstlisting}
+
+Much cleaner and less error-prone (e.g., we don't have the book-keeping of two partial arrays).  To be able to code like this we need to update the design of our {\tt Employee} class hierarchy.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{A More General Employee List}
+
+\vspace{-.05in}
+The first step is to store one array of {\tt Employee}s:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Company4 {
+    private Employee3[] employees;
+    public Company4() {
+        employees = ...;
+    }
+    public double monthlyPayroll() {
+        double payroll = 0.0;
+        for (int i = 0; i < employees.length; ++i) {
+            payroll += employees[i].monthlyPay();
+        }
+        return payroll;
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+Much better.  But it doesn't compile.  Why?
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+$ javac Company.java
+Company.java:15: cannot find symbol
+symbol  : method monthlyPay()
+location: class Employee
+            payroll += employees[i].monthlyPay();
+\end{lstlisting}
+% $
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Abstract Classes}
+
+
+We need {\tt Employee} to declare a {\tt monthlyPay} method for subclasses to define.  Since we don't have a general definition for {\tt monthlyPay} suitable for {\tt Employee}, {\tt Employee} will need to be abstract.
+\begin{lstlisting}[language=Java]
+public abstract class Employee4 {
+    // ...
+    public abstract double monthlyPay();
+}
+\end{lstlisting}
+An abstract class
+\begin{itemize}
+\item cannot be instantiated,
+\item may contain zero or more abstract methods, and
+\item subclasses must either provide an implementation for abstract methods, or be declared {\tt abstract} themselves.
+\end{itemize}
+
+This makes sense for our {\tt Employee4} class.  We don't ever want to instantiate {\tt Employee4} objects.  {\tt Employee4} simply defines the common aspects of all employees, with subclasses filling in the details.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt Employee4} Class Hierarchy}
+
+\begin{center}
+\includegraphics[height=1.5in]{employee-uml.png}
+\end{center}
+\begin{itemize}
+\item {\tt Employee4} and its {\tt monthlyPay} method are abstract.
+\item {\tt monthlyPay} is polymorphic because it is overriden in subclasses.
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Polymorphic Methods}
+
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Company4 {
+    private Employee4[] employees;
+    public double monthlyPayroll() {
+        double payroll = 0.0;
+        for (Employee4 employee: employees) {
+            payroll += employees.monthlyPay();
+        }
+        return payroll;
+    }
+}
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item The static type of the elements of {\tt employees} is {\tt Employee4}
+\item The dynamic type can be any subclass of {\tt Employee4}, in this case they are all {\tt SalariedEmployee4} and {\tt HourlyEmployee4}
+\item When a method is invoked on an object, the method of the dynamic (run-time) type is used, no matter what the static (compile-time) type is.
+\begin{itemize}
+\item So though the static types of {\tt employees} elements is {\tt Employee}, the {\tt monthlyPay} methods invoked on them are the ones defined in {\tt SalariedEmployee4} and {\tt HourlyEmployee4}.
+\end{itemize}
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Refactoring Duplicate Code in a Class Hierarchy}
+
+\vspace{-.05in}
+Recall the definition of {\tt disallowZeroesAndNegatives}:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+private void disallowZeroesAndNegatives(double ... args) {
+    boolean shouldThrowException = false;
+    String nonPositives = "";
+    for (double arg: args) {
+        if (arg <= 0.0) {
+            shouldThrowException = true;
+            nonPositives += arg + " ";
+        }
+    }
+    if (shouldThrowException) {
+        String msg = "Following arguments were <= 0: " + nonPositives;
+        throw new IllegalArgumentException(msg);
+    }
+}
+\end{lstlisting}
+\vspace{-.075in}
+\begin{itemize}
+\item This method is duplicated in {\tt HourlyEmployee4} and {\tt SalariedEmployee4}
+\item Let's move the definition of {\tt disallowZeroesAndNegatives} into {\tt Employee5} so it will be shared (rather than duplicated) in {\tt SalariedEmployee5} and {\tt HourlyEmployee5}.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Refactoring Common Code Into a Superclass}
+
+
+%% After cutting {\tt disallowZeroesAndNegatives} from {\tt SalariedEmployee} and {\tt HourlyEmployee} and pasting it into {\tt Employee}, {\tt javac} tells us:
+%% \begin{lstlisting}[language=Java]
+%% $ javac Employee.java HourlyEmployee.java SalariedEmployee.java
+%% HourlyEmployee.java:25: cannot find symbol
+%% symbol  : method disallowZeroesAndNegatives(double,double)
+%% location: class HourlyEmployee
+%%         disallowZeroesAndNegatives(anHourlyWage, aMonthlyHours);
+%%         ^
+%% SalariedEmployee.java:17: cannot find symbol
+%% symbol  : method disallowZeroesAndNegatives(double)
+%% location: class SalariedEmployee
+%%         disallowZeroesAndNegatives(anAnnualSalary);
+%%         ^
+%% 2 errors
+%% \end{lstlisting}
+%% % $
+
+%% Why did we get these errors?
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt protected} Members}
+
+
+{\tt private} members of a superclass are effectively invisible to subclasses.  To make a member accessible to subclasses, use {\tt protected}:
+\begin{lstlisting}[language=Java]
+public abstract class Employee5 {
+    protected void disallowZeroesAndNegatives(double ... args) {
+        // ...
+    }
+    // ...
+}
+\end{lstlisting}
+{\tt protected} members
+\begin{itemize}
+\item are accessible to subclasses and other classes in the same package, and
+\item can be overriden in subclasses.
+\end{itemize}
+{\tt protected} members provide encapsulation within a class hierarchy and package, {\tt private} provides encapsulation within a single class.\\
+\vspace{.05in}
+Later we'll see a better way to re-use.
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Programming Exercise}
+
+
+Expand on the {\tt Animal} and {\tt Dog} exercise by making the following changes:
+\begin{itemize}
+\item Make the {\tt speak} method in {\tt Animal} abstract.  What additional change to {\tt Animal} will you have to make?
+\item Add a {\tt Cat} class which overrides {\tt speak} appropriately.
+\item Create a {\tt Zoo} class that is just like {\tt Kennel} except that it
+ maintains an array of {\tt Animal} (instead of {\tt Dog})
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

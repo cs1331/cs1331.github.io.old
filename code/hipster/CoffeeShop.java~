@@ -1,0 +1,11 @@
+public class CoffeeShop {
+
+    public static void main(String[] args) {
+        Person blackCoffee = new Person("Fred");
+        Hipster soyLatte = new Hipster("Fred");
+        System.out.println("blackCoffee.equals(soyLatte) == "
+                           + blackCoffee.equals(soyLatte));
+        System.out.println("soyLatte.equals(blackCoffee) == "
+                           + soyLatte.equals(blackCoffee));
+    }
+}

@@ -1,0 +1,10 @@
+SalariedEmployee; Ada Lovelace; December 10, 1815; 120000
+SalariedEmployee; Alan M. Turing; June 23, 1912; 120000
+SalariedEmployee; John McCarthy; September 4, 1927; 120000
+SalariedEmployee; John Backus; December 3, 1924; 120000
+SalariedEmployee; John von Neumann; December 29, 1903; 120000
+SalariedEmployee; Donald Knuth; January 10, 1938; 120000
+SalariedEmployee; Guy Steele; October 2, 1954; 120000
+SalariedEmployee; Robin Milner; January 13, 1934; 120000
+HourlyEmployee; Eva L. Uator; February 13, 2013; 20.00; 200
+SummerIntern; Alyssa P. Hacker; February 15, 2013; 20.00; 100

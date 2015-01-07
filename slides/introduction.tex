@@ -1,0 +1,255 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
+\newcommand{\lesson}{Introduction and Java Overview}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
+
+\author[Chris Simpkins]
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Course Overview}
+
+\begin{itemize}
+\item Course policies
+\item Syllabus
+\item Instructional staff
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Java}
+
+\begin{itemize}
+\item Developed for home appliances - cross-platform VM a key feature
+\item Originally called Oak
+\item Gained notariety with HotJava web browser that could run ``programs over the internet'' called applets
+\item Gained popularity when Netscape included Java VM in Navigator web browser
+\item JavaScript is purely a marketing label meant to capitalize on Java hype - there is no relationship between Java and JavaScript
+\item  Java is a general-purpose application programming language.
+\item Java applets are now very rare.  The bulk of Java code runs on (web) servers.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Java Programming Language}
+
+
+\begin{itemize}
+\item Java is part of the C family.  Same syntax for variable
+  declarations, control structures
+\item Java came at a time when C++ was king.  C++ was a notoriously complex
+  object-oriented extension to C.
+\item Java improved on several key aspects of C++, greatly simplifying
+  software development
+\item Two most compelling features of Java were cross-platform
+  deployablility (``write once, run anwhere'') and autoatic garbage
+  collection
+\item These two advantages, especially garbage collection\footnote{In
+    C and C++ the largest class of program errors were memory
+    management errors.  This entire class of errors mostly disappears
+    with automatic garbage collection}, drove Java adoption
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Java Platform}
+
+
+Three components of the Java platform:
+\begin{itemize}
+\item The Java programming language
+\item The Java Virtual Machine (JVM)
+\item The Java standard library
+\end{itemize}
+Java is both compiled and interpreted:
+\begin{itemize}
+\item Java source files (ending in {\tt .java} are compiled to java
+  bytecode files (ending in {\tt .class}
+\item Java bytecode is then interpreted (run) by the JVM
+\item Compiling and running can be done on different machines -
+  bytecode is portable (more precisely, the JVM on each platform
+  accepts the same bytecode).
+\end{itemize}
+The enourmous Java standard library (containing many Classes notably
+missing from C++) greatly reduces software development effort.
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Object-Oriented Programming in Java}
+
+
+%% Java is an imperative programming language (we'll learn what that means next class) with support for object-oriented programming.
+
+%% \begin{itemize}
+%% \item All Java code resides within {\tt class}es
+%% \item Classes define state (member variables) and behavior (methods)
+%% \item Objects are instantiated from {\tt class}es (we'll see examples soon)
+%% \item An object-oriented program models some system as a collection of objects
+%% \item Each object communitcates with other objects by sending them messages, or {\it invoking} methods on those objects
+%% \end{itemize}
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Java SDK}
+
+\vspace{-.05in}
+Follow the instructions on the \link{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/resources.html}{Resources} page of the course web site to install the JDK. Installing the JDK on your computer provides you with several command-line tools, the most important of which are:
+
+\begin{itemize}
+\item {\tt javac} - the Java compiler, which compiles {\tt .java} files to {\tt .class} files.  You can tell you have correctly installed your SDK like this:
+\begin{lstlisting}[language=bash]
+$ javac -version
+javac 1.8.0_11
+\end{lstlisting}
+
+\item {\tt java} - the Java runtime program, which runs compiled {\tt .class} files.  You can tell you have a correctly installed JRE (Java Runtime Environment) like this:
+\begin{lstlisting}[language=bash]
+$ java -version
+java version "1.8.0_11"
+Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+\end{lstlisting}
+
+\end{itemize}
+\vspace{-.05in}
+The JRE is included in the JDK, but they can be installed separately.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Anatomy of a Java Program}
+
+
+It is customary for a progarmmer's first program in a new language to be ``Hello, World.''  Here's our \link{\code/HelloWorld.java}{{\tt HelloWorld.java}} program:
+\begin{lstlisting}[language=Java]
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item The first line declares our {\tt HelloWorld} class.  {\tt class} is the syntax for declaring a class, and prepending with the {\tt public} modifer means the class will be visible outside {\tt HelloWorld}`s package.  For now just think of them as boilerplate.
+\item Because we didn't declare a package explicitly, {\tt HelloWorld} is in the {\it default} package.  More on that in a few lectrues.
+\item The code between the curly braces, {\tt \{ ... \}} define the contents of the {\tt HelloWorld} class, in this case a single method, {\tt main}
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt public static void main(String[] args)}}
+
+
+In order to make a class executable with the {\tt java} command, it must have a main method:
+\begin{lstlisting}[language=Java]
+public static void main(String[] args) { ... }
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item The {\tt public} modifier means we can call this method from outside the class.
+\item The {\tt static} modifer means the method can be called without instantiating an object of the class.  Static methods (and variables) are sometimes called {\it class} methods.
+\item {\tt void} is the return type.  In particular, main returns nothing.  Sometimes such subprograms are called {\it procedures} and distinguished from {\it functions}, which return values.
+\item After the method name, {\tt main}, comes the parameter list.  {\tt main} takes a single parameter of type {\tt String[]} - an array of {\tt String}s.  {\tt args} is the name of the parameter, which we can refer to within the body of {\tt main}
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Compiling Java Programs}
+
+
+Compile Java programs with {\tt javac}, which stands for ``Java compiler''
+\begin{lstlisting}[language=Java]
+$ javac HelloWorld.java
+$
+\end{lstlisting}
+With no command line options, {\tt javac} will look in the present working directory ({\tt pwd}) for any {\tt .java} files you pass to {\tt javac} and produce corresponding {\tt .class} files.  After compiling HelloWorld.java you should have a HelloWorld.class in the same directory.
+
+\begin{lstlisting}[language=Java]
+$ ls
+HelloWorld.class HelloWorld.java
+$
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Running Java Programs}
+
+
+Run Java programs with {\tt java}
+\begin{lstlisting}[language=Scala]
+$ java HelloWorld
+Hello, world!
+$
+\end{lstlisting}
+\begin{itemize}
+\item The {\tt HelloWorld} argument tells the {\tt java} command to find the {\tt .class} file named HelloWorld (which could be a file or in a JAR archive) and execute its {\tt main} method.
+\end{itemize}
+This is all you need to know for now.
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{One More Thing ...}
+
+You may have heard of Java 8.  Java 8 is the most important update to the Java language and platform since Java 5 was released in 2004.  We will learn several important elements of Java 8, including:
+
+\begin{itemize}
+\item lambdas,
+\item streams (maybe), and
+\item JavaFX.
+\end{itemize}
+
+These new topics won't appear until later in the course where they fit most naturally, and only to the extent that they support the presentation of Object-Oriented Programming.  Remember, this is not a Java course.  This is an {\it Object-Oriented Programming} course that uses Java.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+
+\end{document}

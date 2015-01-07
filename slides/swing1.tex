@@ -1,0 +1,304 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
+\newcommand{\lesson}{Swing, Part 1 of 5}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
+
+\author[Chris Simpkins]
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Outline}
+
+
+\begin{itemize}
+\item Hello, Swing!
+\item Event-driven programming
+\item Hello, buttons!
+\item The observer pattern in Swing
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Hello, Swing}
+
+
+Here's a minimal Swing program:
+\begin{lstlisting}[language=Java]
+import javax.swing.JFrame;
+
+public class HelloSwing {
+
+    public static void main(String[] args) {
+        JFrame mainFrame = new JFrame("Hello, Swing!");
+        mainFrame.setSize(640, 480);
+        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        mainFrame.setVisible(true);
+    }
+}
+\end{lstlisting}
+
+See \link{\code/swing/HelloSwing.java}{HelloSwing.java} and the API documentation for \link{http://docs.oracle.com/javase/7/docs/api/javax/swing/JFrame.html}{JFrame}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt javax.swing.JFrame}}
+
+\vspace{-.1in}
+Almost all Swing programs use a {\tt JFrame} for the main GUI window. Here's a high-level recipe for using {\tt JFrame}:
+\vspace{-.05in}
+\begin{itemize}
+\item Instantiate a {\tt JFrame}, passing a title to the constructor
+\begin{lstlisting}[language=Java]
+        JFrame mainFrame = new JFrame("Hello, Swing!");
+\end{lstlisting}
+\vspace{-.05in}
+\item Set {\tt JFrame}'s initial size (in the next lecture we'll see how to do this in a general way)
+\begin{lstlisting}[language=Java]
+        mainFrame.setSize(640, 480);
+\end{lstlisting}
+\vspace{-.05in}
+\item Specify what to do when user clicks "x" button on title bar
+\begin{lstlisting}[language=Java]
+      mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+\end{lstlisting}
+\vspace{-.05in}
+\item Add components to the {\tt JFrame} and wire them to listeners
+\item Display the {\tt JFrame}
+\begin{lstlisting}[language=Java]
+        mainFrame.setVisible(true);
+\end{lstlisting}
+\end{itemize}
+\vspace{-.05in}
+Today we're using and customizing a {\tt JFrame} object from within another class.  Next lecture we'll create custom subclasses of {\tt JFrame}.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Event-Driven Programming}
+
+
+So far we've done structured sequential programming where the order of execution is controlled by the programmer.  GUIs use event-driven programming:
+\begin{itemize}
+\item User is presented with options.
+\item User actions (and other actions) fire events.
+\item Event handlers execute in response to events.
+\item Order of execution is controlled by the order of events, which the programmer does not know in advance.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Hello, buttons!}
+
+\vspace{-.1in}
+\begin{lstlisting}[language=Java]
+public class HelloButtons {
+    public static void main(String[] args) {
+        JFrame mainFrame = new JFrame("Hello, buttons!");
+        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        mainFrame.setLayout(new FlowLayout());
+
+        JButton exitButton = new JButton("Exit");
+        exitButton.addActionListener(new ExitListener());
+
+        JLabel counterLabel = new JLabel("Count: 0");
+        JButton counterButton = new JButton("Increment count");
+        counterButton.addActionListener(
+            new CountListener(counterLabel));
+
+        mainFrame.add(exitButton);
+        mainFrame.add(counterButton);
+        mainFrame.add(counterLabel);
+        mainFrame.setSize(300, 275);
+        mainFrame.setVisible(true);
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+See \link{\code/swing/HelloButtons.java}{HelloButtons.java}, \link{\code/swing/ExitListener.java}{ExitListener.java} and \link{\code/swing/CountListener.java}{CountListener.java}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Observer Pattern in Swing}
+
+
+Three particpants in the observer pattern:
+\begin{itemize}
+\item An event publisher that fires events
+\item An event object that represent the event
+\item Event handlers that subscribe to event publishers and receive event objects
+\end{itemize}
+
+Practically speaking, firing an event means calling a method on event listeners.  Let's look at a concrete example.
+
+
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{An Event Publisher: {\tt javax.swing.JButton}}
+
+
+In {\tt HelloButtons.java} we set up an exit button like this:
+\begin{lstlisting}[language=Java]
+JButton exitButton = new JButton("Exit");
+exitButton.addActionListener(new ExitListener());
+\end{lstlisting}
+
+\begin{itemize}
+\item {\tt JButton}'s {\tt addActionListener} method takes an object that implements the {\tt java.awt.event.ActionListener} interface
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt java.awt.event.ActionListener}}
+
+
+\begin{lstlisting}[language=Java]
+public interface ActionListener extends EventListener {
+
+    /**
+     * Invoked when an action occurs.
+     */
+    public void actionPerformed(ActionEvent e);
+
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item Event listeners implement the {\tt ActionListener} interface, which includes only one method.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt ExitListener}}
+
+
+Here's the complete definition for {\tt ExitListener}:
+\begin{lstlisting}[language=Java]
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class ExitListener implements ActionListener {
+
+    public void actionPerformed(ActionEvent e) {
+        System.exit(0);
+    }
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item Any time the exit button is pressed, {\tt ExitListener}'s {\tt actionPerformed} method is called
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt CountListener}}
+
+\vspace{-.1in}
+Here's the complete definition for \link{\code/swing/CountListener.java}{CountListener.java} (minus imports):
+\begin{lstlisting}[language=Java]
+public class CountListener implements ActionListener {
+    private JLabel countLabel;
+    private int count;
+    public CountListener(JLabel countLabel) {
+        this.countLabel = countLabel;
+        count = 0;
+    }
+    public void actionPerformed(ActionEvent e) {
+        count++;
+        countLabel.setText("Count: " + count);
+    }
+}\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item {\tt CountListener} keeps a reference to a {\tt JLabel} and an {\tt int} to hold the count
+\item When its {\tt actionPerformed} method is called, it updates the count and (re-) sets the text on its {\tt JLabel} with the new count
+\end{itemize}
+Three objects cooperating: a {\tt JButton}, a {\tt JLabel}, and a {\tt CountListener} (which is-a {\tt ActionListener}) to tie them together.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Closing Thoughts}
+
+
+\begin{itemize}
+\item Event-driven GUI programming requires a shift in thinking.  Putting the user in control means you have to work harder to
+\begin{itemize}
+  \item handle order dependencies, e.g., by disabling buttons until certain actions are taken, and
+  \item guide the user, e.g., by following UI guidelines to maximize familiarity.
+\end{itemize}
+\item JavaFX is the future, but learning Swing first makes sense because
+\begin{itemize}
+  \item Swing concepts are present in JavaFX,
+  \item JavaFX is much harder to set up and debug (so Swing is better for beginners), and
+  \item our goal here is to teach the basics of event-driven GUI programming.
+\end{itemize}
+
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

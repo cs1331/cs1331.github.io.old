@@ -1,0 +1,405 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
+\newcommand{\lesson}{Inheritance, Part 2 of 2}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
+
+\author[Chris Simpkins]
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Access Modifiers}
+
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|} \hline
+Modifier & Class & Package & Subclass & World\\
+\hline
+public & Y & Y & Y & Y\\
+protected & Y & Y & Y & N\\
+no modifier & Y & Y & N & N\\
+private & Y & N & N & N\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item Every class has an access level (for now all of our classes are {\tt public}).
+\item Every member has an access level.
+\item The defulat access level, no mofifier, is also called ``package private.''
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Copy Constructors}
+
+
+%% A copy constructor simplifies new object construction.  Here are the copy constructors for {\tt Emplyoyee}
+%% \vspace{-.05in}
+%% \begin{lstlisting}[language=Java]
+%% public class Employee {
+%%     public Employee(Employee other) {
+%%         this.name = other.name;
+%%         this.hireDate = other.hireDate;
+%%     } // ...
+%% }
+%% \end{lstlisting}
+
+%% and {\tt HourlyEmployee}
+%% \vspace{-.05in}
+%% \begin{lstlisting}[language=Java]
+%% public class HourlyEmployee extends Employee {
+%%    public HourlyEmployee(HourlyEmployee other) {
+%%         super(other);
+%%         this.hourlyWage = other.hourlyWage;
+%%         this.monthlyHours = other.monthlyHours;
+%%     } // ...
+%% }
+%% \end{lstlisting}
+
+%% Can you think of an important consideration in writing copy constructors?
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Explicit Constructor Invocation with {\tt this}}
+
+
+What if we wanted to have default default values for hourly wages and monthly hours?  We can provide an alternate constructor that delegates to our main constructor with {\tt this} \link{\code/employee/HourlyEmployee3.java}{HourlyEmployee3.java}:
+\begin{lstlisting}[language=Java]
+public final class HourlyEmployee3 extends Employee3 {
+    /**
+     * Constructs an HourlyEmployee with hourly wage of 20 and
+     * monthly hours of 160.
+     */
+    public HourlyEmployee3(String aName, Date aHireDate) {
+        this(aName, aHireDate, 20.00, 160.0);
+    }
+    public HourlyEmployee3(String aName, Date aHireDate,
+                          double anHourlyWage, double aMonthlyHours) {
+        super(aName, aHireDate);
+        disallowZeroesAndNegatives(anHourlyWage, aMonthlyHours);
+        hourlyWage = anHourlyWage;
+        monthlyHours = aMonthlyHours;
+    }
+    // ...
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt this} and {\tt super}}
+
+
+\begin{itemize}
+\item If present, an explicit constructor call must be the first statement in the constructor.
+\item Can't have both a {\tt super} and {\tt this} call in a constructor.
+\item A constructor with a {\tt this} call must call, either directly or indirectly, a constructor with a {\tt super} call (implicit or explicit).
+\end{itemize}
+
+\begin{lstlisting}[language=Java]
+public final class HourlyEmployee3 extends Employee3 {
+    public HourlyEmployee3(String aName, Date aHireDate) {
+        this(aName, aHireDate, 20.00);
+    }
+    public HourlyEmployee3(String aName, Date aHireDate, double anHourlyWage) {
+        this(aName, aHireDate, anHourlyWage, 160.0);
+    }
+    public HourlyEmployee3(String aName, Date aHireDate,
+                          double anHourlyWage, double aMonthlyHours) {
+        super(aName, aHireDate);
+        disallowZeroesAndNegatives(anHourlyWage, aMonthlyHours);
+        hourlyWage = anHourlyWage;
+        monthlyHours = aMonthlyHours;
+    }
+    // ...
+}
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Liskov Substitution Principle (LSP)}
+
+\begin{quote}
+Subtypes must be substitutable for their supertypes.
+\end{quote}
+Consider the method:
+\begin{lstlisting}[language=Java]
+    public static Date vestDate(Employee employee) {
+        Date hireDate = employee.getHireDate();
+        int vestYear = hireDate.getYear() + 2;
+        return new Date(vestYear,
+                        hireDate.getMonth(),
+                        hireDate.getDay());
+    }
+\end{lstlisting}
+We can pass any subtype of {\tt Employee} to this method:
+\begin{lstlisting}[language=Java]
+        DateFormat df = DateFormat.getDateInstance();
+        HourlyEmployee eva = new HourlyEmployee("Eva L. Uator",
+                           df.parse("February 13, 2013"), 20.00, 200);
+        Date evaVestDate = vestDate(eva);
+\end{lstlisting}
+
+We must ensure that subtypes are indeed substitutable for supertypes.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{LSP Counterexample}
+
+A suprising counter-example:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Rectangle {
+  public void setWidth(double w) { ... }
+  public void setHeight(double h) { ... }
+}
+public class Square extends Rectangle {
+  public void setWidth(double w) {
+    super.setWidth(w);
+    super.setHeight(w);
+  }
+  public void setHeight(double h) {
+    super.setWidth(h);
+    super.setHeight(h);
+  }
+}
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item We know from math class that a square ``is a'' rectangle.
+\item The overridden {\tt setWidth} and {\tt setHeight} methods in {\tt Square} enforce the class invariant of {\tt Square}, namely, that {\tt width == height}.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{LSP Violation}
+
+
+Consider this client of {\tt Rectangle}:
+\begin{lstlisting}[language=Java]
+public void g(Rectangle r) {
+  r.setWidth(5);
+  r.setHeight(4);
+  assert r.area() == 20;
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item Client (author of {\tt g}) assumes width and height are independent in {\tt r} becuase {\tt r} is a {\tt Rectangle}.
+\item If the {\tt r} passed to {\tt g} is actually an instance of {\tt Square}, what will be the value of {\tt r.area()}?
+\end{itemize}
+The Object-oriented {\tt is-a} relationship is about behavior.  {\tt Square}'s {\tt setWidth} and {\tt setHeight} methods don't behave the way a {\tt Rectangle}'s {\tt setWidth} and {\tt setHeight} methods are expected to behave, so a {\tt Square} doesn't fit the object-oriented {\it is-a} {\tt Rectangle} definition.  Let's make this more formal ...
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Conforming to LSP: Design by Contract}
+
+
+\begin{quote}
+Require no more, promise no less.
+\end{quote}
+
+Author of a class specifies the behavior of each method in terms of preconditions and postconditions.  Subclasses must follow two rules:
+\begin{itemize}
+\item Preconditions of overriden methods must be equal to or weaker than those of the superclass (enforces or assumes no more than the constraints of the superclass method).
+\item Postconditions of overriden methods must be equal to or greater than those of the superclass (enforces all of the constraints of the superclass method and possibly more).
+\end{itemize}
+
+In the Rectangle-Square case the postcondition of {\tt Rectangle}'s {\tt setWidth} method:
+\begin{lstlisting}
+assert((rectangle.w == w) && (rectangle.height == old.height))
+\end{lstlisting}
+cannot be satisfied by {\tt Square}, which tells us that a {\tt Square} doesn't satisfy the object-oriented {\it is-a} relationship to {\tt Rectangle}.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{LSP Conforming 2D Shapes}
+
+\begin{lstlisting}[language=Java]
+public interface 2dShape {
+    double area();
+}
+public class Rectangle implements 2dShape {
+    public void setWidth(double w) { ... }
+    public void setHeight(double h) { ... }
+    public double area() {
+        return width * height;
+    }
+}
+public class Square implements 2dShape {
+    public void setSide(double w) { ... }
+    public double area() {
+        return side * side;
+    }
+}
+\end{lstlisting}
+
+Notice the use of an \link{http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html}{interface} to define a type.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Interfaces}
+
+
+An interface represents an object-oriented type: a set of public methods (declarations, not definitions) that any object of the type supports.  Recall the {\tt 2dShape} interface:
+
+\begin{lstlisting}[language=Java]
+public interface 2dShape {
+    double area();
+}
+\end{lstlisting}
+
+You can't instantiate interfaces.  So you must define a class that implements the interface in order to use it.  Implementing an interface is similar to extending a class, but uses the {\tt implements} keyword:
+
+\begin{lstlisting}[language=Java]
+public class Square implements 2dShape {
+    public void setSide(double w) { ... }
+    public double area() {
+        return side * side;
+    }
+}
+\end{lstlisting}
+
+Now a {\tt Square} {\it is-a} {\tt 2dShape}.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Interfaces Define a Type}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public interface 2dShape {
+    double area();
+}
+\end{lstlisting}
+\vspace{-.05in}
+This means that any object of type {\tt 2dShape} supports the {\tt area} method, so we can write code like this:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public double calcTotalArea(2dShape ... shapes) {
+    double area = 0.0;
+    for (2dShape shape: shapes) {
+        area += shape.area();
+    }
+    return area;
+}
+\end{lstlisting}
+\vspace{-.05in}
+
+Two kinds of inheritance: {\it implementation} and {\it interface} inheritance.
+
+\begin{itemize}
+\item extending a class means inheriting both the interface and the implementation of the superclass
+\item implementing an interface means inheriting only the interface, that is, the public methods
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Default Methods in Interfaces}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Conflict Resolution for Default Methods}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item Superclasses win.
+\item Interfaces clash.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Static Methods in Interfaces}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

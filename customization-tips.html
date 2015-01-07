@@ -1,0 +1,39 @@
+---
+layout: default
+title: CS 1331 - Customization Tips
+---
+
+<h1>Customization Tips</h1>
+
+<h2><code>bash</code></h2>
+<p>
+  These go in your <code>~/.bash_profile</code>.
+</p>
+<pre class="code literal-block">
+# My prompt string, which you see when I demonstrate in the terminal
+export PS1="\[\033[32;1m\][\u@\h \w]\n$ \[\033[0m\]"
+
+# Aliases to save some typing
+alias ll='ls -la'
+
+# Alias for Adobe Acrobat, so the open command still uses Preview
+alias acroread='/Applications/Adobe\ Reader.app/Contents/MacOS/AdobeReader'
+
+# A personal bin directory
+export PATH=~/bin:$PATH
+</pre>
+
+<h2>Atom</h2>
+
+<p>First, be sure to familiarize yourself with basic Atom usage.  The <a href="https://atom.io/docs/v0.124.0/getting-started">Getting Started</a> guide is enough to make you quite proficient.</p>
+
+<p>In Atom Prefrences, make sure the following are checked:</p>
+
+<ul>
+  <li><em>Show Indent Guide</em> draws a vertical line at your preferred line length column in editors.  Preferred line length should be set to 80.</li>
+  <li><em>Show Invisibles</em> draws greyed-out characters for spaces, TABs, hard returns.</li>
+  <li><em>Show Line Numbers</em> displays line numbers in the left gutter in editors.  Personal preference, but I find it useful.</li>
+  <li><em>Soft Tabs</em> causes the editor to insert spaces instead of TAB characters when you hit the TAB key.</li>
+  <li><em>Soft Wrap</em> wraps lines visually on word boundaries.  Together with <em>Show Line Numbers</em> you get readable text and can still easily tell long single lines.</li>
+  <li><em>Soft Wrap at Preferred Line Length</em> wraps lines visually on word boundaries at your preferred line length.</li>
+</ul>

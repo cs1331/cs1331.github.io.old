@@ -1,0 +1,373 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{Arrays, Part 1 of 2}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Modeling Aggregates}
+
+
+As you've seen, you can get pretty far with "scalar" data.  But many phenomena we wish to model computationally are aggregates, or collections, for example:
+\begin{itemize}
+\item scores on assignments in a class,
+\item word counts in a document, or
+\item pixel colors in a bitmap image.
+\end{itemize}
+
+Today we'll learn Java's most basic facility for modeling such phenomena: arrays.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Arrays}
+
+
+Java Arrays (\href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-10.html}{JLS \S 10}):
+\begin{itemize}
+\item are objects,
+\item are dynamically allocated (e.g., with operator {\tt new}), and
+\item have a fixed number of elements of the same type.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Creating Arrays}
+
+
+Consider the following {\it array creation expression} (\href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-10.html#jls-10.3}{JLS \S 10.3)}:
+\begin{lstlisting}[language=Java]
+double[] scores = new double[5];
+\end{lstlisting}
+This declaration:
+\begin{itemize}
+\item allocates a 5-element array,
+\item the {\tt 5} in the example above can be any expression that is unary promotable to an {\tt int} (\href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.6.1}{JLS \S 5.6.1})
+\item stores the address of this new array in {\tt scores}, and
+\item initializes each value to it's default value ({\tt 0} for numeric types, {\tt false} for {\tt boolean} types, and {\tt null} for references, \href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.5}{JLS \S 4.12.5}).
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Array Declarations}
+
+
+The preceding array definition
+\begin{lstlisting}[language=Java]
+double[] scores = new double[5];
+\end{lstlisting}
+could be split into a declaration and initialization:
+\begin{lstlisting}[language=Java]
+double[] scores;
+scores = new double[5];
+\end{lstlisting}
+Also, you can put the {\tt []} on the type or the variable name when delaring an array.  These two declarations are equivalent:
+\begin{lstlisting}[language=Java]
+double[] scores;
+double scores[];
+\end{lstlisting}
+Generally, it's better style to put the {\tt []} on the type.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Mixed Declarations}
+
+
+Note that you can mix aray declarations with declarations of variables having the same element type.  The declaration line:
+\begin{lstlisting}[language=Java]
+double scores[], average;
+\end{lstlisting}
+creates
+\begin{itemize}
+\item an array of {\tt double} reference named {\tt scores}, and
+\item a {\tt double} variable named {\tt average}
+\end{itemize}
+
+What's the size of the {\tt scores} array declared above?
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Array Objects}
+
+
+After the definition:
+\begin{lstlisting}[language=Java]
+double[] scores = new double[5];
+\end{lstlisting}
+{\tt scores} points to an array object in memory that can be visualized as:\\
+\vspace{.1in}
+\begin{tabular}{p{.5in}p{.5in}p{.5in}p{.5in}p{.5in}}
+0 & 1 & 2 & 3 & 4 \\
+\end{tabular}
+\begin{tabular}{|p{.5in}|p{.5in}|p{.5in}|p{.5in}|p{.5in}|}\hline
+0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+\hline
+\end{tabular}\\
+\vspace{.1in}
+The {\it indexes} of {\tt scores} range from 0 to 4.  The size of arrays are stored in a {\tt public final} instance variable named {\tt length}
+
+\begin{lstlisting}[language=Java]
+scores.length == 5;
+\end{lstlisting}
+What is the type and value of the expression above?
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Accessing Array Elements}
+
+
+Array elements are accessed with an {\tt int}-promotable expression enclosed in square brackets ({\tt []})
+\begin{lstlisting}[language=Java]
+double[] scores = new double[5];
+scores[0] = 89;
+scores[1] = 100;
+scores[2] = 95.6;
+scores[3] = 84.5;
+scores[4] = 91;
+scores[scores.length - 1] = 99.2;
+\end{lstlisting}
+
+
+\vspace{.1in}
+Will this line compile?  If so, what will happen at runtime?
+\begin{lstlisting}[language=Java]
+scores[scores.length] = 100;
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Initializing Arrays}
+
+
+You can provide initial values for (small) arrays
+\begin{lstlisting}[language=Java]
+String[] validSuits = {"diamonds", "clubs", "hearts","spades"};
+\end{lstlisting}
+
+\begin{itemize}
+\item What is {\tt validSuits.length}?
+\item What is {\tt validSuits[1]}?
+\end{itemize}
+
+You can also use a loop to initialize the values of an array:
+\begin{lstlisting}[language=Java]
+int[] squares = new int[5];
+for (int i = 0; i < squares.length; ++i) {
+    squares[i] = i*i;
+}
+\end{lstlisting}
+
+What is {\tt squares[4]}?
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Traversing Arrays}
+
+
+Arrays and {\tt for} statements go hand-in-hand:
+\begin{lstlisting}[language=Java]
+double[] scores = new double[5];
+for (int i = 0; i < 5; ++i) {
+    System.out.printf("scores[%d] = %.2f%n", i, scores[i]);
+}
+\end{lstlisting}
+
+You can also use the ``enhanced'' for loop:
+
+\begin{lstlisting}[language=Java]
+for (double score: scores) {
+    System.out.println(score);
+}
+\end{lstlisting}
+
+Read the enhanced for loop as ``for each element of the array ...''.\\
+\vspace{.1in}
+Why use for-each instead of traditional for? ...
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Traditional {\tt for} Versus {\tt for}-each}
+
+
+In cases where you don't need the index, use the enhanced for loop.  Consider:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+double sum = 0.0;
+for (int i = 0; i < scores.length; ++i) {
+    sum += scores[i];
+}
+\end{lstlisting}
+\vspace{-.05in}
+In the code above, {\tt scores.length} is used only for bounding the array traversal, and the index {\tt i} is only used for sequential array access.  Those are two things we can mess up.  The enhanced for loop is cleaner:
+
+\begin{lstlisting}[language=Java]
+double sum = 0.0;
+for (double score: scores) {
+    sum += score;
+}
+\end{lstlisting}
+
+Also note how our naming conventions help to make the code clear.  You can read the loop above as ``for each score in scores''.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Array Initialization and Access Gotchas}
+
+
+Because arrays are allocated dynamically, this will compile:
+\begin{lstlisting}[language=Java]
+double[] scores = new double[-5];
+\end{lstlisting}
+but will produce an error at run-time:
+\begin{lstlisting}[language=Java]
+Exception in thread "main" java.lang.NegativeArraySizeException
+        at ArrayBasics.main(ArrayBasics.java:4)
+\end{lstlisting}
+
+Also, array access expressions are evaluated and checked at run-time.  So, in the same way that accessing an array with an index $\ge$ the size of the array produces a run-time error, negative indexes like:
+
+\begin{lstlisting}[language=Java]
+scores[-1] = 100;
+\end{lstlisting}
+produce:
+\begin{lstlisting}[language=Java]
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: -1
+        at ArrayBasics.main(ArrayBasics.java:23)
+\end{lstlisting}
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Arrays as Method Parameters - {\tt main}}
+
+
+We've already seen an array parameter:
+\begin{lstlisting}[language=Java]
+public static void main(String[] args)
+\end{lstlisting}
+
+We can use this array just like we use any other array.
+\begin{lstlisting}[language=Java]
+public class Shout {
+
+    public static void main(String[] args) {
+        for (String arg: args) {
+            System.out.print(arg.toUpperCase() + " ");
+        }
+        System.out.println();
+    }
+}
+\end{lstlisting}
+See also \link{\code/CourseAverage.java}{CourseAverage.java}
+\end{frame}
+%------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Passing and Returning Arrays}
+
+
+%% Arrays are objects, so they can be passed to methods and returned from methods just like other objects.\\
+%% \vspace{.1in}
+%% Consider the following Array copy method:
+%% \begin{lstlisting}[language=Java]
+%% public static int[] copyOf(int[] sourceArray) {
+%%     int[] newArray = new int[sourceArray.length];
+%%     for (int i = 0; i < newArray.length; ++i) {
+%%       newArray[i] = sourceArray[i];
+%%     }
+%%     return newArray;
+%% }
+%% \end{lstlisting}
+%% The array returned from {\tt copyOf} is value-equivalent to the array passed to the method, but they are different arrays.  Modifying the returned array does not modify the passed-in array.
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+%
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{Programming Exercise}
+%
+%
+% Write a program that computes and prints the average of a list of numbers supplied on the command line.  It should work like this:
+% \begin{lstlisting}[language=Java]
+% $ java Average
+% 0.0
+% $ java Average 80 90 95
+% 88.33333333333333
+% \end{lstlisting}
+%
+% \begin{itemize}
+% \item If user enters no command line arguments, average is 0.0
+% \item Assume user never enters command line arguments that can't be parsed as {\tt double}s
+% \end{itemize}
+%
+%
+% \end{frame}
+% %------------------------------------------------------------------------
+%
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Closing Thoughts}
+
+\begin{itemize}
+\item Arrays are our first ``collection classes'' (but are not Java {\tt Collection} classes).
+\item Arrays are objects, so array objects are created with operator {\tt new} and array variables can have the value {\tt null}.
+\item Arrays have sugar to add convenience and make them syntactically similar to C's arrays.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

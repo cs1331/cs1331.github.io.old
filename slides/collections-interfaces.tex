@@ -1,0 +1,114 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{{\tt Collections Interfaces}}
+
+\include{beamer-common}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Collections Framework}
+
+\begin{center}
+\includegraphics[width=4in]{colls-coreInterfaces.png}
+\end{center}
+
+\begin{itemize}
+\item A {\it collection} is an object that represents a group of objects.
+\item The collections framework allows different kinds of collections to be dealt with in an implementation-independent manner.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Collection Framework Components}
+
+The Java collections framework consists of:
+\begin{itemize}
+\item Collection interfaces representing different types of collections (sets, lists, etc)
+\item General purpose implementations (like {\tt ArrayList} or {\tt HashSet})
+\item Absract implementations to support custom implementations
+\item Algorithms defined in static utility methods that operate on collections (like {\tt Collections.sort(List<T> list)})
+\item Infrastructure interfaces that support collections (like {\tt Iterator})
+\end{itemize}
+Today we'll learn a few basic concepts, then tour the collections library.
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt Collection} Interface}
+
+
+{\tt Collection} is the root interface of the collections framework, declaring basic operations such as:
+\begin{itemize}
+\item {\tt add(E e)} to add elements to the collection
+\item {\tt contains(Object key)} to determine whether the collection contains {\tt key}
+\item {\tt isEmpty()} to test the collection for emptiness
+\item {\tt iterator()} to get an interator over the elements of the collection
+\item {\tt remove(Object o)} to remove a single instance of {\tt o} from the collection, if present
+\item {\tt size()} to find out the number of elements in the collection
+\end{itemize}
+None of the collection implementations in the Java library implement {\tt Collection} directly.  Instead they implement {\tt List} or {\tt Set}.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Iterators}
+
+
+Iterators are objects that provide access to the elements in a collection.  In Java iterators are represented by the {\tt Iterator} interface, which contains three methods:
+\begin{itemize}
+\item {\tt hasNext()} returns true if the iteration has more elements.
+\item {\tt next()} returns the next element in the iteration.
+\item {\tt remove()} removes from the underlying collection the last element returned by the iterator (optional operation).
+\end{itemize}
+
+The most basic and common use of an iterator is to traverse a collection (visit all the elements in a collection):
+\begin{lstlisting}[language=Java]
+ArrayList tasks = new ArrayList();
+// ...
+Iterator tasksIter = tasks.iterator();
+while (tasksIter.hasNext()) {
+    Object task = tasksIter.next();
+    System.out.println(task);
+}
+\end{lstlisting}
+See \link{\code/collections/ArrayListBasics.java}{ArrayListBasics.java} for more.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

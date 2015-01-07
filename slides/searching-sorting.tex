@@ -1,0 +1,220 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
+\newcommand{\lesson}{Searching and Sorting}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
+
+\author[Chris Simpkins] 
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}{Searching and Sorting}
+%  \titlepage
+\vspace{-.1in}
+  \begin{center} \includegraphics[height=2.9in]{ineffective_sorts.png}\footnote{\link{http://xkcd.com/1185/}{http://xkcd.com/1185/}}
+  \end{center}
+\end{frame}
+
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Search Problem}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item Input: A sequence of $n$ elements $A = <a_1, a_2, ..., a_n>$ and a value $v$
+\item Output: An index $i$ such that $v = A[i]$ or a special value such as -1 or $nil$ if $v$ does not appear in $A$.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Linear Search}
+
+
+Linear search is required when
+\begin{itemize}
+\item with an unsorted list, or
+\item a linked list that does not provide indexed access to any element.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Binary Search}
+
+
+If your list is sorted and you can access elements by index, you can use a binary search.
+\begin{itemize}
+\item
+\end{itemize}
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Binary Search and Binary Trees}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Sorting Problem}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Insertion Sort}
+
+
+The insertion sort algorithm in pseudocode (from CLRS Chapter 2):
+\vspace{-.05in}
+\begin{lstlisting}[]
+1 for j = 2 to A.length // A[1 .. A.length] is an array
+2     key = A[j]
+3     // Insert A[j] into the sorted sequence A[i .. j - 1].
+4     i = j - 1
+5     while i > 0 and A[i] > key
+6         A[i + 1] = A[i]
+7         i = i - 1
+8    A[i + 1] = key
+\end{lstlisting}
+
+Insertion sort implemented in Java:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+for (int j = 1; j < a.length; ++j) {
+    int key = a[j];
+    int i = j - 1;
+    while(i >= 0 \&\& a[i] > key) {
+        a[i + 1] = a[i];
+        i = i - 1;
+    }
+    a[i + 1] = key;
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{}
+
+
+\begin{lstlisting}[language=Java]
+
+\end{lstlisting}
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+
+\end{document}

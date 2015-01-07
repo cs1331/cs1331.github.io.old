@@ -1,0 +1,353 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{JavaFX Events}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Outline}
+
+
+\begin{itemize}
+\item Hello, JavaFX!
+\item Event-driven programming
+\item Hello, buttons!
+\item The observer pattern
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Hello, JavaFX!}
+
+
+Here's a minimal JavaFX program:
+\begin{lstlisting}[language=Java]
+import javafx.application.Application;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class HelloJfx extends Application {
+    public void start(Stage stage) {
+        Label message = new Label("Hello, JavaFX!");
+        message.setFont(new Font(100));
+        stage.setScene(new Scene(message));
+        stage.setTitle("Hello");
+        stage.show();
+    }
+}
+\end{lstlisting}
+
+See \link{\code/javafx/HelloJfx.java}{HelloJfx.java} and the API documentation for \link{http://docs.oracle.com/javase/8/javafx/api/}{JavaFX}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt javafx.application.Application}}
+\vspace{-.06in}
+JavaFX programs include one class that extends \link{http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html}{\tt Application}, analogous to having a single class with a {\tt main} method for console programs.  When running an {\tt Application} the JavaFX run-time:
+\vspace{-.03in}
+\begin{enumerate}
+  \item Constructs an instance of the specified Application class
+\item Calls the {\tt init()} method for application initialization - {\bf don't construct a {\tt Stage} or {\tt Scene} in {\tt init()}}
+\item Calls the {\tt start(javafx.stage.Stage)} method
+\item Waits for the application to finish, which happens when either of the following occur:
+\begin{itemize}
+    \item the application calls \link{http://docs.oracle.com/javase/8/javafx/api/javafx/application/Platform.html}{\tt Platform.exit()}
+    \item the last window has been closed and the {\tt implicitExit} attribute on {\tt Platform} is {\tt true}, which is the default
+\end{itemize}
+\item Calls the {\tt stop()} method - release resources obtained in {\tt init()}
+\end{enumerate}
+
+{\tt init()} and {\tt stop()} have default do-nothing implementaitons.  To write a simple JavaFX program you create a subclass of {\tt Application} and put GUI start-up code in the {\tt start(javafx.stage.Stage)} method.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Setting the Stage}
+
+The JavaFX {\tt Stage} class is the top level JavaFX container.  A primary stage for your application is constructed by the JavaFX run-time and passed to your application in the {\tt start(javafx.stage.Stage)} method:
+
+\begin{lstlisting}[language=Java]
+    @Override public void start(Stage stage) {
+        Scene root = ...
+        stage.setScene(new Scene(root));
+        stage.setTitle("Hello");
+        stage.show();
+    }
+\end{lstlisting}
+
+You construct a {\tt Stage} for each window in your application, e.g., for dialogs and pop-ups, and add visual components to the stage using a scene graph.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Setting the Scene}
+
+The JavaFX \link{http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html}{\tt Scene} class is the container for all content in a scene graph.  Every {\tt Scene} has a root node, which may have children (which is why it's called a scene {\it graph}).  In \link{\code/javafx/HelloJfx.java}{HelloJfx.java} we simply used a {\tt Label} control as the root node:
+
+\begin{lstlisting}[language=Java]
+    @Override public void start(Stage stage) {
+        Label message = new Label("Hello, JavaFX!");
+        stage.setScene(new Scene(message));
+        stage.setTitle("Hello");
+        stage.show();
+    }
+\end{lstlisting}
+
+A typical application will use as its root node a
+\begin{itemize}
+  \item \link{http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html}{Group}, typically used for graphics and animation components,
+\item a \link{http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Region.html}{Region} class for nodes that can be resized and styled with CSS (like UI controls or layout panes), or
+\item a \link{http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html}{Pane} sublclass for laying out children according to some layout policy.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Event-Driven Programming}
+
+
+So far we've done structured sequential programming where the order of execution is controlled by the programmer.  GUIs use event-driven programming:
+\begin{itemize}
+\item User is presented with options.
+\item User actions (and other actions) fire events.
+\item Event handlers execute in response to events.
+\item Order of execution is controlled by the order of events, which the programmer does not know in advance.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Hello, buttons!}
+
+\vspace{-.1in}
+\begin{lstlisting}[language=Java]
+public class HelloJfxButtons extends Application {
+
+    int count = 0;
+
+    @Override public void start(Stage stage) {
+        Label counterLabel = new Label("Count: 0");
+        Button incButton = new Button("Increment Count");
+        incButton.setOnAction(event ->
+            { counterLabel.setText("Count: " + (++count)); });
+
+        VBox root = new VBox();
+        root.getChildren().addAll(counterLabel, incButton);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Hello");
+        stage.show();
+    }
+}
+\end{lstlisting}
+Note that \link{\code/javafx/HelloJfxButtons.java}{HelloJfxButtons.java} uses a \link{http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/VBox.html}{VBox} as its layout manager.  We'll have more to say about layout in a future lecture.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Top-Level GUI Program Recipe}
+
+The \link{\code/javafx/HelloJfxButtons.java}{HelloJfxButtons.java} example demonstrates a simple recipe for JavaFX GUI programs:
+\begin{enumerate}
+\item Create UI controls
+\begin{lstlisting}[language=Java]
+        Label counterLabel = new Label("Count: 0");
+        Button incButton = new Button("Increment Count");
+        incButton.setOnAction(event ->
+            { counterLabel.setText("Count: " + (++count)); });
+\end{lstlisting}
+\item Add UI controls to a parent node (Group, Region, or Pane)
+\begin{lstlisting}[language=Java]
+        VBox root = new VBox();
+        root.getChildren().addAll(counterLabel, incButton);
+        Scene scene = new Scene(root);
+\end{lstlisting}
+\item Set the stage with the scene graph and show it
+\begin{lstlisting}[language=Java]
+        stage.setScene(scene);
+        stage.setTitle("Hello");
+        stage.show();
+\end{lstlisting}
+\end{enumerate}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Observer Pattern in JavaFX}
+
+
+Three particpants in the observer pattern:
+\begin{itemize}
+\item An event publisher that fires events
+\item An event object that represent the event
+\item Event handlers that subscribe to event publishers and receive event objects
+\end{itemize}
+
+Practically speaking, firing an event means calling a method on event listeners.  Let's look at a concrete example.
+
+
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{An Event Publisher: {\tt javafx.scene.control.Button}}
+
+
+In {\tt HelloJfxButtons.java} we set up an increment button like this:
+\begin{lstlisting}[language=Java]
+         Button incButton = new Button("Increment Count");
+         incButton.setOnAction(event ->
+            { counterLabel.setText("Count: " + (++count)); });
+\end{lstlisting}
+
+\begin{itemize}
+\item {\tt Button}'s {\tt setOnAction} method takes an object that implements the {\tt javafx.event.EventHandler<ActionEvent>} interface.
+\begin{itemize}
+\item {\tt javafx.event.EventHandler<ActionEvent>} has one abstract method: {\tt void handle(ActionEvent event)}
+\end{itemize}
+\item When the button is pressed, the {\tt void handle(ActionEvent event)} is invoked on the object passed to {\tt setOnAction}, in this case an anonymous inner class that implements the {\tt EventHandler} interface, which was instantiated by a lambda expression.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt javafx.event.EventHandler<T>}}
+
+
+\begin{lstlisting}[language=Java]
+@FunctionalInterface
+public interface EventHandler<T extends Event>
+        extends EventListener {
+
+    /**
+     * Invoked when a specific event of the type for which this
+     * handler is registered happens.
+     *
+     * @param event the event which occurred
+     */
+    void handle(T event);
+
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item {\tt java.util.EventListener} is a tagging interface that all event listener interfaces must extend (an implementation detail you don't need to worry about).
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Our Button Event Handler}
+
+Consider this alternate syntax for setting an event handler for our button (just to reinforce that a lambda expression is just syntax sugar for creating anonymous inner class instances of functional interfaces):
+\begin{lstlisting}[language=Java]
+        incButton.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                counterLabel.setText("Count: " + (++count));
+            }
+        });
+\end{lstlisting}
+
+\begin{itemize}
+\item Our {\tt EventHandler} captures the {\tt counterLabel} local variable (which is effectively final) and the {\tt count} instance variable
+\item When its {\tt handle} method is called, it updates the count and (re-) sets the text on {\tt counterLabel} with the new count
+\end{itemize}
+Three objects cooperating: a {\tt Button}, a {\tt Label}, and an {\tt EventHandler}  to tie them together.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{Properties}
+%
+% \begin{itemize}
+% \item
+% \end{itemize}
+%
+% \begin{lstlisting}[language=Java]
+%
+% \end{lstlisting}
+%
+%
+% \end{frame}
+% %------------------------------------------------------------------------
+%
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{Binding}
+%
+% \begin{itemize}
+% \item
+% \end{itemize}
+%
+% \begin{lstlisting}[language=Java]
+%
+% \end{lstlisting}
+%
+%
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Closing Thoughts}
+
+
+\begin{itemize}
+\item Event-driven GUI programming requires a shift in thinking.  Putting the user in control means you have to work harder to
+\begin{itemize}
+  \item handle order dependencies, e.g., by disabling buttons until certain actions are taken, and
+  \item guide the user, e.g., by following UI guidelines to maximize familiarity.
+\end{itemize}
+\item Notice how the JavaFX framework contains classes and interfaces that you extend and implement - OOP in action.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+\end{document}

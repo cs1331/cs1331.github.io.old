@@ -1,0 +1,591 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
+\newcommand{\lesson}{Review 1: Java Programs, Variables, Values, Control Structures, Arrays, Classes}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
+
+\author[Chris Simpkins]
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+\subject{\lesson}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Anatomy of a Java Program}
+
+
+\vspace{-.1in}
+\begin{lstlisting}[language=Java,textsize=8pt]
+import java.util.Random;
+
+public class Hello {
+
+    private static final String[] GREETINGS =
+        {"Hello, world!", "Hi there!", "W'sup!"};
+
+    private String greeting;
+
+    private Hello() {
+        Random rand = new Random();
+        int greetingsIndex = rand.nextInt(GREETINGS.length);
+        greeting = GREETINGS[greetingsIndex];
+    }
+
+    public Hello(int anIndex) {
+        int greetingsIndex = anIndex % GREETINGS.length;
+        greeting = GREETINGS[greetingsIndex];
+    }
+
+    public String getGreeting() {
+        return greeting;
+    }
+
+    public static void main(String[] args) {
+        Hello h = new Hello();
+        System.out.println(h.getGreeting());
+    }
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt import} Statement}
+
+
+The statement
+\begin{lstlisting}[language=Java]
+import java.util.Random;
+\end{lstlisting}
+allows us to use the {\tt java.util.Random} class in our program.  Without the import, the line
+\begin{lstlisting}[language=Java]
+  Random rand = new Random(1);
+\end{lstlisting}
+would prodiuce the following error:
+\begin{lstlisting}[language=Java]
+Hello.java:11: error: cannot find symbol
+        Random rand = new Random(1);
+        ^
+  symbol:   class Random
+  location: class Hello
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt class} Declaration}
+
+
+A class is declared with the following syntax:
+\begin{lstlisting}[language=Java]
+public class Hello { ... }
+\end{lstlisting}
+
+\begin{itemize}
+\item {\tt public} means that the class is visible to any object within the class's package, or within any Java file that imports the class
+\item {\tt class} means we're declaring and defining a class
+\item the code between \{ and \} define the class
+\item Every Java source file must contain exactly one public class.  In this case {\tt Hello} is public, so it must be in a file named {\tt Hello.java}
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt static} and {\tt final} Variables}
+
+\vspace{-.1in}
+\begin{lstlisting}[language=Java]
+private static final String[] greetings =
+    {"Hello, world!", "Hi there!", "W'sup!"};
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item {\tt private} means the variable is only visible within instances of the {\tt Hello} class
+\item {\tt static} means that there is exactly one copy of this variable for all instances of the {\tt Hello} class, even if no {\tt Hello} objects have been instantiated
+\item {\tt final} means we can only assign a value to this variable once.  After that, its value is constant.  Note that any variable can be {\tt final}, not just {\tt static} variables.
+\item {\tt String[]} is the variable's type (in particular, a String array).  Every variable has a type, which restricts the values it may be assigned.
+\item {\tt greetings} is the variable's name
+\item In this case, we have both declared the variable {\tt greetings} and initialized it with the value {\tt \{"Hello, world!", "Hi there!", "W'sup!"\}}
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Instance Variables}
+
+
+\begin{lstlisting}[language=Java]
+  private String greeting;
+\end{lstlisting}
+is an instance variable declaration.
+\begin{itemize}
+\item {\tt private} means it is only visible within the {\tt Hello} class
+\item {\tt String} is the variables type
+\item {\tt greeting} is the variable's name
+\item Every {\tt Hello} object has it's own {\tt greeting} instance variable
+\item Since we didn't initialize {\tt greeting}, its value is {\tt null} (until we execute a constructor)
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{No-arg Constructors}
+
+
+\begin{lstlisting}[language=Java]
+public Hello() {
+    Random rand = new Random(10);
+    int greetingsIndex = rand.nextInt(greetings.length);
+    greeting = greetings[greetingsIndex];
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item Constructors initialize an object of a class.  In this case, the constructor initializes the {\tt greeting} instance variable.
+\item Constructors are called with operator {\tt new}, as in {\tt Hello h = new Hello();}
+\item After {\tt Hello h = new Hello();}, {\tt h} holds the address of a {\tt Hello} object which has some randomly assigned {\tt greeting} instance variable.
+\item {\tt h} is a {\it reference} to a {\tt Hello} object
+\end{itemize}
+
+What does {\tt Random rand = new Random(10);} do?
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Constructors With Parameters}
+
+
+\begin{lstlisting}[language=Java]
+public Hello(int anIndex) {
+    int greetingsIndex = anIndex % greetings.length;
+    greeting = greetings[greetingsIndex];
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item To call this constructor, provide an argument in the call to {\tt new}, as in {\tt Hello h = new Hello(1);}
+\item Providing the argument in the {\tt new} call selects a particular constructor, in this case the constructor that takes one {\tt int} parameter
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Getter Methods}
+
+\vspace{-.1in}
+\begin{lstlisting}[language=Java]
+public String getGreeting() {
+    return greeting;
+}
+\end{lstlisting}
+\vspace{-.1in}
+is a ``getter'' method, a.k.a., an ``accessor''.
+\begin{itemize}
+\item {\tt getGreeting()} returns the value of the {\tt greeting} instance variable for the object on which it is invoked
+\item In general, the preferred way of naming getters is {\tt getMyVariable}, where {\tt myVariable} is an instance variable.
+\item For boolean instance variabes, the naming convention is {\tt isMyFlag}, where {\tt myFlag} is a {\tt boolean} instance variable.
+\item Using this naming convention makes a class usable as a Java Bean (just get in the naming habit for now)
+\item ``Setters'', a.k.a. ``mutators'', are named the same way, e.g., {\tt setGreeting(String aNewGreeting)}
+\item Since we don't have any setters in our {\tt Hello} class, instances of {\tt Hello} are immutable
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt main} Method}
+
+
+The method
+\begin{lstlisting}[language=Java]
+public static void main(String[] args) {
+    Hello h = new Hello();
+    System.out.println(h.getGreeting());
+}
+\end{lstlisting}
+makes the {\tt Hello} class executable.
+\begin{itemize}
+\item The signature must match {\tt public static void main(String[] args)}
+\item It means that we can run the class with the {\tt java} command
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Compiling a Java Program}
+
+
+Given the definition of the {\tt Hello} class, we can compile it like this:
+\begin{lstlisting}[language=Java]
+$ javac Hello.java
+\end{lstlisting}
+
+\begin{itemize}
+\item \$ is the command prompt.
+\item The argument to the {\tt javac} command is the name of a Java source file ending in {\tt .java}
+\item This example must be executed in the same directory {\tt Hello.java} is located
+\item Executing the command above produces a {\tt Hello.class} file (provided there are no compile errors)
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Running a Java Program}
+
+
+Since {\tt Hello} has a {\tt main} method, we can run it:
+\begin{lstlisting}[language=Java]
+$ java Hello
+\end{lstlisting}
+\begin{itemize}
+\item The argument to the {\tt java} command is the name of a compiled class
+\item Java finds this class on the classpath (which includes the current directory by default) and executes its {\tt main} method
+\item This example must be executed in the same directory {\tt Hello.class} is located
+\end{itemize}
+
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Maintaining Class Invariants}
+\vspace{-.05in}
+This {\tt Card} class won't allow a client to set an invalid rank:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Card {
+    private final String[] VALID_RANKS =
+        {"2", "3", "4", "5", "6", "7", "8", "9",
+         "10", "jack", "queen", "king", "ace"};
+    private String rank;
+
+    public void setRank(String rank) {
+        if (!isValidRank(rank)) {
+            throw new IllegalArgumentException("Invalid rank.");
+        }
+        this.rank = rank;
+    }
+    private boolean isValidRank(String someRank) {
+        return Arrays.asList(VALID_RANKS).contains(someRank);
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+\begin{itemize}
+\item Types restrict the values you may set for a variable to a particular domain.
+\item With encapsulation you can further restrict the domain of allowable values for a variable.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Static versus Non-Static}
+
+Consider \link{\code/classes/Doberman.java}{Doberman.java}:
+\begin{lstlisting}[language=Java]
+public class Doberman {
+
+    private static int dobieCount = 0;
+
+    private String name;
+
+    public Doberman(String name) {
+        this.name = name;
+        dobieCount++;
+    }
+    public String reportDobieCount() {
+        return name + " says there are " + dobieCount + " dobies.";
+    }
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item {\tt dobieCount} is shared between all instances of the {\tt Doberman} class.
+\item Each instance of {\tt Doberman} has its own distinct copy of {\tt name}.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Reference Counting with a Static Variable}
+
+Given \link{\code/classes/DaringDobermans.java}{DaringDobermans.java}:
+\begin{lstlisting}[language=Java]
+public class DaringDobermans {
+    public static void main(String[] args) {
+        Doberman fido = new Doberman("Fido");
+        Doberman prince = new Doberman("Prince");
+        Doberman chloe = new Doberman("Chloe");
+        System.out.println(fido.reportDobieCount());
+        System.out.println(prince.reportDobieCount());
+        System.out.println(chloe.reportDobieCount());
+    }
+}
+\end{lstlisting}
+and our definition of {\tt Doberman}, what will {\tt java DaringDobermans} print?
+\begin{lstlisting}[language=Java]
+$ java DaringDobermans
+Fido says there are 3 dobies.
+Prince says there are 3 dobies.
+Chloe says there are 3 dobies.
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Not Reference Counting with a Non-Static Variable}
+
+Now remove {\tt static} from the definition of {\tt dobieCount}:
+\begin{lstlisting}[language=Java]
+    private int dobieCount = 0;
+\end{lstlisting}
+Now when we run {\tt DaringDobermans} we get
+\begin{lstlisting}[language=Java]
+$ java DaringDobermans
+Fido says there are 1 dobies.
+Prince says there are 1 dobies.
+Chloe says there are 1 dobies.
+\end{lstlisting}
+
+The difference is that now each {\tt Doberman} instance has its own copy of {\tt dobieCount}, not a class-wide, or {\tt static} {\tt dobieCount}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Static Variables}
+
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class Doberman {
+    private static int dobieCount = 0;
+    private String name;
+
+    public Doberman(String name) {
+        this.name = name;
+        dobieCount++;
+    }
+    public String reportDobieCount() {
+        return name+" says there are "+dobieCount+" dobies.";
+    }
+}
+\end{lstlisting}
+\vspace{-.05in}
+What does this code print?
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+        Doberman fido = new Doberman("Fido");
+        System.out.println(fido.reportDobieCount());
+
+        Doberman prince = new Doberman("Prince");
+        System.out.println(prince.reportDobieCount());
+
+        Doberman chloe = new Doberman("Chloe");
+        System.out.println(chloe.reportDobieCount());
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Questions: Variables and Values}
+
+\begin{itemize}
+\item Is {\tt int n = 2.2;} legal?
+\item What's the value of the expression {\tt 17 \% 4}?
+\item What's the value of {\tt n} after {\tt int n = (int) 2.2;}?
+\item After the line above and {\tt n++;}, what's the value of {\tt n}?
+\item After the line above and {\tt n += 2;}, what's the value of {\tt n}?
+\item After the line above and {\tt String s = "Answer: " + n;}, what's the value of {\tt s}?
+\end{itemize}
+Given
+\begin{lstlisting}[language=Java]
+boolean a = true;
+boolean b = false;
+\end{lstlisting}
+\vspace{-.1in}
+\begin{itemize}
+\item What's the value of {\tt x} after {\tt boolean x = a || b;}?
+\item What's the value of {\tt y} after {\tt boolean y = a \&\& b;}?
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Questions: {\tt if}-Statements}
+
+
+Will this code compile?
+
+\begin{lstlisting}[language=Java]
+String condition = "true";
+if (condition) {
+    System.out.println("The true path.");
+} else {
+    System.out.println("The false path.");
+}
+\end{lstlisting}
+
+What will this code print?
+\begin{lstlisting}[language=Java]
+boolean a = true;
+boolean b = false;
+if (a && b ) {
+    System.out.println("The true path.");
+} else {
+    System.out.println("The false path.");
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Short-Circuit Evaluation}
+
+
+What will this code print?
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public class ShortCircuit {
+
+    private static int counter = 0;
+
+    private static boolean incrementCounter() {
+        counter++;
+        return true;
+    }
+    public static void main(String args[]) {
+        boolean a = true;
+        boolean b = false;
+        if (a || incrementCounter()) {
+            System.out.println("Evaluated (a || incrementCounter()).");
+        }
+        System.out.println("Counter = " + counter);
+        if (a && incrementCounter()) {
+            System.out.println("Evaluated (a && incrementCounter()).");
+        }
+        System.out.println("Counter = " + counter);
+    }
+}
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Review Qustions: Loops}
+
+
+How would you write this {\tt while} loop as a {\tt for} loop?
+\begin{lstlisting}[language=Java]
+int n = 0;
+while (n < 5) {
+    System.out.println("Hip, hip, hooray!");
+    n++;
+}
+\end{lstlisting}
+
+Answer:
+\begin{lstlisting}[language=Java]
+for (int n = 0; n < 5; n++) {
+    System.out.println("Hip, hip, hooray!");
+}
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Equality}
+\vspace{-.05in}
+\begin{itemize}
+\item To compare objects, like {\tt String}s, for value equality, use {\tt equals}.
+\item For objects, {\tt ==} means identity equality -- are two references aliases to the same object in memory.
+\end{itemize}
+
+What will this code print?
+\begin{lstlisting}[language=Java]
+public class Foo {
+    private String bar;
+    public Foo(String bar) {
+        this.bar = bar;
+    }
+    public boolean equals(Object other) {
+        return this.bar.equals(((Foo) other).bar);
+    }
+    public static void main(String[] args) {
+        Foo foo1 = new Foo("bar");
+        Foo foo2 = new Foo("bar");
+        Foo foo3 = foo1;
+        System.out.println("foo1.equals(foo2): " + foo1.equals(foo2));
+        System.out.println("foo1 == foo2: " + (foo1 == foo2));
+        System.out.println("foo1 == foo3: " + (foo1 == foo3));
+    }
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

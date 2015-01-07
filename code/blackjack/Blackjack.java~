@@ -1,0 +1,10 @@
+public class Blackjack {
+
+    public static void main(String[] args) {
+        Player dealer = new RandomPlayer("Dealer");
+        Scanner kbd = new Scanner(System.in);
+        System.out.print("What's your name? ");
+        String name = kbd.nextLine();
+        Player player = new HumanPlayer(name);
+    }
+}

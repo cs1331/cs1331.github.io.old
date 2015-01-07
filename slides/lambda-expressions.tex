@@ -1,0 +1,310 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{Lambda Expressions}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Inner Classes}
+
+Recall from \link{\code/collections/SuperTroopers.java}{SuperTroopers.java} the {\tt MustacheComparator} class:
+
+\begin{lstlisting}[language=Java]
+static class MustacheComparator implements Comparator<Trooper> {
+
+    public int compare(Trooper a, Trooper b) {
+        if (a.hasMustache() && !b.hasMustache()) {
+            return 1;
+        } else if (b.hasMustache() && !a.hasMustache()) {
+            return -1;
+        } else {
+            return a.getName().compareTo(b.getName());
+        }
+    }
+}
+\end{lstlisting}
+
+which we can use just like any other named class:
+
+\begin{lstlisting}[language=Java]
+Collections.sort(troopers, new MustacheComparator());
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Anonymous Inner Classes}
+
+We can subclass {\tt Comprator} and make an instance of the subclass at the same time using an {\it anonymous inner class}.  Here's a mustache comparator as an inner class:
+
+\begin{lstlisting}[language=Java]
+Collections.sort(troopers, new Comparator<Trooper>() {
+    public int compare(Trooper a, Trooper b) {
+        if (a.hasMustache() && !b.hasMustache()) {
+            return 1;
+        } else if (b.hasMustache() && !a.hasMustache()) {
+            return -1;
+        } else {
+            return a.getName().compareTo(b.getName());
+        }
+    }
+});
+\end{lstlisting}
+
+The general syntax for defining an anonymous inner class is
+\[
+\text{new } SuperType<TypeArgument>\text{() } \{ class\_body \}
+\]
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Functional Interfaces}
+
+Any interface with a single abstract method is a functional interface.  For example, {\tt Comparator} is a functional interface:
+
+\begin{lstlisting}[language=Java]
+public interface Comparator<T> {
+    int compare(T o1, T o2);
+}
+\end{lstlisting}
+
+As in the previous examples, we only need to implement the single abstract method {\tt compare} to make an instantiable class that implements {\tt Comparator}.\\
+
+\vspace{.05in}
+
+Note that there's an optional {\tt @FunctionalInterface} annotation that is similar to the {\tt @Override} annotation.  Tagging an interface as a {\tt @FunctionalInterface} prompts the compiler to check that the interface indeed contains a single abstract method and includes a statement in the interface's Javadoc that the interface is a functional interface.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Lambda Expressions}
+
+A {\it lambda expression} is a syntactic shortcut for defining the single abstract method of a funtional interface and instantiating an anonymous class that implements the interface.  The general syntax is
+
+\[
+(T_1 \hspace{.05in} p_1, ..., T_n \hspace{.05in} p_n) \hspace{.05in} \text{->} \hspace{.05in} \{ method\_body \}
+\]
+Where
+\begin{itemize}
+\item $T_1, ..., T_n$ are types and
+\item $p_1, ..., p_n$ are parameter names
+\end{itemize}
+just like in method definitions.\\
+
+\vspace{.05in}
+
+If $method\_body$ is a single expression, the curly braces can be omitted.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{MustacheComparator as a Lambda Expression}
+
+Here's our mustache comparator from  \link{\code/collections/SuperTroopers.java}{SuperTroopers.java} as a lambda expression:
+
+\begin{lstlisting}[language=Java]
+Collections.sort(troopers, (Trooper a, Trooper b) -> {
+    if (a.hasMustache() && !b.hasMustache()) {
+        return 1;
+    } else if (b.hasMustache() && !a.hasMustache()) {
+        return -1;
+    } else {
+        return a.getName().compareTo(b.getName());
+    }
+});
+\end{lstlisting}
+
+\begin{itemize}
+\item Because {\tt Collections.sort(List<T> l, Comparator<T> c)} takes a {\tt Comparator<T>}, we way that {\tt Comparator<T>} is the {\it target type} of the lambda expression passed to the {\tt sort} method.
+\item The lambda expression creates an instance of an anonymous class that implements {\tt Comparator<Trooper>} and passes this instance to {\tt sort}
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Target Types}
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+static interface Bar {
+    int compare(Trooper a, Trooper b);
+}
+static void foo(Bar b) { ... }
+\end{lstlisting}
+\vspace{-.05in}
+Given the {\tt Bar} interface, the call:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+foo((Trooper a, Trooper b) -> {
+    if (a.hasMustache() && !b.hasMustache()) {
+        return 1;
+    } else if (b.hasMustache() && !a.hasMustache()) {
+        return -1;
+    } else {
+        return a.getName().compareTo(b.getName());
+    }
+});
+\end{lstlisting}
+\vspace{-.05in}
+creates an instance of the {\tt Bar} interface using the same lambda expression.
+\vspace{-.05in}
+\begin{itemize}
+\item The type of object instantiated by a lambda expression is determined by the {\it target type} of the call in which the lambda expression appears.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Revisiting WordCount}
+
+Remember the rank comparator we defined for {\tt WordCount}:
+\begin{lstlisting}[language=Java]
+public class WordCount {
+
+    private Map<String, Integer> wordCounts;
+
+    public Set<String> getWordsRanked() {
+        Comparator<String> rankComparator = new Comparator<String>() {
+            public int compare(String k1, String k2) {
+                return wordCounts.get(k2) - wordCounts.get(k1);
+            }
+        };
+        TreeSet<String> rankedWords = new TreeSet<>(rankComparator);
+        rankedWords.addAll(wordCounts.keySet());
+        return rankedWords;
+    }
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{WordCount's Comparator as a Lambda Expression}
+
+We can replace the anonymous inner class definition with a lambda expression:
+
+\begin{lstlisting}[language=Java]
+public Set<String> getWordsRanked() {
+    Comparator<String> rankComparator =
+        (String k1, String k2) -> wordCounts.get(k2) - wordCounts.get(k1);
+    TreeSet<String> rankedWords = new TreeSet<>(rankComparator);
+    rankedWords.addAll(wordCounts.keySet());
+    return rankedWords;
+}
+\end{lstlisting}
+
+Notice that since the body of the lambda expression is a single expression, we leave off the curly braces and {\tt return} keyword.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Free and Bound Variables}
+
+\begin{lstlisting}[language=Java]
+public class WordCount {
+  private Map<String, Integer> wordCounts;
+
+  public Set<String> getWordsRanked() {
+    Comparator<String> rankComparator =
+     (String k1, String k2) -> wordCounts.get(k2)-wordCounts.get(k1);
+    TreeSet<String> rankedWords = new TreeSet<>(rankComparator);
+    rankedWords.addAll(wordCounts.keySet());
+    return rankedWords;
+  }
+\end{lstlisting}
+
+In {\tt rankComparator}:
+
+\begin{itemize}
+\item {\tt k1} and {\tt k2} are {\it bound variables}.  They are defined in the parameter list or body of the lambda expression.
+\item {\tt wordCounts} is a {\it free variable}.  It is defined outside the lambda expression. Free variables must be {\it effectively final}.
+\end{itemize}
+
+We say that the lambda expression {\it captures} the {\tt wordCount} variable.  Such lambda expressions are called {\it closures}.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Method References}
+
+Three kinds of method references:
+\begin{itemize}
+\item {\it object}::{\it instanceMethod} - like {\tt x -> object.instanceMethod(x)}
+
+\item {\it Class}::{\it staticMethod} - like {\tt x -> Class.staticMethod(x)}
+\begin{lstlisting}[language=Java]
+someList.forEach(System.out::println);
+\end{lstlisting}
+
+\item {\it Class}::{\it instanceMethod} - like {\tt (x, y) -> x.instanceMethod(y)}
+\begin{lstlisting}[language=Java]
+Comparator<Trooper> byName = Comparator.comparing(Trooper::getName);
+\end{lstlisting}
+
+\end{itemize}
+
+Let's see some examples ...
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Functional(ish) Composition}
+
+Remember how our mustache comparator ordered by mustache, then by name?\\
+
+With lambdas we can make that even more concise and clear:
+
+\begin{lstlisting}[language=Java]
+        Comparator<Trooper> byMustacheThenName =
+            Comparator.comparing(Trooper::hasMustache)
+            .thenComparing(Trooper::getName);
+        Collections.sort(troopers, byMustacheThenName);
+\end{lstlisting}
+
+Look at the \link{http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html}{Comparator} API for details on these methods.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+\end{document}

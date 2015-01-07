@@ -1,0 +1,489 @@
+\documentclass{beamer}
+
+\newcommand{\lesson}{Arrays, Part 2 of 2}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{A few more array topics}
+
+
+\begin{itemize}
+\item Variable arity parameters
+\item Multi-dimensional arrays
+\item Partially filled arrays
+%% \item Array instance variables and privacy leaks
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Variable Arity Parameters}
+
+
+\begin{itemize}
+\item The {\it arity} of a method is its number of formal parameters.
+\item So far, all the methods we've written have fixed arity.
+\item The last parameter to a method may be a {\it variable arity parameter}, a.k.a. {\it var args} parameter (\href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html#jls-8.4.1}{JLS \S 8.4.1}), whose syntax is simply to add an ellipse ({\tt ...}) after the type name.
+\item The var args parameter is accessed as an array inside the method.
+\end{itemize}
+For example:
+\begin{lstlisting}[language=Java]
+public static int max(int ... numbers) {
+    int max = numbers[0];
+    for (int i = 1; i < numbers.length; ++i) {
+        if (numbers[i] > max) max = number;
+    }
+    return max;
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Multidimensional Arrays}
+
+
+You can create arrays of any number of dimensions simply by adding additional square brackets for dimensions and sizes.  For example:
+
+\begin{lstlisting}[language=Java]
+char[][] grid;
+\end{lstlisting}
+The declaration statement above:
+\begin{itemize}
+\item Declares a 2-dimensional array of  {\tt char}.
+\item As with one-dimensinal arrays, {\tt char} is the base type.
+\item Each element of {\tt grid}, which is indexed by two {\tt int} expressions, is a {\tt char} variable.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Initializing Multidimensional Arrays}
+
+
+Initialization of 2-dimensional arrays can be done with {\tt new}:
+\begin{lstlisting}[language=Java]
+grid = new char[10][10];
+\end{lstlisting}
+
+or with literal initialization syntax:
+\begin{lstlisting}[language=Java]
+char[][] grid = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                 {' ', '*', '*', ' ', ' ', ' ', ' ', '*', '*', ' '},
+                 {' ', '*', '*', ' ', ' ', ' ', ' ', '*', '*', ' '},
+                 {' ', ' ', ' ', ' ', '*', '*', ' ', ' ', ' ', ' '},
+                 {' ', ' ', ' ', ' ', '*', '*', ' ', ' ', ' ', ' '},
+                 {' ', '*', ' ', ' ', ' ', ' ', ' ', ' ', '*', ' '},
+                 {' ', ' ', '*', ' ', ' ', ' ', ' ', '*', ' ', ' '},
+                 {' ', ' ', ' ', '*', '*', '*', '*', ' ', ' ', ' '},
+                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}};
+\end{lstlisting}
+
+Notice that a 2-dimensional array is an array of 1-dimensional arrays (and a 3-dimensional array is an array of 2-dimensional arrays, and so on).
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Visualizing Multidimensional Arrays}
+
+
+Our 2-dimensional {\tt grid} array can be visualized as a 2-d grid of cells.\\
+\vspace{.1in}
+\begin{tabular}{p{.4in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}}
+         & [0] & [1] & [2] & [3] & [4] & [5] & [6] & [7] & [8] & [9]
+\end{tabular}
+\begin{tabular}{p{.4in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|}\cline{2-11}
+grid[0] & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[1] & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[2] & ' ' & '*' & '*' & ' ' & ' ' & ' ' & ' ' & '*' & '*' & ' ' \\
+\cline{2-11}
+grid[3] & ' ' & '*' & \cellcolor{yellow}'*' & ' ' & ' ' & ' ' & ' ' & '*' & '*' & ' ' \\
+\cline{2-11}
+grid[4] & ' ' & ' ' & ' ' & ' ' & '*' & '*' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[5] & ' ' & ' ' & ' ' & ' ' & '*' & '*' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[6] & ' ' & '*' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & '*' & ' ' \\
+\cline{2-11}
+grid[7] & ' ' & ' ' & '*' & ' ' & ' ' & ' ' & ' ' & '*' & ' ' & ' ' \\
+\cline{2-11}
+grid[8] & ' ' & ' ' & ' ' & '*' & '*' & '*' & '*' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[9] & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+\end{tabular}\\
+\vspace{.1in}
+And an individual cell can be accessed by supplying two indices:
+
+\begin{lstlisting}[language=Java]
+grid[3][2] == '*'; // true
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Traversing Multidimensional Arrays}
+
+
+Traverse 2-dimensional array by nesting loops.  The key to getting it right is to use the right {\tt length}s.
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+for (int row = 0; row < grid.length; ++row) {
+    for (int col = 0; col < grid[row].length; ++col) {
+        System.out.print(grid[row][col]);
+    }
+    System.out.println();
+}
+\end{lstlisting}
+Note that the for loops above traverse the grid in row-major order.  We can traverse the grid in column-major order by reversing the nesting of the for loops:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+for (int col = 0; col < grid[0].length; ++col) {
+    for (int row = 0; row < grid.length; ++row) {
+        System.out.print(grid[row][col]);
+    }
+    System.out.println();
+}
+\end{lstlisting}
+\vspace{-.05in}
+See \link{\code/arrays/Smiley.java}{Smiley.java}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Ragged Arrays}
+
+
+It's possible to create {\it ragged arrays} by creating nested arrays of variable length.  For example:
+\begin{lstlisting}[language=Java]
+double [][] ragged = new double[3][];
+ragged[0] = new double[5];
+ragged[1] = new double[10];
+ragged[2] = new double[4];
+\end{lstlisting}
+
+Can we traverse array {\tt ragged} in row-major order?
+
+Can we traverse array {\tt ragged} in column-major order?
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Partially Filled Arrays}
+
+
+Sometimes we only use part of an array:
+\begin{lstlisting}[language=Java]
+int[] assignments = new int[10];
+int lastAssignment = 0;
+assginments[lastAssignment++] = 100;
+// As more assignments are graded, more of assignments[] is used ...
+\end{lstlisting}
+Note that we had to keep track of the last used index in the array.\\
+\vspace{.1in}
+Now that we know how to define classes, we can do better ...
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{A Partial Int Array ADT}
+
+{\bf ADT: {\tt PartialIntArray}}\\
+Data:
+\begin{itemize}
+\item {\bf elements: int[]} - an array of {\tt int} elements
+\item {\bf size: int} - the number of elements currently in use
+\end{itemize}
+Operations:
+\begin{itemize}
+\item {\bf new} - construct a new {\tt PartialIntArray}
+\item {\bf add(element: int)} - add an element to this {\tt PartialIntArray}
+\item {\bf get(i: int)} - get the {\tt i}th element of this {\tt PartialIntArray}
+\item {\bf size} - get the size of this {\tt PartialIntArray}
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt PartialIntArray}}
+
+
+Constructors:
+\begin{lstlisting}[language=Java]
+public class PartialIntArray {
+    private int[] elements;
+    private int size;
+
+    public PartialIntArray() {
+        this(10);
+    }
+    public PartialIntArray(int initialCapacity) {
+        if (initialCapacity < 0)
+            throw new IllegalArgumentException("Illegal Capacity: "+
+                                               initialCapacity);
+        this.elements = new int[initialCapacity];
+    }
+    // ...
+}
+\end{lstlisting}
+Note how the no-arg constructor delegates to the other constructor with {\tt this(...)}.
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Adding Elements to PartialIntArray}
+
+
+Assuming we don't need to automatically ``grow'' our array-backed data structure when needed (like {\tt java.util.ArrayList} does), we can add elements like this:
+
+\begin{lstlisting}[language=Java]
+public class PartialIntArray {
+
+  // ...
+
+    public void add(int e) {
+        elements[size++] = e;
+    }
+
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Accessing Elements of PartialIntArray}
+
+
+We can provide access to elements of our PartialIntArray with:
+
+\begin{lstlisting}[language=Java]
+public class PartialIntArray {
+    // ...
+
+    public int get(int index) {
+        return elements[index];
+    }
+}
+\end{lstlisting}
+
+Note that we're providing access to individual elements, not the entire underlying array.  The underlying array is an implementation detail.
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Traversing a PartialIntArray}
+
+
+To allow clients of {\tt PartialIntArray} to traverse its elements, we need one more method in our API - size:
+\begin{lstlisting}[language=Java]
+public class PartialIntArray {
+    // ...
+    public int size() {
+        return this.size;
+    }
+}
+\end{lstlisting}
+Now we can add elements to a {\tt PartialIntArray} and traverse it in a manner similar to regular arrays:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+PartialIntArray pia = new PartialIntArray();
+pia.add(1);
+// add more ...
+for (int i = 0; i < pia.size(); ++i) {
+    System.out.println(pia.get(i));
+}
+\end{lstlisting}
+\vspace{-.05in}
+Why did we define a {\tt size()} a method rather than making the {\tt size} instance variable public?
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Encapsulation and Information Hiding}
+
+
+Our {\tt PartialIntArray} class demonstrates two important concepts in software engineering: encapsulation and information hiding.
+
+\begin{itemize}
+\item The {\tt elements} instance variable was private and never exposed in its entirety to clients.
+\item All access to {\tt elements} was provided through instance methods, so we can ensure data consistency by enforcing invariants, validating input, etc.
+\item We could have called our class {\tt RandomAccessIntList}, because the fact that an array was used is an implementation detail.  Client code need not be aware of implementation details (to an extent ...).
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{{\tt PartialIntArray} and {\tt java.util.ArrayList}}
+
+
+Our {\tt PartialIntArray} example was inspired by Java's standard ArrayList class.  Try these exercises at home:
+\begin{itemize}
+\item Consider what happens if a user of {\tt PartialIntArray} supplies an out of bounds index to {\tt get}, i.e., $< 0$ or $\ge$ {\tt size}.  Is this desirable?  If not, how would you improve it?
+\item Add a {\tt remove(int index)} method that removes the element at {\tt index}.
+\item Make {\tt PartialIntArray} automatically resize, that is, expand its capacity if you add a {\tt size}th element.  How would you do this?
+\item Look at the source for {\tt java.util.ArrayList}.
+\begin{itemize}
+\end{itemize}
+\end{itemize}
+
+As in any craft, study the work of masters to improve your own skillz.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Arrays are First-Class Objects}
+
+
+%% We've seen that
+%% \begin{itemize}
+%% \item arrays are objects, so array variables are references,
+%% \item arrays can be stored in variables, passed as arguments, and returned from methods.
+%% \end{itemize}
+
+%% This means that we must take the same precautions when dealing with array references as when dealing with references of Class types.
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Array References}
+
+
+%% Look at  \link{\code/GradeBook.java}{GradeBook.java}.
+%% \begin{lstlisting}[language=Java]
+%% public class GradeBook {
+%%     private int[] scores;
+%%     private int lastScore;
+
+%%     public GradeBook() {
+%%         this(10);
+%%     }
+%%     public GradeBook(int capacity) {
+%%         scores = new int[capacity];
+%%         lastScore = 0;
+%%     }
+%%     public void add(int score) {
+%%         scores[lastScore++] = score;
+%%     }
+%%     public void modifyScore(int index, int newScore) {
+%%         scores[index] = newScore;
+%%     }
+%%     public int[] getScores() {
+%%         return scores;
+%%     }
+%% }
+%% \end{lstlisting}
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Privacy Leaks with Array Instance Variables}
+
+
+%% A getter method that returns a reference to a private array instance variable can ``leak'' private data just like an accessor that returns a reference to a private instance variable of Class type.\\
+%% \vspace{.1in}
+%% The {\tt getScores} method returns the private instance variable {\tt scores}:
+%% \begin{lstlisting}[language=Java]
+%% public int[] getScores() {
+%%   return scores;
+%% }
+%% \end{lstlisting}
+
+%% Given this accessor, we can violate encapsulation in {\tt GradeBook} (see \link{\code/GradeBookDriver.java}{GradeBookDriver.java}):
+%% \begin{lstlisting}[language=Java]
+%% GradeBook gradeBook = new GradeBook(3);
+%% // ...
+%% int[] myReferenceToScores = gradeBook.getScores();
+%% // We can use our local reference to update the private instance var:
+%% myReferenceToScores[0] = 100;
+%% \end{lstlisting}
+
+%% The code above modifies the {\tt gradeBook} object's {\tt scores} instance variable!  How to fix?
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Fixing Privacy Leaks}
+
+
+%% Two ways to fix privacy leaks:
+%% \begin{itemize}
+%% \item only provide access to immutable parts of private data, like primitive elemets of arrays
+%% \item return deep copies of instance variables in getter methods.
+%%   \begin{lstlisting}[language=Java]
+%%     public int[] getScores() {
+%%       return Arrays.copyOf(scores, scores.length);
+%%     }
+%%   \end{lstlisting}
+%% \end{itemize}
+
+
+%% With this definition of {\tt getScores} client code can't modify the private data held in the {\tt scores} instance variable of {\tt GradeBook} objects becuase clients don't get a reference to the instance variable, they get a reference to a (snapshot) copy of it.
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+%
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{Programming Exercise}
+%
+% \begin{itemize}
+% \item Download \link{\code/array-data.csv}{array-data.csv}.
+% \item Write a program to read the data from \link{\code/array-data.csv}{array-data.csv} into an array.
+% \end{itemize}
+% You can see a possible solution in \link{\code/SimpleArrayCsv.java}{SimpleArrayCsv.java}.
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

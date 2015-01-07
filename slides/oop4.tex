@@ -1,0 +1,252 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
+\newcommand{\lesson}{Object-Oriented Programming, Part 4 of 4}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
+
+\author[Chris Simpkins] 
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Tying it All Together}
+
+
+
+Today we'll employ all the things we've learned so far in the design of a Blackjack card game.
+\begin{itemize}
+\item We'll reuse the \href{\code/PlayingCard.java}{{\tt PlayingCard}} class we wrote a few weeks ago
+\item The only new langauge feature we'll learn is interfaces
+\item We'll practice testing, debugging, and bottom-up programming
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Blackjack}
+
+
+Let's use these rules:
+\begin{itemize}
+\item Two players: ``the house'' and human player
+\item House is played by computer
+\item Player is played by a human interacting with the program
+\item Game begins by dealing each player a face down and face up card.
+\item Gameplay proceeds in rounds during which
+\begin{itemize}
+\item Players can ``hit'', meaning draw another card face up
+\item Players can ``stand'' meaning keep current hand
+\end{itemize}
+\item When human player stands, game ends
+\end{itemize}
+Note that I'm using the term ``house'' instead of ``dealer'' to avoid confusion when we talk about dealing cards, etc.
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Blackjack Classes}
+
+
+We'll need the following classes:
+\begin{itemize}
+\item PlayingCard
+\item Deck (of cards)
+\item BlackjackHand
+\item Player (actually, a hierarchy of Player classes) 
+\item BlackjackGame - to run the game
+\end{itemize}
+
+Notice that these are the significant nouns from the problem description.  In general, look for nouns to help you identify which classes you'll need to write in an OO program.\\
+\vspace{.1in}
+Now let's start hacking!
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Enum Types}
+
+
+Enums are data types that have a predefined set of constant values (\href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.9}{JLS \S 8.9}, \href{http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html}{Java Enum Tutorial})
+
+For example:
+\begin{lstlisting}[language=Java]
+  public enum Suit {DIAMONDS, CLUBS, HEARTS, SPADES};
+\end{lstlisting}
+defines an enum type called {\tt Suit} that can take on only one of the predefined constants {\tt Suit.DIAMONDS, Suit.CLUBS, Suit.HEARTS}, or{\tt Suit.SPADES}
+
+\begin{itemize}
+\item Enum types are a class.
+\item Java automatically defines convenience methods for enum types, like {\tt valueOf} and {\tt values}.
+\item Because they define a class, enum types can include programmer-defined additional constructors and methods.
+\end{itemize}
+
+Take a look at \link{\code/PlayingCard.java}{PlayingCard.java} for an example.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Deck}
+
+
+With a Deck we should be able to
+\begin{itemize}
+\item contain all 52 standard playing cards
+\item {\it shuffle} the cards in the deck
+\item allow user to {\it draw} a card off the top of the deck
+\end{itemize}
+
+In the description of a class's responsibilities, look for significant verbs to help you identify which methods need to be part of the class's public interface.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{BlackjackHand}
+
+
+With a BlackjackHand we should be able to
+\begin{itemize}
+\item {\it add a card face-up}
+\item {\it add a card face-down}
+\item get the {\it value} of the hand
+\item {\it compareTo} other BlackjackHands
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Comparing {\tt BlackjackHand}s}
+
+
+To permit comparison of BlackjackHands we'll implement the {\tt java.lang.Comparable} interface.
+\begin{itemize}
+\item An interface is like an abstract class with nothing but abstract methods
+\item A class can only {\tt extend} one superclass, but can {\tt implements} any number of interfaces
+\item An interface defines a type by specifying its API without specifying any of its implementation
+\item In OO parlance a type is the set of messages an object can respond to, or the public methods that an object implements
+\end{itemize}
+
+Implementing interfaces is as straightforward as extending abstract classes.  Let's implement the {\tt Comparable} interface in our {\tt BlackjackHand} class.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The {\tt java.lang.Comparable} Interface}
+
+
+\begin{lstlisting}[language=Java]
+public interface Comparable<T> {
+    
+    public int compareTo(T o);
+}
+\end{lstlisting}
+
+And, of course, the API documentation: \url{http://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.html}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Player}
+
+
+A player
+\begin{itemize}
+\item holds a deck of cards
+\item makes moves, e.g., to draw or stand
+\item may be a computer-controlled player or a human player
+\end{itemize}
+
+Player objects will be central to the logic of our game, that is, how the game runs turn by turn.  So before we write our Player classes, let's write the game itself so we know what we need from Player objects.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{BlackjackGame}
+
+
+The general form of a Blackjack game looks something like this:
+\begin{enumerate}
+\item Shuffle the deck.
+\item Deal each player a face-down card
+\item Deal each player a face-up card
+\item While the human player keeps drawing
+\begin{enumerate}
+\item Get the player's move
+\item Execute the player's move
+\item Get the house's move
+\item Execute the house's move
+\end{enumerate}
+\item Evaluate each players' hand and declare a winner
+\end{enumerate}
+
+Let's write our BlackjackGame class and then go bak and write our Player class hierarchy.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Fin!  Lessons Learned}
+
+
+\begin{itemize}
+\item Look for nouns in problem descriptions to determine which classes you'll need in an OO program.
+\item Look for verbs to determine which methods should be a part of a class's public interface.
+\item Write programs ``bottom-up'', that is, in small chunks, testing each small chunk as you go.
+\item Use main methods in classes to test classes in isolation.
+\item Interfaces define an OO type (public methods) without defining any implementation at all.
+\item Implementing an interface is an example of {\it interface} inheritance, as opposed to the {\it implementation} inheritance we've done when extending classes.
+\item Writing the client code of a class before you write the class itself is a good way to determine what the public API of a class should be.  This idea is also a central concept in test-driven development.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

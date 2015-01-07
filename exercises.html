@@ -1,0 +1,370 @@
+---
+layout: default
+title: CS 1331 - Exercises
+---
+
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h2>Exercises</h2>
+
+<h3>Basics</h3>
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#basics" href="#GuessNumber">
+        Guess Number
+      </a>
+    </h4>
+  </div>
+  <div id="GuessNumber" class="panel-collapse collapse">
+    <div class="panel-body">
+      <p>Write a program that randomly chooses a secret number from 1 to 10 and asks the user to guess the number.  As long as the user guesses incorrectly or doesn't enter "quit" the program should keep asking the user to keep guessing.  If the user guesses the correct number then, before exiting, print "Yay! You guessed it. It was N." where N is the randomly chosen secret number.  If the user quits before guessing correctly print "Lame. It was N." where N is the randomly chosen secret number.</p>
+
+      Solution: <a href="exercise-solutions/basics/GuessNumber.java">GuessNumber.java</a>
+    </div>
+  </div>
+</div>
+<!-- ****************** End Exercise ********************** -->
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#basics" href="#Palindrome">
+        Palindrome
+      </a>
+    </h4>
+  </div>
+  <div id="Palindrome" class="panel-collapse collapse">
+    <div class="panel-body">
+      Write a program that determines whether a <code>String</code> is a palindrome.  A palindrome is a string of characters that reads the same when reversed, e.g. ``radar''.
+      <ul>
+        <li>Your program should use the first command line argument as the {\tt String} to test</li>
+        <li>You should ignore case, e.g. 'R' == 'r'</li>
+        <li>You should ignore spaces, e.g. ``a but tuba'' is a palindrome</li>
+        <li>Try to do this with a single <code>for</code> loop</li>
+      </ul>
+      Solution: <a href="exercise-solutions/basics/Palindrome.java">Palindrom.java</a>
+    </div>
+  </div>
+</div>
+<!-- ****************** End Exercise ********************** -->
+
+
+<h3>Arrays</h3>
+
+<div class="panel-group" id="arrays">
+  <!-- ****************** Begin Exercise ********************** -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#arrays" href="#Average">
+          Average
+        </a>
+      </h4>
+    </div>
+    <div id="Average" class="panel-collapse collapse">
+      <div class="panel-body">
+        Write a program that computes and prints the average of a list of numbers supplied on the command line.  It should work like this:
+        <pre>
+          $ java Average
+          0.0
+          $ java Average 80 90 95
+          88.33333333333333
+        </pre>
+
+        <ul>
+          <li>If user enters no command line arguments, average is 0.0</li>
+          <li>Assume user never enters command line arguments that can't be parsed as <code>double</code>s</li>
+        </ul>
+        Solution: <a href="exercise-solutions/arrays/Average.java">Average.java</a>
+      </div>
+    </div>
+  </div>
+  <!-- ****************** End Exercise ********************** -->
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#arrays" href="#ArrayData">
+        Array Data
+      </a>
+    </h4>
+  </div>
+  <div id="ArrayData" class="panel-collapse collapse">
+    <div class="panel-body">
+      <p>Write a program to read the data from <a href="exercise-solutions/arrays/array-data.csv"><code>array-data.csv</code></a> into an array.</p>
+      Solution: <a href="exercise-solutions/arrays/SimpleArrayCsv.java">SimpleArrayCsv.java</a>
+
+    </div>
+  </div>
+</div>
+<!-- ****************** End Exercise ********************** -->
+
+
+  <!-- ****************** Begin Exercise ********************** -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#arrays" href="#ArrayTranspose">
+          Array Transpose
+        </a>
+      </h4>
+    </div>
+    <div id="ArrayTranspose" class="panel-collapse collapse">
+      <div class="panel-body">
+        <p>Given a \(m \times n\) matrix \(\mathbf{A}\):
+
+   \[
+   \mathbf{A} = \left[\begin{array}{cccc}
+                  A_{11} & A_{12} & \cdots & A_{1n} \\
+                  A_{21} & A_{22} & \cdots & A_{2n} \\
+                  \vdots & \vdots  & \ddots & \vdots \\
+                  A_{m1} & A_{m2} & \cdots & A_{mn} \\
+                  \end{array}\right]
+   \]
+
+The transpose \(\mathbf{A}^T\) is defined as: \(\left[\mathbf{A}^T\right]_{ji} = \left[\mathbf{A}\right]_{ij}\).  Think "the rows of a matrix are the columns of its transpose."  Write a method <code>transpose</code> that takes a single <code>double[][]</code> parameter representing a 2-dimensional matrix and returns its transpose.
+</p>
+        Solution: <a href="exercise-solutions/arrays/Matrices.java">Matrices.java</a>
+
+      </div>
+    </div>
+  </div>
+  <!-- ****************** End Exercise ********************** -->
+
+</div>
+
+<h3>Classes</h3>
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#classes" href="#BalletTicket">
+        Ballet Ticket
+      </a>
+    </h4>
+  </div>
+  <div id="BalletTicket" class="panel-collapse collapse">
+    <div class="panel-body">
+      <p>Write a class named <code>BalletTicket</code> whose single public constructor takes a <code>String</code> argument named <code>section</code> which can be either <code>orchestra</code> or <code>mezzanine</code>, and an <code>int</code> argument named <code>age</code> which specifies the cutomer's age.  If the user passes in a string other than those two section options, the constructor should default to orchestra and print an informative message indicating the invalid input and default choice.  Include two more public methods in the class: <code>getSection()</code>, which returns a <code>String</code> reporting the section for this ticket, and <code>getPrice()</code> which returns a <code>double</code> ticket price calculated according to the following rules:</p>
+
+      <ul>
+        <li>An orchestra seat is $50.00.</li>
+
+        <li>A mezzanine seat is $40.00.</li>
+
+        <li>Senior citizens (65 and older) receive a 10% discount.</li>
+
+        <li>Tax for everyone is 5%, which applies to the ticket price after discounts have been applied.</li>
+      </ul>
+
+      <p>In addition to the constructor and two public methods, write a main method that instantiates a <code>BalletTicket</code> for a senior citizen sitting in the mezzanine section and prints a message to the console of the form "Your {orchestra|mezzanine} ticket costs $X.XX.</p>
+
+      Solution: <a href="exercise-solutions/classes/BalletTicket.java">BalletTicket.java</a>
+    </div>
+  </div>
+</div>
+<!-- ****************** End Exercise ********************** -->
+
+
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#classes" href="#Vector2">
+        Vector2
+      </a>
+    </h4>
+  </div>
+  <div id="Vector2" class="panel-collapse collapse">
+    <div class="panel-body">
+      <p>Write an immutable <code>Vector2</code> class with:
+
+        <ul>
+          <li> Two <code>public final</code> instance variables for the two components, <code>x</code> and <code>y</code>.</li>
+          <li> A single constructor that takes two <code>double</code> paramters to initialize <code>x</code> and <code>y</code>.</li>
+          <li> A <code>toString()</code> method that returns a <code>String</code> representation of a <code>Vector2</code> that looks like <code>(1, 2)</code>.</li>
+          <li> A <code>plus</code> method that takes another <code>Vector2</code> parameter and returns the <code>Vector2</code> result of adding  this <code>Vector2</code> to the argument <code>Vector2</code>.  Vector addition is defined as: $$ (x_1, y_1) + (x_2, y_2) = (x_1 + x_2, y_1 + y_2)$$</li>
+          <li> A <code>minus</code> method that takes another <code>Vector2</code> parameter and returns the <code>Vector2</code> result of subtracting the argument <code>Vector2</code> object from  this <code>Vector2</code>.  Vector subtraction is defined as: $$ (x_1, y_1) - (x_2, y_2) = (x_1 - x_2, y_1 - y_2)$$</li>
+          <li> A <code>dot</code> method that takes another <code>Vector2</code> parameter and returned the <code>double</code> dot product of this <code>Vector2</code> and the argument <code>Vector2</code>.  Dot product is defined as: $$ (x_1, y_1) \cdot (x_2, y_2) = (x_1 \cdot  x_2) + (y_1 \cdot y_2)$$</li>
+        </ul>
+
+        Solution: <a href="exercise-solutions/classes/Vector2.java">Vector2.java</a>
+
+      </div>
+    </div>
+  </div>
+  <!-- ****************** End Exercise ********************** -->
+
+
+  <h3>Object-Oriented Programming (OOP)</h3>
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#oop" href="#Kennel">
+        Kennel
+      </a>
+    </h4>
+  </div>
+  <div id="Kennel" class="panel-collapse collapse">
+    <div class="panel-body">
+Write a class named <code>Animal</code> with:
+<ul>
+<li>A private instance variable <code>name</code>, with a public getter and setter. (Note: <code>name</code> is a name of an animal, not the animal's species.)</li>
+<li>A single constructor that takes the name of the <code>Animal</code></li>
+<li>A public instance method {\tt speak} that returns a <code>String</code> representation of the sound it makes.</li>
+</ul>
+
+Write a class named <code>Dog</code> that specializes the <code>speak</code> method appropriately.
+
+Write a class named <code>Kennel</code> with
+<ul>
+<li>
+  a private instance variable <code>dogs</code> that is an array of <code>Dog</code>
+</li>
+<li>a single constructor that takes a variable number of single <code>Dog</code> parameters and initializes the <code>dogs</code> instance variable with the constructor's actual parameters.</li>
+<li>a method <code>soundOff()</code> that prints to <code>STDOUT</code> (<code>System.out</code>) one line for each <code>Dog</code> in <code>dogs</code> that reads ``[dog name] says [output of <code>speak</code> method]!'', e.g. ``Chloe says woof, woof!''</li>
+</ul>
+      Solution: <a href="exercise-solutions/oop/kennel/">kennel</a>
+
+    </div>
+  </div>
+</div>
+<!-- ****************** End Exercise ********************** -->
+
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#oop" href="#Zoo">
+        Zoo
+      </a>
+    </h4>
+  </div>
+  <div id="Zoo" class="panel-collapse collapse">
+    <div class="panel-body">
+
+      Expand on the <a href="#Kennel">Kennel</a> exercise by making the following changes:
+
+<ul>
+<li>Make the <code>speak</code> method in <code>Animal</code> abstract.  What additional change to <code>Animal</code> will you have to make?</li>
+<li>Add a <code>Cat</code> class which overrides <code>speak</code> appropriately.</li>
+<li>Create a <code>Zoo</code> class that is just like <code>Kennel</code> except that it maintains an array of <code>Animal</code> (instead of <code>Dog</code>)</li>
+</ul>
+
+      Solution: <a href="exercise-solutions/oop/zoo/">zoo</a>
+
+    </div>
+  </div>
+</div>
+<!-- ****************** End Exercise ********************** -->
+
+
+  <h3>Collections</h3>
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#oop" href="#WellBehavedPerson">
+        Well-Behaved Person
+      </a>
+    </h4>
+  </div>
+  <div id="WellBehavedPerson" class="panel-collapse collapse">
+    <div class="panel-body">
+
+      Write a class named <code>Person</code> with a <code>name</code> field of type <code>String</code> and a <code>birthYear</code> field of type <code>int</code>.  Instances of <code>Person</code> should be immutable, behave properly as elements of any collections class, and you should be able to pass collections of <code>Person</code> to <code>Collections</code>'s
+<pre>
+public static &lt;T extends Comparable&lt;? super T&gt;&gt; void sort(List&lt;T&gt; list)
+</pre>
+ method, which would sort by birth year, then name (where earlier years are "less than" later years).  Do not use any raw types.  Assume you always get valid input.
+
+      <p>
+        Solution: <a href="exercise-solutions/collections/well-behaved-person/">well-behaved-person</a>
+      </p>
+
+    </div>
+  </div>
+</div>
+<!-- ****************** End Exercise ********************** -->
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#oop" href="#WordCount">
+        WordCount
+      </a>
+    </h4>
+  </div>
+  <div id="WordCount" class="panel-collapse collapse">
+    <div class="panel-body">
+
+Write a class called <code>WordCount</code>.
+
+<ul>
+<li>The constructor should take a <code>String</code> file name.</li>
+<li><code>WordCount</code> should have an instance variable <code>wordCounts</code> which is a <code>Map</code> from <code>String</code> to <code>int</code>, where each <code>String</code> key is a word that occurs in the file supplied to the constructor, and the corresponding <code>int</code> is the number of times the word appears in the file.</li>
+</ul>
+
+You can test your code using the file <a href="exercise-solutions/collections/word-count/i-have-a-dream.txt">i-have-a-dream.txt</a>.
+
+Extra: normalize the word counts to [0, 1] so that the word counts represent the probability that a randomly chosen word from the file is a given word.  For normalized word counts, what will be the type of the value in the map?
+
+      <p>
+        Solution: <a href="exercise-solutions/collections/word-count/">word-count</a>
+      </p>
+
+    </div>
+  </div>
+</div>
+<!-- ****************** End Exercise ********************** -->
+
+<!-- ****************** Begin Exercise ********************** -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#oop" href="#Playlist">
+        Playlist
+      </a>
+    </h4>
+  </div>
+  <div id="Playlist" class="panel-collapse collapse">
+    <div class="panel-body">
+
+Write a class called <code>Playlist</code> which can be run from the command line.  <code>Playlist</code> should take one command-line argument, the name of a playlist file in plaintext TAB-delimited value format in which each line contains the name, artist, album, and track number for each song in the playlist.  Note that the playlist file has a header row.  You can examine <a href="exercise-solutions/collections/playlist/ClassBumperMusic-culled.txt"><code>ClassBumperMusic-culled.txt</code></a> to see the format and use it to test your program.  <code>Playlist</code> should read the input file and produce an output file in which any dulicate songs have been removed and the playlist is sorted by artist, then album, then track number.  The output file's name should b ethe input file's name with "-sorted" appended to the base name.  For example, if you run your program with the <a href="exercise-solutions/collections/playlist/ClassBumperMusic-culled.txt"><code>ClassBumperMusic-culled.txt</code></a> example the output file would be named <code>ClassBumperMusic-culled-sorted.txt</code>.
+
+<p>Hints:</p>
+<ul>
+  <li>The <code>String</code> class has many methods you may find useful.</li>
+  <li>Though it's not strictly necessary, you will find it very helpful to make a class to represent songs.</li>
+    <li>Though it's not strictly necessary, using the collecitons library, lambdas, and streams will make this exercise trivial.</li>
+</ul>
+
+      <p>
+        Solution: <a href="exercise-solutions/collections/playlist/">playlist</a>
+      </p>
+
+    </div>
+  </div>
+</div>
+<!-- ****************** End Exercise ********************** -->
+
+
+  <h3>JavaFX</h3>
+
+  <h3>Algorithms</h3>
+
+  <h3>Data Structures</h3>
