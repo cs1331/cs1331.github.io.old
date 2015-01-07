@@ -9,29 +9,43 @@ title: CS 1331 - Installing Java
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#windows-7" id="id1">Windows 7</a></li>
-<li><a class="reference internal" href="#mac-os-x" id="id2">Mac OS X</a></li>
-<li><a class="reference internal" href="#linux" id="id3">Linux</a></li>
-<li><a class="reference internal" href="#troubleshooting" id="id4">Troubleshooting</a></li>
+<li><a class="reference internal" href="#windows">Windows 7+</a></li>
+<li><a class="reference internal" href="#mac-os-x">Mac OS X</a></li>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </div>
-<div class="section" id="windows-7">
-<h1><a class="toc-backref" href="#id1">Windows 7</a></h1>
+<div class="section" id="windows">
+<h1>Windows 7+</h1>
 <ol class="arabic">
 <li><p class="first">Download and run the appropriate Java Development Kit installer from <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk</a></p>
 <ul>
 <li><p class="first">To determine if your machine is running 32- or 64-bit,</p>
+<ul>
+<li><p class="first">Windows 7</p>
 <ul>
 <li><p class="first">Go to Start</p>
 </li>
 <li><p class="first">Right-click on &quot;Computer&quot;</p>
 </li>
 <li><p class="first">Choose &quot;Properties&quot;</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p class="first">Windows 8</p>
+<ul>
+<li><p class="first">Open Start by clicking on the Windows Logo</p>
+</li>
+<li><p class="first">Search for "System" and click on the System option</p>
+</li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>Under System Type, you should see either &quot;32-bit Operating System&quot; or &quot;64-bit Operating System&quot;.</p>
 </blockquote>
-</li>
-</ul>
 </li>
 </ul>
 </li>
@@ -39,17 +53,33 @@ title: CS 1331 - Installing Java
 <img alt="win32-64.jpg" class="align-center" src="images/win32-64.jpg" style="width: 480px;"/>
 <ol class="arabic" start="2">
 <li><p class="first">Update your system PATH variable:</p>
+<ul>
+<li>Windows 7
 <ul class="simple">
 <li>Go to Start</li>
 <li>Choose &quot;Control Panel&quot;</li>
 <li>In the search bar at the top right, type &quot;Path&quot; and press enter</li>
 <li>Choose &quot;Edit the system environment variables&quot;</li>
-<li>Click &quot;Environment Variables&quot;</li>
+<li>Click &quot;Environment Variables&quot; at the bottom of the window</li>
 <li>In the &quot;System variables&quot; section, scroll to &quot;Path&quot;</li>
-<li>Select the Path variable and click &quot;Edit&quot;</li>
-<li>Under &quot;Variable value&quot;, add <tt class="docutils literal"><span class="pre">;C:\Program</span> Files\Java\jdk1.8.0_20\bin</tt></li>
+<li>Select the Path variable and click &quot;Edit&quot;, or click New and add a Path variable if one doesn't exist</li>
+<li>Under &quot;Variable value&quot;, add <tt class="docutils literal"><span class="pre">;C:\Program</span> Files\Java\jdk1.8.0_25\bin</tt> to the end of what's already there</li>
 </ul>
-<p>The system Path variable tells the operating system where to find the Java tools that you installed in step 1. If you did not install the tools in <tt class="docutils literal"><span class="pre">C:\Program</span> Files\Java\jdk1.8.0_20</tt>, change that portion of the path to the correct folder. Important: the path must have bin at the end.</p>
+</li>
+</ul>
+<ul>
+<li>Windows 8
+<ul class="simple">
+<li>Open Start by clicking on the Windows Logo</li>
+<li>Search for &quot;environment&quot; and choose &quot;Edit the system environment variables&quot;</li>
+<li>Click &quot;Environment Variables&quot; at the bottom of the window</li>
+<li>In the &quot;System variables&quot; section, scroll to &quot;Path&quot;</li>
+<li>Select the Path variable and click &quot;Edit&quot;, or click New and add a Path variable if one doesn't exist</li>
+<li>Under &quot;Variable value&quot;, add <tt class="docutils literal"><span class="pre">;C:\Program</span> Files\Java\jdk1.8.0_25\bin</tt> to the end of what's already there</li>
+</ul>
+</li>
+</ul>
+<p>The system Path variable tells the operating system where to find the Java tools that you installed in step 1. If you did not install the tools in <tt class="docutils literal"><span class="pre">C:\Program</span> Files\Java\jdk1.8.0_25</tt>, change that portion of the path to the correct folder. Important: the path must have bin at the end.</p>
 <p>It is important that there is a semicolon (;) separating the folder that you add from the previous folder. For example, if your Path variable looks like this initially:</p>
 <pre class="code literal-block">
 C:\Foo\bin;C:\Bar\bin
@@ -58,21 +88,21 @@ C:\Foo\bin;C:\Bar\bin
 <pre class="code literal-block">
 C:\Foo\bin;C:\Bar\bin;C:\Program Files\Java\jdk1.8.0_20\bin
 </pre>
-<p>Press &quot;OK&quot; in all prompts until you are back to the Control Panel.</p>
+<p>Press &quot;OK&quot; in all prompts until all the windows we opened are closed.</p>
 </li>
-<li><p class="first">Determine if Java was installed correctly at the command line ( the Windows <tt class="docutils literal">cmd.exe</tt> program):</p>
+<li><p class="first">Determine if Java was installed correctly at the command line (the Windows <tt class="docutils literal">cmd.exe</tt> program):</p>
 <ul class="simple">
 <li>Press the Windows Key + R</li>
 <li>Type &quot;cmd&quot;</li>
 <li>Press enter</li>
-<li>At the command prompt type <tt class="docutils literal">java <span class="pre">-version</span></tt>. You should get output on the next line like <tt class="docutils literal">java version &quot;1.8.0_20</tt>.</li>
-<li>At the command prompt type <tt class="docutils literal">javac <span class="pre">-version</span></tt>. You should get output like <tt class="docutils literal">javac 1.8.0_20</tt>.</li>
+<li>At the command prompt type <tt class="docutils literal">javac <span class="pre">-version</span></tt>. You should get output on the next line like <tt class="docutils literal">javac 1.8.0_25</tt>.</li>
+<li>At the command prompt type <tt class="docutils literal">java <span class="pre">-version</span></tt>. You should get output that contains <tt class="docutils literal">java version &quot;1.8.0_25</tt>.</li>
 </ul>
 </li>
 </ol>
 </div>
 <div class="section" id="mac-os-x">
-<h1><a class="toc-backref" href="#id2">Mac OS X</a></h1>
+<h1>Mac OS X</h1>
 <ol class="arabic simple">
 <li>Download and run the appropriate Java Development Kit installer DMG from <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk</a></li>
 <li>Double-click on the <tt class="docutils literal">.dmg</tt> file you downloaded to mount it and open it in the Finder.</li>
@@ -86,7 +116,7 @@ C:\Foo\bin;C:\Bar\bin;C:\Program Files\Java\jdk1.8.0_20\bin
 </ol>
 </div>
 <div class="section" id="linux">
-<h1><a class="toc-backref" href="#id3">Linux</a></h1>
+<h1>Linux</h1>
 <ol class="arabic simple">
 <li>Download and run the appropriate Java Development Kit installer from <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk</a></li>
 </ol>
@@ -107,7 +137,7 @@ For Fedora-based and other distros that use the Redhat Package Manager format, d
 </ol>
 </div>
 <div class="section" id="troubleshooting">
-<h1><a class="toc-backref" href="#id4">Troubleshooting</a></h1>
+<h1>Troubleshooting</h1>
 <blockquote>
 <p>If neither the <tt class="docutils literal">java</tt> nor <tt class="docutils literal">javac</tt> commands work, first try closing the command window and opening a new one so that the command shell reads the PATH environment variable you just updated. If that does not work, double check that the folder you added to the Path variable contains executable files like <tt class="docutils literal">java</tt> and <tt class="docutils literal">javac</tt> on Unix, or <tt class="docutils literal">java.exe</tt> and <tt class="docutils literal">javac.exe</tt> on Windows.</p>
 <p>If <tt class="docutils literal">java</tt> works but <tt class="docutils literal">javac</tt> does not, you probably installed a JRE (Java Runtime Environment), not a JDK.  Return to Step 1 and start over.</p>
