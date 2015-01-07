@@ -61,7 +61,7 @@ public class MyGenericLinkedList<E> {
 
     public void insertAfter(E existingItem, E newItem) {
         Node<E> curNode = head;
-        while (!curNode.data.equals(existingItem) && 
+        while (!curNode.data.equals(existingItem) &&
                (curNode.next != null)) {
             curNode = curNode.next;
         }

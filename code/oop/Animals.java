@@ -15,7 +15,7 @@ public class Animals {
         }
         public void wagTail() {
             System.out.println("(wags tail)");
-        }        
+        }
     }
     public static class Cat extends Mammal {
         public void speak() {

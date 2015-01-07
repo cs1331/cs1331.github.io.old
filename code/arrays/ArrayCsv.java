@@ -23,6 +23,6 @@ public class ArrayCsv {
                 System.out.print(data[row][col] + " ");
             }
             System.out.println();
-        }        
+        }
     }
 }

@@ -11,7 +11,7 @@ public class Wee {
 
     public static void main(String[] args) throws Throwable {
         foo();
-        // try {        
+        // try {
         //     foo();
         // } catch (Throwable t) {
         //     System.out.println(t.getMessage());
