@@ -71,7 +71,7 @@ public class GenericLinkedList2<E> {
 
     public void insertAfter(E existingItem, E newItem) {
         Node curNode = front;
-        while (!curNode.getData().equals(existingItem) && 
+        while (!curNode.getData().equals(existingItem) &&
                (curNode.getNext() != null)) {
             curNode = curNode.getNext();
         }

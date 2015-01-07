@@ -87,28 +87,6 @@ public class CourseAverage {
 
 
 %------------------------------------------------------------------------
-\begin{frame}[fragile]{Java Programs}
-
-
-A Java program consists of one or more classes, one or more of which has a {\tt main} method.
-\begin{lstlisting}[language=Java]
-public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
-    }
-}
-\end{lstlisting}
-\begin{itemize}
-\item The body of a method consists of a sequence of statements.
-\item Statements are executed in order until there are no more statements, at which point the program terminates. (Soon we'll see how to alter the flow of control.)
-\item Today we'll focus on declarations and assignment statements.
-\end{itemize}
-
-\end{frame}
-%------------------------------------------------------------------------
-
-
-%------------------------------------------------------------------------
 \begin{frame}[fragile]{Identifiers}
 
 
@@ -148,7 +126,7 @@ float twoThirds;
 \item {\tt float} is the variable's type
 \item {\tt twoThirds} is the variable name
 \end{itemize}
-The value of {\tt twoThirds} after the declaration statement above depends on whether {\tt twoThirds} is an instance veriable or a local variable.  More on that later.
+The value of {\tt twoThirds} after the declaration statement above depends on whether {\tt twoThirds} is an instance variable or a local variable.  More on that later.
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -205,7 +183,7 @@ public class Expressions {
 \item The meaning of the program, its semantics, is that we initialize the variable {\tt twoThirds} with the value {\tt .667} and then print it out to the console (or so we think ...)
 \end{itemize}
 
-Run \link{\code/Expressions.java}{Expressions.java} and see what it prints.
+Compile and run \link{\code/Expressions.java}{Expressions.java} and see what it prints.
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -214,12 +192,15 @@ Run \link{\code/Expressions.java}{Expressions.java} and see what it prints.
 \begin{frame}[fragile]{Type Compatibility}
 
 
-When we run {\tt Program.java} we get this:
+When we run {\tt Expressions.java} we get this:
 \begin{lstlisting}[language=Java]
-$ java Program
+$ javac Expressions.java
+$ java Expressions
 0.0
 \end{lstlisting}
+
 What happened?
+
 \begin{itemize}
 \item {\tt twoThirds} is a {\tt float}, so it can hold fractional values.
 \item But {\tt 2} and {\tt 3} are the literal representations for the {\tt int} values 2 and 3.

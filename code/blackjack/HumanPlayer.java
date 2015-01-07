@@ -10,7 +10,7 @@ public class HumanPlayer extends BlackjackPlayer {
     }
 
     public Move getMove(BlackjackHand ... opponentHands) {
-        System.out.print("What's your move, " + getName() 
+        System.out.print("What's your move, " + getName()
                          + "? (H for hit, S for stand, then ENTER) ");
         String input = keyboard.nextLine();
         if (input.equals("h") || input.equals("H")) {

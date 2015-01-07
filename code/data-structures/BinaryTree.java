@@ -36,7 +36,7 @@ public class BinaryTree<E extends Comparable<E>> implements Iterable<E> {
         // Take note of:
         // - the bookkeeping required to implement a stateful iterator
         // - the use of another data structure (a stack) in the algorithm
-        // - how much more complicated this is than the simple traversals 
+        // - how much more complicated this is than the simple traversals
         public E next() {
             // Find the leftmost subtree Node of the current node, pushing
             // nodes along the way down the left sub-branch to deal with later

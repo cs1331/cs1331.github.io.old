@@ -17,7 +17,7 @@ public class HourlyEmployee extends Employee {
     }
 
     /**
-     * Constructs an HourlyEmployee with hourly wage of 20 and 
+     * Constructs an HourlyEmployee with hourly wage of 20 and
      * monthly hours of 160.
      */
     public HourlyEmployee(String aName, Date aHireDate) {
