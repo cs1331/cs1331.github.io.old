@@ -17,7 +17,7 @@ public class Bugs {
         int len = email.length();
         
         // What if email, an aribitrary String, is not a valid email address?
-        boolean isEmailValid = 
+        boolean isEmailValid =
             (email.endsWith(".com")
              || email.endsWith(".org")
              || email.endsWith(".edu"))

@@ -15,7 +15,7 @@ public class Conditionals {
         // Boolean expressions
         boolean numIsEven = (num % 2) == 0;
 
-        // Notice the use of {} even for single statements - 
+        // Notice the use of {} even for single statements -
         // - good idea always to use {}
         if (numIsEven) {
             System.out.println("I like even numbers.");
@@ -24,7 +24,7 @@ public class Conditionals {
         }
 
         // The if-else statements above can be combined using blocks
-        if (numIsEven) {  
+        if (numIsEven) {
             System.out.printf("%d is even.%n", num);
             System.out.println("I like even numbers.");
         } else {

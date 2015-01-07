@@ -21,7 +21,7 @@ public class CourseAverage {
         hwAvg = gradeFile.nextDouble();
         finalExam = gradeFile.nextDouble();
         courseAvg = .2 * hwAvg + .6 * examAvg + .2 * finalExam;
-        System.out.printf("Your course average is %.1f%n", courseAvg);    
+        System.out.printf("Your course average is %.1f%n", courseAvg);
     }
 
     private static double calcAverage(int[] numbers) {

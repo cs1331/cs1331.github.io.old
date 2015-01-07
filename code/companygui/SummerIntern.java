@@ -12,7 +12,7 @@ public class SummerIntern extends HourlyEmployee {
         this(name, hireDate, hourlyWage, 160.0);
     }
 
-    public SummerIntern(String name, Date hireDate, 
+    public SummerIntern(String name, Date hireDate,
                         double hourlyWage, double monthlyHours) {
         super(name, hireDate, hourlyWage, monthlyHours);
     }
@@ -29,8 +29,8 @@ public class SummerIntern extends HourlyEmployee {
     private boolean isSummer(Calendar calendar) {
         int month = calendar.get(Calendar.MONTH);
         System.out.println("In SummerIntern.isSummer(), month=" + month);
-        return month == Calendar.JUNE 
-            || month == Calendar.JULY 
+        return month == Calendar.JUNE
+            || month == Calendar.JULY
             || month == Calendar.AUGUST;
     }
 

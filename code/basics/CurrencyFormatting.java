@@ -9,6 +9,6 @@ public class CurrencyFormatting {
 
         NumberFormat de =
             NumberFormat.getCurrencyInstance(Locale.GERMANY);
-        System.out.println(de.format(3.14));                
+        System.out.println(de.format(3.14));
     }
 }

@@ -137,7 +137,7 @@ public class SalariedEmployeeDialog extends JDialog {
         boolean isValid = false;
         try {
             DateFormat df = DateFormat.getDateInstance();
-            employee = 
+            employee =
                 new SalariedEmployee(nameTextField.getText(),
                                      df.parse(hireDateTextField.getText()),
                                      Double.parseDouble(salaryTextField.getText()));
