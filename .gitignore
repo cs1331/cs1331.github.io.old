@@ -3,3 +3,4 @@ _site/
 
 #compiled files
 *.class
+*.swp
