@@ -17,7 +17,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%; }
 
-h1 { margin-bottom: 1em; }
+h1 {
+    margin-bottom: 1em; 
+}
 p { margin: 1em 0; }
 
 a         { color: #00a; }
@@ -29,6 +31,37 @@ a:hover   { color: #000; }
 /* Home
 /*
 /*****************************************************************************/
+
+.container {
+    margin-top: 10px;
+}
+
+.navbar-brand {
+    opacity: .55;
+}
+.navbar-brand:hover {
+    opacity: 1;
+    margin-top: -1px;
+}
+.navbar-brand h1 {
+    display: inline;
+    font-size: 1em;
+    vertical-align: middle;
+    color: #444;
+}
+
+.logo {
+    margin-right: 5px;
+    margin-top: -20px;
+    width: 40px;
+    vertical-align: top;
+}
+.info h3 {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 1em;
+}
+
 .posts {
   list-style-type: none;
   margin-bottom: 2em;
