@@ -161,6 +161,38 @@ float twoThirds = 2/3;
 %------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
+\begin{frame}[fragile]{Type Compatibility}
+
+
+Legal assignments:
+\begin{lstlisting}[language=Java]
+int x = 1;                    // int literal
+float y = 3.14159f;           // float literal
+double z = 3.1415;            // double literal
+boolean thisSentence = false; // boolean literal
+String goedel = "incomplete"; // String literal
+\end{lstlisting}
+
+Illegal assignments:
+\begin{lstlisting}[language=Java]
+int x = 1.0;              // 1.0 is a double value
+float y = 3.14159;        // 3.14159 is a double value
+boolean thisSentence = 1; // 1 is an int value
+\end{lstlisting}
+
+
+Core concepts:
+\begin{itemize}
+\item every value has a type
+\item every variable has a type
+\item assignment of values to variables must be type compatible at compile-time
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
 \begin{frame}[fragile]{Syntax and Semantics}
 
 
@@ -189,7 +221,7 @@ Compile and run \link{\code/Expressions.java}{Expressions.java} and see what it 
 %------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
-\begin{frame}[fragile]{Type Compatibility}
+\begin{frame}[fragile]{Type Conversion}
 
 
 When we run {\tt Expressions.java} we get this:
@@ -203,11 +235,10 @@ What happened?
 
 \begin{itemize}
 \item {\tt twoThirds} is a {\tt float}, so it can hold fractional values.
-\item But {\tt 2} and {\tt 3} are the literal representations for the {\tt int} values 2 and 3.
+\item But {\tt 2} and {\tt 3} are literal representations of {\tt int} values.
 \item {\tt 2/3} performed integer division, resulting in a value of {\tt 0}.
 \item Since a {\tt float} variable can hold integer values, Java performed an automatic conversion to {\tt float} upon assignment to {\tt twoThirds}, which ended up with the value {\tt 0.0}.
 \end{itemize}
-
 
 \end{frame}
 %------------------------------------------------------------------------
