@@ -12,8 +12,8 @@ public class PartialIntArray {
         if (initialCapacity < 0) {
             throw new IllegalArgumentException("Illegal Capacity: "
                     + initialCapacity);
-            this.elements = new int[initialCapacity];
         }
+        this.elements = new int[initialCapacity];
     }
 
     public void add(int e) {

@@ -1,16 +1,17 @@
 import java.util.Scanner;
 
 public class Conditionals {
-    
+
     public static void main(String[] args) {
         System.out.print("Enter an integer: ");
         Scanner keyboard = new Scanner(System.in);
         int num = keyboard.nextInt();
 
-        if ((num % 2) == 0)
+        if ((num % 2) == 0) {
             System.out.printf("%d is even.%n", num);
-        else
+        } else {
             System.out.printf("%d is odd.%n", num);
+        }
 
         // Boolean expressions
         boolean numIsEven = (num % 2) == 0;
