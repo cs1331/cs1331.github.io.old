@@ -6,7 +6,7 @@ public class GradeBook {
     public GradeBook() {
         this(10);
     }
-    
+
     public GradeBook(int capacity) {
         scores = new int[capacity];
         lastScore = 0;
