@@ -9,7 +9,7 @@ public class InsertionSort {
             assert isSorted(a, 0, j - 1);
             int key = a[j];
             int i = j - 1;
-            while(i >= 0 && a[i] < key) {
+            while (i >= 0 && a[i] < key) {
                 a[i + 1] = a[i];
                 i = i - 1;
             }
