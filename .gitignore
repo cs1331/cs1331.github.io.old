@@ -29,3 +29,6 @@ _site/
 *.mtc1
 *.out
 *.synctex.gz
+*.nav
+*.snm
+*.vrb
