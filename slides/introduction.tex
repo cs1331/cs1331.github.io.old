@@ -1,8 +1,6 @@
 \documentclass{beamer}
 
-\newcommand{\course}{CS 1331 Introduction to Object Oriented Programming}
 \newcommand{\lesson}{Introduction and Java Overview}
-\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/code}
 
 \author[Chris Simpkins]
 {Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
@@ -117,7 +115,7 @@ missing from C++) greatly reduces software development effort.
 \begin{frame}[fragile]{The Java SDK}
 
 \vspace{-.05in}
-Follow the instructions on the \link{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs1331/resources.html}{Resources} page of the course web site to install the JDK. Installing the JDK on your computer provides you with several command-line tools, the most important of which are:
+Follow the instructions on the \link{http://cs1331.org/resources.html}{Resources} page of the course web site to install the JDK. Installing the JDK on your computer provides you with several command-line tools, the most important of which are:
 
 \begin{itemize}
 \item {\tt javac} - the Java compiler, which compiles {\tt .java} files to {\tt .class} files.  You can tell you have correctly installed your SDK like this:
@@ -146,7 +144,7 @@ The JRE is included in the JDK, but they can be installed separately.
 \begin{frame}[fragile]{The Anatomy of a Java Program}
 
 
-It is customary for a progarmmer's first program in a new language to be ``Hello, World.''  Here's our \link{\code/HelloWorld.java}{{\tt HelloWorld.java}} program:
+It is customary for a progarmmer's first program in a new language to be ``Hello, World.''  Here's our \link{\code/basics/HelloWorld.java}{{\tt HelloWorld.java}} program:
 \begin{lstlisting}[language=Java]
 public class HelloWorld {
     public static void main(String[] args) {
