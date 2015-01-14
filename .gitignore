@@ -32,3 +32,11 @@ _site/
 *.nav
 *.snm
 *.vrb
+=======
+#ide files
+*.idea
+*.iml
+
+
+#os files
+*.directory
