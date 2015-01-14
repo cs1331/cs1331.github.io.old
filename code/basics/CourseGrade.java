@@ -11,10 +11,15 @@ public class CourseGrade {
             + (.2 * finalExam);
         System.out.println("Course Average: " + courseAverage);
         char grade = 'F';
-        if (courseAverage >= 90) grade = 'A';
-        else if (courseAverage >= 80) grade = 'B';
-        else if (courseAverage >= 70) grade = 'C';
-        else if (courseAverage >= 60) grade = 'D';
+        if (courseAverage >= 90) {
+            grade = 'A';
+        } else if (courseAverage >= 80) {
+            grade = 'B';
+        } else if (courseAverage >= 70) {
+            grade = 'C';
+        } else if (courseAverage >= 60) {
+            grade = 'D';
+        }
         System.out.println("Course Grade: " + grade);
     }
 }

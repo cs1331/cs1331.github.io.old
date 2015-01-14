@@ -1,12 +1,17 @@
-import java.time.*;
-import java.util.*;
-import java.util.stream.*;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Comparator;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Search {
 
     public static int linearSearch(Integer[] array, Integer value) {
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == value) { return i; }
+            if (array[i] == value) {
+                return i;
+            }
         }
         return -1;
     }
@@ -14,7 +19,7 @@ public class Search {
     public static int binarySearchLoop(Integer[] array, int queryValue) {
         int lo = 0, hi = array.length - 1;
         while (lo <= hi) {
-            int middle = (lo + hi)/2;
+            int middle = (lo + hi) / 2;
             if (array[middle] == queryValue) {
                 return middle;
             }
@@ -31,11 +36,12 @@ public class Search {
         return bsHelper(array, queryValue, 0, array.length - 1);
     }
 
-    private static int bsHelper(Integer[] array, int queryValue, int lo, int hi) {
+    private static int bsHelper(Integer[] array, int queryValue,
+            int lo, int hi) {
         if (lo > hi) {
             return -1;
         }
-        int middle = (lo + hi)/2;
+        int middle = (lo + hi) / 2;
         if (queryValue == array[middle]) {
             return middle;
         } else if (queryValue > array[middle]) {
@@ -49,7 +55,7 @@ public class Search {
                                       Comparator<? super T> c) {
         int lo = 0, hi = array.length - 1;
         while (lo <= hi) {
-            int middle = (lo + hi)/2;
+            int middle = (lo + hi) / 2;
             if (c.compare(array[middle], queryValue) == 0) {
                 return middle;
             }

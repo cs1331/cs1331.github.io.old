@@ -5,7 +5,7 @@ public class Shout {
         for (int i = 0; i < args.length; i++) {
             System.out.println("args[" + i + "] = " + args[i]);
         }
-        
+
         System.out.println("Now I'm gonna shout them to you:");
         for (String arg: args) {
             System.out.print(arg.toUpperCase() + " ");

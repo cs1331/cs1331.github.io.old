@@ -1,7 +1,9 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class MarkovChain {
 
@@ -18,7 +20,7 @@ public class MarkovChain {
 
 
     private void train(Collection<String> trainingFiles)
-            throws FileNotFoundException{
+            throws FileNotFoundException {
         for (String source: trainingFiles) {
             FileInputStream fis =
                 new FileInputStream(new File(source + ".corpus"));
@@ -38,7 +40,7 @@ public class MarkovChain {
         int[] charIndexes = string2CharIndexes(sentence);
         for (int i = 0; i < charIndexes.length - 1; ++i) {
             int row = charIndexes[i];
-            int col = charIndexes[i+1];
+            int col = charIndexes[i + 1];
             // Increment the count of char[i+1] following char[i]
             freqs[row][col] = freqs[row][col] + 1;
         }
