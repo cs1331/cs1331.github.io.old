@@ -6,6 +6,6 @@ public class ConsoleIO {
         console.printf("Gimme input: ----- ");
         String input = console.readLine();
         System.out.println("input=" + input);
-        
+
     }
 }

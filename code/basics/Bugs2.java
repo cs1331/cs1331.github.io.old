@@ -8,14 +8,14 @@ public class Bugs {
             System.out.println("Need command line args.");
             System.exit(0);
         }
-        
+
         // If no command line arguments, what is args.length?
         //email = args[0];
-        
-        
+
+
         // What if email not assigned a value after initialization?
         int len = email.length();
-        
+
         // What if email, an aribitrary String, is not a valid email address?
         boolean isEmailValid =
             (email.endsWith(".com")
@@ -34,7 +34,9 @@ public class Bugs {
         boolean containsAt = false;
         // Can you spot the bugs here before we run the program?
         for (int i = 0; i <= s.length(); i++) {
-            if (s.substring(i, i) == "@") containsAt = true;
+            if (s.substring(i, i) == "@") {
+                containsAt = true;
+            }
             // What if @ is early in the string?
         }
         return containsAt;

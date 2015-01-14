@@ -7,9 +7,13 @@ public class GtStudent {
         name = aName;
         major = aMajor;
     }
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public Major getMajor() { return major; }
+    public Major getMajor() {
+        return major;
+    }
 
     public String toString() {
         return name + " (" + major + ")";

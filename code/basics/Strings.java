@@ -28,10 +28,11 @@ public class Strings {
         int bPos = bam.indexOf("b");
         System.out.println("In bam, \"b\" first occurs at index " + bPos);
 
-        System.out.println("bam.substring(3, 6)= \""+bam.substring(3, 6)+"\"");
+        System.out.println("bam.substring(3, 6)= \""
+                + bam.substring(3, 6) + "\"");
 
         System.out.println("\"a\".compareTo(\"z\")" + "returns "
-        + "a".compareTo("z"));
+                + "a".compareTo("z"));
 
 
         // The empty String is just that:
