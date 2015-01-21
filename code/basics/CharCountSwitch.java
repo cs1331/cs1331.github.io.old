@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * This program performs the same task as CharCountSwitch.java but without
  * a switch statement.
@@ -6,7 +8,7 @@ public class CharCountSwitch {
 
     public static void main(String[] args) {
         System.out.print("Enter a string of characters: ");
-        String s = System.console().readLine();
+        String s = new Scanner(System.in).nextLine();
         int digitCount = 0, punctuationCount = 0, letterCount = 0;
         for (int i = 0; i < s.length(); ++i) {
             switch (s.charAt(i)) {

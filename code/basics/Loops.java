@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Loops {
 
     public static void main(String[] args) {
@@ -5,7 +7,7 @@ public class Loops {
         while (shouldContinue) {
             System.out.println("Enter a string of alphanumeric characters"
                     + " (exit to quit):");
-            String input = System.console().readLine();
+            String input = new Scanner(System.in).nextLine();
             int digitCount = 0, letterCount = 0;
             for (int i = 0; i < input.length(); ++i) {
                 char c = input.charAt(i);
