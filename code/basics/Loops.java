@@ -1,29 +1,36 @@
+import java.util.Scanner;
+
 public class Loops {
 
     public static void main(String[] args) {
         boolean shouldContinue = true;
         while (shouldContinue) {
-            System.out.println("Enter a string of alphanumeric characters" +
-                               " (exit to quit):");
-            String input = System.console().readLine();
+            System.out.println("Enter a string of alphanumeric characters"
+                    + " (exit to quit):");
+            String input = new Scanner(System.in).nextLine();
             int digitCount = 0, letterCount = 0;
             for (int i = 0; i < input.length(); ++i) {
                 char c = input.charAt(i);
-                if (Character.isDigit(c)) digitCount++;
-                if (Character.isAlphabetic(c)) letterCount++;
+                if (Character.isDigit(c)) {
+                    digitCount++;
+                }
+                if (Character.isAlphabetic(c)) {
+                    letterCount++;
+                }
             }
             System.out.printf("Input contained %d digits and %d letters.%n",
-                              digitCount, letterCount);
+                    digitCount, letterCount);
             shouldContinue = (input.equalsIgnoreCase("exit")) ? false : true;
         }
 
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < 10; ++i) {
             System.out.println("Meow!");
+        }
 
         String mystery = "mnerigpaba";
         String solved = "";
         int len = mystery.length();
-        for (int i = 0, j = len - 1; i < len/2; ++i, --j) {
+        for (int i = 0, j = len - 1; i < len / 2; ++i, --j) {
             solved = solved + mystery.charAt(i) + mystery.charAt(j);
         }
         System.out.println(solved);
@@ -32,11 +39,11 @@ public class Loops {
         // you'll have to use Ctrl-C to stop the program.
 
         //for (;;) {
-            // ever
+        // ever
         //}
 
         // while (true} {
         //     // forever
         // }
-   }
+    }
 }

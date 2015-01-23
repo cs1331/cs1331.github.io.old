@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class ArrayBasics {
-    
+
     class Dog {
         public void speak() {
             System.out.println("Woof, woof!");
@@ -21,7 +21,9 @@ public class ArrayBasics {
 
     public static String arrayToString(double[] a) {
         StringBuilder sb = new StringBuilder();
-        for (double e: a) sb.append(e + " ");
+        for (double e: a) {
+            sb.append(e + " ");
+        }
         return sb.toString();
     }
 
@@ -36,7 +38,7 @@ public class ArrayBasics {
         }
         return sb.toString();
     }
-    
+
 
     public static void main(String[] args) {
         double[] scores = new double[5];
@@ -76,7 +78,7 @@ public class ArrayBasics {
         for (int i = 0; i < scores.length; ++i) {
             System.out.printf("scores[%d] = %.2f%n", i, scores[i]);
         }
-        
+
         // System.out.println("Trying scores[scores.length] = 100 causes:");
         // scores[scores.length] = 100;
 

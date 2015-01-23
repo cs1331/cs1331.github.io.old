@@ -661,7 +661,7 @@ In general, make your classes immutable unless you have a good reason to make th
 \begin{frame}[fragile]{A Few Final Bits of Polish}
 
 
-Take a look at the final evolution of our Card class, \link{\code/Card.java}{Card.java}.  It contains a few more enhancements:
+Take a look at the final evolution of our Card class, \link{\code/classes/Card.java}{Card.java}.  It contains a few more enhancements:
 \begin{itemize}
 \item Instead of simply terminating the program, the constructor throws {\tt IllegalArgumentException} on invalid input so that client code can choose to deal with the exception at run-time.
 \item Input is normalized to lower case and spaces trimmed to make the Card object robust to oddly formatted input.
@@ -680,7 +680,7 @@ Take a look at the final evolution of our Card class, \link{\code/Card.java}{Car
 \item The {\tt equals(Object)} tests value equality for objects.
 \end{itemize}
 
-Given our finished \link{\code/Card.java}{Card.java} class with a properly implemented {\tt equals(Object)} method, this code:
+Given our finished \link{\code/classes/Card.java}{Card.java} class with a properly implemented {\tt equals(Object)} method, this code:
 \vspace{-.05in}
 \begin{lstlisting}[language=Java]
   Card c1 = new Card("ace", "spades");

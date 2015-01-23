@@ -10,7 +10,7 @@ public class CourseAverage {
         Scanner gradeFile = null;
         try {
             gradeFile = new Scanner(new FileInputStream("grades.txt"));
-        } catch(FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
             System.exit(0);
         }

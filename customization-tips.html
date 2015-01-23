@@ -42,9 +42,11 @@ export PATH=~/bin:$PATH
 
 <p>To make Sublime Text always use spaces instead of tabs, add the following lines to your user settings under preferences:</p>
 
-<code>
+<pre class="code literal-block">
 {
     "tab_size": 4,
-    "translate_tabs_to_spaces": true
+    "translate_tabs_to_spaces": true,
+    "rulers": [80],
+    "trim_trailing_white_space_on_save": true
 }
-</code>
+</pre>

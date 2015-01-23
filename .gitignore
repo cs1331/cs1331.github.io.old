@@ -4,6 +4,7 @@ _site/
 #compiled files
 *.class
 *.swp
+*.swo
 
 #latex
 *.aux
@@ -32,3 +33,10 @@ _site/
 *.nav
 *.snm
 *.vrb
+
+#ide files
+*.idea
+*.iml
+
+#os files
+*.directory

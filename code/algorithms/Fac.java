@@ -2,9 +2,9 @@ public class Fac {
 
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
-        System.out.println("facLoop("+n+")=" + facLoop(n));
-        System.out.println("facTail("+n+")=" + facTail(n));
-        System.out.println("fac("+n+")=" + fac(n));
+        System.out.println("facLoop(" + n + ")=" + facLoop(n));
+        System.out.println("facTail(" + n + ")=" + facTail(n));
+        System.out.println("fac(" + n + ")=" + fac(n));
     }
 
     /**

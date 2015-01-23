@@ -10,7 +10,7 @@ public class Sort {
             assert isSorted(a, 0, j - 1);
             T key = a[j];
             int i = j - 1;
-            while(i >= 0 && (a[i].compareTo(key) > 0)) {
+            while (i >= 0 && (a[i].compareTo(key) > 0)) {
                 a[i + 1] = a[i];
                 i = i - 1;
             }
@@ -21,8 +21,9 @@ public class Sort {
     private static <T extends Comparable<? super T>>
             boolean isSorted(T[] array, int start, int end) {
         for (int i = start; i < end; ++i) {
-            if (!(array[i].compareTo(array[i + 1]) < 0))
+            if (!(array[i].compareTo(array[i + 1]) < 0)) {
                 return false;
+            }
         }
         return true;
     }
@@ -63,7 +64,9 @@ public class Sort {
 
     // Why isn't something like this in Arrays, like Collections.shuffle()?
     public static <T> void shuffle(T[] array) {
-        if (random == null) { random = new Random(); }
+        if (random == null) {
+            random = new Random();
+        }
         int count = array.length;
         for (int i = count; i > 1; i--) {
             swap(array, i - 1, random.nextInt(i));
