@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\newcommand{\lesson}{Arrays, Part 1 of 2}
+\newcommand{\lesson}{Arrays}
 
 \include{beamer-common}
 
@@ -24,7 +24,7 @@ As you've seen, you can get pretty far with "scalar" data.  But many phenomena w
 \item pixel colors in a bitmap image.
 \end{itemize}
 
-Today we'll learn Java's most basic facility for modeling such phenomena: arrays.
+Today we'll learn Java's most basic facility for modeling aggregates: arrays.
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -296,49 +296,148 @@ See also \link{\code/arrays/CourseAverage.java}{CourseAverage.java}
 \end{frame}
 %------------------------------------------------------------------------
 
-%% %------------------------------------------------------------------------
-%% \begin{frame}[fragile]{Passing and Returning Arrays}
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Variable Arity Parameters}
 
 
-%% Arrays are objects, so they can be passed to methods and returned from methods just like other objects.\\
-%% \vspace{.1in}
-%% Consider the following Array copy method:
-%% \begin{lstlisting}[language=Java]
-%% public static int[] copyOf(int[] sourceArray) {
-%%     int[] newArray = new int[sourceArray.length];
-%%     for (int i = 0; i < newArray.length; ++i) {
-%%       newArray[i] = sourceArray[i];
-%%     }
-%%     return newArray;
-%% }
-%% \end{lstlisting}
-%% The array returned from {\tt copyOf} is value-equivalent to the array passed to the method, but they are different arrays.  Modifying the returned array does not modify the passed-in array.
+\begin{itemize}
+\item The {\it arity} of a method is its number of formal parameters.
+\item So far, all the methods we've written have fixed arity.
+\item The last parameter to a method may be a {\it variable arity parameter}, a.k.a. {\it var args} parameter (\href{http://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html#jls-8.4.1}{JLS \S 8.4.1}), whose syntax is simply to add an ellipse ({\tt ...}) after the type name.
+\item The var args parameter is accessed as an array inside the method.
+\end{itemize}
+For example:
+\begin{lstlisting}[language=Java]
+public static int max(int ... numbers) {
+    int max = numbers[0];
+    for (int i = 1; i < numbers.length; ++i) {
+        if (numbers[i] > max) max = number;
+    }
+    return max;
+}
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Multidimensional Arrays}
 
 
-%% \end{frame}
-%% %------------------------------------------------------------------------
-%
-% %------------------------------------------------------------------------
-% \begin{frame}[fragile]{Programming Exercise}
-%
-%
-% Write a program that computes and prints the average of a list of numbers supplied on the command line.  It should work like this:
-% \begin{lstlisting}[language=Java]
-% $ java Average
-% 0.0
-% $ java Average 80 90 95
-% 88.33333333333333
-% \end{lstlisting}
-%
-% \begin{itemize}
-% \item If user enters no command line arguments, average is 0.0
-% \item Assume user never enters command line arguments that can't be parsed as {\tt double}s
-% \end{itemize}
-%
-%
-% \end{frame}
-% %------------------------------------------------------------------------
-%
+You can create arrays of any number of dimensions simply by adding additional square brackets for dimensions and sizes.  For example:
+
+\begin{lstlisting}[language=Java]
+char[][] grid;
+\end{lstlisting}
+The declaration statement above:
+\begin{itemize}
+\item Declares a 2-dimensional array of  {\tt char}.
+\item As with one-dimensinal arrays, {\tt char} is the base type.
+\item Each element of {\tt grid}, which is indexed by two {\tt int} expressions, is a {\tt char} variable.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Initializing Multidimensional Arrays}
+
+
+Initialization of 2-dimensional arrays can be done with {\tt new}:
+\begin{lstlisting}[language=Java]
+grid = new char[10][10];
+\end{lstlisting}
+
+or with literal initialization syntax:
+\begin{lstlisting}[language=Java]
+char[][] grid = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                 {' ', '*', '*', ' ', ' ', ' ', ' ', '*', '*', ' '},
+                 {' ', '*', '*', ' ', ' ', ' ', ' ', '*', '*', ' '},
+                 {' ', ' ', ' ', ' ', '*', '*', ' ', ' ', ' ', ' '},
+                 {' ', ' ', ' ', ' ', '*', '*', ' ', ' ', ' ', ' '},
+                 {' ', '*', ' ', ' ', ' ', ' ', ' ', ' ', '*', ' '},
+                 {' ', ' ', '*', ' ', ' ', ' ', ' ', '*', ' ', ' '},
+                 {' ', ' ', ' ', '*', '*', '*', '*', ' ', ' ', ' '},
+                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}};
+\end{lstlisting}
+
+Notice that a 2-dimensional array is an array of 1-dimensional arrays (and a 3-dimensional array is an array of 2-dimensional arrays, and so on).
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Visualizing Multidimensional Arrays}
+
+
+Our 2-dimensional {\tt grid} array can be visualized as a 2-d grid of cells.\\
+\vspace{.1in}
+\begin{tabular}{p{.4in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}p{.2in}}
+         & [0] & [1] & [2] & [3] & [4] & [5] & [6] & [7] & [8] & [9]
+\end{tabular}
+\begin{tabular}{p{.4in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|p{.2in}|}\cline{2-11}
+grid[0] & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[1] & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[2] & ' ' & '*' & '*' & ' ' & ' ' & ' ' & ' ' & '*' & '*' & ' ' \\
+\cline{2-11}
+grid[3] & ' ' & '*' & \cellcolor{yellow}'*' & ' ' & ' ' & ' ' & ' ' & '*' & '*' & ' ' \\
+\cline{2-11}
+grid[4] & ' ' & ' ' & ' ' & ' ' & '*' & '*' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[5] & ' ' & ' ' & ' ' & ' ' & '*' & '*' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[6] & ' ' & '*' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & '*' & ' ' \\
+\cline{2-11}
+grid[7] & ' ' & ' ' & '*' & ' ' & ' ' & ' ' & ' ' & '*' & ' ' & ' ' \\
+\cline{2-11}
+grid[8] & ' ' & ' ' & ' ' & '*' & '*' & '*' & '*' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+grid[9] & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' & ' ' \\
+\cline{2-11}
+\end{tabular}\\
+\vspace{.1in}
+And an individual cell can be accessed by supplying two indices:
+
+\begin{lstlisting}[language=Java]
+grid[3][2] == '*'; // true
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Traversing Multidimensional Arrays}
+
+
+Traverse 2-dimensional array by nesting loops.  The key to getting it right is to use the right {\tt length}s.
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+for (int row = 0; row < grid.length; ++row) {
+    for (int col = 0; col < grid[row].length; ++col) {
+        System.out.print(grid[row][col]);
+    }
+    System.out.println();
+}
+\end{lstlisting}
+Note that the for loops above traverse the grid in row-major order.  We can traverse the grid in column-major order by reversing the nesting of the for loops:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+for (int col = 0; col < grid[0].length; ++col) {
+    for (int row = 0; row < grid.length; ++row) {
+        System.out.print(grid[row][col]);
+    }
+    System.out.println();
+}
+\end{lstlisting}
+\vspace{-.05in}
+See \link{\code/arrays/Smiley.java}{Smiley.java}
+
+\end{frame}
+%------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Closing Thoughts}
