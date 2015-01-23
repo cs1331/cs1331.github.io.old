@@ -1,7 +1,3 @@
-/**
- * This program performs the same task as CharCountSwitch.java but without
- * a switch statement.
- */
 public class CharCountSwitch {
 
     public static void main(String[] args) {
