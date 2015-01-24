@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://d1b10bmlvqabco.cloudfront.net/attach/i4u9kc371072wf/grmp0hwcp4v/i5bekojwdpi6/histogram.html -->
+<html><script type="text/javascript">window["_gaUserPrefs"] = { ioo : function() { return true; } }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Grade Histogram</title>
+  <style type="text/css"></style></head>
+  <body style="padding: 20px 50px;">
+    <header style="text-align:center;">
+      <h1>Grade Histogram</h1>
+      <small>A javascript recreation of HW2 for CS1331 created out of boredom.</small>
+      <small>Useful for checking the correctness of your solution.</small>
+    </header>
+    <section>
+      <h3>Grades File</h3>
+      <small>Place the content of your grades.txt file here</small><br>
+      <textarea id="input" placeholder="A newline sperated list of grades." style="width:50%;height:200px;"></textarea>
+    </section>
+    <section>
+      <h3>Bucket Size</h3>
+      <small>Adjust your bucket size</small>
+      <input type="number" min="1" max="101" value="5" id="range">
+    </section>
+    <section>
+      <h3>Result</h3>
+      <small>What your result should look like.</small>
+      <pre id="result" style="border:1px solid black;">Grades loaded!
+What bucket size would you like?
+&gt;&gt;&gt; 7
+
+100 -  94 | [][][][][][][][][][]
+ 93 -  87 | [][][][][][][][][][][][][][][]
+ 86 -  80 | [][][][][][][][][][][][][]
+ 79 -  73 | [][][][][][][][][][][][][]
+ 72 -  66 | [][][][][][][][][][][]
+ 65 -  59 | [][][][][][][]
+ 58 -  52 | [][][][][][][]
+ 51 -  45 | [][][]
+ 44 -  38 | [][][][]
+ 37 -  31 | [][][]
+ 30 -  24 | [][]
+ 23 -  17 | 
+ 16 -  10 | 
+  9 -   3 | []
+  2 -   0 | []
+
+</pre>
+      Number of Grades: <span id="grade-num">270</span>, 
+      Number of Buckets: <span id="bucket-num">15</span>, 
+      Width of Last Bucket: <span id="last-bucket">3</span>
+    </section>
+    <script type="text/javascript">
+var g="";var ra=parseInt(document.getElementById("range").value);var r=document.getElementById("result");var i=document.getElementById("grade-num");var s=document.getElementById("bucket-num");var o=document.getElementById("last-bucket");var ge=function(){var e=Math.ceil(101/ra);var t=ra*e-101;var n=new Array(e);for(var u=0;u<g.length;u++){var a=Math.floor((parseInt(g[u])+t)/ra);if(!n[a])n[a]=0;n[a]++}var f=100;var l=f-ra+1;var c="Grades loaded!\nWhat bucket size would you like?\n>>> "+ra+"\n\n";for(var u=e-1;u>=0;u--){var h=f.toString();var p=(new Array(4-h.length)).join(" ");var d=l>0?l.toString():"0";var v=(new Array(4-d.length)).join(" ");var m=n[u]?(new Array(n[u]+1)).join("[]"):"";c+=p+h+" - "+v+d+" | "+m+"\n";f-=ra;l-=ra}r.innerHTML=c+"\n";i.innerHTML=g.length;s.innerHTML=e;o.innerHTML=ra-t};document.getElementById("input").onchange=function(){g=this.value.trim().split(/\s+/);ge()};document.getElementById("range").onchange=function(){ra=parseInt(this.value);ge()};ge()
+    </script>
+  
+
+</body></html>
