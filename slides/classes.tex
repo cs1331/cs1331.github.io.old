@@ -351,7 +351,7 @@ Now we have encapsulation, but we can still create invalid {\tt Card4}s, e.g., `
 \begin{frame}[fragile]{Class Invariants}
 
 
-Class invariant: a condition that must hold for all instances of a class in order for for instances of the class to be considered valid.\\
+Class invariant: a condition that must hold for all instances of a class in order for instances of the class to be considered valid.\\
 \vspace{.1in}
 Invariants for Card class:
 \begin{itemize}
@@ -488,7 +488,7 @@ There are two ways to initialize the instance variables of an object:
 \item Declaration point initialization:
 \begin{lstlisting}[language=Java,mathescape=true]
 public class Card {
-  private String rank = ``2'';
+  private String rank = "2";
   // ...
 }
 \end{lstlisting}
@@ -496,7 +496,7 @@ public class Card {
 \begin{lstlisting}[language=Java,mathescape=true]
 public class Card {
   public Card() {
-    rank = ``2'';
+    rank = "2";
   }
   // ...
 }
