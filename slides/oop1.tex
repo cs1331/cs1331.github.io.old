@@ -123,16 +123,16 @@ That last bullet motivates the use of polymorphism.
 
 With our current class hierarchy, we need to maintain separate (partial) arrays of hourly and salaried employees.  Because they're partial arrays we also need to keep track of how many of each type of employee we have.
 \begin{lstlisting}[language=Java]
-public class Company { // no example code - hypothetical
+public class Company {
 
     private HourlyEmployee[] hourlyEmployees;
-    private int numHourlyEmployees;
+    private int numHourlyEmployees = 10;
     private SalariedEmployee[] salariedEmployees;
-    private int numSalariedEmployees;
+    private int numSalariedEmployees = 10;
 
     public Company() {
-        hourlyEmployees = ...;
-        salariedEmployees = ...;
+        hourlyEmployees = new HourlyEmployee[numHourlyEmployees];
+        salariedEmployees = new SalariedEmployee[numSalariedEmployees];
     }
 }
 \end{lstlisting}
