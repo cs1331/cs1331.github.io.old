@@ -11,7 +11,7 @@ public class MyGenericLinkedList<E> {
     }
 
     private Node<E> head;
-    
+
     /**
      * Add a new item to the head of this list.
      */

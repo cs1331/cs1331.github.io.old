@@ -31,7 +31,7 @@ public class GenericLinkedList2<E> {
     public GenericLinkedList2() {
         front = null;
     }
-    
+
     public void addToFront(E item) {
         front = new Node(item, front);
     }

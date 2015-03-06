@@ -1,5 +1,5 @@
 public class BlackjackHand implements Comparable {
-    
+
     private PlayingCard faceDownCard;
     private PlayingCard[] faceUpCards;
     private int lastFaceUpCard;

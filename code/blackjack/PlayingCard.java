@@ -44,7 +44,7 @@ public class PlayingCard {
         rank = aRank;
         suit = aSuit;
     }
-    
+
     public Rank getRank() {
         return rank;
     }
@@ -56,7 +56,7 @@ public class PlayingCard {
     public String toString() {
         return rank + " of " + suit;
     }
-    
+
     public static void main(String[] args) {
         System.out.print("Possible ranks are: ");
         for (Rank rank: Rank.values()) {

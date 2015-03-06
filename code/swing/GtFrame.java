@@ -14,7 +14,7 @@ public class GtFrame extends JFrame {
         getContentPane().setBackground(Color.WHITE);
         add(new JButton("Button"), BorderLayout.SOUTH);
     }
-    
+
     public void paint(Graphics g) {
         super.paint(g);
         g.setColor(new Color(207, 181, 59));
@@ -24,7 +24,7 @@ public class GtFrame extends JFrame {
         g.setFont(new Font("Helvetica", Font.BOLD, 24));
         g.drawString("Go Tech!", 150, 275);
     }
-    
+
     public static void main(String[] args) {
         GtFrame gtf = new GtFrame();
         gtf.setVisible(true);

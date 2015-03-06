@@ -31,13 +31,13 @@ public class Deck {
         cards[card1] = cards[card2];
         cards[card2] = tmp;
     }
-    
+
     public PlayingCard draw() {
         topCard--;
         assert(topCard >= -1);
         return cards[topCard + 1];
     }
-    
+
     public boolean hasCards() {
         return topCard >= 0;
     }

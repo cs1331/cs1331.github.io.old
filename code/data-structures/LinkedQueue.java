@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class LinkedQueue<E> {
-    
+
     private class Node<E> {
         E data;
         Node<E> next;
@@ -21,13 +21,13 @@ public class LinkedQueue<E> {
         if (null != last) last.next = newNode;
         last = newNode;
     }
-    
+
     public E dequeue() {
         E answer = head.data;
         head = head.next;
         return answer;
     }
-    
+
     public boolean isEmpty() {
         return (head == null);
     }

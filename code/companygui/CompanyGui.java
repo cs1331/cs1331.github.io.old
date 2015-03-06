@@ -21,6 +21,6 @@ public class CompanyGui {
             cf.pack();
             cf.setVisible(true);
         }
-        
+
     }
 }

@@ -34,7 +34,7 @@ public class GreetingGui extends JFrame {
         pack();
     }
 
-    
+
     public static void main(String[] args) {
         GreetingGui gg = new GreetingGui();
         gg.setVisible(true);
