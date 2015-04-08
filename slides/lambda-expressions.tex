@@ -247,6 +247,51 @@ We say that the lambda expression {\it captures} the {\tt wordCount} variable.  
 \end{frame}
 %------------------------------------------------------------------------
 
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Method References}
+
+\begin{itemize}
+\item A lambda expression is a compact notation for specifying the implementation of the abstract method in a functional interface.
+\item A method reference is a compact notation for a lambda expression that supplies the implementation of the abstract method in a functional interface from a compatible named method that has already been defined.
+\end{itemize}
+
+If a method already exists that fits the specification for a parameter that could take a lambda expression as an argument, you can use a method reference instead of a lambda expression.
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Method References Example}
+\vspace{-.05in}
+Say we have a functional interface whose abstract method takes a single {\tt Object} and returns {\tt void}:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+public interface Foo {
+    void bar(Object o);
+}
+\end{lstlisting}
+\vspace{-.05in}
+and a method that takes an instance of an object implementing this functional interface as a paramter:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+void doo(Foo f) {
+    f.bar("baz");
+}
+\end{lstlisting}
+\vspace{-.05in}
+We can supply a method reference to any method that is {\it lambda equivalent} to the {\tt bar} method above (same parameter list and return type):
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+doo(System.out::println);
+\end{lstlisting}
+\vspace{-.05in}
+ which is equivalent to:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+doo(x -> System.out.println(x));
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Method References}
@@ -286,7 +331,7 @@ With lambdas we can make that even more concise and clear:
         Collections.sort(troopers, byMustacheThenName);
 \end{lstlisting}
 
-Look at the \link{http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html}{Comparator} API for details on these methods.
+Look at the \link{http://doocs.oracle.com/javase/8/docs/api/java/util/Comparator.html}{Comparator} API for details on these methods.
 
 \end{frame}
 %------------------------------------------------------------------------
