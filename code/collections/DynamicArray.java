@@ -36,7 +36,7 @@ public class DynamicArray<E> implements Iterable<E> {
         }
 
         public void remove() {
-            DynamicArray.this.remove(cursor - 1);
+            DynamicArray.this.remove(cursor + 1);
         }
     }
 
