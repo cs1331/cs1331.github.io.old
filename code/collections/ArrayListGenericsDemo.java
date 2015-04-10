@@ -3,13 +3,13 @@ import java.util.ArrayList;
 public class ArrayListGenericsDemo {
 
     public static void main(String[] args) {
-        ArrayList strings = new ArrayList();
+        ArrayList<String> strings = new ArrayList<>();
         strings.add("Helluva");
         strings.add("Engineer!");
         Integer BULL_DOG = Integer.MIN_VALUE;
         // Since strings is a typed collection, Java type checks
         // insertions and retrievals
-        strings.add(BULL_DOG); // Won't compile
+        //strings.add(BULL_DOG); Won't compile
         System.out.println(strings);
 
         // If we use a raw ArrayList, we get auto-boxing, but no auto-unboxing
