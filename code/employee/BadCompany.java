@@ -23,7 +23,7 @@ public class BadCompany {
         }
         return payroll;
     }
-    
+
     private void loadEmployeesFromFile(File empData) {
 
     }

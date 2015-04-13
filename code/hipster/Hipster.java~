@@ -2,9 +2,9 @@ public class Hipster extends Person {
 
     private int beardLength;
     private Color beanieColor;
-    
+
     public Hipster() {
-        
+
     }
-    
+
 }
