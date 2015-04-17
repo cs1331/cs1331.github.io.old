@@ -5,34 +5,34 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class BinaryTree<E extends Comparable<E>> implements Iterable<E> {
-    
+
     private class Node<E> {
         E item;
         Node<E> left;
         Node<E> right;
-        
+
         Node(E item, Node<E> left, Node<E> right) {
             this.item = item;
             this.left = left;
             this.right = right;
         }
     }
-    
+
     private class InOrderIterator<E> implements Iterator<E> {
-        
+
         Node<E> curNode;
         // fringe is the to-do list of unvisited nodes.
         Stack<Node<E>> fringe;
-        
+
         public InOrderIterator(Node<E> root) {
             curNode = root;
             fringe = new LinkedStack<>();
         }
-        
+
         public boolean hasNext() {
             return (curNode != null) || !fringe.isEmpty();
         }
-        
+
         // Take note of:
         // - the bookkeeping required to implement a stateful iterator
         // - the use of another data structure (a stack) in the algorithm
@@ -54,14 +54,14 @@ public class BinaryTree<E extends Comparable<E>> implements Iterable<E> {
             curNode = curNode.right;
             return item;
         }
-        
+
         public void remove() {
             throw new UnsupportedOperationException();
         }
     }
-    
+
     private Node<E> root;
-    
+
     public void add(E item) {
         root = insert(item, root);
     }

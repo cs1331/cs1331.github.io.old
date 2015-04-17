@@ -28,11 +28,11 @@ public class BetterDeck {
         cards.set(card1, cards.get(card2));
         cards.set(card2, tmp);
     }
-    
+
     public PlayingCard draw() {
         return cards.remove(cards.size() - 1);
     }
-    
+
     public boolean hasCards() {
         return !cards.isEmpty();
     }
