@@ -15,7 +15,7 @@
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Inner Classes}
 
-Recall from \link{\code/collections/SuperTroopers.java}{SuperTroopers.java} the {\tt MustacheComparator} class:
+Recall from \link{\code/collections/super-troopers/SortTroopers.java}{SortTroopers.java} the {\tt MustacheComparator} class:
 
 \begin{lstlisting}[language=Java]
 static class MustacheComparator implements Comparator<Trooper> {
@@ -116,7 +116,7 @@ If $method\_body$ is a single expression, the curly braces can be omitted.
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{MustacheComparator as a Lambda Expression}
 
-Here's our mustache comparator from  \link{\code/collections/SuperTroopers.java}{SuperTroopers.java} as a lambda expression:
+Here's our mustache comparator from  \link{\code/collections/super-troopers/LambdaTroopers.java}{LambdaTroopers.java} as a lambda expression:
 
 \begin{lstlisting}[language=Java]
 Collections.sort(troopers, (Trooper a, Trooper b) -> {
