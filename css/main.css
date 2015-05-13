@@ -186,3 +186,23 @@ a:hover   { color: #000; }
 .post pre.terminal code {
   background-color: #333;
 }
+
+.semester-warning {
+    width: 100%;
+    text-align:center;
+    color: #fff;
+    background-color:#f00;
+    padding: 5px 0;
+    font-size: 1.2em;
+
+    /* Summer: */
+    display: block; 
+
+    /* Fall/Spring */
+    /*display: none;*/
+}
+
+.semester-warning h1 {
+    font-size: 1.25em;
+    margin: 0;
+}
