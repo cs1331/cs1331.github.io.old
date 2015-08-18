@@ -5,18 +5,33 @@ title: CS 1331 - Java Style Guide
 
 <h1>CS 1331 Java Style Guide</h1>
 
-<p>This document summarizes and in some cases clarifies Sun/Oracle's
-<a href="http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html">Java Code Conventions</a>
-(and in some places copies it directly) and the Checkstyle checks specified in
-<a href="resources/cs1331-checkstyle.xml">cs1331-checkstyle.xml</a>.
-The Checkstyle web site also documents each of its standard checks here: <a href="http://checkstyle.sourceforge.net/availablechecks.html">http://checkstyle.sourceforge.net/availablechecks.html</a></p>
+<p>Style is very important when writing code. Often code is not judged simply
+base on how effectively it performs a specific function, but also how easily it
+can be understood by a human reader. While rules of style vary, it is important
+to be able to learn to write code which conforms to a given standard.</p>
+
+<p>In this class, the style rules that you are asked to follow are crystallized
+into an automated tool, called
+<a href="http://checkstyle.sourceforge.net">Checkstyle</a>. This tool is
+configurable to check for a large number of different stylistic errors.
+Additional details about how to run checkstyle on your code can be found <a href="checkstyle.html">here.</a></p>
+
 <p>The file you need to run Checkstyle:</p>
 <ul class="simple">
 <li><a href="resources/checkstyle-6.2.1.jar">checkstyle-6.2.1.jar</a></li>
 <!--<li>New Version: <a href="resources/checkstyle1331v2.jar">checkstyle1331v2.jar</a></li>-->
 </ul>
-Run checkstyle on your Java files like so:
+<p>In the simplest case, run checkstyle on your Java files like so:
 <pre>java -jar checkstyle-6.2.1.jar MyJavaFile.java</pre>
+For more advanced options (which will be necessary in later portions of the
+semester), check out the <a href="checkstyle.html">options available</a> for
+running checkstyle.</p>
+
+<p>The rest of this document summarizes and in some cases clarifies Sun/Oracle's
+<a href="http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html">Java Code Conventions</a>
+(and in some places copies it directly) and the Checkstyle checks specified in
+<a href="resources/cs1331-checkstyle.xml">cs1331-checkstyle.xml</a>.
+The Checkstyle web site also documents each of its standard checks here: <a href="http://checkstyle.sourceforge.net/checks.html">http://checkstyle.sourceforge.net/checks.html</a></p>
 <div class="section" id="names">
 <h1>Names</h1>
 <ul>
