@@ -5,6 +5,8 @@ title: CS 1331 - Customization Tips
 
 <h1>Customization Tips</h1>
 
+Professor Simpkins keeps his <a href="https://github.com/csimpkins/dotfiles" target="_blank">dotfiles on GitHub</a>.
+
 <h2>bash</h2>
 <p>
   These go in your <code>~/.bash_profile</code>.
@@ -21,6 +23,31 @@ alias acroread='/Applications/Adobe\ Reader.app/Contents/MacOS/AdobeReader'
 
 # A personal bin directory
 export PATH=~/bin:$PATH
+</pre>
+
+<h2>Checkstyle Script</h2>
+
+Download <a href="resources/checkstyle-6.2.2.jar">checkstyle-6.2.2.jar</a> to your <code>~/bin</code> directory. Create a file named <code>checkstyle</code> in your <code>~/bin</code> directory with the following contents:
+
+<pre class="code literal-block">
+#/usr/bin/env bash
+
+java -jar ~/bin/checkstyle-6.2.2.jar "$@"
+</pre>
+
+Then make it executable:
+
+<pre class="code literal-block">
+$ cd bin
+$ chmod +x checkstyle
+</pre>
+
+Now you can run checkstyle on any Java file like this:
+
+<pre class="code literal-block">
+$ checkstyle Foo.java
+Audit done. Errors (potential points off):
+0
 </pre>
 
 <h2>Atom</h2>
