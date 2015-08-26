@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS 1331" />
+  <title>Conditional Execution</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Conditional Execution</h1>
+    <h2 class="author">CS 1331</h2>
+    <h3 class="date"></h3>
+</section>
+
+<section id="control-flow-issues" class="slide level1">
+<h1>Control Flow Issues</h1>
+<ul>
+<li>Multiple vs. single entry (&quot;How did we get here?&quot;)</li>
+<li>Multiple vs. single exit (&quot;Where do we go from here?&quot;)</li>
+<li><code>goto</code> considered harmful (<code>goto</code> makes it hard to answer questions above)</li>
+</ul>
+</section>
+<section id="structured-programming" class="slide level1">
+<h1>Structured Programming</h1>
+<p>All algorithms expressed by:</p>
+<ul>
+<li>Sequence - one statement after another</li>
+<li>Selection - conditional execution (not conditional jumping)</li>
+<li>Iteration - loops</li>
+</ul>
+<p>No <code>goto</code></p>
+</section>
+<section id="boolean-values" class="slide level1">
+<h1>Boolean Values</h1>
+<p>Four kinds of boolean expressions:</p>
+<ul>
+<li><code>boolean</code> literals: <code>true</code> and <code>false</code></li>
+<li><code>boolean</code> variables</li>
+<li>expressions formed by combining non-<code>boolean</code> expressions with comparison operators</li>
+<li>expressions formed by combining <code>boolean</code> expressions with logical operators</li>
+</ul>
+</section>
+<section id="comparison-expressions" class="slide level1">
+<h1>Comparison Expressions</h1>
+<ul>
+<li><p>Equal to: <code>==</code>, like <span class="math inline">\(=\)</span> in math</p>
+<ul>
+<li>Remember, <code>=</code> is assignment operator, <code>==</code> is comparison operator!</li>
+</ul></li>
+<li>Not equal to: <code>!=</code>, like <span class="math inline">\(\ne\)</span> in math</li>
+<li>Greater than: <code>&gt;</code>, like <span class="math inline">\(&gt;\)</span> in math</li>
+<li><p>Greater than or equal to: <code>&gt;=</code>, like <span class="math inline">\(\ge\)</span> in math</p></li>
+</ul>
+</section>
+<section id="comparison-examples" class="slide level1">
+<h1>Comparison Examples</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dv">1</span> == <span class="dv">1</span> <span class="co">// true</span>
+<span class="dv">1</span> != <span class="dv">1</span> <span class="co">// false</span>
+<span class="dv">1</span> &gt;= <span class="dv">1</span> <span class="co">// true</span>
+<span class="dv">1</span> &gt; <span class="dv">1</span>  <span class="co">// false</span></code></pre></div>
+</section>
+<section id="logical-combinations" class="slide level1">
+<h1>Logical Combinations</h1>
+<ul>
+<li>And: <code>\&amp;\&amp;</code>, like <span class="math inline">\(\land\)</span> in math</li>
+<li><p>Or: <code>||</code>, like <span class="math inline">\(\lor\)</span> in math Examples:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(<span class="dv">1</span> == <span class="dv">1</span>) &amp;&amp;  (<span class="dv">1</span> != <span class="dv">1</span>) <span class="co">// false</span>
+(<span class="dv">1</span> == <span class="dv">1</span>) ||  (<span class="dv">1</span> != <span class="dv">1</span>) <span class="co">// true</span></code></pre></div></li>
+</ul>
+<p>Also, unary negation operator <code>!</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">!<span class="kw">true</span>     <span class="co">// false</span>
+!(<span class="dv">1</span> == <span class="dv">2</span>) <span class="co">// true</span></code></pre></div>
+</section>
+<section id="if-else-statement" class="slide level1">
+<h1><code>if-else</code> Statement</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> (*booleanExpression*)
+    <span class="co">// a single statement executed when booleanExpression is true</span>
+<span class="kw">else</span>
+    <span class="co">// a single statement executed when booleanExpression is false</span></code></pre></div>
+<ul>
+<li><em>booleanExpression</em> must be enclosed in parentheses</li>
+<li><code>else</code> not required</li>
+</ul>
+</section>
+<section id="if-else-example" class="slide level1">
+<h1><code>if-else</code> Example</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> ((num % <span class="dv">2</span>) == <span class="dv">0</span>)
+    System.<span class="fu">out.printf</span>(<span class="st">&quot;I like </span><span class="ch">%d</span><span class="st">.</span><span class="ch">%n</span><span class="st">&quot;</span>, num);
+<span class="kw">else</span>
+    System.<span class="fu">out.printf</span>(<span class="st">&quot;I&#39;m ambivalent about </span><span class="ch">%d</span><span class="st">.</span><span class="ch">%n</span><span class="st">&quot;</span>, num);</code></pre></div>
+</section>
+<section id="conditional-assignment" class="slide level1">
+<h1>Conditional Assignment</h1>
+<p><code>if-else</code> is a statement, so conditional assignment like this:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String dinner = <span class="kw">null</span>;
+<span class="kw">if</span> (temp &gt; <span class="dv">60</span>) {
+    dinner = <span class="st">&quot;grilled&quot;</span>;
+} <span class="kw">else</span> {
+    dinner = <span class="st">&quot;baked&quot;</span>;
+}</code></pre></div>
+</section>
+<section id="ternary-if-else-expression" class="slide level1">
+<h1>Ternary If-Else Expression</h1>
+<p>The ternary operator combines the above into one expression (expressions have values):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String dinner = (temp &gt; <span class="dv">60</span>) ? <span class="st">&quot;grilled&quot;</span> : <span class="st">&quot;baked&quot;</span></code></pre></div>
+</section>
+<section id="blocks" class="slide level1">
+<h1>Blocks</h1>
+<p>Enclose any number of statements in curly braces ({ ... }) to create a block, which is like a single statement.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> ((num % <span class="dv">2</span>) == <span class="dv">0</span>) {
+    System.<span class="fu">out.printf</span>(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> is even.</span><span class="ch">%n</span><span class="st">&quot;</span>, num);
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;I like even numbers.&quot;</span>);
+} <span class="kw">else</span> {
+    System.<span class="fu">out.printf</span>(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> is odd.</span><span class="ch">%n</span><span class="st">&quot;</span>, num);
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;I&#39;m ambivalent about odd numbers.&quot;</span>);
+}</code></pre></div>
+<p>Always use curly braces in control structures.</p>
+</section>
+<section id="nested-if-else" class="slide level1">
+<h1>Nested <code>if-else</code></h1>
+<p>This is hard to follow:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> (color.<span class="fu">toUpperCase</span>().<span class="fu">equals</span>(<span class="st">&quot;RED&quot;</span>)) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Redrum!&quot;</span>);
+} <span class="kw">else</span> {
+    <span class="kw">if</span> (color.<span class="fu">toLowerCase</span>().<span class="fu">equals</span>(<span class="st">&quot;yellow&quot;</span>)) {
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Submarine&quot;</span>);
+    } <span class="kw">else</span> {
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;A Lack of Color&quot;</span>);
+
+}</code></pre></div>
+</section>
+<section id="multi-way-if-else" class="slide level1">
+<h1>Multi-way <code>if-else</code></h1>
+<p>This multi-way <code>if-else</code> is equivalent, and clearer:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> (color.<span class="fu">toUpperCase</span>().<span class="fu">equals</span>(<span class="st">&quot;RED&quot;</span>)) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Redrum!&quot;</span>);
+} <span class="kw">else</span> <span class="kw">if</span> (color.<span class="fu">toLowerCase</span>().<span class="fu">equals</span>(<span class="st">&quot;yellow&quot;</span>)) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Submarine&quot;</span>);
+} <span class="kw">else</span> {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;A Lack of Color&quot;</span>);
+}</code></pre></div>
+</section>
+<section id="short-circuit-evaluation" class="slide level1">
+<h1>Short-Circuit Evaluation</h1>
+<p>Common idiom for testing an operand before using it:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> ((kids !=<span class="dv">0</span>) &amp;&amp; ((pieces / kids) &gt;= <span class="dv">2</span>))
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Each kid may have two pieces.&quot;</span>);</code></pre></div>
+<p>If <code>kids !=0</code> evaluates to <code>false</code>, then the second sub-expression is not evaluated, thus avoiding a divide-by-zero error.</p>
+<p>See <a href="../code/basics/Conditionals.java">Conditionals.java</a> for examples.</p>
+</section>
+<section id="switch" class="slide level1">
+<h1><code>switch</code></h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">switch</span> (expr) {
+<span class="kw">case</span> <span class="dv">1</span>:
+    <span class="co">// executed only when case 1 holds</span>
+    <span class="kw">break</span>;
+<span class="kw">case</span> <span class="dv">2</span>:
+    <span class="co">// executed only when case 2 holds</span>
+<span class="kw">case</span> <span class="dv">3</span>:
+    <span class="co">// executed whenever case 2 or 3 hold</span>
+    <span class="kw">break</span>;
+<span class="kw">default</span>:
+    <span class="co">// executed only when other cases don&#39;t hold</span>
+}</code></pre></div>
+<ul>
+<li>Execution jumps to the first matching case and continues until a <code>break</code>, <code>default</code>, or <code>switch</code> statement's closing curly brace is reached</li>
+<li>Type of <code>expr</code> can be <code>char</code>, <code>int</code>, <code>short</code>, <code>byte</code>, or <code>String</code></li>
+</ul>
+</section>
+<section id="avoid-switch" class="slide level1">
+<h1>Avoid <code>switch</code></h1>
+<p>The <code>switch</code> statement is error-prone.</p>
+<ul>
+<li><code>switch</code> considered harmful -- 97% of fall-throughs unintended</li>
+<li>Anachronism from &quot;structured assembly language&quot;, a.k.a. C (a &quot;switch&quot; is just a jump table)</li>
+</ul>
+<p>You can do without the <code>switch</code>. See</p>
+<ul>
+<li><a href="../code/basics/CharCountSwitch.java">CharCountSwitch.java</a> for a <code>switch</code> example,</li>
+<li><a href="../code/basics/CharCountIf.java">CharCountIf.java</a> for the same program using an <code>if</code> statement in place of the <code>switch</code> statement, and</li>
+<li><a href="../code/basics/CharCount.java">CharCount.java</a> for the same program using standard library utility methods.</li>
+</ul>
+</section>
+<section id="closing-thoughts" class="slide level1">
+<h1>Closing Thoughts</h1>
+<ul>
+<li>Conditional execution straightforward, but watch out for side-effects in boolean assignments.</li>
+<li>Parenthesize your expressions to make them clear to the reader and to Java.</li>
+<li>Next we'll learn loops, and we'll have all the tools we need to implement any algorithm. (Actually we already have all the tools we need to implement any algorithm in a functional style, but we need loops for imperative algorithms.)</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: true,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>
