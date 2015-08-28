@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS 1331" />
+  <title>Conditional Execution</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Conditional Execution</h1>
+    <h2 class="author">CS 1331</h2>
+    <h3 class="date"></h3>
+</section>
+
+<section id="control-flow-issues" class="slide level1">
+<h1>Control Flow Issues</h1>
+<ul>
+<li>Multiple vs. single entry (&quot;How did we get here?&quot;)</li>
+<li>Multiple vs. single exit (&quot;Where do we go from here?&quot;)</li>
+<li><code>goto</code> considered harmful (<code>goto</code> makes it hard to answer questions above)</li>
+</ul>
+</section>
+<section id="structured-programming" class="slide level1">
+<h1>Structured Programming</h1>
+<p>All algorithms expressed by:</p>
+<ul>
+<li>Sequence - one statement after another</li>
+<li>Selection - conditional execution (not conditional jumping)</li>
+<li>Iteration - loops</li>
+</ul>
+<p>No <code>goto</code></p>
+</section>
+<section id="boolean-values" class="slide level1">
+<h1>Boolean Values</h1>
+<p>Four kinds of boolean expressions:</p>
+<ul>
+<li><code>boolean</code> literals: <code>true</code> and <code>false</code></li>
+<li><code>boolean</code> variables</li>
+<li>expressions formed by combining non-<code>boolean</code> expressions with comparison operators</li>
+<li>expressions formed by combining <code>boolean</code> expressions with logical operators</li>
+</ul>
+</section>
+<section id="comparison-expressions" class="slide level1">
+<h1>Comparison Expressions</h1>
+<ul>
+<li><p>Equal to: <code>==</code>, like <span class="math inline">\(=\)</span> in math</p>
+<ul>
+<li>Remember, <code>=</code> is assignment operator, <code>==</code> is comparison operator!</li>
+</ul></li>
+<li>Not equal to: <code>!=</code>, like <span class="math inline">\(\ne\)</span> in math</li>
+<li>Greater than: <code>&gt;</code>, like <span class="math inline">\(&gt;\)</span> in math</li>
+<li><p>Greater than or equal to: <code>&gt;=</code>, like <span class="math inline">\(\ge\)</span> in math</p></li>
+</ul>
+</section>
+<section id="comparison-examples" class="slide level1">
+<h1>Comparison Examples</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dv">1</span> == <span class="dv">1</span> <span class="co">// true</span>
+<span class="dv">1</span> != <span class="dv">1</span> <span class="co">// false</span>
+<span class="dv">1</span> &gt;= <span class="dv">1</span> <span class="co">// true</span>
+<span class="dv">1</span> &gt; <span class="dv">1</span>  <span class="co">// false</span></code></pre></div>
+</section>
+<section id="logical-combinations" class="slide level1">
+<h1>Logical Combinations</h1>
+<ul>
+<li>And: <code>\&amp;\&amp;</code>, like <span class="math inline">\(\land\)</span> in math</li>
+<li><p>Or: <code>||</code>, like <span class="math inline">\(\lor\)</span> in math Examples:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(<span class="dv">1</span> == <span class="dv">1</span>) &amp;&amp;  (<span class="dv">1</span> != <span class="dv">1</span>) <span class="co">// false</span>
+(<span class="dv">1</span> == <span class="dv">1</span>) ||  (<span class="dv">1</span> != <span class="dv">1</span>) <span class="co">// true</span></code></pre></div></li>
+</ul>
+<p>Also, unary negation operator <code>!</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">!<span class="kw">true</span>     <span class="co">// false</span>
+!(<span class="dv">1</span> == <span class="dv">2</span>) <span class="co">// true</span></code></pre></div>
+</section>
+<section id="if-else-statement" class="slide level1">
+<h1><code>if-else</code> Statement</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> (*booleanExpression*)
+    <span class="co">// a single statement executed when booleanExpression is true</span>
+<span class="kw">else</span>
+    <span class="co">// a single statement executed when booleanExpression is false</span></code></pre></div>
+<ul>
+<li><em>booleanExpression</em> must be enclosed in parentheses</li>
+<li><code>else</code> not required</li>
+</ul>
+</section>
+<section id="if-else-example" class="slide level1">
+<h1><code>if-else</code> Example</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> ((num % <span class="dv">2</span>) == <span class="dv">0</span>)
+    System.<span class="fu">out.printf</span>(<span class="st">&quot;I like </span><span class="ch">%d</span><span class="st">.</span><span class="ch">%n</span><span class="st">&quot;</span>, num);
+<span class="kw">else</span>
+    System.<span class="fu">out.printf</span>(<span class="st">&quot;I&#39;m ambivalent about </span><span class="ch">%d</span><span class="st">.</span><span class="ch">%n</span><span class="st">&quot;</span>, num);</code></pre></div>
+</section>
+<section id="conditional-assignment" class="slide level1">
+<h1>Conditional Assignment</h1>
+<p><code>if-else</code> is a statement, so conditional assignment like this:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String dinner = <span class="kw">null</span>;
+<span class="kw">if</span> (temp &gt; <span class="dv">60</span>) {
+    dinner = <span class="st">&quot;grilled&quot;</span>;
+} <span class="kw">else</span> {
+    dinner = <span class="st">&quot;baked&quot;</span>;
+}</code></pre></div>
+</section>
+<section id="ternary-if-else-expression" class="slide level1">
+<h1>Ternary If-Else Expression</h1>
+<p>The ternary operator combines the above into one expression (expressions have values):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String dinner = (temp &gt; <span class="dv">60</span>) ? <span class="st">&quot;grilled&quot;</span> : <span class="st">&quot;baked&quot;</span></code></pre></div>
+</section>
+<section id="blocks" class="slide level1">
+<h1>Blocks</h1>
+<p>Enclose any number of statements in curly braces ({ ... }) to create a block, which is like a single statement.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> ((num % <span class="dv">2</span>) == <span class="dv">0</span>) {
+    System.<span class="fu">out.printf</span>(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> is even.</span><span class="ch">%n</span><span class="st">&quot;</span>, num);
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;I like even numbers.&quot;</span>);
+} <span class="kw">else</span> {
+    System.<span class="fu">out.printf</span>(<span class="st">&quot;</span><span class="ch">%d</span><span class="st"> is odd.</span><span class="ch">%n</span><span class="st">&quot;</span>, num);
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;I&#39;m ambivalent about odd numbers.&quot;</span>);
+}</code></pre></div>
+<p>Always use curly braces in control structures.</p>
+</section>
+<section id="nested-if-else" class="slide level1">
+<h1>Nested <code>if-else</code></h1>
+<p>This is hard to follow:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> (color.<span class="fu">toUpperCase</span>().<span class="fu">equals</span>(<span class="st">&quot;RED&quot;</span>)) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Redrum!&quot;</span>);
+} <span class="kw">else</span> {
+    <span class="kw">if</span> (color.<span class="fu">toLowerCase</span>().<span class="fu">equals</span>(<span class="st">&quot;yellow&quot;</span>)) {
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Submarine&quot;</span>);
+    } <span class="kw">else</span> {
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;A Lack of Color&quot;</span>);
+
+}</code></pre></div>
+</section>
+<section id="multi-way-if-else" class="slide level1">
+<h1>Multi-way <code>if-else</code></h1>
+<p>This multi-way <code>if-else</code> is equivalent, and clearer:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> (color.<span class="fu">toUpperCase</span>().<span class="fu">equals</span>(<span class="st">&quot;RED&quot;</span>)) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Redrum!&quot;</span>);
+} <span class="kw">else</span> <span class="kw">if</span> (color.<span class="fu">toLowerCase</span>().<span class="fu">equals</span>(<span class="st">&quot;yellow&quot;</span>)) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Submarine&quot;</span>);
+} <span class="kw">else</span> {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;A Lack of Color&quot;</span>);
+}</code></pre></div>
+</section>
+<section id="short-circuit-evaluation" class="slide level1">
+<h1>Short-Circuit Evaluation</h1>
+<p>Common idiom for testing an operand before using it:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> ((kids !=<span class="dv">0</span>) &amp;&amp; ((pieces / kids) &gt;= <span class="dv">2</span>))
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Each kid may have two pieces.&quot;</span>);</code></pre></div>
+<p>If <code>kids !=0</code> evaluates to <code>false</code>, then the second sub-expression is not evaluated, thus avoiding a divide-by-zero error.</p>
+<p>See <a href="../code/basics/Conditionals.java">Conditionals.java</a> for examples.</p>
+</section>
+<section id="switch" class="slide level1">
+<h1><code>switch</code></h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">switch</span> (expr) {
+<span class="kw">case</span> <span class="dv">1</span>:
+    <span class="co">// executed only when case 1 holds</span>
+    <span class="kw">break</span>;
+<span class="kw">case</span> <span class="dv">2</span>:
+    <span class="co">// executed only when case 2 holds</span>
+<span class="kw">case</span> <span class="dv">3</span>:
+    <span class="co">// executed whenever case 2 or 3 hold</span>
+    <span class="kw">break</span>;
+<span class="kw">default</span>:
+    <span class="co">// executed only when other cases don&#39;t hold</span>
+}</code></pre></div>
+<ul>
+<li>Execution jumps to the first matching case and continues until a <code>break</code>, <code>default</code>, or <code>switch</code> statement's closing curly brace is reached</li>
+<li>Type of <code>expr</code> can be <code>char</code>, <code>int</code>, <code>short</code>, <code>byte</code>, or <code>String</code></li>
+</ul>
+</section>
+<section id="avoid-switch" class="slide level1">
+<h1>Avoid <code>switch</code></h1>
+<p>The <code>switch</code> statement is error-prone.</p>
+<ul>
+<li><code>switch</code> considered harmful -- 97% of fall-throughs unintended</li>
+<li>Anachronism from &quot;structured assembly language&quot;, a.k.a. C (a &quot;switch&quot; is just a jump table)</li>
+</ul>
+<p>You can do without the <code>switch</code>. See</p>
+<ul>
+<li><a href="../code/basics/CharCountSwitch.java">CharCountSwitch.java</a> for a <code>switch</code> example,</li>
+<li><a href="../code/basics/CharCountIf.java">CharCountIf.java</a> for the same program using an <code>if</code> statement in place of the <code>switch</code> statement, and</li>
+<li><a href="../code/basics/CharCount.java">CharCount.java</a> for the same program using standard library utility methods.</li>
+</ul>
+</section>
+<section id="repeated-operations" class="slide level1">
+<h1>Repeated Operations</h1>
+<video width="720" height="480" controls>
+<source src="http://www.youtube.com/v/mXPeLctgvQI?rel=0" type="video/mp4">
+</video>
+</section>
+<section id="loops-and-iteration" class="slide level1">
+<h1>Loops and Iteration</h1>
+<p>Algorithms often call for repeated action or iteration, e.g. :</p>
+<ul>
+<li>&quot;repeat ... while (or until) some condition is true&quot; (looping) or</li>
+<li>&quot;for each element of this array/list/etc. ...&quot; (iteration)</li>
+</ul>
+</section>
+<section id="java-loopiteration-structures" class="slide level1">
+<h1>Java Loop/Iteration Structures</h1>
+<ul>
+<li><code>while</code> loop</li>
+<li><code>do-while</code> loop</li>
+<li><code>for</code> iteration statement</li>
+</ul>
+</section>
+<section id="while" class="slide level1">
+<h1><code>while</code></h1>
+<p><code>while</code> loops are pre-test loops: the loop condition is tested before the loop body is executed</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">while</span> (condition) { <span class="co">// condition is any boolean expression</span>
+      <span class="co">// loop body executes as long as condition is true</span>
+}</code></pre></div>
+</section>
+<section id="do-while" class="slide level1">
+<h1><code>do-while</code></h1>
+<p><code>do-while</code> loops are post-test loops: the loop condition is tested after the loop body is executed</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">do</span> {
+      <span class="co">// loop body executes as long as condition is true</span>
+} <span class="kw">while</span> (condition)</code></pre></div>
+<p>The body of a <code>do-while</code> loop will always execute at least once.</p>
+</section>
+<section id="for-statements" class="slide level1">
+<h1><code>for</code> Statements</h1>
+<p>The general <code>for</code> statement syntax is:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span>(initializer; condition; update) {
+     <span class="co">// body executed as long as condition is true</span>
+}</code></pre></div>
+<ul>
+<li><em>intializer</em> is a statement</li>
+<li><em>condition</em> is a boolean expression -- when <code>false</code> loop exits</li>
+<li><em>update</em> is a statement</li>
+</ul>
+</section>
+<section id="for-vs.-while" class="slide level1">
+<h1><code>for</code> vs. <code>while</code></h1>
+<p>The <code>for</code> statement:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; i++) {
+     <span class="co">// body executed as long as condition is true</span>
+}</code></pre></div>
+<p>is equivalent to:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> i = <span class="dv">0</span>
+<span class="kw">while</span> (i &lt; <span class="dv">10</span>) {
+  <span class="co">// body</span>
+  i++;
+}</code></pre></div>
+<p><code>for</code> is Java's primary iteration structure. In the future we'll see generalized versions, but for now <code>for</code> statements are used primarily to iterate through the indexes of data structures and to repeat code a particular number of times.</p>
+</section>
+<section id="simple-repetition" class="slide level1">
+<h1>Simple Repetition</h1>
+<p>And here's a simple example of repeating an action a fixed number of times:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; ++i)
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Meow!&quot;</span>);</code></pre></div>
+</section>
+<section id="iterating-with-indexes" class="slide level1">
+<h1>Iterating With Indexes</h1>
+<p>From <a href="code/basics/CharCount.java">CharCount.java</a>. We use the <code>for</code> loop's loop variable to index each character in a <code>String</code></p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> digitCount = <span class="dv">0</span>, letterCount = <span class="dv">0</span>;
+<span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; input.<span class="fu">length</span>(); ++i) {
+    <span class="dt">char</span> c = input.<span class="fu">charAt</span>(i);
+    <span class="kw">if</span> (Character.<span class="fu">isDigit</span>(c)) digitCount++;
+    <span class="kw">if</span> (Character.<span class="fu">isAlphabetic</span>(c)) letterCount++;
+}</code></pre></div>
+</section>
+<section id="multiple-loop-variables" class="slide level1">
+<h1>Multiple Loop Variables</h1>
+<p>You can have multiple loop indexes separated by commas:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String mystery = <span class="st">&quot;mnerigpaba&quot;</span>, solved = <span class="st">&quot;&quot;</span>; <span class="dt">int</span> len = mystery.<span class="fu">length</span>();
+<span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>, j = len - <span class="dv">1</span>; i &lt; len/<span class="dv">2</span>; ++i, --j) {
+    solved = solved + mystery.<span class="fu">charAt</span>(i) + mystery.<span class="fu">charAt</span>(j);
+}</code></pre></div>
+<p>Note that the loop above is one loop, not nested loops.</p>
+</section>
+<section id="loop-gotchas" class="slide level1">
+<h1>Loop Gotchas</h1>
+<p>Beware of common &quot;extra semicolon&quot; syntax error:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; ++i); <span class="co">// oops!  semicolon ends the statement</span>
+    <span class="fu">print</span>(meow);  <span class="co">// this will only execute once, not 10 times</span></code></pre></div>
+</section>
+<section id="for-statement-subtleties" class="slide level1">
+<h1><code>for</code> Statement Subtleties</h1>
+<p>Better to declare loop index in <code>for</code> to limit it's scope. Prefer:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; ++i)</code></pre></div>
+<p>to:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> i; <span class="co">// Bad.  Looop index variable visible outside loop.</span>
+<span class="kw">for</span> (i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; ++i)</code></pre></div>
+</section>
+<section id="forever" class="slide level1">
+<h1>Forever</h1>
+<p>Infinite means &quot;as long as the program is running.&quot;</p>
+<p>With <code>for</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span> (;;) {
+    <span class="co">// ever</span>
+}</code></pre></div>
+<p>and with <code>while</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">while</span> (<span class="kw">true</span>) {
+    <span class="co">// forever</span>
+}</code></pre></div>
+<p>See <a href="code/Loops.java">Loops.java</a> for loop examples.</p>
+</section>
+<section id="break-and-continue" class="slide level1">
+<h1><code>break</code> and <code>continue</code></h1>
+<p>Non-structured ways to alter loop control flow:</p>
+<ul>
+<li><code>break</code> exit the loop, possibly to a labeled location in the program</li>
+<li><code>continue</code> skip the remainder of a loop body and continue with the next iteration</li>
+</ul>
+<p>Consider the following while loop:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">boolean</span> shouldContinue = <span class="kw">true</span>;
+<span class="kw">while</span> (shouldContinue) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Enter some input (exit to quit):&quot;</span>);
+    String input = System.<span class="fu">console</span>().<span class="fu">readLine</span>();
+    <span class="fu">doSomethingWithInput</span>(input); <span class="co">// We do something with &quot;exit&quot; too.</span>
+    shouldContinue = (input.<span class="fu">equalsIgnoreCase</span>(<span class="st">&quot;exit&quot;</span>)) ? <span class="kw">false</span> : <span class="kw">true</span>;
+}</code></pre></div>
+<p>We don't test for the termination sentinal, &quot;exit,&quot; until after we do something with it. Situations like these often tempt us to use <code>break</code> ...</p>
+</section>
+<section id="breaking-out-of-a-while-loop" class="slide level1">
+<h1><code>break</code>ing out of a <code>while</code> Loop}</h1>
+<p>We could test for the sentinal and <code>break</code> before processing:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">boolean</span> shouldContinue = <span class="kw">true</span>;
+<span class="kw">while</span> (shouldContinue) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Enter some input (exit to quit):&quot;</span>);
+    String input = System.<span class="fu">console</span>().<span class="fu">readLine</span>();
+    <span class="kw">if</span> (input.<span class="fu">equalsIgnoreCase</span>(<span class="st">&quot;exit&quot;</span>)) <span class="kw">break</span>;
+    <span class="fu">doSomethingWithInput</span>(input);
+}</code></pre></div>
+<p>But it's better to use structured programming:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">boolean</span> shouldContinue = <span class="kw">true</span>;
+<span class="kw">while</span> (shouldContinue) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Enter some input (exit to quit):&quot;</span>);
+    String input = System.<span class="fu">console</span>().<span class="fu">readLine</span>();
+    <span class="kw">if</span> (input.<span class="fu">equalsIgnoreCase</span>(<span class="st">&quot;exit&quot;</span>)) {
+        shouldContinue = <span class="kw">false</span>;
+    } <span class="kw">else</span> {
+        <span class="fu">doSomethingWithInput</span>(input);
+    }
+}</code></pre></div>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: true,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: true,                // Display the page number of the current slide
+        theme: 'white', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>
