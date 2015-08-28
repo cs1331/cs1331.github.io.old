@@ -1,4 +1,4 @@
-% Conditional Execution
+% Control Structures
 % CS 1331
 
 # Control Flow Issues
