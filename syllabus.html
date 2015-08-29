@@ -3,4 +3,5 @@ layout: default
 title: CS 1331 - Syllabus
 ---
 
-{% markdown syllabus.md %}
+{% capture syllabus %}{% include syllabus.md %}{% endcapture %}
+{{ syllabus | markdownify }}
