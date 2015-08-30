@@ -1,0 +1,473 @@
+\documentclass{article}
+
+\include{common}
+
+\title{Control Structures}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Structured Programming}
+
+
+In reasoning about the flow of control to and from a statement, consider control flow issues:
+\begin{itemize}
+\item Multiple vs. single entry ("How did we get here?")
+\item Multiple vs. single exit ("Where do we go from here?")
+\item {\tt goto} considered harmful ({\tt goto} makes it hard to answer questions above)
+\end{itemize}
+
+Structured programming: block structure, single entry, single exit, no {\tt goto}.  All algorithms expressed by:
+\begin{itemize}
+\item Sequence - one statement after another
+\item Selection - conditional execution (not conditional jumping)
+\item Iteration - loops
+\end{itemize}
+
+
+\section{Boolean Values}
+
+
+In Java, boolean values have the {\tt boolean} type.  Four kinds of boolean expressions:
+\begin{itemize}
+\item {\tt boolean} literals: {\tt true} and {\tt false}
+\item {\tt boolean} variables
+\item expressions formed by combining non-{\tt boolean} expressions with comparison operators
+\item expressions formed by combining {\tt boolean} expressions with logical operators
+\end{itemize}
+
+
+
+
+\section{Boolean Expressions Formed From Comparisons}
+
+
+Simple boolean expressions formed with comparison operators:
+\begin{itemize}
+\item Equal to: {\tt ==}, like $=$ in math
+  \begin{itemize}
+    \item Remember, {\tt =} is assignment operator, {\tt ==} is comparison operator!
+  \end{itemize}
+\item Not equal to: {\tt !=}, like $\ne$ in math
+\item Greater than: {\tt >}, like $>$ in math
+\item Greater than or equal to: {\tt >=}, like $\ge$ in math
+\item ...
+\end{itemize}
+Examples:
+\begin{lstlisting}[language=Java]
+1 == 1 // true
+1 != 1 // false
+1 >= 1 // true
+1 > 1  // false
+\end{lstlisting}
+
+
+\section{Boolean Expressions Formed From Logical Operators}
+
+
+Simple boolean expressions can be combined to form larger expressions using:
+\begin{itemize}
+\item And: {\tt \&\&}, like $\land$ in math
+\item Or: {\tt ||}, like $\lor$ in math
+\end{itemize}
+Examples:
+\begin{lstlisting}[language=Java]
+(1 == 1) &&  (1 != 1) // false
+(1 == 1) ||  (1 != 1) // true
+\end{lstlisting}
+
+Also, unary negation operator {\tt !}:
+
+\begin{lstlisting}[language=Java]
+!true     // false
+!(1 == 2) // true
+\end{lstlisting}
+
+
+
+\section{The {\tt if-else} Statement}
+
+
+Conditional execution:
+\begin{lstlisting}[language=Java,escapechar=`]
+if (`{\it booleanExpression}`)
+    // a single statement executed when booleanExpression is true
+else
+    // a single statement executed when booleanExpression is false
+\end{lstlisting}
+
+\begin{itemize}
+\item {\it booleanExpression} must be enclosed in parentheses
+\item {\tt else} not required
+\end{itemize}
+
+Example:
+\begin{lstlisting}[language=Java]
+if ((num % 2) == 0)
+    System.out.printf("I like %d.%n", num);
+else
+    System.out.printf("I'm ambivalent about %d.%n", num);
+\end{lstlisting}
+
+
+\section{Ternary If-Else Expression}
+
+
+The ordinary {\tt if-else} control structure is a statement, leading
+to conditional assignment code like this:
+\begin{lstlisting}[language=Java]
+String dinner = null;
+if (temp > 60) {
+    dinner = "grilled";
+} else {
+    dinner = "baked";
+}
+\end{lstlisting}
+
+The ternary operator combines the above into one expression (recall
+that expressions have values):
+
+\begin{lstlisting}[language=Java]
+String dinner = (temp > 60) ? "grilled" : "baked"
+\end{lstlisting}
+
+
+
+\section{Blocks}
+
+
+Java is block-structured.  You can enclose any number
+of statements in curly braces (\{ ... \}) to create a block.  Blocks
+are like single statements (not expressions - they don't have values).
+\begin{lstlisting}[language=Java]
+if ((num % 2) == 0) {
+    System.out.printf("%d is even.%n", num);
+    System.out.println("I like even numbers.");
+} else {
+    System.out.printf("%d is odd.%n", num);
+    System.out.println("I'm ambivalent about odd numbers.");
+}
+\end{lstlisting}
+The Java conventions recommend using braces always, even for single
+statements.  A very common error is adding statements to an if-branch
+and forgetting to add braces.
+
+
+\section{Multi-way {\tt if-else} Statements}
+
+
+This is hard to follow:
+\begin{lstlisting}[language=Java]
+if (color.toUpperCase().equals("RED")) {
+    System.out.println("Redrum!");
+} else {
+    if (color.toLowerCase().equals("yellow")) {
+        System.out.println("Submarine");
+    } else {
+        System.out.println("A Lack of Color");
+    }
+}
+\end{lstlisting}
+
+This multi-way {\tt if-else} is equivalent, and clearer:
+
+\begin{lstlisting}[language=Java]
+if (color.toUpperCase().equals("RED")) {
+    System.out.println("Redrum!");
+} else if (color.toLowerCase().equals("yellow")) {
+    System.out.println("Submarine");
+} else {
+    System.out.println("A Lack of Color");
+}
+\end{lstlisting}
+
+
+\section{Short-Circuit Evaluation}
+
+Here's a common idiom for testing an operand before using it:
+\begin{lstlisting}[language=Java]
+if ((kids !=0) && ((pieces / kids) >= 2))
+    System.out.println("Each kid may have two pieces.");
+\end{lstlisting}
+
+In this example Java uses short-circuit evaluation.  If
+\begin{quote}
+{\tt kids !=0}\\
+\end{quote}
+evaluates to {\tt false}, then the second sub-expression is not evaluated, thus avoiding a divide-by-zero error.
+
+
+Note: You can force a complete evaluation by using {\tt \&} or {\tt |}, for example if you have side effects you want to ensure happen in the second expression.  We mention this fact for completeness but implore you not to write such code.\\
+
+See \href{\code/basics/Conditionals.java}{Conditionals.java} for examples.
+
+
+
+\section{The {\tt switch} Statement}
+
+Java provides {\tt switch} statement for multi-way branching.
+
+\begin{lstlisting}[language=Java]
+switch (expr) {
+case 1:
+    // executed only when case 1 holds
+    break;
+case 2:
+    // executed only when case 2 holds
+case 3:
+    // executed whenever case 2 or 3 hold
+    break;
+default:
+    // executed only when other cases don't hold
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item Execution jumps to the first matching case and continues until a {\tt break}, {\tt default}, or {\tt switch} statement's closing curly brace is reached
+\item Type of {\tt expr} can be {\tt char}, {\tt int}, {\tt short}, {\tt byte}, or {\tt String}
+\item In example above, what is type of {\tt expr}?
+\end{itemize}
+
+
+\section{Avoid the {\tt switch} Statement}
+
+The {\tt switch} statement is error-prone.
+\begin{itemize}
+\item {\tt switch} considered harmful.  97\% of fall-throughs
+  unwanted\footnote{Peter van der Linden, {\it Deep C Secrets}}
+\item Anachronism from ``structured assembly language'', a.k.a. C (a {\tt switch} is just a jump table)
+\end{itemize}
+
+You can do without the switch statement.  See
+
+\begin{itemize}
+\item \href{\code/basics/CharCountSwitch.java}{CharCountSwitch.java} for a {\tt switch} example,
+\item \href{\code/basics/CharCountIf.java}{CharCountIf.java} for the same program using an {\tt if} statement in place of the {\tt switch} statement, and
+\item  \href{\code/basics/CharCount.java}{CharCount.java} for the same program using standard library utility methods.
+\end{itemize}
+
+
+
+\section{Loops and Iteration}
+
+
+Algorithms often call for repeated action or iteration, e.g. :
+\begin{itemize}
+\item ``repeat ... while (or until) some condition is true'' (looping) or
+\item ``for each element of this array/list/etc. ...'' (iteration)
+\end{itemize}
+
+Java provides three iteration structures:
+\begin{itemize}
+\item {\tt while} loop
+\item {\tt do-while} loop
+\item {\tt for} iteration statement
+\end{itemize}
+
+
+
+\section{{\tt while} and {\tt do-while}}
+
+{\tt while} loops are pre-test loops: the loop condition is tested before the loop body is executed
+\begin{lstlisting}[language=Java]
+while (condition) { // condition is any boolean expression
+      // loop body executes as long as condition is true
+}
+\end{lstlisting}
+
+{\tt do-while} loops are post-test loops: the loop condition is tested after the loop body is executed
+\begin{lstlisting}[language=Java]
+do {
+      // loop body executes as long as condition is true
+} while (condition)
+.\end{lstlisting}
+The body of a {\tt do-while} loop will always execute at least once.
+
+
+\section{{\tt for} Statements}
+
+
+The general {\tt for} statement syntax is:
+\begin{lstlisting}[language=Java, escapechar=`]
+for(`{\it initializer}`; `{\it condition}`; `{\it update}`) {
+     // body executed as long as condition is true
+}
+\end{lstlisting}
+\begin{itemize}
+\item {\it intializer} is a statement
+\begin{itemize}
+\item Use this statement to initialize value of the loop variable(s)
+\end{itemize}
+\item {\it condition} is tested before executing the loop body to determine whether the loop body should be executed.  When false, the loop exits just like a while loop
+\item {\it update} is a statement
+\begin{itemize}
+\item Use this statement to update the value of the loop variable(s) so that the {\it condition} converges to {\tt false}
+\end{itemize}
+\end{itemize}
+
+
+\section{{\tt for} Statement vs. {\tt while} Statement}
+
+
+The {\tt for} statement:
+\begin{lstlisting}[language=Java,escapechar=`]
+for(`\framebox{int i = 0}`; `\colorbox{gray}{i < 10}`; `\colorbox{yellow}{i++}`) {
+     // body executed as long as condition is true
+}
+\end{lstlisting}
+
+is equivalent to:
+\begin{lstlisting}[language=Java,escapechar=`]
+
+`\framebox{int i = 0}`
+while (`\colorbox{gray}{i < 10}`) {
+  // body
+  `\colorbox{yellow}{i++}`;
+}
+\end{lstlisting}
+
+
+{\tt for} is Java's primary iteration structure.  In the future we'll see generalized versions, but for now {\tt for} statements are used primarily to iterate through the indexes of data structures and to repeat code a particular number of times.
+
+
+
+\section{{\tt for} Statement Examples}
+
+
+Here's an example from  \href{\code/basics/CharCount.java}{CharCount.java}.  We use the {\tt for} loop's index variable to visit each character in a {\tt String} and count the digits and letters:
+\begin{lstlisting}[language=Java]
+int digitCount = 0, letterCount = 0;
+for (int i = 0; i < input.length(); ++i) {
+    char c = input.charAt(i);
+    if (Character.isDigit(c)) digitCount++;
+    if (Character.isAlphabetic(c)) letterCount++;
+}
+\end{lstlisting}
+
+And here's a simple example of repeating an action a fixed number of times:
+\begin{lstlisting}[language=Java]
+for (int i = 0; i < 10; ++i)
+        System.out.println("Meow!");
+\end{lstlisting}
+
+
+
+
+\section{{\tt for} Statement Subtleties}
+
+
+Better to declare loop index in {\tt for} to limit it's scope.  Prefer:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+for (int i = 0; i < 10; ++i)
+\end{lstlisting}
+\vspace{-.1in}
+to:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+int i; // Bad.  Looop index variable visible outside loop.
+for (i = 0; i < 10; ++i)
+\end{lstlisting}
+
+You can have multiple loop indexes separated by commas:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+String mystery = "mnerigpaba", solved = ""; int len = mystery.length();
+for (int i = 0, j = len - 1; i < len/2; ++i, --j) {
+    solved = solved + mystery.charAt(i) + mystery.charAt(j);
+}
+\end{lstlisting}
+
+Note that the loop above is one loop, not nested loops.\\
+\vspace{.025in}
+Beware of common ``extra semicolon'' syntax error:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+for (int i = 0; i < 10; ++i); // oops!  semicolon ends the statement
+    print(meow);  // this will only execute once, not 10 times
+\end{lstlisting}
+
+
+\section{Forever}
+
+Note that in the context of programming, infinite means ``as long as the program is running.''
+Here are two idioms for infinite loops.  First with {\tt for}:
+\begin{lstlisting}[language=Java]
+for (;;) {
+    // ever
+}
+\end{lstlisting}
+
+and with {\tt while}:
+\begin{lstlisting}[language=Java]
+while (true) {
+    // forever
+}
+\end{lstlisting}
+
+Infinite loops are useful for things like game loops and operating system routines that poll input buffers or wait for incoming network connections.  In both of these cases the loop is inteded to run for the duration of the program.
+
+See \href{\code/Loops.java}{Loops.java} for loop examples.
+
+
+
+\section{{\tt break} and {\tt continue}}
+
+
+Java provides two non-structured-programming ways to alter loop control flow:
+\begin{itemize}
+\item {\tt break} exits the loop, possibly to a labeled location in the program
+\item {\tt continue} skips the remainder of a loop body and continues with the next iteration
+\end{itemize}
+
+Consider the following while loop:
+\begin{lstlisting}[language=Java]
+boolean shouldContinue = true;
+while (shouldContinue) {
+    System.out.println("Enter some input (exit to quit):");
+    String input = System.console().readLine();
+    doSomethingWithInput(input); // We do something with "exit" too.
+    shouldContinue = (input.equalsIgnoreCase("exit")) ? false : true;
+}
+\end{lstlisting}
+We don't test for the termination sentinal, ``exit,'' until after we do something with it.  Situations like these often tempt us to use {\tt break} ...
+
+
+\section{{\tt break}ing out of a {\tt while} Loop}
+
+\vspace{-.05in}
+We could test for the sentinal and {\tt break} before processing:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+boolean shouldContinue = true;
+while (shouldContinue) {
+    System.out.println("Enter some input (exit to quit):");
+    String input = System.console().readLine();
+    if (input.equalsIgnoreCase("exit")) break;
+    doSomethingWithInput(input);
+}
+\end{lstlisting}
+\vspace{-.1in}
+But it's better to use structured programming:
+\vspace{-.05in}
+\begin{lstlisting}[language=Java]
+boolean shouldContinue = true;
+while (shouldContinue) {
+    System.out.println("Enter some input (exit to quit):");
+    String input = System.console().readLine();
+    if (input.equalsIgnoreCase("exit")) {
+        shouldContinue = false;
+    } else {
+        doSomethingWithInput(input);
+    }
+}
+\end{lstlisting}
+
+
+\end{document}
+
+
+
+\end{document}
