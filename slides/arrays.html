@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="arrays" class="slide level1">
+<h1>Arrays</h1>
+</section>
+<section id="modeling-aggregates" class="slide level1">
+<h1>Modeling Aggregates</h1>
+<p>As you've seen, you can get pretty far with &quot;scalar&quot; data. But many phenomena we wish to model computationally are aggregates, or collections, for example:</p>
+<ul>
+<li>scores on assignments in a class,</li>
+<li>word counts in a document, or</li>
+<li>pixel colors in a bitmap image.</li>
+</ul>
+<p>Today we'll learn Java's most basic facility for modeling aggregates: arrays.</p>
+</section>
+<section id="java-arrays" class="slide level1">
+<h1>Java Arrays</h1>
+<p>Java Arrays ():</p>
+<ul>
+<li>are objects,</li>
+<li>are dynamically allocated (e.g., with operator <code>new</code>), and</li>
+<li>have a fixed number of elements of the same type.</li>
+</ul>
+</section>
+<section id="creating-arrays" class="slide level1">
+<h1>Creating Arrays</h1>
+<p>Consider the following <em>array creation expression</em> <a href="http://docs.oracle.com/javase/specs/jls/se8/html/jls-10.html#jls-10.3">JLS 10.3</a>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span>[] scores = <span class="kw">new</span> <span class="dt">double</span>[<span class="dv">5</span>];</code></pre></div>
+<p>This declaration:</p>
+<ul>
+<li>allocates a 5-element array,</li>
+<li>the <code>5</code> in the example above can be any expression that is unary promotable to an <code>int</code> <a href="http://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.6.1">JLS 5.6.1</a></li>
+<li>stores the address of this new array in <code>scores</code>, and</li>
+<li>initializes each value to it's default value (<code>0</code> for numeric types, <code>false</code> for <code>boolean</code> types, and <code>null</code> for references <a href="http://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.5">JLS 4.12.5</a>.</li>
+</ul>
+</section>
+<section id="array-declarations" class="slide level1">
+<h1>Array Declarations</h1>
+<p>The preceding array definition</p>
+<pre><code>double[] scores = new double[5];</code></pre>
+<p>could be split into a declaration and initialization:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span>[] scores;
+scores = <span class="kw">new</span> <span class="dt">double</span>[<span class="dv">5</span>];</code></pre></div>
+<p>Can put the <code>[]</code> on the type or the variable. These two declarations are equivalent:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span>[] scores;
+<span class="dt">double</span> scores[];</code></pre></div>
+<p>Better style to put the <code>[]</code> on the type.</p>
+</section>
+<section id="mixed-declarations" class="slide level1">
+<h1>Mixed Declarations</h1>
+<p>Can mix array and variable declarations when element type same as variable type. The declaration line:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span> scores[], average;</code></pre></div>
+<p>creates</p>
+<ul>
+<li>an array of <code>double</code> reference named <code>scores</code>, and</li>
+<li>a <code>double</code> variable named <code>average</code></li>
+</ul>
+<p>What's the size of the <code>scores</code> array declared above?</p>
+</section>
+<section id="array-objects" class="slide level1">
+<h1>Array Objects</h1>
+<p>After the definition:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span>[] scores = <span class="kw">new</span> <span class="dt">double</span>[<span class="dv">5</span>];</code></pre></div>
+<p><code>scores</code> points to an array object that can be visualized as:</p>
+<figure>
+<img src="array1d.png" alt="1-d Array" /><figcaption>1-d Array</figcaption>
+</figure>
+</section>
+<section id="indices-and-size" class="slide level1">
+<h1>Indices and Size</h1>
+<figure>
+<img src="array1d.png" alt="1-d Array" /><figcaption>1-d Array</figcaption>
+</figure>
+<ul>
+<li>The <em>indexes</em> of <code>scores</code> range from 0 to 4.</li>
+<li>Size of array stored in a <code>public final</code> instance variable named <code>length</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">scores.<span class="fu">length</span> == <span class="dv">5</span>;</code></pre></div>
+<p>What is the type and value of the expression above?</p>
+</section>
+<section id="array-elements" class="slide level1">
+<h1>Array Elements</h1>
+<p>Array elements addressed with <code>int</code>-promotable expression in square brackets (<code>[]</code>)</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span>[] scores = <span class="kw">new</span> <span class="dt">double</span>[<span class="dv">5</span>];
+scores[<span class="dv">0</span>] = <span class="dv">89</span>;
+scores[<span class="dv">1</span>] = <span class="dv">100</span>;
+scores[<span class="dv">2</span>] = <span class="fl">95.6</span>;
+scores[<span class="dv">3</span>] = <span class="fl">84.5</span>;
+scores[<span class="dv">4</span>] = <span class="dv">91</span>;
+scores[scores.<span class="fu">length</span> - <span class="dv">1</span>] = <span class="fl">99.2</span>;</code></pre></div>
+<p>Will this line compile? If so, what will happen at runtime?</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">scores[scores.<span class="fu">length</span>] = <span class="dv">100</span>;</code></pre></div>
+</section>
+<section id="initializing-arrays" class="slide level1">
+<h1>Initializing Arrays</h1>
+<p>You can provide initial values for (small) arrays</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String[] validSuits = {<span class="st">&quot;diamonds&quot;</span>, <span class="st">&quot;clubs&quot;</span>, <span class="st">&quot;hearts&quot;</span>,<span class="st">&quot;spades&quot;</span>};</code></pre></div>
+<ul>
+<li>What is <code>validSuits.length</code>?</li>
+<li>What is <code>validSuits[1]</code>?</li>
+</ul>
+<p>You can also use a loop to initialize the values of an array:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span>[] squares = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">5</span>];
+<span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; squares.<span class="fu">length</span>; ++i) {
+    squares[i] = i*i;
+}</code></pre></div>
+<p>What is <code>squares[4]</code>?</p>
+</section>
+<section id="traversing-arrays" class="slide level1">
+<h1>Traversing Arrays</h1>
+<p>Arrays and <code>for</code> go hand-in-hand:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span>[] scores = <span class="kw">new</span> <span class="dt">double</span>[<span class="dv">5</span>];
+<span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">5</span>; ++i) {
+    System.<span class="fu">out.printf</span>(<span class="st">&quot;scores[</span><span class="ch">%d</span><span class="st">] = </span><span class="ch">%.2f%n</span><span class="st">&quot;</span>, i, scores[i]);
+}</code></pre></div>
+<p>Can also use the &quot;enhanced&quot; for:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span> (<span class="dt">double</span> score: scores) {
+    System.<span class="fu">out</span>.<span class="fu">println</span>(score);
+}</code></pre></div>
+<p>Read the enhanced for as &quot;for each element in array ...&quot;.</p>
+<p>Why use for-each instead of traditional for? ...</p>
+</section>
+<section id="for-versus-for-each" class="slide level1">
+<h1><code>for</code> Versus <code>for</code>-each</h1>
+<p>If you don't need the index, use the enhanced for loop.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span> sum = <span class="fl">0.0</span>;
+<span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; scores.<span class="fu">length</span>; ++i) {
+    sum += scores[i];
+}</code></pre></div>
+<ul>
+<li><code>scores.length</code> is used only for bounding the array traversal</li>
+<li><code>i</code> is only used for sequential array access.</li>
+</ul>
+<p>Those are two things we can mess up.</p>
+</section>
+<section id="enhanced-for" class="slide level1">
+<h1>Enhanced <code>for</code></h1>
+<p>The enhanced for loop is cleaner:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span> sum = <span class="fl">0.0</span>;
+<span class="kw">for</span> (<span class="dt">double</span> score: scores) {
+    sum += score;
+}</code></pre></div>
+<p>Also note how our naming conventions help to make the code clear. You can read the loop above as &quot;for each score in scores&quot;.</p>
+</section>
+<section id="array-gotchas" class="slide level1">
+<h1>Array Gotchas</h1>
+<p>Because arrays are allocated dynamically, this will compile:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span>[] scores = <span class="kw">new</span> <span class="dt">double</span>[-<span class="dv">5</span>];</code></pre></div>
+<p>but will produce an error at run-time:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Exception in thread <span class="st">&quot;main&quot;</span> java.<span class="fu">lang</span>.<span class="fu">NegativeArraySizeException</span>
+        at ArrayBasics.<span class="fu">main</span>(ArrayBasics.<span class="fu">java</span>:<span class="dv">4</span>)</code></pre></div>
+<p>Array access expressions are evaluated and checked at run-time. Negative indexes like:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">scores[-<span class="dv">1</span>] = <span class="dv">100</span>;</code></pre></div>
+<p>produce:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Exception in thread <span class="st">&quot;main&quot;</span> java.<span class="fu">lang</span>.<span class="fu">ArrayIndexOutOfBoundsException</span>: -<span class="dv">1</span>
+        at ArrayBasics.<span class="fu">main</span>(ArrayBasics.<span class="fu">java</span>:<span class="dv">23</span>)</code></pre></div>
+</section>
+<section id="array-parameters" class="slide level1">
+<h1>Array Parameters</h1>
+<p>We've already seen an array parameter:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args)</code></pre></div>
+<p>We can use this array just like we use any other array.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Shout {
+
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+        <span class="kw">for</span> (String arg: args) {
+            System.<span class="fu">out</span>.<span class="fu">print</span>(arg.<span class="fu">toUpperCase</span>() + <span class="st">&quot; &quot;</span>);
+
+        System.<span class="fu">out</span>.<span class="fu">println</span>();
+
+}</code></pre></div>
+<p>See also <a href="code/arrays/CourseAverage.java">CourseAverage.java</a></p>
+</section>
+<section id="variable-arity-parameters" class="slide level1">
+<h1>Variable Arity Parameters</h1>
+<ul>
+<li>The <em>arity</em> of a method is its number of formal parameters.</li>
+<li>The last parameter to a method may be a <em>variable arity parameter</em>, a.k.a. <em>var args</em> parameter <a href="http://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html#jls-8.4.1">JLS 8.4.1</a>, whose syntax is simply to add an ellipse (<code>...</code>) after the type name.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">max</span>(<span class="dt">int</span> <span class="kw">... </span>numbers)</code></pre></div>
+</section>
+<section id="accessing-var-args-parameters" class="slide level1">
+<h1>Accessing Var Args Parameters</h1>
+<p>Var args parameter is an array inside the method.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">max</span>(<span class="dt">int</span> <span class="kw">... </span>numbers) {
+    <span class="dt">int</span> max = numbers[<span class="dv">0</span>];
+    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; numbers.<span class="fu">length</span>; ++i) {
+        <span class="kw">if</span> (numbers[i] &gt; max) max = number;
+    }
+    <span class="kw">return</span> max;
+}</code></pre></div>
+</section>
+<section id="multidimensional-arrays" class="slide level1">
+<h1>Multidimensional Arrays</h1>
+<p>You can create multidimensional arrays by adding additional square brackets for dimensions and sizes.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">char</span>[][] grid;</code></pre></div>
+<ul>
+<li>Declares a 2-dimensional array of <code>char</code></li>
+<li>As with one-dimensinal arrays, <code>char</code> is the element type</li>
+<li>Each element of <code>grid</code>, which is indexed by two <code>int</code> expressions, is a <code>char</code> variable</li>
+</ul>
+</section>
+<section id="initializing-2d-arrays" class="slide level1">
+<h1>Initializing 2D Arrays</h1>
+<p>With <code>new</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">grid = <span class="kw">new</span> <span class="dt">char</span>[<span class="dv">10</span>][<span class="dv">10</span>];</code></pre></div>
+</section>
+<section id="initializing-2d-arrays---literally" class="slide level1">
+<h1>Initializing 2D Arrays - Literally</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">char</span>[][] grid = {{&#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;},
+                 {&#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;},
+                 {&#39; &#39;, &#39;*&#39;, &#39;*&#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39;*&#39;, &#39;*&#39;, &#39; &#39;},
+                 {&#39; &#39;, &#39;*&#39;, &#39;*&#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39;*&#39;, &#39;*&#39;, &#39; &#39;},
+                 {&#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39;*&#39;, &#39;*&#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;},
+                 {&#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39;*&#39;, &#39;*&#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;},
+                 {&#39; &#39;, &#39;*&#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39;*&#39;, &#39; &#39;},
+                 {&#39; &#39;, &#39; &#39;, &#39;*&#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39;*&#39;, &#39; &#39;, &#39; &#39;},
+                 {&#39; &#39;, &#39; &#39;, &#39; &#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;},
+                 {&#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;}};</code></pre></div>
+<p>A 2-d array is an array of 1-d arrays</p>
+</section>
+<section id="visualizing-2d-arrays" class="slide level1">
+<h1>Visualizing 2D Arrays</h1>
+<p><code>grid</code> array can be visualized as a 2-d grid of cells.</p>
+<figure>
+<img src="array2d.png" alt="" />
+</figure>
+<p>Individual element addressed by supplying two indices:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">grid[<span class="dv">3</span>][<span class="dv">2</span>] == &#39;*&#39;; <span class="co">// true</span></code></pre></div>
+</section>
+<section id="traversing-2d-arrays" class="slide level1">
+<h1>Traversing 2D Arrays</h1>
+<p>Traverse 2-dimensional array by nesting loops. Key is to use the right <code>length</code>s. Row-major traversal:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span> (<span class="dt">int</span> row = <span class="dv">0</span>; row &lt; grid.<span class="fu">length</span>; ++row) {
+    <span class="kw">for</span> (<span class="dt">int</span> col = <span class="dv">0</span>; col &lt; grid[row].<span class="fu">length</span>; ++col) {
+        System.<span class="fu">out</span>.<span class="fu">print</span>(grid[row][col]);
+    }
+    System.<span class="fu">out</span>.<span class="fu">println</span>();
+}</code></pre></div>
+<p>Column-major traversal:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span> (<span class="dt">int</span> col = <span class="dv">0</span>; col &lt; grid[<span class="dv">0</span>].<span class="fu">length</span>; ++col) {
+    <span class="kw">for</span> (<span class="dt">int</span> row = <span class="dv">0</span>; row &lt; grid.<span class="fu">length</span>; ++row) {
+        System.<span class="fu">out</span>.<span class="fu">print</span>(grid[row][col]);
+    }
+    System.<span class="fu">out</span>.<span class="fu">println</span>();
+}</code></pre></div>
+<p>See <a href="code/arrays/Smiley.java">Smiley.java</a></p>
+</section>
+<section id="closing-thoughts" class="slide level1">
+<h1>Closing Thoughts</h1>
+<ul>
+<li>Arrays are our first &quot;collection classes&quot; (but are not Java &quot;Collections&quot; classes).</li>
+<li>Arrays are objects, so array objects are created with operator <code>new</code> and array variables can have the value <code>null</code>.</li>
+<li>Arrays have sugar to add convenience and make them syntactically similar to C's arrays.</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: true,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: 'white', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>
