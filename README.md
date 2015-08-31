@@ -8,5 +8,5 @@ Slide source is in Markdown. We use [Pandoc](http://pandoc.org/) to  [produce th
 
 ```sh
 $ cd slides
-$ pandoc -s --mathjax -i -t revealjs slides.md -o slides.html
+$ pandoc -s --mathjax -t revealjs slides.md -o slides.html -V theme=white
 ```
