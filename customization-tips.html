@@ -29,7 +29,7 @@ export PATH=~/bin:$PATH
 
 Download <a href="resources/checkstyle-6.2.2.jar">checkstyle-6.2.2.jar</a> to your <code>~/bin</code> directory. Create a file named <code>checkstyle</code> in your <code>~/bin</code> directory with the following contents:
 
-<pre class="code literal-block">
+<pre>
 #/usr/bin/env bash
 
 java -jar ~/bin/checkstyle-6.2.2.jar "$@"
@@ -37,14 +37,14 @@ java -jar ~/bin/checkstyle-6.2.2.jar "$@"
 
 Then make it executable:
 
-<pre class="code literal-block">
+<pre class="terminal">
 $ cd bin
 $ chmod +x checkstyle
 </pre>
 
 Now you can run checkstyle on any Java file like this:
 
-<pre class="code literal-block">
+<pre class="terminal">
 $ checkstyle Foo.java
 Audit done. Errors (potential points off):
 0
