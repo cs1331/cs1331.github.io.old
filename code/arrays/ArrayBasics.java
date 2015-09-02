@@ -2,13 +2,6 @@ import java.util.Arrays;
 
 public class ArrayBasics {
 
-    class Dog {
-        public void speak() {
-            System.out.println("Woof, woof!");
-        }
-    }
-
-
     public static double[][] scalarMult(double x, double[][] a) {
         double[][] result = a; // new double[a.length][a[0].length];
         for (int i = 0; i < a.length; i++) {
