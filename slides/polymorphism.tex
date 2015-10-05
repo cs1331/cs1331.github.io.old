@@ -550,28 +550,52 @@ We've now seen two kinds of polymorphism:
 \item Subtype polymorphism (overriding methods in subtypes).
 \end{itemize}
 
-{\it Subtype polymorphism} is typically regarded as the core feature of OOP.  Polymorphism makes it possible to reuse {\it concepts} in a way that makes programs extensible without requiring rewriting existing code.\\
+{\it Subtype polymorphism} is core feature of OOP.  Polymorphism makes it possible to reuse {\it concepts} in a way that makes programs extensible without requiring rewriting existing code - this is the {\it open-closed principle}.\\
 \vspace{.1in}
 In the next block we'll see one more kind of polymorphism: type parameter polymorphism, or {\it parametric polymorphism}.
 \end{frame}
 %------------------------------------------------------------------------
 
-
 %------------------------------------------------------------------------
-\begin{frame}[fragile]{Programming Exercise}
+\begin{frame}[fragile]{Object-oriented Design}
 
-
-Expand on the {\tt Animal} and {\tt Dog} exercise by making the following changes:
+With encapsulation, inheritance, and polymorphism we have all the language features we need to employ three important object-oriented design principles:
 \begin{itemize}
-\item Make the {\tt speak} method in {\tt Animal} abstract.  What additional change to {\tt Animal} will you have to make?
-\item Add a {\tt Cat} class which overrides {\tt speak} appropriately.
-\item Create a {\tt Zoo} class that is just like {\tt Kennel} except that it
- maintains an array of {\tt Animal} (instead of {\tt Dog})
+\item {\bf S}ingle responsiblity principle: a module should only contain code related to the definition of the module
+  \begin{itemize}
+    \item {\tt Employee} classes contain only employee-related code, validation code is in utility class
+  \end{itemize}
+\item {\bf O}pen-closed principle: open for extension, closed for modification
+  \begin{itemize}
+    \item Can add new {\tt Employee} subclasses without changing other classes in the {\tt Employee} hierarchy or classes that use {\tt Employee}s, such as {\tt Company}
+  \end{itemize}
+\item {\bf L}liskov substitution principle: instances of subtypes should be substitutable wherever instances of supertypes are expected
+  \begin{itemize}
+    \item A square is not a rectangle in an OO sense, but both are 2-D shapes
+  \end{itemize}
 \end{itemize}
 
+In CS 2340 you'll learn several more OO design principles and several patterns that employ them.
 
 \end{frame}
 %------------------------------------------------------------------------
+
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Programming Exercise}
+
+
+%% Expand on the {\tt Animal} and {\tt Dog} exercise by making the following changes:
+%% \begin{itemize}
+%% \item Make the {\tt speak} method in {\tt Animal} abstract.  What additional change to {\tt Animal} will you have to make?
+%% \item Add a {\tt Cat} class which overrides {\tt speak} appropriately.
+%% \item Create a {\tt Zoo} class that is just like {\tt Kennel} except that it
+%%  maintains an array of {\tt Animal} (instead of {\tt Dog})
+%% \end{itemize}
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
 
 
 % %------------------------------------------------------------------------
