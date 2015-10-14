@@ -156,31 +156,6 @@ Note that the for-each loop implicitly uses an iterator.
 
 \end{frame}
 %------------------------------------------------------------------------
-%------------------------------------------------------------------------
-\begin{frame}[fragile]{Primitives in Collections}
-
-{\tt ArrayList}s can only hold reference types.  So you must use wrapper classes for primitives:
-\begin{lstlisting}[language=Java]
-  ArrayList ints = new ArrayList();
-  ints.add(new Integer(42));
-\end{lstlisting}
-Java auto-boxes primitives when adding to a collection:
-\begin{lstlisting}[language=Java]
-  ints.add(99);
-\end{lstlisting}
-But auto-unboxing can't be done when retrieving from an untyped collection:
-\begin{lstlisting}[language=Java]
-  int num = ints.get(0); // won't compile
-\end{lstlisting}
-The old way to handle this with untyped collections is to cast it:
-\begin{lstlisting}[language=Java]
-int num = (Integer) ints.get(0); // auto-unboxing on assignment to int
-\end{lstlisting}
-We'll see a better way to handle this with generics.
-
-See \link{\code/collections/ArrayListPrimitivesDemo.java}{ArrayListPrimitivesDemo.java} for more.
-\end{frame}
-%------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{The {\tt equals(Object)} Method and Collections}
