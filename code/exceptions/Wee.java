@@ -1,17 +1,16 @@
 public class Wee {
 
-    static void bar() { // throws Throwable {
+    static void bar() throws Throwable {
         throw new RuntimeException("Wee!");
     }
 
-    static void foo() {
+    static void foo() throws Throwable {
         bar();
         System.out.println("Foo!");
 
     }
 
-    public static void main(String[] args) {//throws Throwable {
-        // foo();
+    public static void main(String[] args) {
         try {
             foo();
             System.out.println("After the foo() call.");
