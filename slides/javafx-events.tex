@@ -114,7 +114,7 @@ A typical application will use as its root node a
 \begin{itemize}
   \item \link{http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html}{Group}, typically used for graphics and animation components,
 \item a \link{http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Region.html}{Region} class for nodes that can be resized and styled with CSS (like UI controls or layout panes), or
-\item a \link{http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html}{Pane} sublclass for laying out children according to some layout policy.
+\item a \link{http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html}{Pane} subclass for laying out children according to some layout policy.
 \end{itemize}
 
 \end{frame}
@@ -269,7 +269,7 @@ public interface EventHandler<T extends Event>
 %------------------------------------------------------------------------
 \begin{frame}[fragile]{Our Button Event Handler}
 
-Consider this alternate syntax for setting an event handler for our button (just to reinforce that a lambda expression is just syntax sugar for creating anonymous inner class instances of functional interfaces):
+Consider this alternative syntax for setting an event handler for our button (just to reinforce that a lambda expression is just syntax sugar for creating anonymous inner class instances of functional interfaces):
 \begin{lstlisting}[language=Java]
         incButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
