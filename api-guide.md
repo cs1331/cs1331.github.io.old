@@ -53,7 +53,7 @@ Scroll further down on the page to find…
 
 Let's check out the Collections class's method summary for an example of static methods
 
-![](images/api_static_methods)
+![](images/api_static_methods.png)
 
 * BLUE ARROW: static
     * Notice how the keyword static is in front of the return type. Now we know we need to call this method by typing Collections.methodName()
