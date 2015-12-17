@@ -1,6 +1,8 @@
 _site/
 .sass-cache/
 
+*~
+
 #compiled files
 *.class
 *.swp

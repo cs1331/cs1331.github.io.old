@@ -1,0 +1,8 @@
+pre.terminal {
+  padding: 0;
+  font-size: inherit;
+  color: green;
+  white-space: pre-wrap;
+  background-color: black;
+  border-radius: 0;
+}
