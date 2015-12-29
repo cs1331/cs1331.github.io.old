@@ -53,7 +53,7 @@ Scroll further down on the page to find…
 
 Let's check out the Collections class's method summary for an example of static methods
 
-![](images/api_static_methods)
+![](images/api_static_methods.png)
 
 * BLUE ARROW: static
     * Notice how the keyword static is in front of the return type. Now we know we need to call this method by typing `Collections.methodName()`
@@ -62,17 +62,17 @@ Let's check out the Collections class's method summary for an example of static 
 
 Let’s try to change a String to be uppercase and replace all “A”s with “X”s.
 
-1. Let’s find the String class on the homepage
+#### 1. Let’s find the String class on the homepage
 
 ![](images/api_practice_1.png)
 
-2. In order to use all of the methods in the String class, do we need to import anything?
+#### 2. In order to use all of the methods in the String class, do we need to import anything?
 
 ![](images/api_practice_2.png)
 
 Nope! The `String` class is in the `java.lang` package, so we have access to it automatically. This makes sense, since we can create a new `String` whenever we want, as we've already seen!
 
-3. Let's scroll down to look for a method to make our String uppercase
+#### 3. Let's scroll down to look for a method to make our String uppercase
 
 ![](images/api_practice_3.png)
 
@@ -90,7 +90,7 @@ If we print out changedString, it will read:
 
     “TODAY IS A BEAUTIFUL DAY!”
 
-4. Next, let's see if there's a method to help us replace all of our "A"s with "X"s
+#### 4. Next, let's see if there's a method to help us replace all of our "A"s with "X"s
 
 ![](images/api_practice_4.png)
 
