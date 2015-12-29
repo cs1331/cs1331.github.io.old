@@ -56,7 +56,7 @@ Let's check out the Collections class's method summary for an example of static 
 ![](images/api_static_methods)
 
 * BLUE ARROW: static
-    * Notice how the keyword static is in front of the return type. Now we know we need to call this method by typing Collections.methodName()
+    * Notice how the keyword static is in front of the return type. Now we know we need to call this method by typing `Collections.methodName()`
 
 **Now, let’s practice!**
 
@@ -70,13 +70,13 @@ Let’s try to change a String to be uppercase and replace all “A”s with “
 
 ![](images/api_practice_2.png)
 
-Nope! The String class is in java.lang, so we have access to it automatically. This makes sense, since we can create a new String whenever we want, as we've already seen!
+Nope! The `String` class is in the `java.lang` package, so we have access to it automatically. This makes sense, since we can create a new `String` whenever we want, as we've already seen!
 
 3. Let's scroll down to look for a method to make our String uppercase
 
 ![](images/api_practice_3.png)
 
-toUpperCase() looks good! It takes in no parameters and converts all of the characters in the String to upper case. We have to call this method on a String because the toUpperCase() method is an instance method.
+`toUpperCase()` looks good! It takes in no parameters and converts all of the characters in the String to upper case. We have to call this method on a String because the `toUpperCase()` method is an instance method.
 
 We would know if it was a static method because it would say static in front of the return type, like it does for the valueOf methods. It’s important to note that this method returns a String. It is not changing our pre-existing String. So, if we have the String:
 
@@ -94,7 +94,7 @@ If we print out changedString, it will read:
 
 ![](images/api_practice_4.png)
 
-Perfect! This method works similarly to the toUpperCase() method, but takes in parameters. All we have to do is specify that we want to replace ‘A’, our old character, with ‘X’, our new character.
+Perfect! This method works similarly to the `toUpperCase()` method, but takes in parameters. All we have to do is specify that we want to replace ‘A’, our old character, with ‘X’, our new character.
 
 This time, instead of using a new variable, let’s reassign our changedString variable:
 
