@@ -26,7 +26,7 @@ Writing code is the easy part. It’s debugging that is difficult. Unfortunately
 
 4.  **Comment your code.**
 
-    Put comments where the logic or implementation might not make sense when you look at it again later. There’s nothing worse than coming back to code you’ve written and not having a clue what it’s supposed to be doing. However, don’t go overboard with it. If you have the line i++; a comment that says ”increment i” is completely unnecessary.
+    Put comments where the logic or implementation might not make sense when you look at it again later. There’s nothing worse than coming back to code you’ve written and not having a clue what it’s supposed to be doing. However, don’t go overboard with it. If you have the line `i++`; a comment that says ”increment i” is completely unnecessary.
 
 5.  **Talk through your code with someone.**
 
@@ -164,4 +164,4 @@ Writing code is the easy part. It’s debugging that is difficult. Unfortunately
 
 2. You’re allowed to submit the assignment as many times as you want, so every time it compiles, submit it. That way you always have at least something turned in. (Extra tip: The code we provide will compile before any changes.)
 
-3. The `javac` and `java` commands don’t disappear just because you’re doing a timed lab. If you’re more comfortable using those instead of the sbt commands while you’re writing the code, use those. Then just use sbt run and sbt test once you’re pretty much done and want to test it.
+3. The `javac` and `java` commands don’t disappear just because you’re doing a timed lab. If you’re more comfortable using those instead of the sbt commands while you’re writing the code, use those. Then just use `sbt run` and `sbt grade` once you’re pretty much done and want to test it.
