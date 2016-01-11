@@ -3,23 +3,23 @@
 
 # Who am I?
 
-<img src="jean-val-jean.jpg" />
+<img src="jean-val-jean.jpg" width="720"/>
 
 # My PhD Advisor
 
-<img src="charles-tenure.jpg" />
+<img src="charles-tenure.jpg" width="720"/>
 
 # What I've Done
 
-<img src="chris-usaf.jpg" />
+<img src="chris-usaf.jpg" width="720"/>
 
 # What I Like to Do
 
-<img src="chris-hobbies.png" />
+<img src="chris-hobbies.png" width="720"/>
 
 # I rode The Hulk with The Hulk
 
-<img src="chris-hulk.jpg" />
+<img src="chris-hulk.jpg" width="720"/>
 
 # And most importantly ...
 
