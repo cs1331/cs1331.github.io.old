@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS 1331">
+  <title>Values and Variables</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/gt.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Values and Variables</h1>
+  <h2 class="author">CS 1331</h2>
+</section>
+
+<section id="values-and-variables" class="slide level1">
+<h1>Values and Variables</h1>
+<p><img src="value-uga-shirt.jpg" width="720" /></p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="computing" class="slide level1">
+<h1>Computing</h1>
+<blockquote>
+<p><strong>Computing</strong> is any purposeful activity that marries the representation of some dynamic domain with the representation of some dynamic machine that provides theoretical, empirical or practical understanding of that domain or that machine.</p>
+</blockquote>
+<p>-- Isbell, et. al., <em>(Re)Defining Computing Curricula by (Re)Defining Computing</em>, SIGCSE Bulletin, Volume 41, Number 4, December 2009</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="models-languages-machines" class="slide level1">
+<h1>Models, Languages, Machines</h1>
+<p>Computing is fundamentally a modelling activity.</p>
+<ul>
+<li>A <em>model</em> is a representation of some information, physical reality, or a virtual entity in a manner that can then be interpreted, manipulated, and transformed.</li>
+<li><p>A <em>language</em> is a means of representation.</p>
+<ul>
+<li>A language enables reasoning and manipulation of the model.</li>
+</ul></li>
+<li><p>A computational <em>machine</em> allows us to execute our models.</p></li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="languages-and-computation" class="slide level1">
+<h1>Languages and Computation</h1>
+<p>Every powerful language has three mechanisms for combining simple ideas to form more complex ideas:(<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html">SICP 1.1</a>)</p>
+<ul>
+<li>primitive expressions, which represent the simplest entities the language is concerned with,</li>
+<li>means of combination, by which compound elements are built from simpler ones, and</li>
+<li>means of abstraction, by which compound elements can be named and manipulated as units.</li>
+</ul>
+<p>In this lecture we'll focus on primitive expressions and basic abstraction.</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="a-model-of-course-average" class="slide level1">
+<h1>A Model of Course Average</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> CourseAverage {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+        <span class="dt">double</span> hwAvg = <span class="fl">74.2</span>;
+        <span class="dt">double</span> examAvg = (<span class="dv">81</span> + <span class="dv">91</span> + <span class="dv">93</span> + <span class="dv">89</span>) / <span class="dv">3</span>;
+        <span class="dt">double</span> courseAvg = (.<span class="dv">2</span> * hwAvg) + (.<span class="dv">8</span> * examAvg);
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Course Average: &quot;</span> + courseAvg);
+    }
+}</code></pre></div>
+<ul>
+<li>Values <code>74.2</code>, <code>81</code>, <code>93</code>, <code>95</code>, <code>89</code> are <em>primitive expressions</em></li>
+<li><code>hwAvg</code>,<code>examAvg</code> are <em>abstractions</em> which name values</li>
+<li>Value assigned to <code>courseAvg</code> computed by <em>combining</em> primitive values</li>
+<li>Our <em>model</em> of course average is expressed in a <em>language</em> that allows us to reason about, manipulate, and <em>run</em> the model on a <em>machine</em></li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="identifiers" class="slide level1">
+<h1>Identifiers</h1>
+<p>An identifier is a string of characters used as a name for a class, method or variable.</p>
+<ul>
+<li>Can contain letters, digits, and the underscore symbol and may not start with a digit.</li>
+<li>Case-sensitive: <code>this</code> is not the same as <code>This</code>.</li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="reserved-and-keywords" class="slide level1">
+<h1>Reserved and Keywords</h1>
+<p>Java reserves some identifers.</p>
+<ul>
+<li>Keywords are used by Java, like <code>class</code>, <code>public</code>, <code>if</code> and so on.</li>
+<li>Reserved words aren't currently used, like <code>goto</code> and <code>const</code></li>
+<li>You can't use reserved or keywords for your own identifiers.</li>
+<li>Full list is here: http://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html</li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="variable-declarations" class="slide level1">
+<h1>Variable Declarations</h1>
+<p>A variable is an identifier that names a value. A variable has:</p>
+<ul>
+<li>a type, and</li>
+<li>a storage location for the variable's value.</li>
+</ul>
+<p>Variables must be declared before use. Here's a declaration:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">float</span> twoThirds;</code></pre></div>
+<ul>
+<li><code>float</code> is the variable's type, <code>twoThirds</code> is the variable name</li>
+</ul>
+<p>The value of <code>twoThirds</code> after the declaration statement above depends on whether <code>twoThirds</code> is an instance variable or a local variable. More on that later.</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="assignment-statements" class="slide level1">
+<h1>Assignment Statements</h1>
+<p><code>=</code> is the assignment operator.</p>
+<ul>
+<li>The identifier on the left side of a <code>=</code> must be a variable identifier (an lvalue)</li>
+<li><p>The right side of the <code>=</code> must be an expression</p></li>
+<li>An expression has a value</li>
+<li><code>2 + 3</code> is an expression. It has the value <code>5</code></li>
+<li><p>A variable is also an expression. It has whatever value it was last assigned</p></li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="declarations-and-assginments" class="slide level1">
+<h1>Declarations and Assginments</h1>
+<p>Here's a declaration followed by an assignment:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">float</span> twoThirds;
+twoThirds = <span class="dv">2</span>/<span class="dv">3</span>;</code></pre></div>
+<p>Usually combine declaration and assignment into an initialization statement:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">float</span> twoThirds = <span class="dv">2</span>/<span class="dv">3</span>;</code></pre></div>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="type-compatibility" class="slide level1">
+<h1>Type Compatibility</h1>
+<p>Legal assignments:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> x = <span class="dv">1</span>;                    <span class="co">// int literal</span>
+<span class="dt">float</span> y = <span class="fl">3.</span>14159f;           <span class="co">// float literal</span>
+<span class="dt">double</span> z = <span class="fl">3.1415</span>;            <span class="co">// double literal</span>
+<span class="dt">boolean</span> thisSentence = <span class="kw">false</span>; <span class="co">// boolean literal</span>
+String goedel = <span class="st">&quot;incomplete&quot;</span>; <span class="co">// String literal</span></code></pre></div>
+<p>Illegal assignments:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> x = <span class="fl">1.0</span>;              <span class="co">// 1.0 is a double value</span>
+<span class="dt">float</span> y = <span class="fl">3.14159</span>;        <span class="co">// 3.14159 is a double value</span>
+<span class="dt">boolean</span> thisSentence = <span class="dv">1</span>; <span class="co">// 1 is an int value</span></code></pre></div>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="java-is-statically-typed" class="slide level1">
+<h1>Java is Statically Typed</h1>
+<p>Core concepts:</p>
+<ul>
+<li>every value has a type</li>
+<li>every variable has a type</li>
+<li>assignment of values to variables must be type compatible at <em>compile-time</em></li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="syntax-and-semantics" class="slide level1">
+<h1>Syntax and Semantics</h1>
+<ul>
+<li>Syntax - the form to which source code must conform</li>
+<li>Semantics - the meaning of the code, i.e., what it does</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Expressions {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+        <span class="dt">float</span> twoThirds = <span class="dv">2</span>/<span class="dv">3</span>;
+        System.<span class="fu">out</span>.<span class="fu">println</span>(twoThirds);
+    }
+}</code></pre></div>
+<ul>
+<li>Code inside <code>main</code> conforms to Java syntax: a sequence of statements, each ending with a semicolon</li>
+<li>Meaning of the program, its semantics, is: initialize the variable <code>twoThirds</code> with the value <code>.667</code> and print it to console (or so we think ...)</li>
+</ul>
+<p>Compile and run <a href="https://github.com/cs1331/code-basics/blob/master/Expressions.java">Expressions.java</a> and see what it prints.</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="type-conversion" class="slide level1">
+<h1>Type Conversion</h1>
+<p>When we run <code>Expressions.java</code> we get this:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ javac Expressions.<span class="fu">java</span>
+$ java Expressions
+<span class="fl">0.0</span></code></pre></div>
+<p>What happened?</p>
+<ul>
+<li><code>twoThirds</code> is a <code>float</code>, so it can hold fractional values.</li>
+<li>But <code>2</code> and <code>3</code> are literal representations of <code>int</code> values.</li>
+<li><code>2/3</code> performed integer division, resulting in a value of <code>0</code>.</li>
+<li><code>float</code> variables can hold integer values, so Java performed automatic conversion to <code>float</code> upon assignment to <code>twoThirds</code> -- <code>0.0</code>.</li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="type-conversion-rules" class="slide level1">
+<h1>Type Conversion Rules</h1>
+<p>The previous example showed an implicit widening conversion</p>
+<ul>
+<li><code>float</code> is <em>wider</em> than <code>int</code> because all intergers are also floating point values.</li>
+<li>Java will perform widening conversions automically because no precision is lost.</li>
+<li>To perform a narrowing conversion, you must explicitly cast the value.</li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="type-conversion-examples" class="slide level1">
+<h1>Type Conversion Examples</h1>
+<p>This won't compile because an <code>int</code> can't hold a fractional value; converting may cause a loss of precision (note that we're using <code>double</code> values by including a decimal part):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> threeFourths = <span class="fl">3.0</span>/<span class="fl">4.0</span>;</code></pre></div>
+<p>You have to cast the <code>double</code> to an int:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> threeFourths = (<span class="dt">int</span>) (<span class="fl">3.0</span>/<span class="dv">4</span>);</code></pre></div>
+<p>What happens if we leave off the parentheses around <code>(3.0/4)</code>?</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="integral-primitive-types" class="slide level1">
+<h1>Integral Primitive Types</h1>
+<ul>
+<li><p><code>byte</code>: 8-bit signed two's complement integer. Min value of -128 and max value of 127 (inclusive).</p></li>
+<li><p><code>short</code>: 16-bit signed two's complement integer. Min value of -32,768 and max value of 32,767 (inclusive).</p></li>
+<li><p><code>int</code>: 32-bit signed two's complement integer. Min value of -2,147,483,648 and max value of 2,147,483,647 (inclusive). <code>int</code> generally default choice for integer values</p></li>
+<li><p><code>long</code>: 64-bit signed two's complement integer. Min value of -9,223,372,036,854,775,808 and max value of 9,223,372,036,854,775,807 (inclusive).</p></li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="floating-point-primitive-types" class="slide level1">
+<h1>Floating Point Primitive Types</h1>
+<ul>
+<li><p><code>float</code>: single-precision 32-bit IEEE 754 floating point.</p></li>
+<li><p><code>double</code>: double-precision 64-bit IEEE 754 floating point. Its range of values is beyond the scope of this discussion, but is specified in the Floating-Point Types, Formats, and Values section of the Java Language Specification. For decimal values, <code>double</code> is generally the default choice.</p></li>
+</ul>
+<p>Floating point types should never be used for precise values, such as currency. For that, you will need to use the java.math.BigDecimal class instead. Numbers and Strings covers BigDecimal and other useful classes provided by the Java platform.</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="boolean-and-char" class="slide level1">
+<h1><code>boolean</code> and <code>char</code></h1>
+<ul>
+<li><p><code>boolean</code>: The boolean data type has only two possible values: true and false. Use this data type for simple flags that track true/false conditions. This data type represents one bit of information, but its &quot;size&quot; isn't something that's precisely defined.</p></li>
+<li><p><code>char</code>: The char data type is a single 16-bit Unicode character. It has a minimum value of  (or 0) and a maximum value of  (or 65,535 inclusive).</p></li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="shortcut-assignment-statements" class="slide level1">
+<h1>Shortcut Assignment Statements</h1>
+<p>Like C and C++, Java allows shortcut assignments:</p>
+<ul>
+<li><p>A binary operation that updates the value of a variable:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">x += <span class="dv">2</span>; <span class="co">// same as x = x + 2;</span></code></pre></div></li>
+<li><p>Pre- and post-increment and decrement:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">x++; <span class="co">// post-increment; same as x = x + 1;</span>
+x--; <span class="co">// pre-decrement; same as x = x - 1;</span></code></pre></div></li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="be-careful-with-shorcut-assignments" class="slide level1">
+<h1>Be Careful with Shorcut Assignments</h1>
+<table>
+<tr>
+<td>
+<p>Pre-increment: variable incremented before used in expression</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> x = <span class="dv">1</span>;
+<span class="dt">int</span> y = ++x;
+<span class="co">// x == 2, y == 2;</span></code></pre></div>
+</td>
+<td>
+<p>Post-increment: variable incremented after used in expression</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> x = <span class="dv">1</span>;
+<span class="dt">int</span> y = x++;
+<span class="co">// x == 2, y == 1;</span></code></pre></div>
+</td>
+</tr>
+</table>
+<p>What's the value of <code>x</code> after <code>x = x++</code>?</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="precedence-and-associativity" class="slide level1">
+<h1>Precedence and Associativity</h1>
+<p>If an expression contains no parentheses, Java evaluates expressions according to <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html">precedence</a> in a three-step process:</p>
+<ul>
+<li>Associate operands with operators, starting with highest-precedence operators. This step effectively parenthesizes expression</li>
+<li>Evaluate subexpressions in left to right order (possibly in multiple sweeps if deeply nested)</li>
+<li>Evaluate outer &quot;top-level&quot; operation once all subexpressions have been evaluated</li>
+</ul>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="evaluation-example" class="slide level1">
+<h1>Evaluation Example</h1>
+<p>The expression <code>6 + 7 * 2 - 12</code> is evaluated in the following steps:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">((<span class="dv">6</span> + (<span class="dv">7</span> * <span class="dv">2</span>)) - <span class="dv">12</span>) <span class="co">// Associate operands with operators</span>
+((<span class="dv">6</span> + <span class="dv">14</span>) - <span class="dv">12</span>)      <span class="co">// Evaluate subexpressions ...</span>
+(<span class="dv">20</span> - <span class="dv">12</span>)
+<span class="dv">8</span></code></pre></div>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="side-effects-in-expressions" class="slide level1">
+<h1>Side-Effects in Expressions</h1>
+<p>Consider the following expression evaluation for <code>n = 2</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">((result = (++n)) + (other = (<span class="dv">2</span>*(++n))))
+((result = <span class="dv">3</span>) + (other = (<span class="dv">2</span>*(++n))))
+(<span class="dv">3</span> + (other = (<span class="dv">2</span>*(++n))))
+(<span class="dv">3</span> + (other = (<span class="dv">2</span>*<span class="dv">4</span>))) <span class="co">// n was 3 from the first pre-increment</span>
+(<span class="dv">3</span> + (other = <span class="dv">8</span>))
+(<span class="dv">3</span> + <span class="dv">8</span>)
+<span class="dv">11</span></code></pre></div>
+<ul>
+<li>An assignment statement has the value that was assigned</li>
+<li>Pre-increment (<code>++n</code>) means <code>n</code> is incremented before it's used in the expression in which it appears</li>
+<li>Three side-effects: result = 3, other = 8, and n = 4</li>
+</ul>
+<p>Don't write code like this!</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="string-values" class="slide level1">
+<h1><code>String</code> Values</h1>
+<p>A <code>String</code> is a sequence of characters.</p>
+<ul>
+<li><p><code>String</code> literals are enclosed in double quotes</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="st">&quot;foo&quot;</span></code></pre></div></li>
+<li><p><code>String</code> variables</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String foo = <span class="st">&quot;foo&quot;</span>;</code></pre></div>
+<p>Note that, unlike the other types we've seen, <code>String</code> is capitalized. <code>String</code> is a class.</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="string-concatenation" class="slide level1">
+<h1><code>String</code> Concatenation</h1>
+<p>The <code>+</code> operator is overloaded to mean concatenation for <code>String</code> objects.</p>
+<ul>
+<li><p>Strings can be concatenated</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String bam = foo + bar + baz; <span class="co">// Now bam is &quot;foobarbaz&quot;</span></code></pre></div></li>
+<li><p>Primitive types can also be concatenated with <code>Strings</code>. The primitive is converted to a String</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String s = bam + <span class="dv">42</span>; <span class="co">// s is &quot;foobarbaz42&quot;</span>
+String t = <span class="dv">42</span> + bam; <span class="co">// t is &quot;42foobarbaz&quot;</span></code></pre></div>
+<p>Note that <code>+</code> is only overloaded for <code>String</code>s.</p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="the-string-class" class="slide level1">
+<h1>The <code>String</code> Class</h1>
+<p><code>String</code> acts like primitive thanks to syntactic sugar provided by the Java compiler, but it is defined as a class in the Java standard library</p>
+<ul>
+<li><p>See http://docs.oracle.com/javase/8/docs/api/java/lang/String.html for details.</p></li>
+<li><p>Methods on objects are invoked on the object using the <code>.</code> operator</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String empty = <span class="st">&quot;&quot;</span>;
+<span class="dt">int</span> len = empty.<span class="fu">length</span>(); <span class="co">// len is 0</span></code></pre></div>
+<ul>
+<li><p>Look up the methods <code>length</code>, <code>indexOf</code>, <code>substring</code>, and <code>compareTo</code>, and <code>trim</code></p></li>
+<li><p>Because <code>String</code>s are objects, beware of null references:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String boom = <span class="kw">null</span>;
+<span class="dt">int</span> aPosInBoom = boom.<span class="fu">indexOf</span>(<span class="st">&quot;a&quot;</span>);</code></pre></div></li>
+</ul>
+<p>Play with <a href="https://github.com/cs1331/code-basics/blob/master/Strings.java">Strings.java</a></p>
+<!------------------------------- Slide -------------------------------------->
+</section>
+<section id="closing-thoughts" class="slide level1">
+<h1>Closing Thoughts</h1>
+<p>Every powerful language has three mechanisms for combining simple ideas to form more complex ideas:</p>
+<ul>
+<li><p>primitive expressions, which represent the simplest entities the language is concerned with,</p>
+<ul>
+<li>Values are the atoms of programs</li>
+</ul></li>
+<li><p>means of combination, by which compound elements are built from simpler ones, and</p>
+<ul>
+<li>Programs combine and manipulate values</li>
+</ul></li>
+<li><p>means of abstraction, by which compound elements can be named and manipulated as units.</p>
+<ul>
+<li>Variables are the simplest form of abstraction - naming values</li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
