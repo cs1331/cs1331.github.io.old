@@ -1,51 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="CS 1331" />
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS 1331">
   <title>Meet the teacher</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
   <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" type="text/css" media="screen, projection, print"
-    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
-  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
-    charset="utf-8" type="text/javascript"></script>
+  <link rel="stylesheet" href="reveal.js/css/theme/gt.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
 </head>
 <body>
-<div class="slide titlepage">
+  <div class="reveal">
+    <div class="slides">
+
+<section>
   <h1 class="title">Meet the teacher</h1>
-  <p class="author">
-CS 1331
-  </p>
-</div>
-<div id="who-am-i" class="slide section level1">
+  <h2 class="author">CS 1331</h2>
+</section>
+
+<section id="who-am-i" class="slide level1">
 <h1>Who am I?</h1>
 <p><img src="jean-val-jean.jpg" width="720"/></p>
-</div>
-<div id="my-phd-advisor" class="slide section level1">
+</section>
+<section id="my-phd-advisor" class="slide level1">
 <h1>My PhD Advisor</h1>
 <p><img src="charles-tenure.jpg" width="720"/></p>
-</div>
-<div id="what-ive-done" class="slide section level1">
+</section>
+<section id="what-ive-done" class="slide level1">
 <h1>What I've Done</h1>
 <p><img src="chris-usaf.jpg" width="720"/></p>
-</div>
-<div id="what-i-like-to-do" class="slide section level1">
+</section>
+<section id="what-i-like-to-do" class="slide level1">
 <h1>What I Like to Do</h1>
 <p><img src="chris-hobbies.png" width="720"/></p>
-</div>
-<div id="i-rode-the-hulk-with-the-hulk" class="slide section level1">
+</section>
+<section id="i-rode-the-hulk-with-the-hulk" class="slide level1">
 <h1>I rode The Hulk with The Hulk</h1>
 <p><img src="chris-hulk.jpg" width="720"/></p>
-</div>
-<div id="and-most-importantly-..." class="slide section level1">
+</section>
+<section id="and-most-importantly-..." class="slide level1">
 <h1>And most importantly ...</h1>
 <video width="720" height="480" controls>
 <source src="ChrisSimpkinsIsAChickenFucker.mp4" type="video/mp4">
 </video>
-</div>
-</body>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
 </html>

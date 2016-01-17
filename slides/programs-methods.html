@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS 1331">
+  <title>Programs and Methods</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/gt.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Programs and Methods</h1>
+  <h2 class="author">CS 1331</h2>
+</section>
+
+<section id="the-anatomy-of-a-java-program" class="slide level1">
+<h1>The Anatomy of a Java Program</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> HelloWorld {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Hello, world!&quot;</span>);
+    }
+}</code></pre></div>
+<ul>
+<li>First line declares <code>HelloWorld</code> class. <code>class</code> is the syntax for declaring a class, and prepending with the <code>public</code> modifer means the class will be visible outside <code>HelloWorld</code>'s package.</li>
+<li>The code between the curly braces, <code>{</code> ... <code>}</code> define the contents of the <code>HelloWorld</code> class, in this case a single method, <code>main</code></li>
+</ul>
+<!-------------------------------- Slide ------------------------------------>
+</section>
+<section id="the-main-method" class="slide level1">
+<h1>The <code>main</code> Method</h1>
+<p>In order to make a class executable with the <code>java</code> command, it must have a main method:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) { <span class="kw">... </span>}</code></pre></div>
+<ul>
+<li><code>public</code> means method can be called from outside the class</li>
+<li><code>static</code> means the method can be called without instantiating an object of the class. Static methods (and variables) are sometimes called <em>class</em> methods.</li>
+<li><p><code>void</code> is the return type. In particular, <code>main</code> returns nothing.</p>
+<ul>
+<li>Sometimes such subprograms are called <em>procedures</em> and distinguished from <em>functions</em>, which return values.</li>
+</ul></li>
+<li><p>After the method name, <code>main</code>, comes the parameter list. <code>main</code> takes a single parameter of type <code>String[]</code> - an array of <code>String</code>s. <code>args</code> is the name of the parameter, which we can refer to within the body of <code>main</code></p></li>
+</ul>
+<!-------------------------------- Slide ------------------------------------>
+</section>
+<section id="methods" class="slide level1">
+<h1>Methods</h1>
+<p>The <code>main</code> method is a special method that is used as the entry point for a Java program. We can define other methods as well. Consider this method from :</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> String <span class="fu">extractLastName</span>(String name) {
+    <span class="dt">int</span> commaPos = name.<span class="fu">indexOf</span>(<span class="st">&quot;,&quot;</span>);
+    <span class="dt">int</span> len = name.<span class="fu">length</span>();
+    String lastName = name.<span class="fu">substring</span>(<span class="dv">0</span>, commaPos).<span class="fu">trim</span>();
+    <span class="kw">return</span> lastName;
+}</code></pre></div>
+<p>Similar to our <code>main</code> method but:</p>
+<ul>
+<li><code>return</code>s a <code>String</code> value</li>
+<li>takes a single parameter of type <code>String</code></li>
+</ul>
+<!-------------------------------- Slide ------------------------------------>
+</section>
+<section id="method-parameters" class="slide level1">
+<h1>Method Parameters</h1>
+<p>In this method:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> String <span class="fu">extractLastName</span>(String name) {
+    <span class="dt">int</span> commaPos = name.<span class="fu">indexOf</span>(<span class="st">&quot;,&quot;</span>);
+    <span class="dt">int</span> len = name.<span class="fu">length</span>();
+    String lastName = name.<span class="fu">substring</span>(<span class="dv">0</span>, commaPos).<span class="fu">trim</span>();
+    <span class="kw">return</span> lastName;
+}</code></pre></div>
+<p><code>name</code> is a <em>parameter</em> (or <em>formal parameter</em>), a local scope variable within the <code>extractLastName</code> method. It is bound to a value when the method is called. In the statement:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String lastName = <span class="fu">extractLastName</span>(fullName);</code></pre></div>
+<p>the right-hand side, <code>extractLastName(fullName)</code>, is a <em>method invocation</em> (or <em>method call</em>). We say that <code>fullName</code> is the <em>argument</em> (or <em>actual parameter</em>) to this invocation of the <code>extractLastName</code> method.</p>
+<!-------------------------------- Slide ------------------------------------>
+</section>
+<section id="local-variables" class="slide level1">
+<h1>Local Variables</h1>
+<p>Method parameters and variables declared inside the method are local to the method, invisible outside the method. Local variables &quot;shadow&quot; variables of the same name in an enclosing scope</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Methods {
+
+    <span class="co">// Note that static variables cannot appear inside methods</span>
+    <span class="dt">static</span> String message = <span class="st">&quot;Global message.&quot;</span>;
+    <span class="dt">static</span> <span class="dt">int</span> a = <span class="dv">5</span>;
+
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">add</span>(<span class="dt">int</span> a, <span class="dt">int</span> b) {
+        String message = <span class="st">&quot;Adding &quot;</span> + a + <span class="st">&quot; and &quot;</span> + b;
+        System.<span class="fu">out</span>.<span class="fu">println</span>(message);
+        <span class="kw">return</span> a + b;
+    }
+...</code></pre></div>
+<p>In the <code>add</code> method, the parameter <code>a</code> shadows the <code>static</code> variable <code>a</code>, and the local variable <code>message</code> shadows the <code>static</code> variable <code>message</code></p>
+<!-------------------------------- Slide ------------------------------------>
+</section>
+<section id="methods-as-expressions" class="slide level1">
+<h1>Methods as Expressions</h1>
+<p>Methods that return values are expressions which can be used anywhere a value of the method's return type can be used. Given:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">add</span>(<span class="dt">int</span> a, <span class="dt">int</span> b) { <span class="kw">... </span>}</code></pre></div>
+<p>which returns an <code>int</code>, this:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">x + (x + y)</code></pre></div>
+<p>is equivalent to this:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">x + <span class="fu">add</span>(x, y)</code></pre></div>
+<p>See Methods.java.</p>
+<!-------------------------------- Slide ------------------------------------>
+</section>
+<section id="closing-thougts" class="slide level1">
+<h1>Closing Thougts</h1>
+<p>Methods are subprograms with</p>
+<ul>
+<li>input (parameters),</li>
+<li>processing (a sequence of statements), and</li>
+<li>output (return value).</li>
+</ul>
+<p>Methods are a powerful form of procedural abstraction, another step in the building of complex programs from simple parts.</p>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

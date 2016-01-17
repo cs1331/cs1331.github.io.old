@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS 1331">
+  <title>Java Projects</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/gt.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Java Projects</h1>
+  <h2 class="author">CS 1331</h2>
+</section>
+
+<section id="java-projects" class="slide level1">
+<h1>Java Projects</h1>
+<p>You know the basics of Java. Today you'll learn a few basic properties of professional Java projects, including</p>
+<ul>
+<li>the classpath,</li>
+<li>separating source and compiler output,</li>
+<li>project directory layout,</li>
+<li>packages,</li>
+<li>jar files,</li>
+<li>compiling with Ant, and</li>
+<li>using an IDE.</li>
+</ul>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="the-classpath" class="slide level1">
+<h1>The Classpath</h1>
+<p>Just as your operating system shell looks in the <code>PATH</code> environment variable for executable files, JDK tools (such as <code>javac</code> and <code>java</code>) look in the <code>CLASSPATH</code> for Java classes. To specify a classpath:</p>
+<ul>
+<li>set an environment variable named <code>CLASSAPTH</code>, or</li>
+<li>specify a classpath on a per-application basis by using the <code>-cp</code> switch. The classpath set with <code>-cp</code> overrides the <code>CLASSPATH</code> environment variable.</li>
+</ul>
+<p>Don't use the <code>CLASSPATH</code> environment variable. If it's already set, clear it with (on Windows):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">C:&gt; set CLASSPATH=</code></pre></div>
+<p>or (on Unix):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ unset CLASSPATH</code></pre></div>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="specifying-a-classpath" class="slide level1">
+<h1>Specifying a Classpath</h1>
+<p>A classpath specification is a list of places to find <code>.class</code> files and other resources. Two kinds of elements in this list:</p>
+<ul>
+<li>directories in which to find <code>.class</code> files on the filesystem, or</li>
+<li><code>.jar</code> files that contain archives of directory trees containing <code>.class</code> files and other files (more later).</li>
+</ul>
+<p>To compile and run a program with compiler output (<code>.class</code> files) in the current directory and a library Jar file in the <code>lib</code> directory called <code>util.jar</code>, you'd specify the classpath like this:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span> -R <span class="co"># -R means recursive (show subdirectory listings)</span>
+<span class="kw">MyProgram.java</span>     AnotherClass.java
+
+<span class="kw">.</span>/lib:
+<span class="kw">util.jar</span>
+$ <span class="kw">javac</span> -cp .:lib/util.jar *.java <span class="co"># : separates classpath elements</span>
+$ <span class="kw">java</span> -cp .:lib/util.jar MyProgram <span class="co"># would be ; on Windows</span></code></pre></div>
+<p>Notice that you include the entire classpath in the <code>-cp</code>, which includes the current directory (<code>.</code> means ``current directory'').</p>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="separating-source-and-compiler-output" class="slide level1">
+<h1>Separating Source and Compiler Output</h1>
+<p>To reduce clutter, you can compile classes to another directory with <code>-d</code> option to <code>javac</code></p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ mkdir classes
+$ javac -d classes HelloWorld.<span class="fu">java</span>
+$ ls classes/
+HelloWorld.<span class="fu">class</span></code></pre></div>
+<p>Specify classpath for an application with the <code>-cp</code> option to { java}.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ java -cp ./classes HelloWorld
+Hello, world!</code></pre></div>
+<p>If you really want to keep your project's root directory clean (and you do), you can put your source code in another directory too, like <code>src</code>.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ mkdir src
+$ mv HelloWorld.<span class="fu">java</span> src/
+$ javac -d ./classes src/HelloWorld.<span class="fu">java</span>
+$ java -cp ./classes HelloWorld
+Hello, world!</code></pre></div>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="project-directory-layout" class="slide level1">
+<h1>Project Directory Layout</h1>
+<p>Source Directories</p>
+<ul>
+<li><code>src/main/java</code> for Java source files</li>
+<li><code>src/main/resources</code> for resources that will go on the classpath, like image files</li>
+</ul>
+<p>Output Directories</p>
+<ul>
+<li><code>target/classes</code> for compiled Java .class files and resources copied from <code>src/main/resources</code></li>
+</ul>
+<p>There's more, but this is enough for now. More details on the de-facto standard Java project directory layout can be found at <a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven's directory layout guide</a>.</p>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="organizing-your-code-in-packages" class="slide level1">
+<h1>Organizing your Code in Packages</h1>
+<p>All professional Java projects organize their code in packages. The standard package naming scheme is to use reverse domain name, followed by project specific packages. For our CompanyGUI application we could use the package name</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package edu.gatech.cs1331.companygui;</span></code></pre></div>
+<p>and source files would be located in a directory under your <code>src/</code> directory as follows</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">src/edu/gatech/cs1331/companygui/</code></pre></div>
+<p>And if you tell <code>javac</code> to put compiler output in <code>target/classes</code> then the compiled <code>.class</code> file would end up in:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">target/edu/gatech/cs1331/companygui</code></pre></div>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="ant" class="slide level1">
+<h1>Ant</h1>
+<p><a href="http://ant.apache.org/">Ant</a> is a build automation tool, like <code>make</code>. Install it however you want (like with homebrew on a Mac), then put this in a file named <code>build.xml</code> in the root directory of your companygui project:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span>
+<span class="kw">&lt;project</span><span class="ot"> name=</span><span class="st">&quot;companygui&quot;</span><span class="ot"> default=</span><span class="st">&quot;default&quot;</span><span class="ot"> basedir=</span><span class="st">&quot;.&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;path</span><span class="ot"> id=</span><span class="st">&quot;classpath&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;fileset</span><span class="ot"> dir=</span><span class="st">&quot;target&quot;</span><span class="ot"> includes=</span><span class="st">&quot;**/*.class&quot;</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;/path&gt;</span>
+
+  <span class="kw">&lt;target</span><span class="ot"> name=</span><span class="st">&quot;init&quot;</span><span class="ot"> depends=</span><span class="st">&quot;clean&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;mkdir</span><span class="ot"> dir=</span><span class="st">&quot;target&quot;</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;/target&gt;</span>
+
+  <span class="kw">&lt;target</span><span class="ot"> name=</span><span class="st">&quot;compile&quot;</span><span class="ot"> depends=</span><span class="st">&quot;init&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;javac</span><span class="ot"> srcdir=</span><span class="st">&quot;src&quot;</span>
+<span class="ot">           destdir=</span><span class="st">&quot;target&quot;</span>
+<span class="ot">           classpathref=</span><span class="st">&quot;classpath&quot;</span>
+<span class="ot">           source=</span><span class="st">&quot;1.7&quot;</span>
+<span class="ot">           target=</span><span class="st">&quot;1.7&quot;</span> <span class="kw">/&gt;</span>
+  <span class="kw">&lt;/target&gt;</span>
+<span class="kw">&lt;/project&gt;</span></code></pre></div>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="compiling-with-ant" class="slide level1">
+<h1>Compiling with Ant</h1>
+<p>Invoke the <code>compile</code> target to compile the project:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ ant compile
+Buildfile: /Users/chris/work/vcs/github/software-design-practice/code/blackjack/build.<span class="fu">xml</span>
+
+init:
+...
+compile:
+...
+BUILD SUCCESSFUL
+Total time: <span class="dv">0</span> seconds</code></pre></div>
+<p>This will produce class files in <code>target/classes</code>. How would you run the <code>Blackjack</code> class?</p>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="jar-files" class="slide level1">
+<h1>Jar Files</h1>
+<p>A jar archive, or jar file, is a Zip-formatted archive of a directory tree. Java uses jar files as a distribution format for libraries.</p>
+<ul>
+<li>To create a JAR file: <code>jar cf jar-file input-file(s)</code></li>
+<li>To view the contents of a JAR file <code>jar tf jar-file</code></li>
+<li>To extract the contents of a JAR file: <code>jar xf jar-file</code> or <code>unzip jar-file</code></li>
+<li>To extract specific files from a JAR file: <code>jar xf jar-file archived-file(s)</code></li>
+<li>To run an application packaged as a JAR file (requires the Main-class manifest header): <code>java -jar app.jar</code></li>
+</ul>
+<p>See <a href="http://docs.oracle.com/javase/tutorial/deployment/jar/index.html">Oracle's Jar file guide</a> for more details.</p>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="runnable-jar-files" class="slide level1">
+<h1>Runnable Jar Files</h1>
+<p>The hard way: <a href="http://docs.oracle.com/javase/tutorial/deployment/jar/appman.html">Oracel's Jar file guide</a></p>
+<p>The easy way: add this to your <code>build.xml</code>:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml">  <span class="kw">&lt;target</span><span class="ot"> name=</span><span class="st">&quot;package&quot;</span><span class="ot"> depends=</span><span class="st">&quot;compile&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;jar</span><span class="ot"> destfile=</span><span class="st">&quot;target/blackjack.jar&quot;</span><span class="kw">&gt;</span>
+      <span class="kw">&lt;fileset</span><span class="ot"> dir=</span><span class="st">&quot;target/classes&quot;</span><span class="kw">/&gt;</span>
+      <span class="kw">&lt;manifest&gt;</span>
+        <span class="kw">&lt;attribute</span><span class="ot"> name=</span><span class="st">&quot;Main-class&quot;</span><span class="ot"> value=</span><span class="st">&quot;Blackjack&quot;</span><span class="kw">/&gt;</span>
+      <span class="kw">&lt;/manifest&gt;</span>
+    <span class="kw">&lt;/jar&gt;</span>
+  <span class="kw">&lt;/target&gt;</span></code></pre></div>
+<p>Then you can do:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ant</span> package
+<span class="kw">...</span>
+<span class="kw">BUILD</span> SUCCESSFUL
+<span class="kw">Total</span> time: 0 seconds
+$ <span class="kw">java</span> -jar target/blackjack.jar</code></pre></div>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="using-an-ide" class="slide level1">
+<h1>Using an IDE</h1>
+<p>Here are a few basic things you need to configrue when using an IDE:</p>
+<ul>
+<li>Editor settings for non-awful source code</li>
+<li>Source Directory</li>
+<li>Classpath</li>
+<li>Libraries</li>
+</ul>
+<p>The best approach to most of this is to generate an IDE project configuration from your build specification, e.g., <code>build.xml</code>. Let's see how to do these things with Eclipse.</p>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
