@@ -71,7 +71,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <section id="values-and-variables" class="slide level1">
 <h1>Values and Variables</h1>
-<p><img src="value-uga-shirt.jpg" width="720" /></p>
+<center>
+<img src="value-uga-shirt.jpg" width="720" />
+<center>
 <!------------------------------- Slide -------------------------------------->
 </section>
 <section id="computing" class="slide level1">
@@ -253,8 +255,8 @@ $ java Expressions
 <p>This won't compile because an <code>int</code> can't hold a fractional value; converting may cause a loss of precision (note that we're using <code>double</code> values by including a decimal part):</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> threeFourths = <span class="fl">3.0</span>/<span class="fl">4.0</span>;</code></pre></div>
 <p>You have to cast the <code>double</code> to an int:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> threeFourths = (<span class="dt">int</span>) (<span class="fl">3.0</span>/<span class="dv">4</span>);</code></pre></div>
-<p>What happens if we leave off the parentheses around <code>(3.0/4)</code>?</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> threeFourths = (<span class="dt">int</span>) (<span class="fl">3.0</span>/<span class="fl">4.0</span>);</code></pre></div>
+<p>What happens if we leave off the parentheses around <code>(3.0/4.0)</code>?</p>
 <!------------------------------- Slide -------------------------------------->
 </section>
 <section id="integral-primitive-types" class="slide level1">
@@ -329,11 +331,18 @@ x--; <span class="co">// pre-decrement; same as x = x - 1;</span></code></pre></
 </section>
 <section id="evaluation-example" class="slide level1">
 <h1>Evaluation Example</h1>
-<p>The expression <code>6 + 7 * 2 - 12</code> is evaluated in the following steps:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">((<span class="dv">6</span> + (<span class="dv">7</span> * <span class="dv">2</span>)) - <span class="dv">12</span>) <span class="co">// Associate operands with operators</span>
-((<span class="dv">6</span> + <span class="dv">14</span>) - <span class="dv">12</span>)      <span class="co">// Evaluate subexpressions ...</span>
+<p><code>6 + 7 * 2 - 12</code> is evaluated in the following steps:</p>
+<ol type="1">
+<li><p>Associate highest precedence operators with operands:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dv">6</span> + (<span class="dv">7</span> * <span class="dv">2</span>) - <span class="dv">12</span></code></pre></div></li>
+<li><p>'+' and '-' have same precedence, associate left to right:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(<span class="dv">6</span> + (<span class="dv">7</span> * <span class="dv">2</span>)) - <span class="dv">12</span>
+((<span class="dv">6</span> + (<span class="dv">7</span> * <span class="dv">2</span>)) - <span class="dv">12</span>)</code></pre></div></li>
+<li><p>Evaluate subexpressions like you learned in high school:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">((<span class="dv">6</span> + <span class="dv">14</span>) - <span class="dv">12</span>)
 (<span class="dv">20</span> - <span class="dv">12</span>)
-<span class="dv">8</span></code></pre></div>
+<span class="dv">8</span></code></pre></div></li>
+</ol>
 <!------------------------------- Slide -------------------------------------->
 </section>
 <section id="side-effects-in-expressions" class="slide level1">

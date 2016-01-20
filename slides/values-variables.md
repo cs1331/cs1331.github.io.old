@@ -3,7 +3,9 @@
 
 # Values and Variables
 
+<center>
 <img src="value-uga-shirt.jpg" width="720" />
+<center>
 
 <!------------------------------- Slide -------------------------------------->
 # Computing
@@ -202,10 +204,10 @@ int threeFourths = 3.0/4.0;
 You have to cast the `double` to an int:
 
 ```Java
-int threeFourths = (int) (3.0/4);
+int threeFourths = (int) (3.0/4.0);
 ```
 
-What happens if we leave off the parentheses around `(3.0/4)`?
+What happens if we leave off the parentheses around `(3.0/4.0)`?
 
 <!------------------------------- Slide -------------------------------------->
 # Integral Primitive Types
@@ -285,17 +287,26 @@ If an expression contains no parentheses, Java evaluates expressions according t
 <!------------------------------- Slide -------------------------------------->
 # Evaluation Example
 
-The expression `6 + 7 * 2 - 12` is evaluated in the following steps:
+`6 + 7 * 2 - 12` is evaluated in the following steps:
+
+1. Associate highest precedence operators with operands:
 ```Java
-((6 + (7 * 2)) - 12) // Associate operands with operators
-((6 + 14) - 12)      // Evaluate subexpressions ...
+6 + (7 * 2) - 12
+```
+2. '+' and '-' have same precedence, associate left to right:
+```Java
+(6 + (7 * 2)) - 12
+((6 + (7 * 2)) - 12)
+```
+3. Evaluate subexpressions like you learned in high school:
+```Java
+((6 + 14) - 12)
 (20 - 12)
 8
 ```
 
 <!------------------------------- Slide -------------------------------------->
 # Side-Effects in Expressions
-
 
 Consider the following expression evaluation for `n = 2`:
 
