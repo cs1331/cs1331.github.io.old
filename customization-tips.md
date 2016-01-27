@@ -17,9 +17,6 @@ These go in your `~/.bash_profile`.
         # Aliases to save some typing
         alias ll='ls -la'
 
-        # Alias for Adobe Acrobat, so the open command still uses Preview
-        alias acroread='/Applications/Adobe\ Reader.app/Contents/MacOS/AdobeReader'
-
         # A personal bin directory
         export PATH=~/bin:$PATH
 
