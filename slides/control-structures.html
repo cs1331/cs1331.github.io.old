@@ -120,7 +120,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="logical-combinations" class="slide level1">
 <h1>Logical Combinations</h1>
 <ul>
-<li>And: <code>\&amp;\&amp;</code>, like <span class="math inline">\(\land\)</span> in math</li>
+<li>And: <code>&amp;&amp;</code>, like <span class="math inline">\(\land\)</span> in math</li>
 <li><p>Or: <code>||</code>, like <span class="math inline">\(\lor\)</span> in math Examples:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">(<span class="dv">1</span> == <span class="dv">1</span>) &amp;&amp;  (<span class="dv">1</span> != <span class="dv">1</span>) <span class="co">// false</span>
 (<span class="dv">1</span> == <span class="dv">1</span>) ||  (<span class="dv">1</span> != <span class="dv">1</span>) <span class="co">// true</span></code></pre></div></li>
@@ -160,7 +160,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="ternary-if-else-expression" class="slide level1">
 <h1>Ternary If-Else Expression</h1>
 <p>The ternary operator combines the above into one expression (expressions have values):</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String dinner = (temp &gt; <span class="dv">60</span>) ? <span class="st">&quot;grilled&quot;</span> : <span class="st">&quot;baked&quot;</span>;</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String dinner = (temp &gt; <span class="dv">60</span>) ? <span class="st">&quot;grilled&quot;</span> : <span class="st">&quot;baked&quot;</span></code></pre></div>
 </section>
 <section id="blocks" class="slide level1">
 <h1>Blocks</h1>
@@ -204,7 +204,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> ((kids !=<span class="dv">0</span>) &amp;&amp; ((pieces / kids) &gt;= <span class="dv">2</span>))
     System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Each kid may have two pieces.&quot;</span>);</code></pre></div>
 <p>If <code>kids !=0</code> evaluates to <code>false</code>, then the second sub-expression is not evaluated, thus avoiding a divide-by-zero error.</p>
-<p>See <a href="../code/basics/Conditionals.java">Conditionals.java</a> for examples.</p>
+<p>See <a href="https://github.com/cs1331/code-basics/blob/master/Conditionals.java">Conditionals.java</a> for examples.</p>
 </section>
 <section id="switch" class="slide level1">
 <h1><code>switch</code></h1>
@@ -234,16 +234,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>You can do without the <code>switch</code>. See</p>
 <ul>
-<li><a href="../code/basics/CharCountSwitch.java">CharCountSwitch.java</a> for a <code>switch</code> example,</li>
-<li><a href="../code/basics/CharCountIf.java">CharCountIf.java</a> for the same program using an <code>if</code> statement in place of the <code>switch</code> statement, and</li>
-<li><a href="../code/basics/CharCount.java">CharCount.java</a> for the same program using standard library utility methods.</li>
+<li><a href="https://github.com/cs1331/code-basics/blob/master/CharCountSwitch.java">CharCountSwitch.java</a> for a <code>switch</code> example,</li>
+<li><a href="https://github.com/cs1331/code-basics/blob/master/CharCountIf.java">CharCountIf.java</a> for the same program using an <code>if</code> statement in place of the <code>switch</code> statement, and</li>
+<li><a href="https://github.com/cs1331/code-basics/blob/master/CharCount.java">CharCount.java</a> for the same program using standard library utility methods.</li>
 </ul>
 </section>
 <section id="repeated-operations" class="slide level1">
 <h1>Repeated Operations</h1>
-<video width="720" height="480" controls>
-<source src="http://www.youtube.com/v/mXPeLctgvQI?rel=0" type="video/mp4">
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mXPeLctgvQI" frameborder="0" allowfullscreen>
+</iframe>
 </section>
 <section id="loops-and-iteration" class="slide level1">
 <h1>Loops and Iteration</h1>

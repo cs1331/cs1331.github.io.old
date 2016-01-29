@@ -48,8 +48,8 @@ Four kinds of boolean expressions:
 
 # Logical Combinations
 
-- And: ``\&\&``, like $\land$ in math
-- Or: ``||``, like $\lor$ in math
+- And: `&&`, like $\land$ in math
+- Or: `||`, like $\lor$ in math
 Examples:
 ```Java
 (1 == 1) &&  (1 != 1) // false
@@ -103,7 +103,7 @@ if (temp > 60) {
 The ternary operator combines the above into one expression (expressions have values):
 
 ```Java
-String dinner = (temp > 60) ? "grilled" : "baked"
+String dinner = (temp > 60) ? "grilled" : "baked";
 ```
 
 # Blocks
@@ -162,7 +162,7 @@ if ((kids !=0) && ((pieces / kids) >= 2))
 
 If ``kids !=0`` evaluates to ``false``, then the second sub-expression is not evaluated, thus avoiding a divide-by-zero error.
 
-See [Conditionals.java](../code/basics/Conditionals.java) for examples.
+See [Conditionals.java](https://github.com/cs1331/code-basics/blob/master/Conditionals.java) for examples.
 
 # ``switch``
 
@@ -193,16 +193,14 @@ The ``switch`` statement is error-prone.
 
 You can do without the ``switch``.  See
 
-- [CharCountSwitch.java](../code/basics/CharCountSwitch.java) for a ``switch`` example,
-- [CharCountIf.java](../code/basics/CharCountIf.java) for the same program using an ``if`` statement in place of the ``switch`` statement, and
--  [CharCount.java](../code/basics/CharCount.java) for the same program using standard library utility methods.
+- [CharCountSwitch.java](https://github.com/cs1331/code-basics/blob/master/CharCountSwitch.java) for a ``switch`` example,
+- [CharCountIf.java](https://github.com/cs1331/code-basics/blob/master/CharCountIf.java) for the same program using an ``if`` statement in place of the ``switch`` statement, and
+-  [CharCount.java](https://github.com/cs1331/code-basics/blob/master/CharCount.java) for the same program using standard library utility methods.
 
 
 # Repeated Operations
 
-<video width="720" height="480" controls>
-  <source src="http://www.youtube.com/v/mXPeLctgvQI?rel=0" type="video/mp4">
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mXPeLctgvQI" frameborder="0" allowfullscreen></iframe>
 
 # Loops and Iteration
 
@@ -372,7 +370,7 @@ while (shouldContinue) {
 We don't test for the termination sentinal, "exit," until after we do something with it.  Situations like these often tempt us to use ``break`` ...
 
 
-# ``break``ing out of a ``while`` Loop}
+# `break`ing out of a `while` Loop}
 
 
 We could test for the sentinal and ``break`` before processing:
