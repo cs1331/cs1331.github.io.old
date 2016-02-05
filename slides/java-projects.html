@@ -73,36 +73,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1>Java Projects</h1>
 <p>You know the basics of Java. Today you'll learn a few basic properties of professional Java projects, including</p>
 <ul>
-<li>the classpath,</li>
-<li>separating source and compiler output,</li>
-<li>project directory layout,</li>
-<li>packages,</li>
-<li>jar files,</li>
-<li>compiling with Ant, and</li>
-<li>using an IDE.</li>
+<li>the classpath</li>
+<li>separating source and compiler output</li>
+<li>project directory layout</li>
+<li>packages</li>
+<li>jar files</li>
 </ul>
 <!--------------------------------Slide ------------------------------------->
 </section>
 <section id="the-classpath" class="slide level1">
 <h1>The Classpath</h1>
-<p>Just as your operating system shell looks in the <code>PATH</code> environment variable for executable files, JDK tools (such as <code>javac</code> and <code>java</code>) look in the <code>CLASSPATH</code> for Java classes. To specify a classpath:</p>
-<ul>
-<li>set an environment variable named <code>CLASSAPTH</code>, or</li>
-<li>specify a classpath on a per-application basis by using the <code>-cp</code> switch. The classpath set with <code>-cp</code> overrides the <code>CLASSPATH</code> environment variable.</li>
-</ul>
-<p>Don't use the <code>CLASSPATH</code> environment variable. If it's already set, clear it with (on Windows):</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">C:&gt; set CLASSPATH=</code></pre></div>
-<p>or (on Unix):</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ unset CLASSPATH</code></pre></div>
-<!--------------------------------Slide ------------------------------------->
-</section>
-<section id="specifying-a-classpath" class="slide level1">
-<h1>Specifying a Classpath</h1>
+<p>Just as your operating system shell looks in the <code>PATH</code> environment variable for executable files, JDK tools (such as <code>javac</code> and <code>java</code>) look in the <code>CLASSPATH</code> for Java classes.</p>
 <p>A classpath specification is a list of places to find <code>.class</code> files and other resources. Two kinds of elements in this list:</p>
 <ul>
 <li>directories in which to find <code>.class</code> files on the filesystem, or</li>
 <li><code>.jar</code> files that contain archives of directory trees containing <code>.class</code> files and other files (more later).</li>
 </ul>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="specifying-a-classpath" class="slide level1">
+<h1>Specifying a Classpath</h1>
+<p>To specify a classpath:</p>
+<ul>
+<li>set an environment variable named <code>CLASSAPTH</code>, or</li>
+<li>specify a classpath on a per-application basis by using the <code>-cp</code> switch. The classpath set with <code>-cp</code> overrides the <code>CLASSPATH</code> environment variable.</li>
+</ul>
+<p>Don't use the <code>CLASSPATH</code> environment variable. If it's already set, clear it with (on Windows):</p>
+<pre class="sh"><code>C:\&gt; set CLASSPATH=</code></pre>
+<p>or (on Unix):</p>
+<pre class="sh"><code>$ unset CLASSPATH</code></pre>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="using--cp" class="slide level1">
+<h1>Using <code>-cp</code></h1>
 <p>To compile and run a program with compiler output (<code>.class</code> files) in the current directory and a library Jar file in the <code>lib</code> directory called <code>util.jar</code>, you'd specify the classpath like this:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span> -R <span class="co"># -R means recursive (show subdirectory listings)</span>
 <span class="kw">MyProgram.java</span>     AnotherClass.java
@@ -114,8 +117,8 @@ $ <span class="kw">java</span> -cp .:lib/util.jar MyProgram <span class="co"># w
 <p>Notice that you include the entire classpath in the <code>-cp</code>, which includes the current directory (<code>.</code> means ``current directory'').</p>
 <!--------------------------------Slide ------------------------------------->
 </section>
-<section id="separating-source-and-compiler-output" class="slide level1">
-<h1>Separating Source and Compiler Output</h1>
+<section id="separating-compiler-output" class="slide level1">
+<h1>Separating Compiler Output</h1>
 <p>To reduce clutter, you can compile classes to another directory with <code>-d</code> option to <code>javac</code></p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ mkdir classes
 $ javac -d classes HelloWorld.<span class="fu">java</span>
@@ -124,6 +127,10 @@ HelloWorld.<span class="fu">class</span></code></pre></div>
 <p>Specify classpath for an application with the <code>-cp</code> option to { java}.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ java -cp ./classes HelloWorld
 Hello, world!</code></pre></div>
+<!--------------------------------Slide ------------------------------------->
+</section>
+<section id="separating-source-files" class="slide level1">
+<h1>Separating Source Files</h1>
 <p>If you really want to keep your project's root directory clean (and you do), you can put your source code in another directory too, like <code>src</code>.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">$ mkdir src
 $ mv HelloWorld.<span class="fu">java</span> src/
@@ -132,8 +139,8 @@ $ java -cp ./classes HelloWorld
 Hello, world!</code></pre></div>
 <!--------------------------------Slide ------------------------------------->
 </section>
-<section id="project-directory-layout" class="slide level1">
-<h1>Project Directory Layout</h1>
+<section id="standard-directory-layout" class="slide level1">
+<h1>Standard Directory Layout</h1>
 <p>Source Directories</p>
 <ul>
 <li><code>src/main/java</code> for Java source files</li>
@@ -148,7 +155,7 @@ Hello, world!</code></pre></div>
 </section>
 <section id="organizing-your-code-in-packages" class="slide level1">
 <h1>Organizing your Code in Packages</h1>
-<p>All professional Java projects organize their code in packages. The standard package naming scheme is to use reverse domain name, followed by project specific packages. For our CompanyGUI application we could use the package name</p>
+<p>All professional Java projects organize their code in packages. The standard package naming scheme is to use reverse domain name, followed by project specific packages. For a CompanyGUI application we could use the package name</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package edu.gatech.cs1331.companygui;</span></code></pre></div>
 <p>and source files would be located in a directory under your <code>src/</code> directory as follows</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">src/edu/gatech/cs1331/companygui/</code></pre></div>
@@ -209,7 +216,7 @@ Total time: <span class="dv">0</span> seconds</code></pre></div>
 </section>
 <section id="runnable-jar-files" class="slide level1">
 <h1>Runnable Jar Files</h1>
-<p>The hard way: <a href="http://docs.oracle.com/javase/tutorial/deployment/jar/appman.html">Oracel's Jar file guide</a></p>
+<p>The hard way: <a href="http://docs.oracle.com/javase/tutorial/deployment/jar/appman.html">Oracle's Jar file guide</a></p>
 <p>The easy way: add this to your <code>build.xml</code>:</p>
 <div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml">  <span class="kw">&lt;target</span><span class="ot"> name=</span><span class="st">&quot;package&quot;</span><span class="ot"> depends=</span><span class="st">&quot;compile&quot;</span><span class="kw">&gt;</span>
     <span class="kw">&lt;jar</span><span class="ot"> destfile=</span><span class="st">&quot;target/blackjack.jar&quot;</span><span class="kw">&gt;</span>
@@ -227,16 +234,11 @@ Total time: <span class="dv">0</span> seconds</code></pre></div>
 $ <span class="kw">java</span> -jar target/blackjack.jar</code></pre></div>
 <!--------------------------------Slide ------------------------------------->
 </section>
-<section id="using-an-ide" class="slide level1">
-<h1>Using an IDE</h1>
-<p>Here are a few basic things you need to configrue when using an IDE:</p>
-<ul>
-<li>Editor settings for non-awful source code</li>
-<li>Source Directory</li>
-<li>Classpath</li>
-<li>Libraries</li>
-</ul>
-<p>The best approach to most of this is to generate an IDE project configuration from your build specification, e.g., <code>build.xml</code>. Let's see how to do these things with Eclipse.</p>
+<section id="gradle" class="slide level1">
+<h1>Gradle</h1>
+<p>Gradle uses Java project conventions to make things much easier than with Ant. Here's a minimal Gradle build file for a Java project:</p>
+<pre class="groovy"><code>apply plugin: &#39;java&#39;</code></pre>
+<p>The <code>java</code> plugin assumes the Maven Sandard Directory Layout and provides many useful tasks &quot;out of the box&quot;. See <a href="https://docs.gradle.org/current/userguide/tutorial_java_projects.html">Gradle's Getting Started tutorial</a> for details.</p>
 </section>
     </div>
   </div>

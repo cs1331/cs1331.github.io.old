@@ -5,44 +5,44 @@
 
 You know the basics of Java.  Today you'll learn a few basic properties of professional Java projects, including
 
-- the classpath,
-- separating source and compiler output,
-- project directory layout,
-- packages,
-- jar files,
-- compiling with Ant, and
-- using an IDE.
+- the classpath
+- separating source and compiler output
+- project directory layout
+- packages
+- jar files
 
 
 <!--------------------------------Slide ------------------------------------->
 # The Classpath
 
-Just as your operating system shell looks in the `PATH` environment variable for executable files, JDK tools (such as `javac` and `java`) look in the `CLASSPATH` for Java classes. To specify a classpath:
+Just as your operating system shell looks in the `PATH` environment variable for executable files, JDK tools (such as `javac` and `java`) look in the `CLASSPATH` for Java classes.
 
+A classpath specification is a list of places to find `.class` files and other resources.  Two kinds of elements in this list:
 
-- set an environment variable named `CLASSAPTH`, or
-- specify a classpath on a per-application basis by using the `-cp` switch.  The classpath set with `-cp` overrides the `CLASSPATH` environment variable.
-
-Don't use the `CLASSPATH` environment variable.  If it's already set, clear it with (on Windows):
-```Java
-C:> set CLASSPATH=
-```
-or (on Unix):
-```Java
-$ unset CLASSPATH
-```
+- directories in which to find `.class` files on the filesystem, or
+- `.jar` files that contain archives of directory trees containing `.class` files and other files (more later).
 
 
 <!--------------------------------Slide ------------------------------------->
 # Specifying a Classpath
 
+To specify a classpath:
 
-A classpath specification is a list of places to find `.class` files and other resources.  Two kinds of elements in this list:
+- set an environment variable named `CLASSAPTH`, or
+- specify a classpath on a per-application basis by using the `-cp` switch.  The classpath set with `-cp` overrides the `CLASSPATH` environment variable.
+
+Don't use the `CLASSPATH` environment variable.  If it's already set, clear it with (on Windows):
+```sh
+C:\> set CLASSPATH=
+```
+or (on Unix):
+```sh
+$ unset CLASSPATH
+```
 
 
-- directories in which to find `.class` files on the filesystem, or
-- `.jar` files that contain archives of directory trees containing `.class` files and other files (more later).
-
+<!--------------------------------Slide ------------------------------------->
+# Using `-cp`
 
 To compile and run a program with compiler output (`.class` files) in the current directory and a library Jar file in the `lib` directory called `util.jar`, you'd specify the classpath like this:
 
@@ -60,10 +60,10 @@ Notice that you include the entire classpath in the `-cp`, which includes the cu
 
 
 <!--------------------------------Slide ------------------------------------->
-# Separating Source and Compiler Output
-
+# Separating Compiler Output
 
 To reduce clutter, you can compile classes to another directory with `-d` option to `javac`
+
 ```Java
 $ mkdir classes
 $ javac -d classes HelloWorld.java
@@ -77,6 +77,9 @@ $ java -cp ./classes HelloWorld
 Hello, world!
 ```
 
+<!--------------------------------Slide ------------------------------------->
+# Separating Source Files
+
 If you really want to keep your project's root directory clean (and you do), you can put your source code in another directory too, like `src`.
 ```Java
 $ mkdir src
@@ -86,21 +89,17 @@ $ java -cp ./classes HelloWorld
 Hello, world!
 ```
 
-
 <!--------------------------------Slide ------------------------------------->
-# Project Directory Layout
-
+# Standard Directory Layout
 
 Source Directories
 
 - `src/main/java` for Java source files
 - `src/main/resources` for resources that will go on the classpath, like image files
 
-
 Output Directories
 
 - `target/classes` for compiled Java .class files and resources copied from `src/main/resources`
-
 
 There's more, but this is enough for now.  More details on the de-facto standard Java project directory layout can be found at [Maven's directory layout guide](http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html).
 
@@ -108,8 +107,7 @@ There's more, but this is enough for now.  More details on the de-facto standard
 <!--------------------------------Slide ------------------------------------->
 # Organizing your Code in Packages
 
-
-All professional Java projects organize their code in packages.  The standard package naming scheme is to use reverse domain name, followed by project specific packages.  For our CompanyGUI application we could use the package name
+All professional Java projects organize their code in packages.  The standard package naming scheme is to use reverse domain name, followed by project specific packages.  For a CompanyGUI application we could use the package name
 
 ```Java
 package edu.gatech.cs1331.companygui;
@@ -192,7 +190,7 @@ See
 <!--------------------------------Slide ------------------------------------->
 # Runnable Jar Files
 
-The hard way: [Oracel's Jar file guide](http://docs.oracle.com/javase/tutorial/deployment/jar/appman.html)
+The hard way: [Oracle's Jar file guide](http://docs.oracle.com/javase/tutorial/deployment/jar/appman.html)
 
 The easy way: add this to your `build.xml`:
 ```xml
@@ -217,14 +215,19 @@ $ java -jar target/blackjack.jar
 ```
 
 <!--------------------------------Slide ------------------------------------->
-# Using an IDE
+# Gradle
+
+Gradle uses Java project conventions to make things much easier than with Ant. Here's a minimal Gradle build file for a Java project:
+
+```Groovy
+apply plugin: 'java'
+```
+
+The `java` plugin assumes the Maven Sandard Directory Layout and provides many useful tasks "out of the box". To list them, do:
+
+```sh
+gradle tasks
+```
 
 
-Here are a few basic things you need to configrue when using an IDE:
-
-- Editor settings for non-awful source code
-- Source Directory
-- Classpath
-- Libraries
-
-The best approach to most of this is to generate an IDE project configuration from your build specification, e.g., `build.xml`.  Let's see how to do these things with Eclipse.
+See [Gradle's Java Quickstart](https://docs.gradle.org/current/userguide/tutorial_java_projects.html) for details.
