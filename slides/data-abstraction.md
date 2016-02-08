@@ -159,7 +159,18 @@ Complex b = new Complex(3.0, 4.0);
 Complex c = a.plus(b);
 ```
 
-without being concerned with `Complex`'s implementation (which could use polar form, for example).  Clients (i.e., users) of the `Complex` class need only be concerned with its interface, or *API* (application programmer interface) -- the public methods of the class.
+without being concerned with `Complex`'s implementation (which could use polar form, for example).
+
+Clients (i.e., users) of the `Complex` class need only be concerned with its interface, or *API* (application programmer interface) -- the public methods of the class.
+
+<!--------------------------------- Slide ----------------------------------->
+# Visualizing `Complex` Operations
+
+```Java
+Complex a = new Complex(1.0, 2.0);
+Complex b = new Complex(3.0, 4.0);
+Complex c = a.plus(b);
+```
 
 After the code above we have the following `Complex` objects in memory:
 <center>

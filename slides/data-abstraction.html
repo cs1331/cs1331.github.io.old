@@ -195,7 +195,15 @@ Complex c = a.<span class="fu">plus</span>(b);</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Complex a = <span class="kw">new</span> <span class="fu">Complex</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>);
 Complex b = <span class="kw">new</span> <span class="fu">Complex</span>(<span class="fl">3.0</span>, <span class="fl">4.0</span>);
 Complex c = a.<span class="fu">plus</span>(b);</code></pre></div>
-<p>without being concerned with <code>Complex</code>'s implementation (which could use polar form, for example). Clients (i.e., users) of the <code>Complex</code> class need only be concerned with its interface, or <em>API</em> (application programmer interface) -- the public methods of the class.</p>
+<p>without being concerned with <code>Complex</code>'s implementation (which could use polar form, for example).</p>
+<p>Clients (i.e., users) of the <code>Complex</code> class need only be concerned with its interface, or <em>API</em> (application programmer interface) -- the public methods of the class.</p>
+<!--------------------------------- Slide ----------------------------------->
+</section>
+<section id="visualizing-complex-operations" class="slide level1">
+<h1>Visualizing <code>Complex</code> Operations</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Complex a = <span class="kw">new</span> <span class="fu">Complex</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>);
+Complex b = <span class="kw">new</span> <span class="fu">Complex</span>(<span class="fl">3.0</span>, <span class="fl">4.0</span>);
+Complex c = a.<span class="fu">plus</span>(b);</code></pre></div>
 After the code above we have the following <code>Complex</code> objects in memory:
 <center>
 <img src="complex-abc.png" />
