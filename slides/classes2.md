@@ -11,8 +11,6 @@
 
 Source: [Wikipedia](http://en.wikipedia.org/wiki/File:AceofBaseTheSignAlbumcover.jpg)
 
-
-
 <!------------------------------------ Slide -------------------------------->
 # Progress Check
 
@@ -21,12 +19,26 @@ Let's review our progress with our Card class design:
 - We have a nice string representation of Card objects (`Card` v0.1).
 - We have encapsulated the rank and suit in private instance variables (`Card` v1.0) with mutator methods (`Card` v1.2) to set their values.
 - We validate the rank and suit in the mutator methods so we can't set invalid ranks and suits in Card objects (`Card` v1.3).
-  - `Card` v2.0 has a constructor, which ensures that instance variables are initialized when an instance of `Card` v2.0 is created.
+  - `Card` v2.0.1 has a constructor, which ensures that instance variables are initialized when an instance of `Card` v2.0.1 is created.
+
+<!------------------------------------ Slide -------------------------------->
+# Card 2.0.1 Redux
+
+```Java
+public class Card {
+
+    private final String[] VALID_RANKS =
+        {"2", "3", "4", "5", "6", "7", "8", "9",
+         "10", "jack", "queen", "king", "ace"};
+
+    private final String[] VALID_SUITS =
+        {"diamonds", "clubs", "hearts","spades"};
+```
+
+Do we need a separate instance of `VALID_RANKS` and `VALID_SUITS` for each instance of our Card class?
 
 <!------------------------------------ Slide -------------------------------->
 # Static Members, Card v2.1
-
-Do we need a separate instance of `VALID_RANKS` and `VALID_SUITS` for each instance of our Card class?
 
 `static` members are shared with all instances of a class:
 ```Java
@@ -42,17 +54,94 @@ Given the declarations above:
 - Since they're `final`, we can safely make them `public` so clients of our Card class can use them
 
 <!------------------------------------ Slide -------------------------------->
-# One Final Enhancement
+# Fail
 
-`Card` v2.1 is pretty good, but we can write code like this:
+This code should bother you.
 
 ```Java
 public class Dealer {
 
     public static void main(String[] args) {
-        Card c = new Card("queen", "hearts");
+        Card c = new Card("Queen", "Bohemian Rhapsody");
         System.out.println(c);
-        c.setRank("jack"); // modifying c
+    }
+}
+```
+
+Why does it bother you?
+
+<!------------------------------------ Slide -------------------------------->
+# Enums Types
+
+An [Enum](http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) defines a class and all instances of the class in one definition.
+
+```Java
+public enum Rank {
+    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
+}
+```
+```Java
+public enum Suit {
+    DIAMONDS, CLUBS, HEARTS, SPADES
+}
+```
+
+There's more to Enum types that we won't cover in class but may test on exams.
+
+<!------------------------------------ Slide -------------------------------->
+# Using Enums in `Card` v3.0
+
+```Java
+public class Card {
+    private Rank rank;
+    private Suit suit;
+
+    public Card(Rank rank, Suit suit) {
+        setRank(rank);
+        setSuit(suit);
+    }
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
+    public void setSuit(Suit suit) {
+        this.suit = suit;
+    }
+    public String toString() {
+        return rank + " of " + suit;
+    }
+}
+```
+No need for hand-written validation code. No more run-time validation errors. Yay static types!
+
+<!------------------------------------ Slide -------------------------------->
+# Using Enums
+
+And using the `Card` v3.0 class is simpler:
+
+```Java
+public class Dealer {
+
+    public static void main(String[] args) {
+        Card c = new Card(Rank.QUEEN, Suit.HEARTS);
+        System.out.println(c);
+    }
+}
+```
+
+You'll even get auto-complete if your editor or IDE is set up to do that.
+
+<!------------------------------------ Slide -------------------------------->
+# One Final Enhancement
+
+`Card` v3.0 is pretty good, but we can write code like this (check out v3.1 for this `Dealer`):
+
+```Java
+public class Dealer {
+
+    public static void main(String[] args) {
+        Card c = new Card(Rank.QUEEN, Suit.HEARTS);
+        System.out.println(c);
+        c.setRank(Rank.JACK); // modifying c
         System.out.println(c);
     }
 }
@@ -60,22 +149,23 @@ public class Dealer {
 Does this make sense?  Should Card objects be mutable?
 
 <!------------------------------------ Slide -------------------------------->
-# Immutable Objects
+# Immutable `Card`, v4.0
 
-Card objects don't change.  We can model this behavior by removing the setters and putting the initialization code in the constructor (or making the setters private and calling them from the constructor):
+Card objects don't change.  We can model this behavior by removing the setters and putting the initialization code in the constructor:
 
 ```Java
-public Card(String aRank, String aSuit) { // constructor
-  if (!isValidRank(rank)) {
-    System.out.println(aRank + " is not a valid rank.");
-    System.exit(0);
-  }
-  rank = aRank;
-  if (!isValidSuit(aSuit)) {
-    System.out.println(aSuit + " is not a valid suit.");
-    System.exit(0);
-  }
-  suit = aSuit;
+public class Card {
+
+    private Rank rank;
+    private Suit suit;
+
+    public Card(Rank aRank, Suit aSuit) {
+        rank = aRank;
+        suit = aSuit;
+    }
+    public String toString() {
+        return rank + " of " + suit;
+    }
 }
 ```
 
@@ -103,31 +193,40 @@ In general, make your classes immutable unless you have a good reason to make th
 - are inherently thread-safe becuase access to mutable data need not be syncronized, and
 - enable safe instance sharing, so redundant copies need not be created.
 
-<!------------------------------------ Slide -------------------------------->
-# A Few Final Bits of Polish
-
-Take a look at the final evolution of our Card class.  It contains a few more enhancements:
-
-- Instead of simply terminating the program, the constructor throws `IllegalArgumentException` on invalid input so that client code can choose to deal with the exception at run-time.
-- Input is normalized to lower case and spaces trimmed to make the Card object robust to oddly formatted input.
-- It has an `equals()` method.
 
 <!------------------------------------ Slide -------------------------------->
-# Equality
+# Equality, `Card` v4.1
 
 - `==` means identity equality (aliasing) for reference types (objects).
 - The `equals(Object)` tests value equality for objects.
 
-Given our finished Card class with a properly implemented `equals(Object)` method, this code:
+```Java
+public class Card {
+...
+    public boolean equals(Object other) {
+        if (null == other) { return false; }
+        if (this == other) { return true; }
+        if (!(other instanceof Card)) { return false; }
+        Card that = (Card) other;
+        return this.rank.equals(that.rank) && this.suit.equals(that.suit);
+    }
+}
+```
+You'll learn how to write `equals` methods later. For now just understand the meaning.
+
+<!------------------------------------ Slide -------------------------------->
+# Equality vs. Aliasing
+
+With `Card`'s properly implemented `equals` method, this code:
 
 ```Java
-  Card c1 = new Card("ace", "spades");
-  Card c2 = new Card("ace", "spades");
-  Card c3 = c1;
-  System.out.println("c1 == c2 returns " + (c1 == c2));
-  System.out.println("c1.equals(c2) returns " + c1.equals(c2));
-  System.out.println("c1 == c3 returns " + (c1 == c3));
-  System.out.println("c1.equals(c3) returns " + c1.equals(c3));
+Card c1 = new Card(Rank.ACE, Suit.SPADES);
+Card c2 = new Card(Rank.ACE, Suit.SPADES);
+Card c3 = c1;
+System.out.println("c1 == c2 returns " + (c1 == c2));
+System.out.println("c1.equals(c2) returns " + c1.equals(c2));
+System.out.println("c1 == c3 returns " + (c1 == c3));
+System.out.println("c1.equals(c3) returns " + c1.equals(c3));
 ```
 
 produces this output:
@@ -139,229 +238,81 @@ produces this output:
   c1.equals(c3) returns true
 ```
 
-By the way, what if we left off the parentheses around `c1 == c2` in  `System.out.println("c1 == c2 returns " + (c1 == c2))`?
-
 <!------------------------------------ Slide -------------------------------->
-# Review Question 1
+# Packages (v5.0)
+
+We have a nice `Card` library, but it's in the "default" (no-name) package. This will make it hard to use in other code. So let's put it in a package by add ing this declaration at the top of each source file:
 
 ```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
+package edu.gatech.cs1331.card;
 ```
 
-Assume the following statements have been executed:
+Java requires the directory structure to match the package structure. So we need to move our classes into a `edu/gatech/cs1331/card` directory from our "source root."
 
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
+<!--------------------------------Slide ------------------------------------->
+# Standard Directory Layout
+
+Source Directories
+
+- `src/main/java` for Java source files ("source root")
+- `src/main/resources` for resources that will go on the classpath, like image files
+
+Output Directories
+
+- `build/classes` for `javac` output and resources copied from `src/main/resources`
+
+More details on the de-facto standard Java project directory layout: [Maven's directory layout guide](http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html).
+
+So we'll put our Card source files in `src/main/java/edu/gatech/cs1331/card/`
+
+<!--------------------------------Slide ------------------------------------->
+# Using the Standard Layout
+
+Now we're separating our source files from compiler output. Here's how to use the new directory layout:
+
+Make a directory for compiler output:
+
+```sh
+[chris@nijinsky ~/cs1331/card]
+$ mkdir -p build/classes
 ```
 
-What is the value of `maggie`?
-
-- ?
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 1 Answer
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
+Tell `javac` where to put compiler output with the `-d` switch:
+```sh
+[chris@nijinsky ~/cs1331/card]
+$ javac -d build/classes/ src/main/java/edu/gatech/cs1331/card/*.java
 ```
 
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
+Specify a classpath and fully-qualified class name to run:
+```sh
+[chris@nijinsky ~/cs1331/card]
+$ java -cp ./build/classes/ edu.gatech.cs1331.card.Dealer
 ```
 
-What is the value of `maggie`?
+<!--------------------------------Slide ------------------------------------->
+# The Classpath
 
-- the address of a `Kitten` object
+Just as your operating system shell looks in the `PATH` environment variable for executable files, JDK tools (such as `javac` and `java`) look in the `CLASSPATH` for Java classes.
+
+A classpath specification is a list of places to find `.class` files and other resources.  Two kinds of elements in this list:
+
+- directories in which to find `.class` files on the filesystem, or
+- `.jar` files that contain archives of directory trees containing `.class` files and other files (more later).
 
 
+<!--------------------------------Slide ------------------------------------->
+# Specifying a Classpath
 
+To specify a classpath:
 
-<!------------------------------------ Slide -------------------------------->
-# Review Question 2
+- set an environment variable named `CLASSAPTH`, or
+- specify a classpath on a per-application basis by using the `-cp` switch.  The classpath set with `-cp` overrides the `CLASSPATH` environment variable.
 
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
+Don't use the `CLASSPATH` environment variable.  If it's already set, clear it with (on Windows):
+```sh
+C:\> set CLASSPATH=
 ```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
+or (on Unix):
+```sh
+$ unset CLASSPATH
 ```
-
-What does `maggie.toString()` return?
-
-- ?
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 2 Answer
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
-```
-
-What does `maggie.toString()` return?
-
-- `"Kitten: null"`
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 3
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
-```
-
-What is the value of the expression `fiona == fiona2`?
-
-- ?
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 3 Answer
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
-```
-
-What is the value of the expression `fiona == fiona2`?
-
-- `false`
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 4
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten[] kittens = new Kitten[5];
-```
-
-What is the value of `kittens[0]` ?
-
-- ?
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 4 Answer
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten[] kittens = new Kitten[5];
-```
-
-What is the value of `kittens[0]` ?
-
-- `null`

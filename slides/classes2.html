@@ -84,13 +84,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>We have a nice string representation of Card objects (<code>Card</code> v0.1).</li>
 <li>We have encapsulated the rank and suit in private instance variables (<code>Card</code> v1.0) with mutator methods (<code>Card</code> v1.2) to set their values.</li>
 <li>We validate the rank and suit in the mutator methods so we can't set invalid ranks and suits in Card objects (<code>Card</code> v1.3).</li>
-<li><code>Card</code> v2.0 has a constructor, which ensures that instance variables are initialized when an instance of <code>Card</code> v2.0 is created.</li>
+<li><code>Card</code> v2.0.1 has a constructor, which ensures that instance variables are initialized when an instance of <code>Card</code> v2.0.1 is created.</li>
 </ul>
+<!------------------------------------ Slide -------------------------------->
+</section>
+<section id="card-2.0.1-redux" class="slide level1">
+<h1>Card 2.0.1 Redux</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Card {
+
+    <span class="kw">private</span> <span class="dt">final</span> String[] VALID_RANKS =
+        {<span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;6&quot;</span>, <span class="st">&quot;7&quot;</span>, <span class="st">&quot;8&quot;</span>, <span class="st">&quot;9&quot;</span>,
+         <span class="st">&quot;10&quot;</span>, <span class="st">&quot;jack&quot;</span>, <span class="st">&quot;queen&quot;</span>, <span class="st">&quot;king&quot;</span>, <span class="st">&quot;ace&quot;</span>};
+
+    <span class="kw">private</span> <span class="dt">final</span> String[] VALID_SUITS =
+        {<span class="st">&quot;diamonds&quot;</span>, <span class="st">&quot;clubs&quot;</span>, <span class="st">&quot;hearts&quot;</span>,<span class="st">&quot;spades&quot;</span>};</code></pre></div>
+<p>Do we need a separate instance of <code>VALID_RANKS</code> and <code>VALID_SUITS</code> for each instance of our Card class?</p>
 <!------------------------------------ Slide -------------------------------->
 </section>
 <section id="static-members-card-v2.1" class="slide level1">
 <h1>Static Members, Card v2.1</h1>
-<p>Do we need a separate instance of <code>VALID_RANKS</code> and <code>VALID_SUITS</code> for each instance of our Card class?</p>
 <p><code>static</code> members are shared with all instances of a class:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> String[] VALID_RANKS =
     {<span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;6&quot;</span>, <span class="st">&quot;7&quot;</span>, <span class="st">&quot;8&quot;</span>, <span class="st">&quot;9&quot;</span>,
@@ -104,35 +116,97 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <!------------------------------------ Slide -------------------------------->
 </section>
-<section id="one-final-enhancement" class="slide level1">
-<h1>One Final Enhancement</h1>
-<p><code>Card</code> v2.1 is pretty good, but we can write code like this:</p>
+<section id="fail" class="slide level1">
+<h1>Fail</h1>
+<p>This code should bother you.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Dealer {
 
     <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
-        Card c = <span class="kw">new</span> <span class="fu">Card</span>(<span class="st">&quot;queen&quot;</span>, <span class="st">&quot;hearts&quot;</span>);
+        Card c = <span class="kw">new</span> <span class="fu">Card</span>(<span class="st">&quot;Queen&quot;</span>, <span class="st">&quot;Bohemian Rhapsody&quot;</span>);
         System.<span class="fu">out</span>.<span class="fu">println</span>(c);
-        c.<span class="fu">setRank</span>(<span class="st">&quot;jack&quot;</span>); <span class="co">// modifying c</span>
+    }
+}</code></pre></div>
+<p>Why does it bother you?</p>
+<!------------------------------------ Slide -------------------------------->
+</section>
+<section id="enums-types" class="slide level1">
+<h1>Enums Types</h1>
+<p>An <a href="http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html">Enum</a> defines a class and all instances of the class in one definition.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">enum</span> Rank {
+    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">enum</span> Suit {
+    DIAMONDS, CLUBS, HEARTS, SPADES
+}</code></pre></div>
+<p>There's more to Enum types that we won't cover in class but may test on exams.</p>
+<!------------------------------------ Slide -------------------------------->
+</section>
+<section id="using-enums-in-card-v3.0" class="slide level1">
+<h1>Using Enums in <code>Card</code> v3.0</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Card {
+    <span class="kw">private</span> Rank rank;
+    <span class="kw">private</span> Suit suit;
+
+    <span class="kw">public</span> <span class="fu">Card</span>(Rank rank, Suit suit) {
+        <span class="fu">setRank</span>(rank);
+        <span class="fu">setSuit</span>(suit);
+    }
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setRank</span>(Rank rank) {
+        <span class="kw">this</span>.<span class="fu">rank</span> = rank;
+    }
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setSuit</span>(Suit suit) {
+        <span class="kw">this</span>.<span class="fu">suit</span> = suit;
+    }
+    <span class="kw">public</span> String <span class="fu">toString</span>() {
+        <span class="kw">return</span> rank + <span class="st">&quot; of &quot;</span> + suit;
+    }
+}</code></pre></div>
+<p>No need for hand-written validation code. No more run-time validation errors. Yay static types!</p>
+<!------------------------------------ Slide -------------------------------->
+</section>
+<section id="using-enums" class="slide level1">
+<h1>Using Enums</h1>
+<p>And using the <code>Card</code> v3.0 class is simpler:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Dealer {
+
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+        Card c = <span class="kw">new</span> <span class="fu">Card</span>(Rank.<span class="fu">QUEEN</span>, Suit.<span class="fu">HEARTS</span>);
+        System.<span class="fu">out</span>.<span class="fu">println</span>(c);
+    }
+}</code></pre></div>
+<p>You'll even get auto-complete if your editor or IDE is set up to do that.</p>
+<!------------------------------------ Slide -------------------------------->
+</section>
+<section id="one-final-enhancement" class="slide level1">
+<h1>One Final Enhancement</h1>
+<p><code>Card</code> v3.0 is pretty good, but we can write code like this (check out v3.1 for this <code>Dealer</code>):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Dealer {
+
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+        Card c = <span class="kw">new</span> <span class="fu">Card</span>(Rank.<span class="fu">QUEEN</span>, Suit.<span class="fu">HEARTS</span>);
+        System.<span class="fu">out</span>.<span class="fu">println</span>(c);
+        c.<span class="fu">setRank</span>(Rank.<span class="fu">JACK</span>); <span class="co">// modifying c</span>
         System.<span class="fu">out</span>.<span class="fu">println</span>(c);
     }
 }</code></pre></div>
 <p>Does this make sense? Should Card objects be mutable?</p>
 <!------------------------------------ Slide -------------------------------->
 </section>
-<section id="immutable-objects" class="slide level1">
-<h1>Immutable Objects</h1>
-<p>Card objects don't change. We can model this behavior by removing the setters and putting the initialization code in the constructor (or making the setters private and calling them from the constructor):</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="fu">Card</span>(String aRank, String aSuit) { <span class="co">// constructor</span>
-  <span class="kw">if</span> (!<span class="fu">isValidRank</span>(rank)) {
-    System.<span class="fu">out</span>.<span class="fu">println</span>(aRank + <span class="st">&quot; is not a valid rank.&quot;</span>);
-    System.<span class="fu">exit</span>(<span class="dv">0</span>);
-  }
-  rank = aRank;
-  <span class="kw">if</span> (!<span class="fu">isValidSuit</span>(aSuit)) {
-    System.<span class="fu">out</span>.<span class="fu">println</span>(aSuit + <span class="st">&quot; is not a valid suit.&quot;</span>);
-    System.<span class="fu">exit</span>(<span class="dv">0</span>);
-  }
-  suit = aSuit;
+<section id="immutable-card-v4.0" class="slide level1">
+<h1>Immutable <code>Card</code>, v4.0</h1>
+<p>Card objects don't change. We can model this behavior by removing the setters and putting the initialization code in the constructor:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Card {
+
+    <span class="kw">private</span> Rank rank;
+    <span class="kw">private</span> Suit suit;
+
+    <span class="kw">public</span> <span class="fu">Card</span>(Rank aRank, Suit aSuit) {
+        rank = aRank;
+        suit = aSuit;
+    }
+    <span class="kw">public</span> String <span class="fu">toString</span>() {
+        <span class="kw">return</span> rank + <span class="st">&quot; of &quot;</span> + suit;
+    }
 }</code></pre></div>
 <p>Note the use of another idiom for disambiguating constructor paramters from instance variables (as opposed to using <code>this</code>).</p>
 <!------------------------------------ Slide -------------------------------->
@@ -160,210 +234,99 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <!------------------------------------ Slide -------------------------------->
 </section>
-<section id="a-few-final-bits-of-polish" class="slide level1">
-<h1>A Few Final Bits of Polish</h1>
-<p>Take a look at the final evolution of our Card class. It contains a few more enhancements:</p>
-<ul>
-<li>Instead of simply terminating the program, the constructor throws <code>IllegalArgumentException</code> on invalid input so that client code can choose to deal with the exception at run-time.</li>
-<li>Input is normalized to lower case and spaces trimmed to make the Card object robust to oddly formatted input.</li>
-<li>It has an <code>equals()</code> method.</li>
-</ul>
-<!------------------------------------ Slide -------------------------------->
-</section>
-<section id="equality" class="slide level1">
-<h1>Equality</h1>
+<section id="equality-card-v4.1" class="slide level1">
+<h1>Equality, <code>Card</code> v4.1</h1>
 <ul>
 <li><code>==</code> means identity equality (aliasing) for reference types (objects).</li>
 <li>The <code>equals(Object)</code> tests value equality for objects.</li>
 </ul>
-<p>Given our finished Card class with a properly implemented <code>equals(Object)</code> method, this code:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">  Card c1 = <span class="kw">new</span> <span class="fu">Card</span>(<span class="st">&quot;ace&quot;</span>, <span class="st">&quot;spades&quot;</span>);
-  Card c2 = <span class="kw">new</span> <span class="fu">Card</span>(<span class="st">&quot;ace&quot;</span>, <span class="st">&quot;spades&quot;</span>);
-  Card c3 = c1;
-  System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;c1 == c2 returns &quot;</span> + (c1 == c2));
-  System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;c1.equals(c2) returns &quot;</span> + c1.<span class="fu">equals</span>(c2));
-  System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;c1 == c3 returns &quot;</span> + (c1 == c3));
-  System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;c1.equals(c3) returns &quot;</span> + c1.<span class="fu">equals</span>(c3));</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Card {
+...
+    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">equals</span>(Object other) {
+        <span class="kw">if</span> (<span class="kw">null</span> == other) { <span class="kw">return</span> <span class="kw">false</span>; }
+        <span class="kw">if</span> (<span class="kw">this</span> == other) { <span class="kw">return</span> <span class="kw">true</span>; }
+        <span class="kw">if</span> (!(other <span class="kw">instanceof</span> Card)) { <span class="kw">return</span> <span class="kw">false</span>; }
+        Card that = (Card) other;
+        <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">rank</span>.<span class="fu">equals</span>(that.<span class="fu">rank</span>) &amp;&amp; <span class="kw">this</span>.<span class="fu">suit</span>.<span class="fu">equals</span>(that.<span class="fu">suit</span>);
+    }
+}</code></pre></div>
+<p>You'll learn how to write <code>equals</code> methods later. For now just understand the meaning.</p>
+<!------------------------------------ Slide -------------------------------->
+</section>
+<section id="equality-vs.-aliasing" class="slide level1">
+<h1>Equality vs. Aliasing</h1>
+<p>With <code>Card</code>'s properly implemented <code>equals</code> method, this code:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Card c1 = <span class="kw">new</span> <span class="fu">Card</span>(Rank.<span class="fu">ACE</span>, Suit.<span class="fu">SPADES</span>);
+Card c2 = <span class="kw">new</span> <span class="fu">Card</span>(Rank.<span class="fu">ACE</span>, Suit.<span class="fu">SPADES</span>);
+Card c3 = c1;
+System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;c1 == c2 returns &quot;</span> + (c1 == c2));
+System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;c1.equals(c2) returns &quot;</span> + c1.<span class="fu">equals</span>(c2));
+System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;c1 == c3 returns &quot;</span> + (c1 == c3));
+System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;c1.equals(c3) returns &quot;</span> + c1.<span class="fu">equals</span>(c3));</code></pre></div>
 <p>produces this output:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">  c1 == c2 returns <span class="kw">false</span>
   c1.<span class="fu">equals</span>(c2) returns <span class="kw">true</span>
   c1 == c3 returns <span class="kw">true</span>
   c1.<span class="fu">equals</span>(c3) returns <span class="kw">true</span></code></pre></div>
-<p>By the way, what if we left off the parentheses around <code>c1 == c2</code> in <code>System.out.println(&quot;c1 == c2 returns &quot; + (c1 == c2))</code>?</p>
 <!------------------------------------ Slide -------------------------------->
 </section>
-<section id="review-question-1" class="slide level1">
-<h1>Review Question 1</h1>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Kitten {
-    <span class="kw">private</span> String name;
-
-    <span class="kw">public</span> <span class="fu">Kitten</span>(String name) {
-        name = name;
-    }
-    <span class="kw">public</span> String <span class="fu">toString</span>() {
-        <span class="kw">return</span> <span class="st">&quot;Kitten: &quot;</span> + name;
-    }
-}</code></pre></div>
-<p>Assume the following statements have been executed:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        Kitten maggie = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Maggie&quot;</span>);
-        Kitten fiona = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);
-        Kitten fiona2 = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);</code></pre></div>
-<p>What is the value of <code>maggie</code>?</p>
-<ul>
-<li>?</li>
-</ul>
-<!------------------------------------ Slide -------------------------------->
+<section id="packages-v5.0" class="slide level1">
+<h1>Packages (v5.0)</h1>
+<p>We have a nice <code>Card</code> library, but it's in the &quot;default&quot; (no-name) package. This will make it hard to use in other code. So let's put it in a package by add ing this declaration at the top of each source file:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package edu.gatech.cs1331.card;</span></code></pre></div>
+<p>Java requires the directory structure to match the package structure. So we need to move our classes into a <code>edu/gatech/cs1331/card</code> directory from our &quot;source root.&quot;</p>
+<!--------------------------------Slide ------------------------------------->
 </section>
-<section id="review-question-1-answer" class="slide level1">
-<h1>Review Question 1 Answer</h1>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Kitten {
-    <span class="kw">private</span> String name;
-
-    <span class="kw">public</span> <span class="fu">Kitten</span>(String name) {
-        name = name;
-    }
-    <span class="kw">public</span> String <span class="fu">toString</span>() {
-        <span class="kw">return</span> <span class="st">&quot;Kitten: &quot;</span> + name;
-    }
-}</code></pre></div>
-<p>Assume the following statements have been executed:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        Kitten maggie = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Maggie&quot;</span>);
-        Kitten fiona = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);
-        Kitten fiona2 = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);</code></pre></div>
-<p>What is the value of <code>maggie</code>?</p>
+<section id="standard-directory-layout" class="slide level1">
+<h1>Standard Directory Layout</h1>
+<p>Source Directories</p>
 <ul>
-<li>the address of a <code>Kitten</code> object</li>
+<li><code>src/main/java</code> for Java source files (&quot;source root&quot;)</li>
+<li><code>src/main/resources</code> for resources that will go on the classpath, like image files</li>
 </ul>
-<!------------------------------------ Slide -------------------------------->
+<p>Output Directories</p>
+<ul>
+<li><code>build/classes</code> for <code>javac</code> output and resources copied from <code>src/main/resources</code></li>
+</ul>
+<p>More details on the de-facto standard Java project directory layout: <a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven's directory layout guide</a>.</p>
+<p>So we'll put our Card source files in <code>src/main/java/edu/gatech/cs1331/card/</code></p>
+<!--------------------------------Slide ------------------------------------->
 </section>
-<section id="review-question-2" class="slide level1">
-<h1>Review Question 2</h1>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Kitten {
-    <span class="kw">private</span> String name;
-
-    <span class="kw">public</span> <span class="fu">Kitten</span>(String name) {
-        name = name;
-    }
-    <span class="kw">public</span> String <span class="fu">toString</span>() {
-        <span class="kw">return</span> <span class="st">&quot;Kitten: &quot;</span> + name;
-    }
-}</code></pre></div>
-<p>Assume the following statements have been executed:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        Kitten maggie = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Maggie&quot;</span>);
-        Kitten fiona = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);
-        Kitten fiona2 = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);</code></pre></div>
-<p>What does <code>maggie.toString()</code> return?</p>
-<ul>
-<li>?</li>
-</ul>
-<!------------------------------------ Slide -------------------------------->
+<section id="using-the-standard-layout" class="slide level1">
+<h1>Using the Standard Layout</h1>
+<p>Now we're separating our source files from compiler output. Here's how to use the new directory layout:</p>
+<p>Make a directory for compiler output:</p>
+<pre class="sh"><code>[chris@nijinsky ~/cs1331/card]
+$ mkdir -p build/classes</code></pre>
+<p>Tell <code>javac</code> where to put compiler output with the <code>-d</code> switch:</p>
+<pre class="sh"><code>[chris@nijinsky ~/cs1331/card]
+$ javac -d build/classes/ src/main/java/edu/gatech/cs1331/card/*.java</code></pre>
+<p>Specify a classpath and fully-qualified class name to run:</p>
+<pre class="sh"><code>[chris@nijinsky ~/cs1331/card]
+$ java -cp ./build/classes/ edu.gatech.cs1331.card.Dealer</code></pre>
+<!--------------------------------Slide ------------------------------------->
 </section>
-<section id="review-question-2-answer" class="slide level1">
-<h1>Review Question 2 Answer</h1>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Kitten {
-    <span class="kw">private</span> String name;
-
-    <span class="kw">public</span> <span class="fu">Kitten</span>(String name) {
-        name = name;
-    }
-    <span class="kw">public</span> String <span class="fu">toString</span>() {
-        <span class="kw">return</span> <span class="st">&quot;Kitten: &quot;</span> + name;
-    }
-}</code></pre></div>
-<p>Assume the following statements have been executed:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        Kitten maggie = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Maggie&quot;</span>);
-        Kitten fiona = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);
-        Kitten fiona2 = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);</code></pre></div>
-<p>What does <code>maggie.toString()</code> return?</p>
+<section id="the-classpath" class="slide level1">
+<h1>The Classpath</h1>
+<p>Just as your operating system shell looks in the <code>PATH</code> environment variable for executable files, JDK tools (such as <code>javac</code> and <code>java</code>) look in the <code>CLASSPATH</code> for Java classes.</p>
+<p>A classpath specification is a list of places to find <code>.class</code> files and other resources. Two kinds of elements in this list:</p>
 <ul>
-<li><code>&quot;Kitten: null&quot;</code></li>
+<li>directories in which to find <code>.class</code> files on the filesystem, or</li>
+<li><code>.jar</code> files that contain archives of directory trees containing <code>.class</code> files and other files (more later).</li>
 </ul>
-<!------------------------------------ Slide -------------------------------->
+<!--------------------------------Slide ------------------------------------->
 </section>
-<section id="review-question-3" class="slide level1">
-<h1>Review Question 3</h1>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Kitten {
-    <span class="kw">private</span> String name;
-
-    <span class="kw">public</span> <span class="fu">Kitten</span>(String name) {
-        name = name;
-    }
-    <span class="kw">public</span> String <span class="fu">toString</span>() {
-        <span class="kw">return</span> <span class="st">&quot;Kitten: &quot;</span> + name;
-    }
-}</code></pre></div>
-<p>Assume the following statements have been executed:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        Kitten maggie = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Maggie&quot;</span>);
-        Kitten fiona = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);
-        Kitten fiona2 = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);</code></pre></div>
-<p>What is the value of the expression <code>fiona == fiona2</code>?</p>
+<section id="specifying-a-classpath" class="slide level1">
+<h1>Specifying a Classpath</h1>
+<p>To specify a classpath:</p>
 <ul>
-<li>?</li>
+<li>set an environment variable named <code>CLASSAPTH</code>, or</li>
+<li>specify a classpath on a per-application basis by using the <code>-cp</code> switch. The classpath set with <code>-cp</code> overrides the <code>CLASSPATH</code> environment variable.</li>
 </ul>
-<!------------------------------------ Slide -------------------------------->
-</section>
-<section id="review-question-3-answer" class="slide level1">
-<h1>Review Question 3 Answer</h1>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Kitten {
-    <span class="kw">private</span> String name;
-
-    <span class="kw">public</span> <span class="fu">Kitten</span>(String name) {
-        name = name;
-    }
-    <span class="kw">public</span> String <span class="fu">toString</span>() {
-        <span class="kw">return</span> <span class="st">&quot;Kitten: &quot;</span> + name;
-    }
-}</code></pre></div>
-<p>Assume the following statements have been executed:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        Kitten maggie = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Maggie&quot;</span>);
-        Kitten fiona = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);
-        Kitten fiona2 = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Fiona&quot;</span>);</code></pre></div>
-<p>What is the value of the expression <code>fiona == fiona2</code>?</p>
-<ul>
-<li><code>false</code></li>
-</ul>
-<!------------------------------------ Slide -------------------------------->
-</section>
-<section id="review-question-4" class="slide level1">
-<h1>Review Question 4</h1>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Kitten {
-    <span class="kw">private</span> String name;
-
-    <span class="kw">public</span> <span class="fu">Kitten</span>(String name) {
-        name = name;
-    }
-    <span class="kw">public</span> String <span class="fu">toString</span>() {
-        <span class="kw">return</span> <span class="st">&quot;Kitten: &quot;</span> + name;
-    }
-}</code></pre></div>
-<p>Assume the following statements have been executed:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        Kitten maggie = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Maggie&quot;</span>);
-        Kitten[] kittens = <span class="kw">new</span> Kitten[<span class="dv">5</span>];</code></pre></div>
-<p>What is the value of <code>kittens[0]</code> ?</p>
-<ul>
-<li>?</li>
-</ul>
-<!------------------------------------ Slide -------------------------------->
-</section>
-<section id="review-question-4-answer" class="slide level1">
-<h1>Review Question 4 Answer</h1>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Kitten {
-    <span class="kw">private</span> String name;
-
-    <span class="kw">public</span> <span class="fu">Kitten</span>(String name) {
-        name = name;
-    }
-    <span class="kw">public</span> String <span class="fu">toString</span>() {
-        <span class="kw">return</span> <span class="st">&quot;Kitten: &quot;</span> + name;
-    }
-}</code></pre></div>
-<p>Assume the following statements have been executed:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        Kitten maggie = <span class="kw">new</span> <span class="fu">Kitten</span>(<span class="st">&quot;Maggie&quot;</span>);
-        Kitten[] kittens = <span class="kw">new</span> Kitten[<span class="dv">5</span>];</code></pre></div>
-<p>What is the value of <code>kittens[0]</code> ?</p>
-<ul>
-<li><code>null</code></li>
-</ul>
+<p>Don't use the <code>CLASSPATH</code> environment variable. If it's already set, clear it with (on Windows):</p>
+<pre class="sh"><code>C:\&gt; set CLASSPATH=</code></pre>
+<p>or (on Unix):</p>
+<pre class="sh"><code>$ unset CLASSPATH</code></pre>
 </section>
     </div>
   </div>
