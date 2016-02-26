@@ -399,3 +399,54 @@ while (shouldContinue) {
     }
 }
 ```
+
+<!------------------------------------ Slide -------------------------------->
+# Reasoning About Imperative Programs
+
+What will this code print?
+
+```Java
+public class ShortCircuit {
+
+    private static int counter = 0;
+
+    private static boolean inc() {
+        counter++;
+        return true;
+    }
+    public static void main(String args[]) {
+        boolean a = false;
+        if (a || inc()) {
+            System.out.println("Meow");
+        }
+        System.out.println("counter: " + counter);
+        if (a && inc()) {
+            System.out.println("Woof");
+        }
+        System.out.println("counter: " + counter);
+    }
+}
+```
+<!------------------------------------ Slide -------------------------------->
+# Reasoning About Imperative Programs
+
+Substitute values, trace code, track `counter` and output:
+
+```Java
+Code                                       counter  Output
+
+boolean a = false;                         0
+if (a || inc()) {                          1
+    System.out.println("Meow");            1        Meow
+}                                          1
+System.out.println("counter: " + counter); 1        counter: 1
+if (a && inc()) {                          1
+    System.out.println("Woof");            1
+}                                          1
+System.out.println("counter: " + counter); 1        counter: 1
+```
+
+Key points:
+
+- `inc()` always returns `true`
+- Due to short-curcuit evaluation, `inc()` not always evaluated

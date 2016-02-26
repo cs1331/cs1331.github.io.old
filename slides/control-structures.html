@@ -160,7 +160,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="ternary-if-else-expression" class="slide level1">
 <h1>Ternary If-Else Expression</h1>
 <p>The ternary operator combines the above into one expression (expressions have values):</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String dinner = (temp &gt; <span class="dv">60</span>) ? <span class="st">&quot;grilled&quot;</span> : <span class="st">&quot;baked&quot;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String dinner = (temp &gt; <span class="dv">60</span>) ? <span class="st">&quot;grilled&quot;</span> : <span class="st">&quot;baked&quot;</span>;</code></pre></div>
 </section>
 <section id="blocks" class="slide level1">
 <h1>Blocks</h1>
@@ -391,6 +391,52 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         <span class="fu">doSomethingWithInput</span>(input);
     }
 }</code></pre></div>
+<!------------------------------------ Slide -------------------------------->
+</section>
+<section id="reasoning-about-imperative-programs" class="slide level1">
+<h1>Reasoning About Imperative Programs</h1>
+<p>What will this code print?</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> ShortCircuit {
+
+    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">int</span> counter = <span class="dv">0</span>;
+
+    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">boolean</span> <span class="fu">inc</span>() {
+        counter++;
+        <span class="kw">return</span> <span class="kw">true</span>;
+    }
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String args[]) {
+        <span class="dt">boolean</span> a = <span class="kw">false</span>;
+        <span class="kw">if</span> (a || <span class="fu">inc</span>()) {
+            System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Meow&quot;</span>);
+        }
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;counter: &quot;</span> + counter);
+        <span class="kw">if</span> (a &amp;&amp; <span class="fu">inc</span>()) {
+            System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Woof&quot;</span>);
+        }
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;counter: &quot;</span> + counter);
+    }
+}</code></pre></div>
+<!------------------------------------ Slide -------------------------------->
+</section>
+<section id="reasoning-about-imperative-programs-1" class="slide level1">
+<h1>Reasoning About Imperative Programs</h1>
+<p>Substitute values, trace code, track <code>counter</code> and output:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Code                                       counter  Output
+
+<span class="dt">boolean</span> a = <span class="kw">false</span>;                         <span class="dv">0</span>
+<span class="kw">if</span> (a || <span class="fu">inc</span>()) {                          <span class="dv">1</span>
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Meow&quot;</span>);            <span class="dv">1</span>        Meow
+}                                          <span class="dv">1</span>
+System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;counter: &quot;</span> + counter); <span class="dv">1</span>        counter: <span class="dv">1</span>
+<span class="kw">if</span> (a &amp;&amp; <span class="fu">inc</span>()) {                          <span class="dv">1</span>
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Woof&quot;</span>);            <span class="dv">1</span>
+}                                          <span class="dv">1</span>
+System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;counter: &quot;</span> + counter); <span class="dv">1</span>        counter: <span class="dv">1</span></code></pre></div>
+<p>Key points:</p>
+<ul>
+<li><code>inc()</code> always returns <code>true</code></li>
+<li>Due to short-curcuit evaluation, <code>inc()</code> not always evaluated</li>
+</ul>
 </section>
     </div>
   </div>
