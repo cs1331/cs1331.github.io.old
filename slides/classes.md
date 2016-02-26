@@ -2,22 +2,18 @@
 % CS 1331
 
 # Classes
+
 <center>
-<video width="720" height="480" controls>
-  <source src="http://www.youtube.com/v/8aXsEO2eKo4?rel=0" type="video/mp4">
-</video>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/8aXsEO2eKo4" frameborder="0" allowfullscreen></iframe>
 </center>
 
 <!------------------------------------ Slide -------------------------------->
-# The Anatomy of a Class Definition
+# Anatomy of a Class
 
-
-<table>
-<tr>
-<td>
-Card.java
-
+By the end of next lecture, you'll understand everything in this class definition.
 ```Java
+package edu.gatech.cs1331.card;
+
 import java.util.Arrays;
 
 public class Card {
@@ -36,70 +32,40 @@ public class Card {
   private boolean isValidRank(String someRank) { ... }
 }
 ```
-</td>
-<td>
-A class definition file contains
-
-
-- import statements
-
-- class declaration
-
-- static variable definitions
-
-- instance variable definitions
-
-- constructor
-
-- public methods
-
-- private helper methods
-
-</td>
-</tr>
-</table>
 
 
 <!------------------------------------ Slide -------------------------------->
-A Card Class, v0
-
-
+# A Card Class, v0.0<sup>[1](http://semver.org/)</sup>
 
 Consider how to represent a Card ADT:
 
 - rank - the rank of a playing card, e.g., 2, jack, ace
 - suit - the suit of a playing card, e.g., spades, diamonds
 
-
 ```Java
-public class Card0 {
+public class Card {
 
     String rank;
     String suit;
 }
 ```
 
-
 - `rank` and `suit` are instance variables
-- Every *instance* of `Card0` has its own copy of instance variables.
+- Every *instance* of `Card` has its own copy of instance variables.
 
-
-
-
+1 [Semantic Versioning](http://semver.org/)
 
 <!------------------------------------ Slide -------------------------------->
-# Using `Card0`
-
-
+# Using `Card` v0.0
 
 ```Java
-public class Card0 {
+public class Card {
 
     String rank;
     String suit;
 
     public static void main(String[] args) {
-        Card0 c = new Card0();
+        Card c = new Card();
         System.out.println(c);
     }
 }
@@ -110,12 +76,11 @@ Note that we can put a `main` method in any class. This is useful for explorator
 The `String` representation isn't very appealing.  (What does it print?)
 
 <!------------------------------------ Slide -------------------------------->
-# Card Class, v1
+# Card Class, v0.1
 
 
 ```Java
-public class Card1 {
-
+public class Card {
     String rank;
     String suit;
 
@@ -123,10 +88,10 @@ public class Card1 {
         return rank + " of " + suit;
     }
     public static void main(String[] args) {
-        Card1 swedishPop = new Card1();
+        Card swedishPop = new Card();
         swedishPop.rank = "ace";
         swedishPop.suit = "base";
-        Card1 handy = new Card1();
+        Card handy = new Card();
         handy.rank = "jack";
         handy.suit = "all trades";
         System.out.println(swedishPop);
@@ -135,15 +100,14 @@ public class Card1 {
 }
 ```
 
-Now we have an ``ace of base'' card and a ``jack of all trades'' card.  But those aren't valid cards.
+Now we have an "ace of base" card and a "jack of all trades" card.  But those aren't valid cards.
 
 <!------------------------------------ Slide -------------------------------->
-Encapsulation: Card, v2
+# Encapsulation: Card, v1.0
 
 Let's protect the instance variables by making them private:
 ```Java
-public class Card2 {
-
+public class Card {
     private String rank;
     private String suit;
 
@@ -152,7 +116,7 @@ public class Card2 {
     }
 
     public static void main(String[] args) {
-        Card2 c = new Card2();
+        Card c = new Card();
         c.rank = "ace";
         c.suit = "base";
         System.out.println(c);
@@ -162,20 +126,17 @@ public class Card2 {
 
 Why does this still compile?
 
+- `main` method in `Card` -- can see `Card`'s private parts
 
-- `main` method still part of `Card2` - has access to private parts
-
-Let's make a dealer class to represent client code.
 
 <!------------------------------------ Slide -------------------------------->
-# A Dealer Class
+# A Dealer Class, v1.1
 
-(We'll synchronize the names of Dealer classes with the names of Card classes, so `Dealer2` is meant to test `Card2`.)
 ```Java
-public class Dealer2 {
+public class Dealer {
 
     public static void main(String[] args) {
-        Card2 c = new Card2();
+        Card c = new Card();
         c.rank = "ace";
         c.suit = "base";
         System.out.println(c);
@@ -186,10 +147,10 @@ public class Dealer2 {
 This won't compile (which is what we want). Why?
 
 <!------------------------------------ Slide -------------------------------->
-# Mutators: Card, v3
+# Mutators: Card, v1.2
 
 ```Java
-public class Card3 {
+public class Card {
 
     private String rank;
     private String suit;
@@ -207,14 +168,14 @@ public class Card3 {
 - `setX` is the Java convention for a setter method for an instance variable named `x`.
 
 <!------------------------------------ Slide -------------------------------->
-# Dealing `Card3`
+# Dealing `Card`, v1.2
 
-Let's try out our new `Card3` class.
+Let's try out our new `Card` class.
 ```Java
-public class Dealer3 {
+public class Dealer {
 
     public static void main(String[] args) {
-        Card3 c = new Card3();
+        Card c = new Card();
         c.setRank("ace");
         c.setSuit("base");
         System.out.println(c);
@@ -222,7 +183,7 @@ public class Dealer3 {
 }
 ```
 
-Oops.  Prints ``null of null''.  Why?
+Oops.  Prints "null of null".  Why?
 
 <!------------------------------------ Slide -------------------------------->
 # Shadowing Variables
@@ -242,17 +203,16 @@ public void setSuit(String suit) {
 - `suit` in `setSuit` refers to the local `suit` variable, not the instance variable of the same name
 
 <!------------------------------------ Slide -------------------------------->
-# Dealing with `this`: Card, v4
+# Dealing with `this`: Card, v1.3
 
 ```Java
-public class Card4 {
+public class Card {
     private String rank;
     private String suit;
 
     public void setRank(String rank) {
         this.rank = rank;
     }
-
     public void setSuit(String suit) {
         this.suit = suit;
     }
@@ -260,18 +220,18 @@ public class Card4 {
 ```
 
 - Every instance of a class has a `this` reference which refers to the instance on which a method is being called.
-- `this.rank` refers to the `rank` instance variable for the `Card4` instance on which `setRank` is being called.
+- `this.rank` refers to the `rank` instance variable for the `Card` instance on which `setRank` is being called.
 - `this.rank` is different from the local `rank` variable that is a parameter to the `setRank` method.
 
 <!------------------------------------ Slide -------------------------------->
-# Dealing `Card4`
+# Dealing `Card`, v1.3
 
 
 ```Java
-public class Dealer4 {
+public class Dealer {
 
     public static void main(String[] args) {
-        Card4 c = new Card4();
+        Card c = new Card();
         c.setRank("ace");
         c.setSuit("base");
         System.out.println(c);
@@ -279,7 +239,7 @@ public class Dealer4 {
 }
 ```
 
-Now we have encapsulation, but we can still create invalid `Card4`s, e.g., ``base'' is not a valid suit.  How to fix?
+Now we have encapsulation, but we can still create invalid `Card`s, e.g., "base" is not a valid suit.  How to fix?
 
 <!------------------------------------ Slide -------------------------------->
 # Class Invariants
@@ -288,17 +248,17 @@ Class invariant: a condition that must hold for all instances of a class in orde
 
 Invariants for Card class:
 
-- `rank` must be one of {`"2", "3", "4", "5", "6", "7", "8", "9",
-         "10", "jack", "queen", "king", "ace"`}
-- `suit` must be one of {`"diamonds", "clubs", "hearts","spades"`}
+- `rank` must be one of {"2", "3", "4", "5", "6", "7", "8", "9",
+         "10", "jack", "queen", "king", "ace"}
+- `suit` must be one of {"diamonds", "clubs", "hearts","spades"}
 
 <!------------------------------------ Slide -------------------------------->
-# Maintaining Class Invariants via Input Validation
+# Class Invariants: Card v1.4
 
 `rank` invariant can be maintained by adding:
 
 ```Java
-public class Card5 {
+public class Card {
     private final String[] VALID_RANKS =
         {"2", "3", "4", "5", "6", "7", "8", "9",
          "10", "jack", "queen", "king", "ace"};
@@ -327,12 +287,11 @@ public class Card5 {
 <!------------------------------------ Slide -------------------------------->
 # Class Invariants Ensure Consistent Objects
 
-Now we can't write code that instantiates an invalid `Card5` object:
+Now we can't write code that instantiates an invalid `Card` object:
 ```Java
-public class Dealer5 {
-
+public class Dealer {
     public static void main(String[] args) {
-        Card5 c = new Card5();
+        Card c = new Card();
         c.setRank("ace");
         c.setSuit("base");
         System.out.println(c);
@@ -341,21 +300,22 @@ public class Dealer5 {
 ```
 yields:
 ```bash
-$ java Dealer5
+$ java Dealer
 base is not a valid suit.
 ```
 
 <!------------------------------------ Slide -------------------------------->
 # Classes and Objects
 
-`Card5` now ensures that we don't create card objects with invalid ranks or suits.
-But consider this slight modification to `Dealer5`:
+`Card` now ensures that we don't create card objects with invalid ranks or suits.
+But consider this slight modification to `Dealer`:
+
 ```Java
 public class Dealer5 {
 
     public static void main(String[] args) {
-        Card5 c = new Card5();
-        System.out.println(c);}
+        Card c = new Card();
+        System.out.println(c); // Printing a new Card instance
         c.setRank("ace");
         c.setSuit("base");
         System.out.println(c);
@@ -363,57 +323,63 @@ public class Dealer5 {
 }
 ```
 
-What if we printed our `Card5` instance, `c`, before we called the setters?
+What if we printed our `Card` instance, `c`, before we called the setters?
 
 <!------------------------------------ Slide -------------------------------->
 # Object Initialization
 
 
-There are two ways to initialize the instance variables of an object:
+Two ways to initialize the instance variables of an object:
 
 - Declaration point initialization:
+
 ```Java
 public class Card {
-  private String rank = "2";
-  // ...
-}
-```
-- Constructors
-```Java
-public class Card {
-  public Card() {
-    rank = "2";
-  }
-  // ...
+    private String rank = "2";
+    // ...
 }
 ```
 
+- Constructors
+
+```Java
+public class Card {
+    public Card() {
+      rank = "2";
+    }
+    // ...
+}
+```
 
 A constructor is what's being called when you invoke operator `new`.
 
 <!------------------------------------ Slide -------------------------------->
 # Initializing Objects
 
-Since we didn't write our own constructor, Java provided a default no-arg constructor that simply sets instance variables (that don't have their own declaration-point intializations) to their default values.  That's why `Card5` objects are `null of null` after they're instantiated.  We have to call the setters on a `Card5` instance before we have a valid object.
+Since we didn't write our own constructor, Java provided a default no-arg constructor
+- default no-arg ctor sets instance variables (that don't have their own declaration-point intializations) to their default values.
 
+That's why `Card` objects are `null of null` after they're instantiated.  We have to call the setters on a `Card` instance before we have a valid object.
+
+<!------------------------------------ Slide -------------------------------->
+# Innitialization Style
 
 In general, it's poor style to require multi-step initialization.
 
-- After `new Card5()` is called, instance variables have useless defaults.
+- After `new Card()` is called, instance variables have useless defaults.
 - Client programmer must remember to call setter methods.
 - Often there can be order dependencies that we don't want to burden client programmers with.
 
 The way to fix this is by writing our own constructor.
 
 <!------------------------------------ Slide -------------------------------->
-# A Card Constructor
-
+# A Constructor for Card, v2.0
 
 If we write a constructor, Java won't provide a default no-arg constructor. (We may choose to provide one.)
 ```Java
-public class Card6 {
+public class Card {
     // ...
-    public Card6(String rank, String suit) {
+    public Card(String rank, String suit) {
         setRank(rank);
         setSuit(suit);
     }
@@ -421,19 +387,19 @@ public class Card6 {
 }
 ```
 
+<!------------------------------------ Slide -------------------------------->
+# Using the Card v2.0 Constructor
+
 Now we have a safer, more consistent  way to initialize objects:
 ```Java
-public class Dealer6 {
+public class Dealer {
 
     public static void main(String[] args) {
-        Card6 c = new Card6("queen", "hearts");
+        Card c = new Card("queen", "hearts");
         System.out.println(c);
     }
 }
 ```
-
-
-
 
 <!------------------------------------ Slide -------------------------------->
 # Intermission
@@ -452,13 +418,13 @@ Source: [Wikipedia](http://en.wikipedia.org/wiki/File:AceofBaseTheSignAlbumcover
 
 Let's review our progress with our Card class design:
 
-- We have a nice string representation of Card objects (`Card1`).
-- We have encapsulated the rank and suit in private instance variables (`Card2`) with mutator methods (`Card4`) to set their values.
-- We validate the rank and suit in the mutator methods so we can't set invalid ranks and suits in Card objects (`Card5`).
-  - `Card6` has a constructor, which ensures that instance variables are initialized when an instance of `Card6` is created.
+- We have a nice string representation of Card objects (`Card`).
+- We have encapsulated the rank and suit in private instance variables (`Card`) with mutator methods (`Card`) to set their values.
+- We validate the rank and suit in the mutator methods so we can't set invalid ranks and suits in Card objects (`Card`).
+  - `Card` has a constructor, which ensures that instance variables are initialized when an instance of `Card` is created.
 
 <!------------------------------------ Slide -------------------------------->
-# Static Members
+# Static Members, Card v2.1
 
 Do we need a separate instance of `VALID_RANKS` and `VALID_SUITS` for each instance of our Card class?
 
@@ -478,13 +444,13 @@ Given the declarations above:
 <!------------------------------------ Slide -------------------------------->
 # One Final Enhancement
 
-`Card6` is pretty good, but we can write code like this:
+`Card` v2.1 is pretty good, but we can write code like this:
 
 ```Java
-public class Dealer6 {
+public class Dealer {
 
     public static void main(String[] args) {
-        Card6 c = new Card6("queen", "hearts");
+        Card c = new Card("queen", "hearts");
         System.out.println(c);
         c.setRank("jack"); // modifying c
         System.out.println(c);
@@ -523,7 +489,7 @@ Note the use of another idiom for disambiguating constructor paramters from inst
 
 An immutable class is a class whose instances cannot be modified.  To make a class immutable:
 
-- Don't provide mutator methods (``setters'')
+- Don't provide mutator methods ("setters")
 - Make the class `final` so it can't be extended (there's another way to accomplish this, but making the class `final` is good enough for now)
 - Make all fields `final`
 - Make all fields `private`

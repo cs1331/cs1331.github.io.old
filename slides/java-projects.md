@@ -229,5 +229,4 @@ The `java` plugin assumes the Maven Sandard Directory Layout and provides many u
 gradle tasks
 ```
 
-
 See [Gradle's Java Quickstart](https://docs.gradle.org/current/userguide/tutorial_java_projects.html) for details.
