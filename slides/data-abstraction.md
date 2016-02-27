@@ -3,7 +3,7 @@
 
 # Data Abstraction
 
-An abstraction captures the essence of a concept by ign
+An abstraction captures the essence of a concept by ignoring details that are irrelevant to a particular application.
 
 - Process abstraction - functions, methods
 - Data abstraction - encapsulation of data with the operations defined on the data
@@ -32,7 +32,7 @@ Operations:
 An ADT is *abstract* becuase the data and operations of the ADT are declared independently of how they are implemented.  We say that an ADT *encapsulates* the data and the operations on the data.
 
 <!--------------------------------- Slide ----------------------------------->
-% Data Abstractions with Classes
+# Data Abstractions with Classes
 
 Java provides langauge suppport for defining ADTs in the form of classes.
 
