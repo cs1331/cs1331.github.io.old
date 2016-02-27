@@ -1,10 +1,11 @@
 ---
 layout: default
-title: CS 1331 - API Guide
+title: CS 1331 - Debugging Guide
 ---
 
 # Debugging Guide
-*Nicolette Fink*
+
+by **Nicolette Fink**, with updates by the staff of CS 1331
 
 ## Overview
 

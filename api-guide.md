@@ -4,7 +4,8 @@ title: CS 1331 - API Guide
 ---
 
 # Understanding the API
-**Amanda Moreton**
+
+by **Amanda Moreton**, with updates by the staff of CS 1331
 
 ### What is the API?
 
@@ -82,7 +83,7 @@ We would know if it was a static method because it would say static in front of 
 
     String stringToChange = “Today is a beautiful day!”;
 
-We can save the upper case version in a new variable:         
+We can save the upper case version in a new variable:
 
     String changedString = stringToChange.toUpperCase();
 
