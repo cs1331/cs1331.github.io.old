@@ -3,20 +3,17 @@ layout: default
 title: CS 1331 - Installing Java
 ---
 
-<h1 class="title">Installing The JDK</h1>
-<h2 class="subtitle" id="originally-by-ashutosh-gupta">Originally by Ashutosh Gupta</h2>
+<h1 class="title">Installing The Java Development Kit (JDK)</h1>
 
 <div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#windows">Windows 7+</a></li>
 <li><a class="reference internal" href="#mac-os-x">Mac OS X</a></li>
 <li><a class="reference internal" href="#linux">Linux</a></li>
-<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </div>
 <div class="section" id="windows">
-<h1>Windows 7+</h1>
+<h2>Windows</h2>
 <ol class="arabic">
 <li><p class="first">Download and run the appropriate Java Development Kit installer from <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk</a></p>
 <ul>
@@ -102,7 +99,7 @@ C:\Foo\bin;C:\Bar\bin;C:\Program Files\Java\jdk1.8.0_60\bin
 </ol>
 </div>
 <div class="section" id="mac-os-x">
-<h1>Mac OS X</h1>
+<h2>Mac OS X</h2>
 <ol class="arabic simple">
 <li>Download and run the appropriate Java Development Kit installer DMG from <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk</a></li>
 <li>Double-click on the <tt class="docutils literal">.dmg</tt> file you downloaded to mount it and open it in the Finder.</li>
@@ -116,7 +113,7 @@ C:\Foo\bin;C:\Bar\bin;C:\Program Files\Java\jdk1.8.0_60\bin
 </ol>
 </div>
 <div class="section" id="linux">
-<h1>Linux</h1>
+<h2>Linux</h2>
 <ol class="arabic simple">
 <li>Download and run the appropriate Java Development Kit installer from <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk</a></li>
 </ol>
@@ -136,10 +133,5 @@ For Fedora-based and other distros that use the Redhat Package Manager format, d
 </li>
 </ol>
 </div>
-<div class="section" id="troubleshooting">
-<h1>Troubleshooting</h1>
-<blockquote>
-<p>If neither the <tt class="docutils literal">java</tt> nor <tt class="docutils literal">javac</tt> commands work, first try closing the command window and opening a new one so that the command shell reads the PATH environment variable you just updated. If that does not work, double check that the folder you added to the Path variable contains executable files like <tt class="docutils literal">java</tt> and <tt class="docutils literal">javac</tt> on Unix, or <tt class="docutils literal">java.exe</tt> and <tt class="docutils literal">javac.exe</tt> on Windows.</p>
-<p>If <tt class="docutils literal">java</tt> works but <tt class="docutils literal">javac</tt> does not, you probably installed a JRE (Java Runtime Environment), not a JDK.  Return to Step 1 and start over.</p>
-</blockquote>
-</div>
+<h3>Oracle's installation instructions</h3>
+<blockquote><p>Oracle, the company that makes Java, has their installation instructions <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html">here</a></p></blockquote>
