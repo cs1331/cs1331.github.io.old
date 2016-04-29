@@ -23,7 +23,7 @@ title: CS 1331 - Environment Variables
 <h2>How to modify your PATH Environment Variable</h2>
 
 <p>NOTE: For the purposes of this class this section only applies to Windows users.</p>
-<p>NOTE: These screenshots were taken on Windows 10. Functionally all these instructions should be the same for Windows 7 and 8 except that the screenshots will look a little different.</p>
+<p>NOTE: These screenshots were taken on Windows 10. These instructions should be more or less the same for Windows 7 and 8. <a href="#windows-7-8-alt-instructions">Here</a> are some alternative instructions directly for Windows 7/8 if you need them.</p>
 <p>NOTE: Look <a href="http://www.pcworld.com/article/250061/how_to_copy_a_file_path_to_the_clipboard.html">here</a> for instructions on how to copy/paste a file/folder path on Windows.</p>
 
 <ol>
@@ -39,3 +39,37 @@ title: CS 1331 - Environment Variables
 <li>Now your Command Prompt will recognize commands that correspond to executables in the location you just added.</li>
 <p>NOTE: the Command Prompt only loads the environment variables on startup so you must close and reopen the Command Prompt in order for it to recognize the changes you've made to the PATH.</p>
 </ol>
+
+
+<h3 id="windows-7-8-alt-instructions">Alternate instructions for modifying the path variable for Windows 7/8</h3>
+
+<p>Windows 7</p>
+<ul class="simple">
+<li>Go to Start</li>
+<li>Choose &quot;Control Panel&quot;</li>
+<li>In the search bar at the top right, type &quot;Path&quot; and press enter</li>
+<li>Choose &quot;Edit the system environment variables&quot;</li>
+<li>Click &quot;Environment Variables&quot; at the bottom of the window</li>
+<li>In the &quot;System variables&quot; section, scroll to &quot;Path&quot;</li>
+<li>Select the Path variable and click &quot;Edit&quot;, or click New and add a Path variable if one doesn't exist</li>
+<li>Under &quot;Variable value&quot;, add <tt class="docutils literal"><span class="pre">;C:\Program</span> Files\Java\jdk1.8.0_60\bin</tt> to the end of what's already there</li>
+</ul>
+
+<p>Windows 8</p>
+<ul class="simple">
+<li>Open Start by clicking on the Windows Logo</li>
+<li>Search for &quot;environment&quot; and choose &quot;Edit the system environment variables&quot;</li>
+<li>Click &quot;Environment Variables&quot; at the bottom of the window</li>
+<li>In the &quot;System variables&quot; section, scroll to &quot;Path&quot;</li>
+<li>Select the Path variable and click &quot;Edit&quot;, or click New and add a Path variable if one doesn't exist</li>
+<li>Under &quot;Variable value&quot;, add <tt class="docutils literal"><span class="pre">;C:\Program</span> Files\Java\jdk1.8.0_60\bin</tt> to the end of what's already there</li>
+</ul>
+
+<p>It is important that there is a semicolon (;) separating the folder that you add from the previous folder. For example, if your Path variable looks like this initially:</p>
+<pre class="code literal-block">
+C:\Foo\bin;C:\Bar\bin
+</pre>
+<p>it should look like this after you add the new folder:</p>
+<pre class="code literal-block">
+C:\Foo\bin;C:\Bar\bin;C:\Program Files\Java\jdk1.8.0_60\bin
+</pre>
