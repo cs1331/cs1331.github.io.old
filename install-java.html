@@ -5,133 +5,69 @@ title: CS 1331 - Installing Java
 
 <h1 class="title">Installing The Java Development Kit (JDK)</h1>
 
-<div class="contents topic" id="contents">
-<ul class="simple">
-<li><a class="reference internal" href="#windows">Windows 7+</a></li>
-<li><a class="reference internal" href="#mac-os-x">Mac OS X</a></li>
-<li><a class="reference internal" href="#linux">Linux</a></li>
-</ul>
-</div>
 <div class="section" id="windows">
 <h2>Windows</h2>
 <ol class="arabic">
-<li><p class="first">Download and run the appropriate Java Development Kit installer from <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk</a></p>
-<ul>
-<li><p class="first">To determine if your machine is running 32- or 64-bit,</p>
-<ul>
-<li><p class="first">Windows 7</p>
-<ul>
-<li><p class="first">Go to Start</p>
-</li>
-<li><p class="first">Right-click on &quot;Computer&quot;</p>
-</li>
-<li><p class="first">Choose &quot;Properties&quot;</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p class="first">Windows 8</p>
-<ul>
-<li><p class="first">Open Start by clicking on the Windows Logo</p>
-</li>
-<li><p class="first">Search for "System" and click on the System option</p>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Under System Type, you should see either &quot;32-bit Operating System&quot; or &quot;64-bit Operating System&quot;.</p>
-</blockquote>
-</li>
-</ul>
-</li>
+
+<li>First determine if your machine is 32-bit or 64-bit</li>
+  <ul>
+  <li style="padding-top: 5px;padding-bottom: 5px;">If you go to Local Disk (C:) (or maybe (D:)) in the File Explorer there will be a folder named "Program Files" and maybe one named "Program Files (x86)". If your Operating System is 64-bit then "Program Files" is for 64-bit programs and "Program Files (x86)" is for 32-bit programs. If your Operating System is 32-bit then you will just have "Program Files" and it will be for 32-bit programs.</li>
+  </ul>
+<li>If your operating system is 64-bit then you will download the Windows x64 download from Oracle. If 32-bit then you will download the Windows x86 download from Oracle. Download the appropriate installer <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">here</a>.</li>
+
+<p>NOTE: Make sure that you download the Java Development Kit (JDK) not the Java Runtime Environment (JRE). The JRE only allows you to run java programs, in order to develop your own java programs you will need the JDK.</p>
+
+<li>Run the installer that you just downloaded. If your system is 64-bit then java will install in your "Program Files" folder. (You may also have a "java" folder in "Program Files (x86)" and you should ignore it because the java kit you are currently downloading will NOT install there.) If your system is 32-bit then java will install in your "Program Files" folder.</li>
+
+<li>Add the path to the bin folder in the java folder that you just installed to your PATH <a href="environment-variables.html">environment variable</a>. Make sure that it is the path to the bin folder and not the path to a file inside the bin folder. eg: <tt class="docutils literal"><span class="pre">C:\Program</span> Files\Java\jdk1.8.0_60\bin</tt></li>
+
+<li><a href="#verification-instructions">Verify</a> that you have successfully installed java.</li>
 </ol>
-<img alt="win32-64.jpg" class="align-center" src="images/win32-64.jpg" style="width: 480px;"/>
-<ol class="arabic" start="2">
-<li><p class="first">Update your system PATH variable:</p>
-<ul>
-<li>Windows 7
-<ul class="simple">
-<li>Go to Start</li>
-<li>Choose &quot;Control Panel&quot;</li>
-<li>In the search bar at the top right, type &quot;Path&quot; and press enter</li>
-<li>Choose &quot;Edit the system environment variables&quot;</li>
-<li>Click &quot;Environment Variables&quot; at the bottom of the window</li>
-<li>In the &quot;System variables&quot; section, scroll to &quot;Path&quot;</li>
-<li>Select the Path variable and click &quot;Edit&quot;, or click New and add a Path variable if one doesn't exist</li>
-<li>Under &quot;Variable value&quot;, add <tt class="docutils literal"><span class="pre">;C:\Program</span> Files\Java\jdk1.8.0_60\bin</tt> to the end of what's already there</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Windows 8
-<ul class="simple">
-<li>Open Start by clicking on the Windows Logo</li>
-<li>Search for &quot;environment&quot; and choose &quot;Edit the system environment variables&quot;</li>
-<li>Click &quot;Environment Variables&quot; at the bottom of the window</li>
-<li>In the &quot;System variables&quot; section, scroll to &quot;Path&quot;</li>
-<li>Select the Path variable and click &quot;Edit&quot;, or click New and add a Path variable if one doesn't exist</li>
-<li>Under &quot;Variable value&quot;, add <tt class="docutils literal"><span class="pre">;C:\Program</span> Files\Java\jdk1.8.0_60\bin</tt> to the end of what's already there</li>
-</ul>
-</li>
-</ul>
-<p>The system Path variable tells the operating system where to find the Java tools that you installed in step 1. If you did not install the tools in <tt class="docutils literal"><span class="pre">C:\Program</span> Files\Java\jdk1.8.0_60</tt>, change that portion of the path to the correct folder. Important: the path must have bin at the end.</p>
-<p>It is important that there is a semicolon (;) separating the folder that you add from the previous folder. For example, if your Path variable looks like this initially:</p>
-<pre class="code literal-block">
-C:\Foo\bin;C:\Bar\bin
-</pre>
-<p>it should look like this after you add the new folder:</p>
-<pre class="code literal-block">
-C:\Foo\bin;C:\Bar\bin;C:\Program Files\Java\jdk1.8.0_60\bin
-</pre>
-<p>Press &quot;OK&quot; in all prompts until all the windows we opened are closed.</p>
-</li>
-<li><p class="first">Determine if Java was installed correctly at the command line (the Windows <tt class="docutils literal">cmd.exe</tt> program):</p>
-<ul class="simple">
-<li>Press the Windows Key + R</li>
-<li>Type &quot;cmd&quot;</li>
-<li>Press enter</li>
-<li>At the command prompt type <tt class="docutils literal">javac <span class="pre">-version</span></tt>. You should get output on the next line like <tt class="docutils literal">javac 1.8.0_60</tt>.</li>
-<li>At the command prompt type <tt class="docutils literal">java <span class="pre">-version</span></tt>. You should get output that contains <tt class="docutils literal">java version &quot;1.8.0_60</tt>.</li>
-</ul>
-</li>
-</ol>
-</div>
+
+
 <div class="section" id="mac-os-x">
 <h2>Mac OS X</h2>
 <ol class="arabic simple">
-<li>Download and run the appropriate Java Development Kit installer DMG from <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk</a></li>
-<li>Double-click on the <tt class="docutils literal">.dmg</tt> file you downloaded to mount it and open it in the Finder.</li>
-<li>Double click on the installer <tt class="docutils literal">.pkg</tt> file to run the installer.</li>
-<li>Check that the JDK has been properly installed.<ul>
-<li>Run <tt class="docutils literal">/Applications/Utilities/Terminal.app</tt></li>
-<li>At the command prompt type <tt class="docutils literal">java <span class="pre">-version</span></tt>. You should get output on the next line like <tt class="docutils literal">java version &quot;1.8.0_60</tt>.</li>
-<li>At the command prompt type <tt class="docutils literal">javac <span class="pre">-version</span></tt>. You should get output like <tt class="docutils literal">javac 1.8.0_60</tt>.</li>
-</ul>
-</li>
+<li>Make sure that you have installed Homebrew before proceeding! Look at the top of the resources page on this website for instructions on installing Homebrew.</li>
+<li>Run the folloing command in the Terminal:</li>
+<h4>brew update</h4>
+<h4>brew tap caskroom/cask</h4>
+<h4>brew install Caskroom/cask/java</h4>
+<li><a href="#verification-instructions">Verify</a> that you have successfully installed java.</li>
 </ol>
 </div>
+
+
 <div class="section" id="linux">
 <h2>Linux</h2>
 <ol class="arabic simple">
 <li>Download and run the appropriate Java Development Kit installer from <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk</a></li>
 </ol>
 <p>OR</p>
-<blockquote>
-For Ubuntu and other debian based distribution, install openjdk using your default package manager</blockquote>
+<blockquote>For Ubuntu and other debian based distribution, install openjdk using your default package manager (apt-get is a very common default package manager). This is the reccomended method.</blockquote>
 <p>OR</p>
 <blockquote>
 For Fedora-based and other distros that use the Redhat Package Manager format, download the correct &quot;Linux RPM&quot; architecture from Java Downloads</blockquote>
 <ol class="arabic simple" start="2">
 <li>Add the JDK's <tt class="docutils literal">bin</tt> directory to your <tt class="docutils literal">PATH</tt> environment variable, if necessary.</li>
-<li>Check that the JDK has been properly installed.<ul>
-<li>Open a terminal window.</li>
-<li>At the command prompt type <tt class="docutils literal">java <span class="pre">-version</span></tt>. You should get output on the next line like <tt class="docutils literal">java version &quot;1.8.0_60</tt>.</li>
-<li>At the command prompt type <tt class="docutils literal">javac <span class="pre">-version</span></tt>. You should get output like <tt class="docutils literal">javac 1.8.0_60</tt>.</li>
+<li><a href="#verification-instructions">Verify</a> that you have successfully installed java.</li>
 </ul>
 </li>
 </ol>
 </div>
+
+
+<h2>All Operating Systems</h2>
+<h4 id="verification-instructions">To confirm that your java installation was successful:</h4>
+<ul>
+<li>At the command prompt type <tt class="docutils literal">java <span class="pre">-version</span></tt>. You should get output on the next line like <tt class="docutils literal">java version &quot;1.8.0_60</tt>.</li>
+<li>At the command prompt type <tt class="docutils literal">javac <span class="pre">-version</span></tt>. You should get output like <tt class="docutils literal">javac 1.8.0_60</tt>.</li>
+<li>The output should look something like this:</li>
+<img alt="java-javac-correct-output.PNG" class="align-center" src="images/java-javac-correct-output.PNG" style="width: 480px;"/>
+<li>Of course if you are on Mac OS X or Linux then this will be in your Terminal not Command Prompt.</li>
+<li>The version number should be "1.8*" Where the * can be any number. An older version of java will not work for the purposes of this class!</li>
+</ul>
+
+
 <h3>Oracle's installation instructions</h3>
 <blockquote><p>Oracle, the company that makes Java, has their installation instructions <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html">here</a></p></blockquote>
