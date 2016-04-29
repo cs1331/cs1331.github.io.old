@@ -7,52 +7,53 @@ title: CS 1331 - Resources
 
 <h2>Getting Started</h2>
 
-Some of these things are listed under other headings below, but this is a step-by-step checklist to get started in CS 1331.
+<p>NOTE: At many points in these instructions you are told to open the "Command Prompt"/"Command Line" (Windows) or "Terminal" Mac OS X/Linux. You will be using this program a lot throughout this course and you should get familiar with it and it is reccomended that you pin it to your taskbar/dock. On Windows to open the Command Line open the start menu and search for "cmd" then click on the Command Prompt. On Mac open the Applications folder, then open the Utilities folder, from there you can open the Terminal application. On Linux the Terminal can by opened with the keyboard shortcut "ctrl-alt-t".</p>
+
+<p>NOTE: For Mac OS X, these installation instructions rely on the software Homebrew. Open the Terminal and copy, paste, then run the command from <a href="http://brew.sh/">this website</a> to install Homebrew.</p>
+
+<p>Some of these things are listed under other headings below, but this is a step-by-step checklist to get started in CS 1331.</p>
 
 <ol class="simple">
-<li><a href="install-java.html">Install the Java Development Kit</a>.</li>
+<li><a href="install-java.html">Install Java</a>.</li>
+<li><a href="install-gradle.html">Install Gradle</a>.</li>
 <li>Choose and install a <a href="text-editors.html" target="_blank">programmer's text editor</a>.</li>
-<li>Install <a href="https://git-scm.com/" target="_blank">Git</a>.</li>
-<li>Download and install <a href="http://gradle.org/" target="_blank">Gradle</a>.</li>
 </ol>
 
-For Linux and Mac users we recommend using your package managers, such as apt-get or <a href="http://brew.sh/" target="_blank">Homebrew</a>.
-
-<h2>Getting Help</h2>
-
-<p>A Message From Academic Advising</p>
-<p>Struggling in class,  cannot comprehend the concepts,  need help with learning the materials?   Need a better grade on your test?  Take advantage of the FREE Tutoring that CS offers.</p>
-<p>CS offers tutoring for the following classes:</p>
-<blockquote>
-CS 1301, CS 1331, CS 1332, CS 2050, CS 2110,  CS 2200.</blockquote>
-<p>If you would like to take advantage of these tutoring resources, visit the <a href="http://www.cc.gatech.edu/tutoring-assistance">Tutoring Website</a></p>
-
-<p>We're using Piazza.  If you have general questions about course content or homework clarifications please post your questions to our <a href="http://piazza.com/gatech/fall2015/cs1331/home" target="_blank">Piazza site</a> .  The instructional staff checks Piazza frequently and most questions are answered within an hour.</p>
-
-<h2>Java</h2>
-<ul class="simple">
-<li>Download the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html#javasejdk">Java Development Kit (JDK) Standard Edition (Java SE 8)</a></li>
-<li>Install the JDK using <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html">Oracle's instructions</a> or <a href="install-java.html">our instructions.</a>.</li>
-<li><a href="install-ant.html">Install Ant</a></li>
-<li><a href="http://docs.oracle.com/javase/specs/">Java Language Specification</a></li>
-<li><a href="http://docs.oracle.com/javase/8/docs/api/">Online Java 8 API docs</a> (I recommend that you <a href="http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html">download the documentation</a> to your computer for offline access.)</li>
-<li><a href="http://docs.oracle.com/javase/8/javafx/api/">Online JavaFX 8 API</a></li>
-<li><a href="http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html">Java Code Conventions</a> - Sun/Oracle's official code conventions for Java.  They're not perfect, and parts are dated (like the advice on make files), but most professional Java teams use these conventions.  We've summarized and honed these conventions in our own <a href="cs1331-style-guide.html">CS 1331 Style Guide</a>.</li>
+<h2>Installation Troubleshooting</h2>
+<ul>
+<li>If neither the <tt class="docutils literal">java</tt> nor <tt class="docutils literal">javac</tt> commands work, first try closing the command window and opening a new one so that the command shell reads the PATH environment variable you just updated. If that does not work, double check that the folder you added to the Path variable contains executable files like <tt class="docutils literal">java</tt> and <tt class="docutils literal">javac</tt> on Unix, or <tt class="docutils literal">java.exe</tt> and <tt class="docutils literal">javac.exe</tt> on Windows.</li>
+<li>If <tt class="docutils literal">java</tt> works but <tt class="docutils literal">javac</tt> does not, you probably installed a Java Runtime Environment (JRE), not a Java Development Kit (JDK).  Return to Step 1 and start over.</li>
+<li>If when running a gradle command you get the error message "could not find tools.jar", you need to set the JAVA_HOME <a href="environment-variables.html">environment variable</a> to the path to the jdk's bin folder.</li>
 </ul>
 
-<h2>Guides</h2>
+<h2>Getting Help</h2>
 <ul class="simple">
+<li>
+<p>(A Message From Academic Advising)</p>
+<p>Struggling in class,  cannot comprehend the concepts,  need help with learning the materials?   Need a better grade on your test?  Take advantage of the FREE Tutoring that CS offers. CS offers tutoring for the following classes:</p>
+<blockquote>CS 1301, CS 1331, CS 1332, CS 2050, CS 2110,  CS 2200.</blockquote>
+<p>If you would like to take advantage of these tutoring resources, visit the <a href="http://www.cc.gatech.edu/tutoring-assistance">Tutoring Website</a></p>
+</li>
+<li>
+CS1331 will be using Piazza.  If you have general questions about course content or homework clarifications please post your questions to our <a href="http://piazza.com/gatech/fall2015/cs1331/home" target="_blank">Piazza site</a> .  The instructional staff checks Piazza frequently and most questions are answered within an hour.</li>
+<li>Feel free to visit the CS1331 TA Lab! TAs hold <a href="officehours.html">office hours</a> there to answer questions and address any concerns you may have. Also, the TA Lab will be your resource for picking up tests you missed in recitation, submitting regrade requests etc.</li>
+</ul>
+
+
+<h2>Misc</h2>
+<ul class="simple">
+<li>How to install <a href="https://git-scm.com/" target="_blank">Git</a>, version control software that can be used for coding project collaboration. It is not required for this class, but you may find it useful to use git to view coding examples etc. Additionally, if you continue coding beyond cs1331 you will need to know how to use git. So why not start now? (Note: the installation process is significantly more complex for Windows than it is for a unix based operating system like Mac OS X or Linux)</li>
+<li><a href="http://docs.oracle.com/javase/specs/">Java Language Specification</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/">Online Java 8 API docs</a> (It's recommend that you <a href="http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html">download the documentation</a> to your computer for offline access.)</li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/">Online JavaFX 8 API</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html">Java Code Conventions</a> - Sun/Oracle's official code conventions for Java.  They're not perfect, and parts are dated (like the advice on make files), but most professional Java teams use these conventions.</li>
+
 <li><a href="cs1331-style-guide.html">CS 1331 Style Guide</a></li>
-<li><a href="text-editors.html">Text Editors</a> - an intro to text editors for beginning programmers</li>
 <li><a href="debugging.html">Debugging</a></li>
 <li><a href="api-guide.html">API Guide</a></li>
 <li><a href="http://matt.might.net/articles/basic-unix/">Basic Unix</a> - a tutorial introduction to the Unix command line
 that will give you the basic skills you need for this class should you choose to use a unix-like operating system like Ubuntu Linux or Mac OS X</li>
 <li><a href="customization-tips.html">Customization Tips</a> for the bash shell, Atom text editor, and Sublime Text editor.</li>
-</ul>
-
-<h2>Misc</h2>
-<ul class="simple">
 <li>If slides or lecture notes have broken links to example code, you can find the example code by browsing <a href="https://github.com/cs1331/cs1331.github.io">the GitHub repo of this class web site.</a></li>
 <li>Inspiration: <a href="https://www.youtube.com/watch?v=nKIu9yen5nc">https://www.youtube.com/watch?v=nKIu9yen5nc</a></li>
 <li>Awwww! <a href="http://scratch.mit.edu/projects/TinyBallerina/3135848">http://scratch.mit.edu/projects/TinyBallerina/3135848</a> - a <a href="http://scratch.mit.edu/">Scratch</a> project my daughter wrote in memory of her first fish, Sapphire.</li>

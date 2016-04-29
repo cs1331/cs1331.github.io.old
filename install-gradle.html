@@ -1,0 +1,81 @@
+---
+layout: default
+title: CS 1331 - Installing Gradle
+---
+
+<h1 class="title">Installing Gradle</h1>
+
+<h2>What is Gradle?</h2>
+
+<p>According to Gradle's website Gradle is a "modern open source polyglot build automation system". To translate, it is the software that you are going to use to automate a few tasks you'll commonly have to do in the class. The most common of these tasks will be running checkstyle and submitting homeworks. Gradle will allow you to use a single command to run checkstyle on all of your code for an assignment and generate a report with the error messages and number of errors and their line numbers and file locations etc. It will also allow you to use a single command to submit all the correct files for a homework automatically.</p>
+
+<p>NOTE: Gradle requires that you have a JDK (Java Development Kit) to be installed so make sure that you finish the Java installation instructions before installing Gradle!</p>
+
+<p>NOTE: to use Gradle once you have it installed:</p>
+
+<ul>
+<li>The first time you use Gradle to submit a homework on your machine run the following command:</li>
+<h4>gradle -q submit --refresh-dependencies</h4>
+<li>After that command has successfully run on your machine once you can use the regular command to submit homeworks:</li>
+<h4>gradle -q submit</h4>
+<li>To use Gradle to run checkstyle run the following command:</li>
+<h4>gradle -q checkstyle</h4>
+</ul>
+
+
+<h2>Windows</h2>
+
+<p>Download gradle from <a href="http://gradle.org/gradle-download/">here</a>.</p>
+
+<p>NOTE: You can get the "Complete distribution" if you want the sources and/or offline documentation for gradle but that will not be necessary for this class. If you don't want those then download the "Binary only distribution".</p>
+
+<h4>To install Gradle:</h4>
+<ol>
+<li>Download the zip file and then move it to your Local Disk (C:) directory.</li>
+<li>Extract the zip file my right clicking on it and selecting "extract here"</li>
+<li>Modify your Path <a href="environment-variables.html">environment variable</a> to include the path to the bin folder in the folder that you just extracted.</li>
+</ol>
+
+<p>Make sure to <a href="#verification-instructions">verify</a> your installation.</p>
+
+
+<h2>Mac OS X</h2>
+<ol>
+<li>Make sure that you have installed Homebrew before proceeding! Look at the top of the resources page on this website for instructions on installing Homebrew.</li>
+<li>Run the following commands in the Terminal:</li>
+<h4>brew update</h4>
+<h4>brew install gradle</h4>
+</ol>
+
+<p>Make sure to <a href="#verification-instructions">verify</a> your installation.</p>
+
+
+<h2>Linux</h2>
+
+<p>In order to install Gradle on Linux just run the following commands in this order (or their equivalent with your package manager):</p>
+
+<ol>
+<li><h4>sudo add-apt-repository ppa:cwchien/gradle</h4></li>
+<li><h4>sudo apt-get update</h4></li>
+<li><h4>sudo apt-get install gradle</h4></li>
+</ol>
+
+<p>Make sure to <a href="#verification-instructions">verify</a> your installation.</p>
+
+
+<h2>All Operating Systems</h2>
+
+<h4 id="verification-instructions">To confirm that your Gradle installation was successful:</h4>
+<ul>
+<li>Type the following command in Command Line/Terminal:</li>
+<h4>gradle -version</h4>
+<li>The output should look like this:</li>
+<img alt="gradle-version-correct-output.PNG" class="align-center" src="images/gradle-version-correct-output.PNG" style="width: 480px;"/>
+<li>Of course if you are on Mac OS X or Linux then this will be in your Terminal not Command Prompt.</li>
+<li>The version number should be "2.1*" Where the * can be any number. An older version of Gradle will not work for the purposes of this class!</li>
+</ul>
+
+<h3>Gradle's Website</h3>
+
+<p><a href="http://gradle.org/" target="_blank">Here</a>'s Gradle's official website. It has the download for gradle, documentation, getting started help, etc.</p>
+
