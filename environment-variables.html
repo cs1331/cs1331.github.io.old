@@ -1,0 +1,40 @@
+---
+layout: default
+title: CS 1331 - Environment Variables
+---
+
+<h1 class="title">Environment Variables</h1>
+
+<p>NOTE: On most unix-like operating systems like Mac OS X and Ubuntu Linux management of environment variables is handled for you by the package manager when you install new programs. So you should only have to worry about how to set up/change an environment variable if you are a Windows user.</p>
+
+<h2>What is an environment variable?</h2>
+
+<p>An environment variable is a dynamically stored value that affect the way processes run on a computer. The only one that we need to be concerned about for this class is the Windows PATH environment variable. This environment variable is used by the Command Line to determine the directory locations of executable code to run when a command is given to it. The PATH environment variable just stored a bunch of file directory paths and every time Command Line is given a command it looks in the directories that the paths in the PATH environment variable point to in order to find the code to execute for the command it was given. For example, on Windows Command Line typing "dir" will list all the files and folders in directory that the Command Line is current in. Command Line does not know just from the 3 characters "dir" what it is supposed to do. The code to find and print out all that information is on your computer somewhere and the PATH environment variable by default in Windows will contain a path to a directory with a file called "dir.exe" (a Windows executable file). "dir.exe" contains the code that prints out the file names in the current directory. So when Command Line is given the command "dir" it searches the directories pointed to by the paths in PATH and then finds "dir.exe" and executes its code, which prints out the current directories file and folder names. When you want Command Line to recognize a new command, such as "java" or "javac", you have to modify the PATH environment variable in order to tell the Command Line where to look to find the executable file to run those commands.</p>
+
+<p>CORRECTION: The example above, strictly speaking, is incorrect because "dir" is an internal command which Windows automatically recognizes without external files, and Command Line only needs to use the PATH environent variable for external commands (which are the ones we are concerned with). It was just an example. Check <a href="https://www.linkedin.com/pulse/20140524060734-157634969-disk-operating-system-internal-external-commands">this</a> out to learn more.</p>
+
+<p>Here are a few resources if you want to learn more about environment variables:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Environment_variable">https://en.wikipeida.org/wiki/Environment_variable</a></li>
+<li><a href="://msdn.microsoft.com/en-us/library/windows/desktop/ms682653(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/windows/desktop/ms682653(v=vs.85).aspx</a></li>
+<li><a href="http://www.tutorialspoint.com/unix/unix-environment.htm">http://www.tutorialspoint.com/unix/unix-environment.htm</a></li>
+</ul>
+
+<h2>How to modify your PATH Environment Variable</h2>
+
+<p>NOTE: For the purposes of this class this section only applies to Windows users.</p>
+<p>NOTE: These screenshots were taken on Windows 10. Functionally all these instructions should be the same for Windows 7 and 8 except that the screenshots will look a little different.</p>
+
+<ol>
+<li>Search your computer for "Edit the system environment variables".</li>
+<li>In that window click the "Environment variables" button.</li>
+<img alt="Windows-10-edit-system-environment-variables.PNG" class="align-center" src="images/Windows-10-edit-system-environment-variables.PNG" style="width: 300px;padding-top: 15px;padding-bottom: 15px;"/>
+<li>In the lower half of that window click on the row that says "Path" on the left to highlight that row, then click "Edit".</li>
+<img alt="Windows-10-environment-variables-list.PNG" class="align-center" src="images/Windows-10-environment-variables-list.PNG" style="width: 300px;padding-top: 15px;padding-bottom: 15px;"/>
+<li>In the new window you will click "New" and then paste in the path to the directory location that you want to add to the PATH environment variable.</li>
+<li>Once you have a new row with the path you wish to add, you will click on it to highlight it then click "move up" until it is at the top of the list.</li>
+<img alt="Windows-10-path-environment-variable.PNG" class="align-center" src="images/Windows-10-path-environment-variable.PNG" style="width: 300px;padding-top: 15px;padding-bottom: 15px;"/>
+<li>Click "Ok" on all the windows that you have opened since you searched for Environment Variables.</li>
+<li>Now your Command Prompt will recognize commands that correspond to executables in the location you just added.</li>
+<p>NOTE: the Command Prompt only loads the environment variables on startup so you must close and reopen the Command Prompt in order for it to recognize the changes you've made to the PATH.</p>
+</ol>
