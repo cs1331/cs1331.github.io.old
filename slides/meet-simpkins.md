@@ -1,5 +1,4 @@
 % Meet the teacher
-% CS 1331
 
 # Who am I?
 
@@ -24,5 +23,5 @@
 # And most importantly ...
 
 <video width="720" height="480" controls>
-  <source src="ChrisSimpkinsIsAChickenFucker.mp4" type="video/mp4">
+  <source src="ChrisSimpkinsIsAChickenF.mp4" type="video/mp4">
 </video>
