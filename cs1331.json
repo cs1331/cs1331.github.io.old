@@ -1,0 +1,166 @@
+{
+    "intro-cs1331": {
+        "topic": "Intro to CS 1331",
+        "materials": ["[Syllabus](syllabus.html)", "[Schedule](schedule.html)",
+                      "[Meet Prof. Simpkins](slides/meet-simpkins.html)",
+                      "[Meet Prof. McDaniel](slides/meet-mcdaniel.html)",
+                      "[Meet the TAs](slides/meet-tas.html)"
+                     ],
+        "order": [1]
+    },
+    "intro-java": {
+        "topic": "Intro to Java",
+        "materials": [""],
+        "order": [2]
+    },
+    "values-variables": {
+        "topic": "Values and Variables",
+        "materials": [""],
+        "order": [3]
+    },
+    "programs-methods": {
+        "topic": "Programs and Methods",
+        "materials": [""],
+        "order": [4]
+    },
+    "control-structures": {
+        "topic": "Control Structures",
+        "materials": [""],
+        "order": [5]
+    },
+    "arrays": {
+        "topic": "Arrays",
+        "materials": [""],
+        "order": [6,7]
+    },
+    "java-projects": {
+        "topic": "Java Projects",
+        "materials": [""],
+        "order": [8]
+    },
+    "data-abstraction": {
+        "topic": "Data Abstraction",
+        "materials": [""],
+        "order": [9]
+    },
+    "classes": {
+        "topic": "Classes",
+        "materials": [""],
+        "order": [10,11]
+    },
+    "review1": {
+        "topic": "Review 1",
+        "materials": [""],
+        "order": [12]
+    },
+    "exam1": {
+        "topic": "**Exam 1**",
+        "materials": [""],
+        "order": [13]
+    },
+    "pq1": {
+        "topic": "**Programming Quiz 1**",
+        "materials": [""],
+        "order": [14]
+    },
+    "inheritance": {
+        "topic": "Inheritance",
+        "materials": [""],
+        "order": [15,16]
+    },
+    "polymorphism": {
+        "topic": "Polymorphism",
+        "materials": [""],
+        "order": [17,18]
+    },
+    "object-superclass": {
+        "topic": "The Object Superclass",
+        "materials": [""],
+        "order": [19,20]
+    },
+    "exceptions": {
+        "topic": "Exceptions",
+        "materials": [""],
+        "order": [21,22]
+    },
+    "review2": {
+        "topic": "Review 2",
+        "materials": [""],
+        "order": [23]
+    },
+    "exam2": {
+        "topic": "**Exam 2**",
+        "materials": [""],
+        "order": [24]
+    },
+    "pq2": {
+        "topic": "**Programming Quiz 2**",
+        "materials": [""],
+        "order": [25]
+    },
+    "collections": {
+        "topic": "Java Collections",
+        "materials": ["[Collections](slides/collectoins.pdf)"],
+        "order": [26,27]
+    },
+    "collections-algorithms": {
+        "topic": "Collections Algorithms",
+        "materials": [""],
+        "order": [28]
+    },
+    "lambda-expressions": {
+        "topic": "Lambda Expressions",
+        "materials": [""],
+        "order": [29]
+    },
+    "iterators": {
+        "topic": "Iterators",
+        "materials": [""],
+        "order": [30]
+    },
+    "hashed-collections": {
+        "topic": "Hashed Collections",
+        "materials": [""],
+        "order": [31]
+    },
+    "javafx": {
+        "topic": "JavaFX GUIs",
+        "materials": [""],
+        "order": [32,33,34]
+    },
+    "review3": {
+        "topic": "Review 3",
+        "materials": [""],
+        "order": [35]
+    },
+    "exam3": {
+        "topic": "**Exam 3**",
+        "materials": [""],
+        "order": [36]
+    },
+    "pq3": {
+        "topic": "**Programming Quiz 3**",
+        "materials": [""],
+        "order": [37]
+    },
+    "algorithms": {
+        "topic": "Algorithms",
+        "materials": [""],
+        "order": [100]
+    },
+    "recursion": {
+        "topic": "Recursion",
+        "materials": [""],
+        "order": [100]
+    },
+    "linked-lists": {
+        "topic": "Linked Lists",
+        "materials": [""],
+        "order": [38]
+    },
+    "stacks-queues": {
+        "topic": "Stacks and Queues",
+        "materials": [""],
+        "order": [39]
+    }
+}

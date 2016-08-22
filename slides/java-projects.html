@@ -238,7 +238,9 @@ $ <span class="kw">java</span> -jar target/blackjack.jar</code></pre></div>
 <h1>Gradle</h1>
 <p>Gradle uses Java project conventions to make things much easier than with Ant. Here's a minimal Gradle build file for a Java project:</p>
 <pre class="groovy"><code>apply plugin: &#39;java&#39;</code></pre>
-<p>The <code>java</code> plugin assumes the Maven Sandard Directory Layout and provides many useful tasks &quot;out of the box&quot;. See <a href="https://docs.gradle.org/current/userguide/tutorial_java_projects.html">Gradle's Getting Started tutorial</a> for details.</p>
+<p>The <code>java</code> plugin assumes the Maven Sandard Directory Layout and provides many useful tasks &quot;out of the box&quot;. To list them, do:</p>
+<pre class="sh"><code>gradle tasks</code></pre>
+<p>See <a href="https://docs.gradle.org/current/userguide/tutorial_java_projects.html">Gradle's Java Quickstart</a> for details.</p>
 </section>
     </div>
   </div>
@@ -254,7 +256,7 @@ $ <span class="kw">java</span> -jar target/blackjack.jar</code></pre></div>
         // Display a presentation progress bar
         progress: true,
         // Display the page number of the current slide
-        slideNumber: true,
+        slideNumber: 'c/t',
 
         // Optional reveal.js plugins
         dependencies: [
