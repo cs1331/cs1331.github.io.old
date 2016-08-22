@@ -9,43 +9,54 @@
         "order": [1]
     },
     "intro-java": {
-        "topic": "Intro to Java",
-        "materials": [""],
+        "topic": "[Intro to Java](slides/introduction.pdf)",
+        "materials": ["[Getting Started on  Unix](http://docs.oracle.com/javase/tutorial/getStarted/cupojava/unix.html)",
+                      "[Getting Started on Windows](http://docs.oracle.com/javase/tutorial/getStarted/cupojava/win32.html)",
+                      "Liang: Ch 2"],
         "order": [2]
     },
     "values-variables": {
-        "topic": "Values and Variables",
-        "materials": [""],
+        "topic": "[Values and Variables](slides/values-variables.html)",
+        "materials": ["Tutorial [Variables](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/variables.html), [Primitive Types](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html), [Operators](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html), [Expressions and Statements](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/expressions.html)", "Liang: Ch 2", "[Basics Example Code](https://github.com/cs1331/code-basics)]"],
         "order": [3]
     },
     "programs-methods": {
-        "topic": "Programs and Methods",
-        "materials": [""],
+        "topic": "[Programs and Methods](slides/programs-methods.html)",
+        "materials": ["Lecture Notes: [Programs and Methods](http://cs1331.gatech.edu/lecture-notes/programs-methods.pdf)",
+                      "Tutorial: [Closer Look at Hello World](http://docs.oracle.com/javase/tutorial/getStarted/application/index.html), [Common Problems](http://docs.oracle.com/javase/tutorial/getStarted/problems/index.html), [I/O from Command Line](http://docs.oracle.com/javase/tutorial/essential/io/cl.html)",
+                      "Liang: Ch 2"],
         "order": [4]
     },
     "control-structures": {
-        "topic": "Control Structures",
-        "materials": [""],
+        "topic": "[Control Structures](slides/control-structures.html)",
+        "materials": ["Tutorial: [Control Flow Statements](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html)",
+                      "Liang: Ch 3-5 (return statement)"],
         "order": [5]
     },
     "arrays": {
-        "topic": "Arrays",
-        "materials": [""],
+        "topic": "[Arrays](slides/arrays.html)",
+        "materials": ["Tutorial: [Arrays](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html)",
+                      "Liang: Ch 2, 77-85"],
         "order": [6,7]
     },
     "java-projects": {
-        "topic": "Java Projects",
+        "topic": "[Java Projects](slides/java-projects.html)",
         "materials": [""],
         "order": [8]
     },
     "data-abstraction": {
-        "topic": "Data Abstraction",
-        "materials": [""],
+        "topic": "[Data Abstraction](slides/data-abstraction.html)",
+        "materials": ["Tutorial - [Classes](http://docs.oracle.com/javase/tutorial/java/javaOO/classes.html)",
+                      "Liang: Ch 9",
+                      "[Classes Example Code](https://github.com/cs1331/cs1331.github.io/tree/master/code/classes)]",
+                      "Liang: Ch 9"],
         "order": [9]
     },
     "classes": {
-        "topic": "Classes",
-        "materials": [""],
+        "topic": "[Classes](slides/classes.html)",
+        "materials": ["Tutorial - [Classes](http://docs.oracle.com/javase/tutorial/java/javaOO/classes.html)",
+                      "Liang: Ch 9",
+                      "[Card Example](https://github.com/cs1331/card)"],
         "order": [10,11]
     },
     "review1": {
