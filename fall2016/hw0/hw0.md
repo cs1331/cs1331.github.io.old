@@ -15,6 +15,8 @@ This assignment gets you started with the basic tools you will need to complete 
 - Give you practice identifying and locating an error
 - Show you a bit of command line fun
 
+**IMPORTANT: We do not use integrated development environments (IDEs) in this class. You must use the command line and a text editor to edit, compile, and debug your Java code.**
+
 ## Problem Description
 
 You are a CS 1331 student who needs to install the JDK, configure it for command line use, and learn how to use a programmer's text editor to create and edit Java source code.
