@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CS 1331">
+  <title>Review 3: OOP Case Studies</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/gt.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Review 3: OOP Case Studies</h1>
+  <h2 class="author">CS 1331</h2>
+</section>
+
+<section id="the-collections-framework" class="slide level1">
+<h1>The Collections Framework</h1>
+<center>
+<img src="colls-coreInterfaces.png" />
+</center>
+<ul>
+<li>A <em>collection</em> is an object that represents a group of objects.</li>
+<li>The collections framework allows different kinds of collections to be dealt with in an implementation-independent manner.</li>
+</ul>
+</section>
+<section id="collection-framework-components" class="slide level1">
+<h1>Collection Framework Components</h1>
+<p>The Java collections framework consists of:</p>
+<ul>
+<li>Collection interfaces representing different types of collections (<code>Set</code>, <code>List</code>, etc)</li>
+<li>General purpose implementations (like <code>ArrayList</code> or <code>HashSet</code>)</li>
+<li>Abstract implementations to support custom implementations</li>
+<li>Algorithms defined in static utility methods that operate on collections (like <code>Collections.sort(List&lt;T&gt; list)</code>)</li>
+<li>Infrastructure interfaces that support collections (like <code>Iterator</code>)</li>
+</ul>
+</section>
+<section id="arraylist-basics" class="slide level1">
+<h1><code>ArrayList</code> Basics</h1>
+<p>Create an <code>ArrayList</code> with operator <code>new</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">  ArrayList tasks = <span class="kw">new</span> ArrayList();</code></pre></div>
+<p>Add items with <code>add()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">  tasks.<span class="fu">add</span>(<span class="st">&quot;Eat&quot;</span>);
+  tasks.<span class="fu">add</span>(<span class="st">&quot;Sleep&quot;</span>);
+  tasks.<span class="fu">add</span>(<span class="st">&quot;Code&quot;</span>);</code></pre></div>
+<p>Traverse with for-each loop:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">  <span class="kw">for</span> (Object task: tasks) {
+      System.<span class="fu">out</span>.<span class="fu">println</span>(task);
+  }</code></pre></div>
+<p>Note that the for-each loop implicitly uses an iterator.</p>
+</section>
+<section id="using-iterators" class="slide level1">
+<h1>Using Iterators</h1>
+<p>Iterators are objects that provide access to the elements in a collection. In Java iterators are represented by the <code>Iterator</code> interface, which contains three methods:</p>
+<ul>
+<li><code>hasNext()</code> returns true if the iteration has more elements.</li>
+<li><code>next()</code> returns the next element in the iteration.</li>
+<li><code>remove()</code> removes from the underlying collection the last element returned by the iterator (optional operation).</li>
+</ul>
+<p>The most basic and common use of an iterator is to traverse a collection (visit all the elements in a collection):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ArrayList tasks = <span class="kw">new</span> ArrayList();
+<span class="co">// ...</span>
+Iterator tasksIter = tasks.<span class="fu">iterator</span>();
+<span class="kw">while</span> (tasksIter.<span class="fu">hasNext</span>()) {
+    Object task = tasksIter.<span class="fu">next</span>();
+    System.<span class="fu">out</span>.<span class="fu">println</span>(task);
+}</code></pre></div>
+<p><a href="../code/collections/ArrayListBasics.java">ArrayListBasics.java</a> for more.</p>
+</section>
+<section id="defining-iterators" class="slide level1">
+<h1>Defining Iterators</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> DynamicArray&lt;E&gt; <span class="kw">implements</span> Iterable&lt;E&gt; {
+    <span class="kw">private</span> <span class="kw">class</span> DynamicArrayIterator <span class="kw">implements</span> Iterator&lt;E&gt; {
+        <span class="kw">private</span> <span class="dt">int</span> cursor = <span class="dv">0</span>;
+        <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">hasNext</span>() {
+            <span class="kw">return</span> cursor &lt;= DynamicArray.<span class="fu">this</span>.<span class="fu">lastIndex</span>;
+        }
+        <span class="kw">public</span> E <span class="fu">next</span>() {
+            cursor++;
+            <span class="kw">return</span> DynamicArray.<span class="fu">this</span>.<span class="fu">get</span>(cursor - <span class="dv">1</span>);
+        }
+        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">remove</span>() { DynamicArray.<span class="fu">this</span>.<span class="fu">remove</span>(cursor - <span class="dv">1</span>); }
+    }
+    <span class="kw">private</span> Object[] elements;
+    <span class="kw">private</span> <span class="dt">int</span> lastIndex;
+    <span class="kw">public</span> <span class="fu">DynamicArray</span>(<span class="dt">int</span> capacity) {
+        elements = <span class="kw">new</span> Object[capacity]; lastIndex = -<span class="dv">1</span>;
+    }
+    <span class="kw">public</span> Iterator <span class="fu">iterator</span>() { <span class="kw">return</span> <span class="kw">new</span> <span class="fu">DynamicArrayIterator</span>(); }</code></pre></div>
+<p>See <a href="../code/collections/DynamicArray.java">DynamicArray.java</a> for examples.</p>
+</section>
+<section id="the-iterable-interface" class="slide level1">
+<h1>The Iterable Interface</h1>
+<p>The <code>Iterable</code> interface has one abstract method, <code>iterator</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">interface</span> Iterable&lt;T&gt; {
+    Iterator&lt;T&gt; <span class="fu">iterator</span>();
+}</code></pre></div>
+<p>An instance of a class that implements <code>Iterable</code> can be the target of a for-each loop.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        DynamicArray&lt;String&gt; da = <span class="kw">new</span> DynamicArray&lt;&gt;(<span class="dv">2</span>);
+        da.<span class="fu">add</span>(<span class="st">&quot;Stan&quot;</span>);
+        da.<span class="fu">add</span>(<span class="st">&quot;Kenny&quot;</span>);
+        da.<span class="fu">add</span>(<span class="st">&quot;Cartman&quot;</span>);
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;da contents:&quot;</span>);
+        <span class="kw">for</span> (String e: da) {
+            System.<span class="fu">out</span>.<span class="fu">println</span>(e);
+        }</code></pre></div>
+</section>
+<section id="using-generics" class="slide level1">
+<h1>Using Generics</h1>
+<p>Supply a type argument in the angle brackets. Read <code>ArrayList&lt;String&gt;</code> as `<code>ArrayList of String'' ```Java   ArrayList&lt;String&gt; strings = new ArrayList&lt;String&gt;();   strings.add(&quot;Helluva&quot;); strings.add(&quot;Engineer!&quot;); ``` If we try to add an object that isn't a</code>String`, we get a compile error:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">  Integer BULL_DOG = Integer.<span class="fu">MIN_VALUE</span>;
+  strings.<span class="fu">add</span>(BULL_DOG); <span class="co">// Won&#39;t compile</span></code></pre></div>
+<p>With a typed collection, we get autoboxing on insertion <em>and</em> retrieval:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">  ArrayList&lt;Integer&gt; ints = <span class="kw">new</span> ArrayList&lt;&gt;();
+  ints.<span class="fu">add</span>(<span class="dv">42</span>);
+  <span class="dt">int</span> num = ints.<span class="fu">get</span>(<span class="dv">0</span>);</code></pre></div>
+<p>Notice that we didn't need to supply the type parameter in the creation expression above. Java inferred the type parameter from the declaration. (Note: this only works in Java 7 and above.)</p>
+<p>See <a href="../code/collections/ArrayListGenericsDemo.java">ArrayListGenericsDemo.java</a> for examples.</p>
+</section>
+<section id="sets" class="slide level1">
+<h1><code>Set</code>s</h1>
+<p>A <code>Set</code> is a collection with no duplicate elements (no two elements <code>e1</code> and <code>e2</code> for which <code>e1.equals(e2)</code>) and in no particular order. Given:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">List&lt;String&gt; nameList = Arrays.<span class="fu">asList</span>(<span class="st">&quot;Alan&quot;</span>, <span class="st">&quot;Ada&quot;</span>, <span class="st">&quot;Alan&quot;</span>);
+Set&lt;String&gt; nameSet = <span class="kw">new</span> HashSet&lt;&gt;(nameList);
+System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;nameSet: &quot;</span> + nameSet);</code></pre></div>
+<p>will print:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">nameSet: [Alan, Ada]</code></pre></div>
+</section>
+<section id="maps" class="slide level1">
+<h1><code>Map</code>s</h1>
+<p>A <code>Map&lt;K, V&gt;</code> object maps keys of type <code>K</code> to values of type <code>V</code>. The code:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">  Map&lt;String, String&gt; capitals = <span class="kw">new</span> HashMap&lt;&gt;();
+  capitals.<span class="fu">put</span>(<span class="st">&quot;Georgia&quot;</span>, <span class="st">&quot;Atlanta&quot;</span>);
+  capitals.<span class="fu">put</span>(<span class="st">&quot;Alabama&quot;</span>, <span class="st">&quot;Montgomery&quot;</span>);
+  capitals.<span class="fu">put</span>(<span class="st">&quot;Florida&quot;</span>, <span class="st">&quot;Tallahassee&quot;</span>);
+  <span class="kw">for</span> (String state: capitals.<span class="fu">keySet</span>()) {
+      System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Capital of &quot;</span> + state + <span class="st">&quot; is &quot;</span>
+                         + capitals.<span class="fu">get</span>(state));
+  }</code></pre></div>
+<p>prints:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Capital of Georgia is Atlanta
+Capital of Florida is Tallahassee
+Capital of Alabama is Montgomery</code></pre></div>
+<p>Note that the order of the keys differs from the order in which we added them. The keys of a map are a <code>Set</code>, so there can be no duplicates and order is not guaranteed. If you <code>put</code> a new value with the same key as an entry already in the map, that entry is overwritten with the new one.</p>
+</section>
+<section id="using-collections.sortlistt-list" class="slide level1">
+<h1>Using <code>Collections.sort(List&lt;T&gt; list)</code></h1>
+<p>The collections framework includes algorithms that operate on collections implemented as static methods of the <code>Collections</code> class. A good example is the <code>sort</code> method:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> &lt;T <span class="kw">extends</span> Comparable&lt;? <span class="kw">super</span> T&gt;&gt; <span class="dt">void</span> <span class="fu">sort</span>(List&lt;T&gt; list)</code></pre></div>
+<ul>
+<li><code>sort</code> uses the `<code>natural ordering'' of the list, that is, the ordering defined by</code>Comparable`.</li>
+<li><code>&lt;? super T&gt;</code> is a <em>type bound</em>. It means `<code>some superclass of</code>T`.''</li>
+<li>The <code>&lt;T extends Comparable&lt;? super T&gt;&gt;</code> means that the element type <code>T</code> or some superclass of <code>T</code> must implement <code>Comparable</code>.</li>
+</ul>
+<p>See <a href="../code/collections/super-troopers/SortTroopers.java">SortTroopers.java</a> for examples.</p>
+</section>
+<section id="can-we-collections.sortlistt-list" class="slide level1">
+<h1>Can we <code>Collections.sort(List&lt;T&gt; list)</code>?</h1>
+<p>Given the <code>Collections</code> static method:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> &lt;T <span class="kw">extends</span> Comparable&lt;? <span class="kw">super</span> T&gt;&gt; <span class="dt">void</span> <span class="fu">sort</span>(List&lt;T&gt; list)</code></pre></div>
+<p>And the classes:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Person <span class="kw">implements</span> Comparable&lt;Person&gt;
+<span class="kw">public</span> <span class="kw">class</span> GtStudent <span class="kw">extends</span> Person { <span class="kw">... </span>}</code></pre></div>
+<p>Can we sort a <code>List&lt;GtStudent&gt;</code>?</p>
+<p>Type checker &quot;proves&quot; that a type argument satisfies a type specification. Prove by substituting without causing contradictions:</p>
+<p><code>[GtStudent/T, Person/?]&lt;T extends Comparable&lt;? super T&gt;&gt;</code></p>
+<p><span class="math inline">\(\Rightarrow\)</span> <code>&lt;GtPerson extends Comparable&lt;Person super GtStudent&gt;</code></p>
+<p>We can sort a <code>List&lt;GtStudent&gt;</code> becuase</p>
+<ul>
+<li><code>GtStudent extends Person</code>,</li>
+<li><code>Person implements Comparable&lt;Person&gt;</code> and</li>
+<li><code>Person</code> is a supertype of <code>GtStudent</code></li>
+</ul>
+</section>
+<section id="anonymous-inner-classes" class="slide level1">
+<h1>Anonymous Inner Classes</h1>
+<p>We can subclass <code>Comparator</code> and make an instance of the subclass at the same time using an <em>anonymous inner class</em>. Here's a mustache comparator as an inner class:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Collections.<span class="fu">sort</span>(troopers, <span class="kw">new</span> Comparator&lt;Trooper&gt;() {
+    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">compare</span>(Trooper a, Trooper b) {
+        <span class="kw">if</span> (a.<span class="fu">hasMustache</span>() &amp;&amp; !b.<span class="fu">hasMustache</span>()) {
+            <span class="kw">return</span> <span class="dv">1</span>;
+        } <span class="kw">else</span> <span class="kw">if</span> (b.<span class="fu">hasMustache</span>() &amp;&amp; !a.<span class="fu">hasMustache</span>()) {
+            <span class="kw">return</span> -<span class="dv">1</span>;
+        } <span class="kw">else</span> {
+            <span class="kw">return</span> a.<span class="fu">getName</span>().<span class="fu">compareTo</span>(b.<span class="fu">getName</span>());
+        }
+    }
+});</code></pre></div>
+<p>The general syntax for defining an anonymous inner class is</p>
+<p>new SuperType<TypeArgument>() { class_body }</p>
+</section>
+<section id="functional-interfaces" class="slide level1">
+<h1>Functional Interfaces</h1>
+<p>Any interface with a single abstract method is a functional interface. For example, <code>Comparator</code> is a functional interface:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">interface</span> Comparator&lt;T&gt; {
+    <span class="dt">int</span> <span class="fu">compare</span>(T o1, T o2);
+}</code></pre></div>
+<p>As in the previous examples, we only need to implement the single abstract method <code>compare</code> to make an instantiable class that implements <code>Comparator</code>.\</p>
+<p>Note that there's an optional <code>@FunctionalInterface</code> annotation that is similar to the <code>@Override</code> annotation. Tagging an interface as a <code>@FunctionalInterface</code> prompts the compiler to check that the interface indeed contains a single abstract method and includes a statement in the interface's Javadoc that the interface is a functional interface.</p>
+</section>
+<section id="lambda-expressions" class="slide level1">
+<h1>Lambda Expressions</h1>
+<p>A <em>lambda expression</em> is a syntactic shortcut for defining the single abstract method of a funtional interface and instantiating an anonymous class that implements the interface. The general syntax is</p>
+<p>[ (T_1  p_1, ..., T_n  p_n)    { method_body } ] Where</p>
+<ul>
+<li><span class="math inline">\(T_1, ..., T_n\)</span> are types and</li>
+<li><span class="math inline">\(p_1, ..., p_n\)</span> are parameter names</li>
+</ul>
+<p>just like in method definitions.\</p>
+<p>If <span class="math inline">\(method\_body\)</span> is a single expression, the curly braces can be omitted. Types in parameter list can also be ommitted where they can be inferred.</p>
+</section>
+<section id="mustachecomparator-as-a-lambda-expression" class="slide level1">
+<h1>MustacheComparator as a Lambda Expression</h1>
+<p>Here's our mustache comparator from  as a lambda expression:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Collections.<span class="fu">sort</span>(troopers, (Trooper a, Trooper b) -&gt; {
+    <span class="kw">if</span> (a.<span class="fu">hasMustache</span>() &amp;&amp; !b.<span class="fu">hasMustache</span>()) {
+        <span class="kw">return</span> <span class="dv">1</span>;
+    } <span class="kw">else</span> <span class="kw">if</span> (b.<span class="fu">hasMustache</span>() &amp;&amp; !a.<span class="fu">hasMustache</span>()) {
+        <span class="kw">return</span> -<span class="dv">1</span>;
+    } <span class="kw">else</span> {
+        <span class="kw">return</span> a.<span class="fu">getName</span>().<span class="fu">compareTo</span>(b.<span class="fu">getName</span>());
+    }
+});</code></pre></div>
+<ul>
+<li>Because <code>Collections.sort(List&lt;T&gt; l, Comparator&lt;T&gt; c)</code> takes a <code>Comparator&lt;T&gt;</code>, we way that <code>Comparator&lt;T&gt;</code> is the <em>target type</em> of the lambda expression passed to the <code>sort</code> method.</li>
+<li>The lambda expression creates an instance of an anonymous class that implements <code>Comparator&lt;Trooper&gt;</code> and passes this instance to <code>sort</code></li>
+</ul>
+</section>
+<section id="target-types" class="slide level1">
+<h1>Target Types</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">static</span> <span class="kw">interface</span> Bar {
+    <span class="dt">int</span> <span class="fu">compare</span>(Trooper a, Trooper b);
+}
+<span class="dt">static</span> <span class="dt">void</span> <span class="fu">foo</span>(Bar b) { <span class="kw">... </span>}</code></pre></div>
+<p>Given the <code>Bar</code> interface, the call:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="fu">foo</span>((Trooper a, Trooper b) -&gt; {
+    <span class="kw">if</span> (a.<span class="fu">hasMustache</span>() &amp;&amp; !b.<span class="fu">hasMustache</span>()) {
+        <span class="kw">return</span> <span class="dv">1</span>;
+    } <span class="kw">else</span> <span class="kw">if</span> (b.<span class="fu">hasMustache</span>() &amp;&amp; !a.<span class="fu">hasMustache</span>()) {
+        <span class="kw">return</span> -<span class="dv">1</span>;
+    } <span class="kw">else</span> {
+        <span class="kw">return</span> a.<span class="fu">getName</span>().<span class="fu">compareTo</span>(b.<span class="fu">getName</span>());
+    }
+});</code></pre></div>
+<p>creates an instance of the <code>Bar</code> interface using the same lambda expression.</p>
+<ul>
+<li>The type of object instantiated by a lambda expression is determined by the <em>target type</em> of the call in which the lambda expression appears.</li>
+</ul>
+<p>See  for examples.</p>
+</section>
+<section id="streams-and-pipelines" class="slide level1">
+<h1>Streams and Pipelines</h1>
+<p>A stream is a sequence of elements.</p>
+<ul>
+<li>Unlike a collection, it is not a data structure that stores elements.</li>
+<li>Unlike an iterator, streams do not allow modification of the underlying source</li>
+</ul>
+<p>A collection provides a source for a pipeline, which processes a stream derived from the source.</p>
+
+<p>A pipleline carries values from a source to a sink.\ A pipeline contains:</p>
+<ul>
+<li>A source: This could be a collection, an array, a generator function, or an I/O channel.</li>
+<li>Zero or more intermediate operations. An intermediate operation, such as filter, produces a new stream</li>
+<li>A terminal operation. A terminal operation, such as forEach, produces a non-stream result, such as a primitive value (like a double value), a collection, or in the case of forEach, no value at all.</li>
+</ul>
+</section>
+<section id="method-references" class="slide level1">
+<h1>Method References</h1>
+<p>Three kinds of method references:</p>
+<ul>
+<li><p><em>object</em>::<em>instanceMethod</em> - like <code>x -&gt; object.instanceMethod(x)</code></p></li>
+<li><p><em>Class</em>::<em>staticMethod</em> - like <code>x -&gt; Class.staticMethod(x)</code></p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">someList.<span class="fu">forEach</span>(System.<span class="fu">out</span>::println);</code></pre></div></li>
+<li><p><em>Class</em>::<em>instanceMethod</em> - like <code>(x, y) -&gt; x.instanceMethod(y)</code></p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Comparator&lt;Trooper&gt; byName = Comparator.<span class="fu">comparing</span>(Trooper::getName);</code></pre></div></li>
+</ul>
+</section>
+<section id="stream-example-how-many-mustaches" class="slide level1">
+<h1>Stream Example: How Many Mustaches?</h1>
+<p>Consider this simple example from :</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">long</span> mustaches = troopers.<span class="fu">stream</span>().<span class="fu">filter</span>(Trooper::hasMustache).<span class="fu">count</span>();
+System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Mustaches: &quot;</span> + mustaches);</code></pre></div>
+<ul>
+<li><code>troopers.stream()</code> is the <em>source</em></li>
+<li><code>.filter(Trooper::hasMustache)</code> is an <em>intermediate operation</em></li>
+<li><code>.count()</code> is the <em>terminal operation</em>, sometimes called a <em>sink</em></li>
+</ul>
+<p>The terminal operation yields a new value which results from applying all the intermediate operations and finally the terminal operation to the source.</p>
+<p>See  for examples.</p>
+</section>
+<section id="stream-example-long-words" class="slide level1">
+<h1>Stream Example: Long Words</h1>
+<p>Given:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">List&lt;String&gt; words = Arrays.<span class="fu">asList</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;World&quot;</span>, <span class="st">&quot;Welcome&quot;</span>, <span class="st">&quot;To&quot;</span>, <span class="st">&quot;Java&quot;</span>, <span class="st">&quot;8&quot;</span>);</code></pre></div>
+<p>Write a single statement that assigns to <code>avg</code> the average word length:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        <span class="dt">double</span> avg = words.<span class="fu">stream</span>()
+            .<span class="fu">map</span>(String::length)
+            .<span class="fu">reduce</span>(<span class="dv">0</span>, (a, b) -&gt; a + b) / (<span class="fl">0.0</span> + words.<span class="fu">size</span>());</code></pre></div>
+<p>Using <code>words</code> and <code>avg</code>, write a single statement that collects a list of all words in <code>words</code> that are longer than <code>avg</code>, and assigns this list to a properly typed <code>List&lt;T&gt;</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        List&lt;String&gt; longWords = words.<span class="fu">stream</span>()
+            .<span class="fu">filter</span>(word -&gt; word.<span class="fu">length</span>() &gt; avg)
+            .<span class="fu">collect</span>(Collectors.<span class="fu">toList</span>());</code></pre></div>
+<p>See this and other stream examples in </p>
+</section>
+<section id="the-equals-method-and-collections" class="slide level1">
+<h1>The <code>equals</code> Method and Collections</h1>
+<ul>
+<li>A class whose instances will be stored in a collection must have a properly implemented <code>equals</code> method.</li>
+<li>The <code>contains</code> method in collections uses the <code>equals</code> method in the stored objects.</li>
+<li>The default implementation of <code>equals</code> (object identity - true only for same object in memory) only rarely gives correct results.</li>
+<li>Note that <code>hashcode()</code> also has a defualt implementation that uses the object's memory address. As a rule, whenever you override <code>equals</code>, you should also override <code>hashcode</code></li>
+</ul>
+</section>
+<section id="a-recipe-for-implementing-equalsobject" class="slide level1">
+<h1>A Recipe for Implementing <code>equals(Object)</code></h1>
+<p>Obeying the general contract of <code>equals(Object)</code> is easier if you follow these steps.\</p>
+<p>\begin{enumerate} - Ensure the other object is not null. - Check for reference equality with == (are we comparing to self?). - Check that the other object is an <code>instanceof</code> this object's class. - Cast the other object to this's type (guaranteed to work after instanceof test) - Check that each `<code>significant'' field in the other object</code>equals(Object)` the corresponding field in this object. \end{enumerate}</p>
+<p>After seeing an example applicaiton of this recipe we'll motivate the proper implementation of <code>equals(Object)</code> methods by introducing our first collection class, <code>ArrayList</code>.</p>
+</section>
+<section id="an-example-equalsobject-method" class="slide level1">
+<h1>An Example <code>equals(Object)</code> Method</h1>
+<p>Assume we have a <code>Person</code> class with a single <code>name</code> field. \begin{enumerate} - Ensure the other object is not null. - Check for reference equality with == (are we comparing to self?). - Check that the other object is an <code>instanceof</code> this object's class. - Cast the other object to this's type (guaranteed to work after instanceof test) - Check that each `<code>significant'' field in the other object</code>equals(Object)` the corresponding field in this object. \end{enumerate} Applying the recipe:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">        <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">equals</span>(Object other) {
+<span class="dv">1</span>:          <span class="kw">if</span> (<span class="kw">null</span> == other) { <span class="kw">return</span> <span class="kw">false</span>; }
+<span class="dv">2</span>:          <span class="kw">if</span> (<span class="kw">this</span> == other) { <span class="kw">return</span> <span class="kw">true</span>; }
+<span class="dv">3</span>:          <span class="kw">if</span> (!(other <span class="kw">instanceof</span> Person)) { <span class="kw">return</span> <span class="kw">false</span>; }
+<span class="dv">4</span>:          Person that = (Person) other;
+<span class="dv">5</span>:          <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">name</span>.<span class="fu">equals</span>(that.<span class="fu">name</span>);
+        }</code></pre></div>
+</section>
+<section id="conequences-of-failing-to-override-equalsobject" class="slide level1">
+<h1>Conequences of Failing to Override <code>equals(Object)</code></h1>
+<p>In this simple class hierarchy, <code>FoundPerson</code> has a properly implemented <code>equals(Object)</code> method and <code>LostPerson</code> does not.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">    <span class="kw">abstract</span> <span class="dt">static</span> <span class="kw">class</span> Person {
+        <span class="kw">public</span> String name;
+        <span class="kw">public</span> <span class="fu">Person</span>(String name) {
+            <span class="kw">this</span>.<span class="fu">name</span> = name;
+        }
+    }
+    <span class="dt">static</span> <span class="kw">class</span> LostPerson <span class="kw">extends</span> Person {
+        <span class="kw">public</span> <span class="fu">LostPerson</span>(String name) { <span class="kw">super</span>(name); }
+    }
+    <span class="dt">static</span> <span class="kw">class</span> FoundPerson <span class="kw">extends</span> Person {
+        <span class="kw">public</span> <span class="fu">FoundPerson</span>(String name) { <span class="kw">super</span>(name); }
+
+        <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">equals</span>(Object other) {
+            <span class="kw">if</span> (<span class="kw">this</span> == other) { <span class="kw">return</span> <span class="kw">true</span>; }
+            <span class="kw">if</span> (!(other <span class="kw">instanceof</span> Person)) { <span class="kw">return</span> <span class="kw">false</span>; }
+            <span class="kw">return</span> ((Person) other).<span class="fu">name</span>.<span class="fu">equals</span>(<span class="kw">this</span>.<span class="fu">name</span>);
+        }
+    }</code></pre></div>
+<p>See .</p>
+</section>
+<section id="hashcode" class="slide level1">
+<h1><code>hashCode</code>}</h1>
+<p>Hash-based implementations, <code>HashSet</code> and <code>HashMap</code>, store and retrieve elements or keys using the <code>hashCode</code> method from <code>java.lang.Object</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">int</span> <span class="fu">hashCode</span>()</code></pre></div>
+<ul>
+<li>The <code>hashCode</code> method maps an object to an <code>int</code> which can be used to find the object in a data structure called a <code>hashtable</code>.</li>
+<li>The point of a hash code is that it can be computed in constant time, so hashtables allow very fast lookups.</li>
+<li>Every object's <code>hashCode</code> method should return a consistent hash code that is not necessarily unique among all objects.</li>
+</ul>
+<p>More specifically ...</p>
+</section>
+<section id="hashcodes-contract" class="slide level1">
+<h1><code>hashCode</code>'s Contract}</h1>
+
+<ul>
+<li>Whenever it is invoked on the same object more than once during an execution of a Java application, the hashCode method must consistently return the same integer, provided no information used in equals comparisons on the object is modified. This integer need not remain consistent from one execution of an application to another execution of the same application.</li>
+<li>If two objects are equal according to the <code>equals(Object)</code> method, then calling the <code>hashCode</code> method on each of the two objects must produce the same integer result.</li>
+<li>It is not required that if two objects are unequal according to the <code>equals(java.lang.Object)</code> method, then calling the hashCode method on each of the two objects must produce distinct integer results. However, the programmer should be aware that producing distinct integer results for unequal objects may improve the performance of hash tables.</li>
+</ul>
+<p>Bottom line: if you override <code>equals</code> you must override <code>hashCode</code>.\</p>
+</section>
+<section id="a-recipe-for-implementing-hashcode" class="slide level1">
+<h1>A Recipe for Implementing <code>hashCode</code>}</h1>
+<p>You'll learn hashing in depth in your data structures and algorithms course. For now, here's a recipe to follow:</p>
+<p>\begin{enumerate} - Initialize <code>result</code> with a constant non-zero value, e.g., 17 - For each significant field <code>f</code> (i.e., compared in <code>equals</code> method), compute an <code>int</code> hash code <code>c</code> and add it to <code>31 * result</code>.</p>
+<ul>
+<li>For <code>boolean</code> fields, <code>c = (f ? 1 : 0)</code></li>
+<li>For <code>byte, char, short, int</code> fields, <code>c = (int) f</code></li>
+<li>For <code>long</code> fields, <code>c = (int) (f \^ (f &gt;&gt;&gt; 32 ))</code></li>
+<li>For <code>float</code> fields, <code>c = Float.floatToIntBits(f)</code></li>
+<li>For <code>double</code> fields, <code>c = (int) (Double.doubleToLongBits(f) \^ (Double.doubleToLongBits(f) &gt;&gt;&gt; 32))</code> (notice this converts to <code>long</code> then uses recipe for <code>long</code> fields)</li>
+<li>For reference fields, if <code>equals</code> calls <code>equals</code> on the field, <code>c = f.hashCode()</code></li>
+<li><p>For array fields, <code>c = Arrays.hashCode(f)</code></p></li>
+<li><p><code>return result</code> \end{enumerate}</p></li>
+</ul>
+</section>
+<section id="an-example-hashcode-using-recipe" class="slide level1">
+<h1>An Example <code>hashCode</code> Using Recipe</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">class</span> Trooper <span class="kw">implements</span> Comparable&lt;Trooper&gt; {
+
+    <span class="kw">private</span> String name;
+    <span class="kw">private</span> <span class="dt">boolean</span> mustached;
+...
+    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">equals</span>(Object other) {
+        <span class="kw">if</span> (<span class="kw">null</span> == other) <span class="kw">return</span> <span class="kw">false</span>;
+        <span class="kw">if</span> (<span class="kw">this</span> == other) <span class="kw">return</span> <span class="kw">true</span>;
+        <span class="kw">if</span> (!(other <span class="kw">instanceof</span> Trooper)) <span class="kw">return</span> <span class="kw">false</span>;
+        Trooper that = (Trooper) other;
+        <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">name</span>.<span class="fu">equals</span>(that.<span class="fu">name</span>)
+                &amp;&amp; <span class="kw">this</span>.<span class="fu">mustached</span> == that.<span class="fu">mustached</span>;
+    }
+    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">hashCode</span>() {
+        <span class="dt">int</span> result = <span class="dv">17</span>;
+        result = <span class="dv">31</span> * result + name.<span class="fu">hashCode</span>();
+        result = <span class="dv">31</span> * result + (mustached ? <span class="dv">1</span> : <span class="dv">0</span>);
+        <span class="kw">return</span> result;
+    }
+}</code></pre></div>
+</section>
+<section id="a-simpler-recipe-for-implementing-hashcode" class="slide level1">
+<h1>A Simpler Recipe for Implementing <code>hashCode</code></h1>
+<p>The basic idea is to add some <code>int</code> value for each significant field. Joshua Bloch's recipe works well for Java's collections, but a crude approximation is also fine: \begin{enumerate} - Initialize <code>result</code> with a constant non-zero value, e.g., 17 - For each significant field <code>f</code> (i.e., compared in <code>equals</code> method), compute an <code>int</code> hash code <code>c</code> and add it to <code>31 * result</code>.</p>
+<ul>
+<li>For <code>boolean</code> fields, <code>c = (f ? 1 : 0)</code></li>
+<li><strong>For all numeric primitives, perform an explicit conversion to <code>int</code></strong>, <code>c = (int) f</code>}</li>
+<li>For reference fields, if <code>equals</code> calls <code>equals</code> on the field, <code>c = f.hashCode()</code></li>
+<li><p>For array fields, <code>c = Arrays.hashCode(f)</code></p></li>
+<li><p><code>return result</code> \end{enumerate}</p></li>
+</ul>
+</section>
+<section id="how-items-are-found-in-a-hash-based-collection" class="slide level1">
+<h1>How Items are Found in a Hash-Based Collection</h1>
+<p>The item's <code>hashCode</code> is used to access the right bucket, then its <code>equals</code> method is used to match elements in the bucket.</p>
+<center>
+
+</center>
+<p>If you override <code>equals</code>, you must override <code>hashCode</code>!</p>
+</section>
+<section id="consequences-of-failing-to-override-hashcode" class="slide level1">
+<h1>Consequences of Failing to Override <code>hashCode</code></h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">  Set&lt;Trooper&gt; trooperSet = HashSet&lt;&gt;();
+  <span class="co">// ...</span>
+  trooperSet.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Trooper</span>(<span class="st">&quot;Mac&quot;</span>, <span class="kw">true</span>));
+
+  <span class="co">// Mac is in the set, but we don&#39;t find him because we didn&#39;t</span>
+  <span class="co">// override hashCode().</span>
+  System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Oops!  Didn&#39;t override hashCode():&quot;</span>);
+  System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;trooperSet.contains(new Trooper(</span><span class="ch">\&quot;</span><span class="st">Mac</span><span class="ch">\&quot;</span><span class="st">, true))=&quot;</span>
+                     + trooperSet.<span class="fu">contains</span>(<span class="kw">new</span> <span class="fu">Trooper</span>(<span class="st">&quot;Mac&quot;</span>, <span class="kw">true</span>)));</code></pre></div>
+<p>prints:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Oops!  Didn&#39;t override <span class="fu">hashCode</span>():
+trooperSet.<span class="fu">contains</span>(<span class="kw">new</span> <span class="fu">Trooper</span>(<span class="st">&quot;Mac&quot;</span>, <span class="kw">true</span>))=<span class="kw">false</span></code></pre></div>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -104,18 +104,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="following-along-card-example" class="slide level1">
 <h1>Following Along Card Example</h1>
 <p>Clone the repository at <a href="https://github.com/cs1331/card" class="uri">https://github.com/cs1331/card</a>:</p>
-<pre class="sh"><code>[chris@nijinsky ~/cs1331]
-$ git clone git@github.com:cs1331/card.git</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">[<span class="kw">chris@nijinsky</span> ~/cs1331]
+$ <span class="kw">git</span> clone git@github.com:cs1331/card.git</code></pre></div>
 <p>In the <code>card</code> directory created by cloning the repo you can get a list of versions:</p>
-<pre class="sh"><code>$ git tag -l -n1
-v0.0            Initial version
-v0.1            Add main method
-v0.2            Add toString() method
-v1.0            Private instance variables
-...</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="kw">git</span> tag -l -n1
+<span class="kw">v0.0</span>            Initial version
+<span class="kw">v0.1</span>            Add main method
+<span class="kw">v0.2</span>            Add toString() <span class="kw">method</span>
+<span class="kw">v1.0</span>            Private instance variables
+<span class="kw">...</span></code></pre></div>
 <p>To check out a particular version use <code>git checkout</code> with the version name, e.g.:</p>
-<pre class="sh"><code>[chris@nijinsky ~/cs1331/card]
-$ git checkout v0.0</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">[<span class="kw">chris@nijinsky</span> ~/cs1331/card]
+$ <span class="kw">git</span> checkout v0.0</code></pre></div>
 <!------------------------------------ Slide -------------------------------->
 </section>
 <section id="a-card-class-v0.01" class="slide level1">
@@ -445,13 +445,12 @@ $ git checkout v0.0</code></pre>
 <h1>Absence of No-Arg Constructors</h1>
 <p>If we write a constructor, Java won't provide a default no-arg constructor. (We may choose to provide one.)</p>
 <p>So if we don't update the Dealer class it won't compile:</p>
-<pre class="sh"><code>$ javac *.java
-Dealer.java:4: error: constructor Card in class Card cannot be applied to given types;
-        Card c = new Card();
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="kw">javac</span> *.java
+<span class="kw">Dealer.java</span>:4: error: constructor Card in class Card cannot be applied to given types<span class="kw">;</span>
+        <span class="kw">Card</span> c = new Card();
                  ^
-  required: String,String
-  found: no arguments
-</code></pre>
+  <span class="kw">required</span>: String,String
+  <span class="kw">found</span>: no arguments</code></pre></div>
 <p>This means there's no no-arg constructor in <code>Card</code>.</p>
 <!------------------------------------ Slide -------------------------------->
 </section>

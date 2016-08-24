@@ -99,9 +99,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>specify a classpath on a per-application basis by using the <code>-cp</code> switch. The classpath set with <code>-cp</code> overrides the <code>CLASSPATH</code> environment variable.</li>
 </ul>
 <p>Don't use the <code>CLASSPATH</code> environment variable. If it's already set, clear it with (on Windows):</p>
-<pre class="sh"><code>C:\&gt; set CLASSPATH=</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">C</span>:<span class="dt">\&gt;</span> set CLASSPATH=</code></pre></div>
 <p>or (on Unix):</p>
-<pre class="sh"><code>$ unset CLASSPATH</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="kw">unset</span> <span class="ot">CLASSPATH</span></code></pre></div>
 <!--------------------------------Slide ------------------------------------->
 </section>
 <section id="using--cp" class="slide level1">
@@ -239,7 +239,7 @@ $ <span class="kw">java</span> -jar target/blackjack.jar</code></pre></div>
 <p>Gradle uses Java project conventions to make things much easier than with Ant. Here's a minimal Gradle build file for a Java project:</p>
 <pre class="groovy"><code>apply plugin: &#39;java&#39;</code></pre>
 <p>The <code>java</code> plugin assumes the Maven Sandard Directory Layout and provides many useful tasks &quot;out of the box&quot;. To list them, do:</p>
-<pre class="sh"><code>gradle tasks</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">gradle</span> tasks</code></pre></div>
 <p>See <a href="https://docs.gradle.org/current/userguide/tutorial_java_projects.html">Gradle's Java Quickstart</a> for details.</p>
 </section>
     </div>

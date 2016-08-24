@@ -296,14 +296,14 @@ System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="
 <h1>Using the Standard Layout</h1>
 <p>Now we're separating our source files from compiler output. Here's how to use the new directory layout:</p>
 <p>Make a directory for compiler output:</p>
-<pre class="sh"><code>[chris@nijinsky ~/cs1331/card]
-$ mkdir -p build/classes</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">[<span class="kw">chris@nijinsky</span> ~/cs1331/card]
+$ <span class="kw">mkdir</span> -p build/classes</code></pre></div>
 <p>Tell <code>javac</code> where to put compiler output with the <code>-d</code> switch:</p>
-<pre class="sh"><code>[chris@nijinsky ~/cs1331/card]
-$ javac -d build/classes/ src/main/java/edu/gatech/cs1331/card/*.java</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">[<span class="kw">chris@nijinsky</span> ~/cs1331/card]
+$ <span class="kw">javac</span> -d build/classes/ src/main/java/edu/gatech/cs1331/card/*.java</code></pre></div>
 <p>Specify a classpath and fully-qualified class name to run:</p>
-<pre class="sh"><code>[chris@nijinsky ~/cs1331/card]
-$ java -cp ./build/classes/ edu.gatech.cs1331.card.Dealer</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">[<span class="kw">chris@nijinsky</span> ~/cs1331/card]
+$ <span class="kw">java</span> -cp ./build/classes/ edu.gatech.cs1331.card.Dealer</code></pre></div>
 <!--------------------------------Slide ------------------------------------->
 </section>
 <section id="the-classpath" class="slide level1">
@@ -324,9 +324,9 @@ $ java -cp ./build/classes/ edu.gatech.cs1331.card.Dealer</code></pre>
 <li>specify a classpath on a per-application basis by using the <code>-cp</code> switch. The classpath set with <code>-cp</code> overrides the <code>CLASSPATH</code> environment variable.</li>
 </ul>
 <p>Don't use the <code>CLASSPATH</code> environment variable. If it's already set, clear it with (on Windows):</p>
-<pre class="sh"><code>C:\&gt; set CLASSPATH=</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">C</span>:<span class="dt">\&gt;</span> set CLASSPATH=</code></pre></div>
 <p>or (on Unix):</p>
-<pre class="sh"><code>$ unset CLASSPATH</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="kw">unset</span> <span class="ot">CLASSPATH</span></code></pre></div>
 </section>
     </div>
   </div>
