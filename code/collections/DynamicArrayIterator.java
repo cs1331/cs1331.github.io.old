@@ -10,16 +10,12 @@ public class DynamicArrayIterator<E> implements Iterator<E> {
     }
 
     public boolean hasNext() {
-        if (cursor >= da.size() - 1) {
-            return false;
-        }
-        return true;
+        return cursor < da.size() - 1;
     }
 
     public E next() {
-        E answer = da.get(cursor);
         cursor++;
-        return answer;
+        return da.get(cursor - 1);
     }
 
     public void remove() {
