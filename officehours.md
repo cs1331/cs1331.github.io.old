@@ -15,4 +15,4 @@ TBD
 
 ## TA Office Hours, CoC 107
 
-<iframe src="https://docs.google.com/spreadsheets/d/10NqQlhjbiBozXofxK4PVMavhppZjntW9xiYuDC07DVg/pubhtml?gid=1192753817&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+<iframe style="width: 1100px; height: 1200px;" src="https://docs.google.com/spreadsheets/d/10NqQlhjbiBozXofxK4PVMavhppZjntW9xiYuDC07DVg/pubhtml?gid=1192753817&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
