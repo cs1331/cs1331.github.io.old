@@ -164,5 +164,7 @@ Maximum number of points you can lose on Checkstyle this assignment: __0__
 ## Turn-in Procedure
 In order to submit your assignment you need to ensure that your working code is pushed to your remote repository by the due date! Follow the instructions outlined above to push your code to your remote repository! 
 
+You should only have one `.java` file: `Civilization.java`.
+
 ## Verifying Your Submission
 Please be sure that any code you push compiles and runs through the command line! Pull from your repository and make sure everything is working how you want it!
