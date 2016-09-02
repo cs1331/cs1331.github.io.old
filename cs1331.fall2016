@@ -1,7 +1,6 @@
-Elements of Programming in Java
 Week 1
 2016-08-22;intro-cs1331
-2016-08-24;intro-java;[HW0 Released](fall2016/hw0/hw0.html)
+2016-08-24;intro-java
 2016-08-26;values-variables
 Week 2
 2016-08-29;programs-methods
@@ -19,48 +18,46 @@ Week 5
 2016-09-19;review1
 2016-09-21;exam1
 2016-09-23;pq1
-Fundamentals of Object-Oriented Programming
 Week 6
 2016-09-26;inheritance
-2016-09-28;inheritance;HW 2 Due 2016-09-29
-2016-09-30;polymorphism;HW 3 Released
+2016-09-28;inheritance
+2016-09-30;polymorphism
 Week 7
 2016-10-03;polymorphism
 2016-10-05;object-superclass
 2016-10-07;object-superclass
 Week 8
 2016-10-10;Fall Break - No Class
-2016-10-12;review2
-2016-10-14;exam2
-OOP Case Studies: Exceptions, Java Collections and JavaFX
+2016-10-12;exceptions
+2016-10-14;exceptions
 Week 9
-2016-10-17;pq2
-2016-10-19;exceptions;HW 3 Due 2016-10-20
-2016-10-21;exceptions;HW 4 Released
+2016-10-17;review2
+2016-10-19;exam2
+2016-10-21;pq2
 Week 10
 2016-10-24;collections
-2016-10-26;collections;HW 4 Due 2016-10-27
-2016-10-28;collections-algorithms;HW 5 Released
+2016-10-26;collections
+2016-10-28;collections-algorithms
 Week 11
 2016-10-31;lambda-expressions
 2016-11-02;iterators
 2016-11-04;hashed-collections
 Week 12
 2016-11-07;javafx
-2016-11-09;javafx;HW 5 Due 2016
-2016-11-11;javafx;HW 6 Released
+2016-11-09;javafx
+2016-11-11;javafx
 Week 13
 2016-11-14;review3
 2016-11-16;exam3
 2016-11-18;pq3
 Week 14
-2016-11-21;Thanksgiving - No Class
+2016-11-21;linked-lists
 2016-11-23;Thanksgiving - No Class
 2016-11-25;Thanksgiving - No Class
 Week 15
-2016-11-28;linked-lists
-2016-11-30;stacks-queues;HW 6 Due 2016-12-01
-2016-12-02;Special Topics
+2016-11-28;stacks-queues
+2016-11-30
+2016-12-02
 Week 16
 2016-12-05;Special Topics
 Finals Week
