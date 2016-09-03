@@ -137,7 +137,7 @@ Any time you get some code written and running you should push your changes up t
 
 ## Tips, Tricks, and Warnings
 
-- You are NOT allowed to use the `Arrays` class. 
+- You are NOT allowed to use the `Arrays` class nor the `ArrayList` class. You are never allowed to use anything that trivializes the assignment.  
 - If your code does not compile it is an automatic 0.
 - If your code crashes during normal game play it will be a very heavy deduction in points.
 - You can assume that during gameplay if you are expecting a number as input you will receive a number as input. You are not expected to handle mismatch types as input.
