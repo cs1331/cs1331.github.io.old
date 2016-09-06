@@ -5,7 +5,7 @@ title: Homework 01
 
 # Homework 01
 
-Due: 2016-09-16T23:59:59
+Due: 2016-09-15T23:59:59
 
 ## Introduction
 
