@@ -188,7 +188,7 @@ for (double score: scores) {
 
 Also note how our naming conventions help to make the code clear.  You can read the loop above as "for each score in scores".
 
-# Array Gotchas
+# Array Creation Gotchas
 
 Because arrays are allocated dynamically, this will compile:
 
@@ -196,14 +196,16 @@ Because arrays are allocated dynamically, this will compile:
 double[] scores = new double[-5];
 ```
 
-but will produce an error at run-time:
+becuase the compiler only checks that `-5` is an `int` expression, but the code will produce an error at run-time:
 
 ```Java
 Exception in thread "main" java.lang.NegativeArraySizeException
         at ArrayBasics.main(ArrayBasics.java:4)
 ```
 
-Array access expressions are evaluated and checked at run-time. Negative indexes like:
+# Array Access Gotchas
+
+Array access expressions are also merely type-checked at compile time but are evaluated and checked for validity at run-time. Negative indexes like:
 
 ```Java
 scores[-1] = 100;
@@ -215,6 +217,8 @@ produce:
 Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: -1
         at ArrayBasics.main(ArrayBasics.java:23)
 ```
+
+... just like an index too large for the array would fail.
 
 # Array Parameters
 
@@ -261,7 +265,6 @@ public static int max(int ... numbers) {
 ```
 
 # Multidimensional Arrays
-
 
 You can create multidimensional arrays by adding additional square brackets for dimensions and sizes.
 
@@ -314,7 +317,6 @@ grid[3][2] == '*'; // true
 
 
 # Traversing 2D Arrays
-
 
 Traverse 2-dimensional array by nesting loops.  Key is to use the right ``length``s. Row-major traversal:
 

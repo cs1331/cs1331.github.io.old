@@ -206,18 +206,22 @@ scores[scores.<span class="fu">length</span> - <span class="dv">1</span>] = <spa
 }</code></pre></div>
 <p>Also note how our naming conventions help to make the code clear. You can read the loop above as &quot;for each score in scores&quot;.</p>
 </section>
-<section id="array-gotchas" class="slide level1">
-<h1>Array Gotchas</h1>
+<section id="array-creation-gotchas" class="slide level1">
+<h1>Array Creation Gotchas</h1>
 <p>Because arrays are allocated dynamically, this will compile:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span>[] scores = <span class="kw">new</span> <span class="dt">double</span>[-<span class="dv">5</span>];</code></pre></div>
-<p>but will produce an error at run-time:</p>
+<p>becuase the compiler only checks that <code>-5</code> is an <code>int</code> expression, but the code will produce an error at run-time:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Exception in thread <span class="st">&quot;main&quot;</span> java.<span class="fu">lang</span>.<span class="fu">NegativeArraySizeException</span>
         at ArrayBasics.<span class="fu">main</span>(ArrayBasics.<span class="fu">java</span>:<span class="dv">4</span>)</code></pre></div>
-<p>Array access expressions are evaluated and checked at run-time. Negative indexes like:</p>
+</section>
+<section id="array-access-gotchas" class="slide level1">
+<h1>Array Access Gotchas</h1>
+<p>Array access expressions are also merely type-checked at compile time but are evaluated and checked for validity at run-time. Negative indexes like:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">scores[-<span class="dv">1</span>] = <span class="dv">100</span>;</code></pre></div>
 <p>produce:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Exception in thread <span class="st">&quot;main&quot;</span> java.<span class="fu">lang</span>.<span class="fu">ArrayIndexOutOfBoundsException</span>: -<span class="dv">1</span>
         at ArrayBasics.<span class="fu">main</span>(ArrayBasics.<span class="fu">java</span>:<span class="dv">23</span>)</code></pre></div>
+<p>... just like an index too large for the array would fail.</p>
 </section>
 <section id="array-parameters" class="slide level1">
 <h1>Array Parameters</h1>
