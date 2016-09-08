@@ -11,7 +11,9 @@ Mondays, Wednesdays, and Fridays 17:00-18:00 in CoC 133 or CoC 107. Any time my 
 
 ## Professor McDaniel's Office Hours, CoC 135
 
-TBD
+Tuesdays 12:30 - 1:30 and 2:30 - 3:30
+Wednesdays 12:00 - 1:00
+Other times by appointment
 
 ## TA Office Hours, CoC 107
 
