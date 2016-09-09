@@ -6,8 +6,9 @@ This repository contains the [Jekyll](http://jekyllrb.com/) source of the public
 
 We're slowly migrating to producing Reveal.js slides with Markdown sources. We use [Pandoc](http://pandoc.org/) to  [produce the slides](http://pandoc.org/README.html#producing-slide-shows-with-pandoc)
 
-```sh
-$ cd slides
-$ pandoc -s --mathjax -t revealjs -V theme=gt -V slideNumber=true -V progress=true -o values-variables.html values-variables.md
+To recompile all slides:
 
+```sh
+cd slides
+for file in `ls *.md`; do pandoc -s --mathjax -t revealjs -V theme=gt -V "slideNumber='c/t'" -V progress=true -o $(basename $file .md).html $file; done
 ```
