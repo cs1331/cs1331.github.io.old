@@ -99,6 +99,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   }
   <span class="kw">private</span> <span class="dt">boolean</span> <span class="fu">isValidRank</span>(String someRank) { <span class="kw">... </span>}
 }</code></pre></div>
+</section>
+<section id="the-card-class-example" class="slide level1">
+<h1>The Card Class Example</h1>
+<p>In this two-part lecture we'll use a running example stored in a Git repo. Go to <a href="https://github.com/cs1331/card" class="uri">https://github.com/cs1331/card</a>, click on &quot;Clone or download&quot; and copy the clone URL. Then open your terminal and do this:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">cd</span> cs1331
+<span class="kw">git</span> clone https://github.com/cs1331/card.git
+<span class="kw">cd</span> card</code></pre></div>
+<p>Note that if you've uplaoded your public SSH key you may use an SSH clone URL.</p>
+<p>Now you're ready to follow along.</p>
 <!------------------------------------ Slide -------------------------------->
 </section>
 <section id="a-card-class-v0.01" class="slide level1">
@@ -108,6 +117,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>rank - the rank of a playing card, e.g., 2, jack, ace</li>
 <li>suit - the suit of a playing card, e.g., spades, diamonds</li>
 </ul>
+<p>Here's how you would check out version 0.0:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">git</span> checkout v0.0</code></pre></div>
+<p>And your <code>Card.java</code> will then contain:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Card {
 
     String rank;

@@ -33,6 +33,20 @@ public class Card {
 }
 ```
 
+# The Card Class Example
+
+In this two-part lecture we'll use a running example stored in a Git repo. Go to [https://github.com/cs1331/card](https://github.com/cs1331/card), click on "Clone or download" and copy the clone URL. Then open your terminal and do this:
+
+```sh
+cd cs1331
+git clone https://github.com/cs1331/card.git
+cd card
+```
+
+Note that if you've uplaoded your public SSH key you may use an SSH clone URL.
+
+Now you're ready to follow along.
+
 
 <!------------------------------------ Slide -------------------------------->
 # A Card Class, v0.0<sup>[1](http://semver.org/)</sup>
@@ -41,6 +55,13 @@ Consider how to represent a Card ADT:
 
 - rank - the rank of a playing card, e.g., 2, jack, ace
 - suit - the suit of a playing card, e.g., spades, diamonds
+
+Here's how you would check out version 0.0:
+
+```sh
+git checkout v0.0
+```
+And your `Card.java` will then contain:
 
 ```Java
 public class Card {
