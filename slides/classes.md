@@ -61,6 +61,12 @@ Here's how you would check out version 0.0:
 ```sh
 git checkout v0.0
 ```
+
+1 [Semantic Versioning](http://semver.org/)
+
+
+# `Card`, v0.0
+
 And your `Card.java` will then contain:
 
 ```Java
@@ -74,10 +80,11 @@ public class Card {
 - `rank` and `suit` are instance variables
 - Every *instance* of `Card` has its own copy of instance variables.
 
-1 [Semantic Versioning](http://semver.org/)
+Let's "do something" with `Card` by adding a main method and bumping to v0.1.
+
 
 <!------------------------------------ Slide -------------------------------->
-# Using `Card` v0.0
+# `Card` v0.1
 
 ```Java
 public class Card {
@@ -97,7 +104,7 @@ Note that we can put a `main` method in any class. This is useful for explorator
 The `String` representation isn't very appealing.  (What does it print?)
 
 <!------------------------------------ Slide -------------------------------->
-# Card Class, v0.1
+# `Card` v0.2
 
 
 ```Java
@@ -121,7 +128,7 @@ public class Card {
 }
 ```
 
-Now we have an "ace of base" card and a "jack of all trades" card.  But those aren't valid cards.
+Now we have a nice `String` representation, but we havve an "ace of base" card and a "jack of all trades", which aren't valid cards.
 
 <!------------------------------------ Slide -------------------------------->
 # Encapsulation: Card, v1.0
@@ -224,7 +231,7 @@ public void setSuit(String suit) {
 - `suit` in `setSuit` refers to the local `suit` variable, not the instance variable of the same name
 
 <!------------------------------------ Slide -------------------------------->
-# Dealing with `this`: Card, v1.3
+# Dealing with `this`: Card, v1.2.1
 
 ```Java
 public class Card {
@@ -245,7 +252,7 @@ public class Card {
 - `this.rank` is different from the local `rank` variable that is a parameter to the `setRank` method.
 
 <!------------------------------------ Slide -------------------------------->
-# Dealing `Card`, v1.3
+# Dealing `Card`, v1.2.1
 
 
 ```Java
@@ -274,7 +281,7 @@ Invariants for Card class:
 - `suit` must be one of {"diamonds", "clubs", "hearts","spades"}
 
 <!------------------------------------ Slide -------------------------------->
-# Class Invariants: Card v1.4
+# Class Invariants: Card v1.3
 
 `rank` invariant can be maintained by adding:
 
@@ -325,11 +332,27 @@ $ java Dealer
 base is not a valid suit.
 ```
 
+# `Dealer` v1.3.1
+
+Version 1.3.1 fixes the invalid suit:
+
+```Java
+public class Dealer {
+
+    public static void main(String[] args) {
+        Card c = new Card();
+        c.setRank("ace");
+        c.setSuit("spades");
+        System.out.println(c);
+    }
+}
+```
+
 <!------------------------------------ Slide -------------------------------->
-# Classes and Objects
+# Initializing Instances (v1.4)
 
 `Card` now ensures that we don't create card objects with invalid ranks or suits.
-But consider this slight modification to `Dealer`:
+But consider this slight modification to `Dealer` in v1.4:
 
 ```Java
 public class Dealer5 {
@@ -408,8 +431,33 @@ public class Card {
 }
 ```
 
+# `Dealer` v2.0
+
+Now this won't even compile:
+
+```Java
+public class Dealer {
+
+    public static void main(String[] args) {
+        Card c = new Card();
+        // ...
+    }
+}
+```
+
+```sh
+$ javac Dealer.java
+Dealer.java:4: error: constructor Card in class Card cannot be applied to given types;
+        Card c = new Card();
+                 ^
+  required: String,String
+  found: no arguments
+  reason: actual and formal argument lists differ in length
+1 error
+```
+
 <!------------------------------------ Slide -------------------------------->
-# Using the Card v2.0 Constructor
+# Using the Card v2.0.1 Constructor
 
 Now we have a safer, more consistent  way to initialize objects:
 ```Java
@@ -450,6 +498,7 @@ Let's review our progress with our Card class design:
 Do we need a separate instance of `VALID_RANKS` and `VALID_SUITS` for each instance of our Card class?
 
 `static` members are shared with all instances of a class:
+
 ```Java
 public static final String[] VALID_RANKS =
     {"2", "3", "4", "5", "6", "7", "8", "9",
@@ -501,8 +550,6 @@ public Card(String aRank, String aSuit) { // constructor
 ```
 
 Note the use of another idiom for disambiguating constructor paramters from instance variables (as opposed to using `this`).
-
-
 
 
 <!------------------------------------ Slide -------------------------------->
@@ -564,227 +611,13 @@ produces this output:
 
 By the way, what if we left off the parentheses around `c1 == c2` in  `System.out.println("c1 == c2 returns " + (c1 == c2))`?
 
-<!------------------------------------ Slide -------------------------------->
-# Review Question 1
+# Exercise: Treating People as Objects
 
-```Java
-public class Kitten {
-    private String name;
+Using the encapsulation techniques we just learned, write a class named `Person` with a `name` field of type `String` and an `age` field of type `int`.
 
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
+Write a suitable `toString` method for your  `Person` class.
 
-Assume the following statements have been executed:
+Add a main method that:
 
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
-```
-
-What is the value of `maggie`?
-
-- ?
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 1 Answer
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
-```
-
-What is the value of `maggie`?
-
-- the address of a `Kitten` object
-
-
-
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 2
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
-```
-
-What does `maggie.toString()` return?
-
-- ?
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 2 Answer
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
-```
-
-What does `maggie.toString()` return?
-
-- `"Kitten: null"`
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 3
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
-```
-
-What is the value of the expression `fiona == fiona2`?
-
-- ?
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 3 Answer
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten fiona = new Kitten("Fiona");
-        Kitten fiona2 = new Kitten("Fiona");
-```
-
-What is the value of the expression `fiona == fiona2`?
-
-- `false`
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 4
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten[] kittens = new Kitten[5];
-```
-
-What is the value of `kittens[0]` ?
-
-- ?
-
-<!------------------------------------ Slide -------------------------------->
-# Review Question 4 Answer
-
-```Java
-public class Kitten {
-    private String name;
-
-    public Kitten(String name) {
-        name = name;
-    }
-    public String toString() {
-        return "Kitten: " + name;
-    }
-}
-```
-
-Assume the following statements have been executed:
-
-```Java
-        Kitten maggie = new Kitten("Maggie");
-        Kitten[] kittens = new Kitten[5];
-```
-
-What is the value of `kittens[0]` ?
-
-- `null`
+- Creates an array of `Person` objects
+- Iterates through the array and prints each Person object who's age is greater than 21
