@@ -80,7 +80,7 @@ There will be some boolean values that will be used to determine if the player h
 
 * Philosophy
     * Philosophy is represented by an integer `understanding` which should be initialized as zero and a boolean `foundMeaningOfLife` which should be initialized to false.
-    * You should have one method named philosophize that will increase understanding by 25 and one method improveWriting that will increase understanding by 10.
+    * You should have one method named `philosophize` that will increase understanding by 25 and one method `improveWriting` that will increase understanding by 10.
     * If understanding ever surpasses 200, foundMeaningOfLife should be set to true.
 * Architecture
     * Architecture is represented by an integer `experienceLevel` and one boolean value `builtWonderOfTheWorld`. `builtWonderOfTheWorld` will be initialized as false, and `experienceLevel` should be initialized as zero.
@@ -168,9 +168,9 @@ You will be writing 3 civilization classes:
 * Has a method `buildPyramid` that takes in a Settlement and builds a pyramid building in that settlement.
     * Pyramids cost 500 coins and a worker requirement of 100
     * Returns whether or not the pyramid was built
-    * It will increase the civilization's architecture experience.
+    * It will increase the civilization's architecture experience by 10.
 * Has a method `practiceHieroglyphics`
-    * Practicing hieroglyphics will help Egyptian Philosophy by improving this civilization's writing.
+    * Practicing hieroglyphics will help Egyptian Philosophy by improving this civilization's writing by 10.
     * It will increase the Population's happiness by 10.
 
 #### `QinDynasty.java`
@@ -178,13 +178,13 @@ You will be writing 3 civilization classes:
 * Has a method `buildWall` that takes in a Settlement and builds a wall in that settlement
     * A wall costs 1000 coins  and requires 100 civillians.
     * Returns whether or not the wall was built
-    * It will increase the civilization's architecture experience.
+    * It will increase the civilization's architecture experience by 10.
 * Has a method `buildHouse` that takes in a Settlement and builds a house in that settlement
     * A house costs 30 coins and requires 8 civillians.
     * Returns whether or not the house was built
-    * It will increase the civilization's architecture experience.
+    * It will increase the civilization's architecture experience by 10.
 * Has a method `establishLegalism`
-    * Studying a philosophy of legalism will help improve a civilization's Philosophy technology.
+    * Studying a philosophy of legalism will help improve a civilization's Philosophy technology by 15.
     * It will decrease the happiness of your Population by a value of 20.
 
 #### `RomanEmpire.java`
@@ -192,18 +192,18 @@ You will be writing 3 civilization classes:
 * Has a method `buildAqueduct` that takes in a Settlement and builds an aqueduct in that settlement
     * An aqueduct costs 250 coins and requires 130 civillians.
     * Returns whether or not the aqueduct was built
-    * It will increase the civilization's architecture experience.
+    * It will increase the civilization's architecture experience by 10.
 * Has a method `buildBathHouse` that takes in a Settlement and builds a bath house in that settlement
     * A Roman bath house costs 110 coins and requires 20 civillians.
     * Returns whether or not the bath house was built
-    * It will increase the civilization's architecture experience.
+    * It will increase the civilization's architecture experience by 10.
 * Has a method `buildVilla` that takes in a Settlement and builds a bath house in that settlement
     * A villa costs 80 coins and requires 15 civillians.
     * Returns whether or not the villa was built
-    * It will increase the civilization's architecture experience.
+    * It will increase the civilization's architecture experience by 5.
 * Has a method `studyPhilosophy`
     * Studying Roman philosophy will decrease the happiness of your Population by a value of 10
-    * It will help improve your civilization's Philosophy technology.
+    * It will help improve your civilization's Philosophy technology by 15.
 
 ## As you work...
 Any time you get some code written and running you should push your changes up to the remote repository:
@@ -214,7 +214,8 @@ Any time you get some code written and running you should push your changes up t
 4. Type `git pull origin master` to make sure you are up-to-date with the remote version of the repository.
 5. Type `git push origin master` to push your changes up to the remote repository.
 
-## Tips and Tricks
+## Tips, Tricks, and Reminders
+* You are not allowed to use `Arrays.java` or `ArrayList.java`
 * Confused about how to interpret the description and turn it into a class? Use the provided files and their corresponding descriptions to help you get started!
 * This has a lot of classes to it, but a lot of them are very similar to eachother. Remember to pay attention to details!
 * Start early. Ask for help early. Note that on the day homeworks are due the TA lab traditionally gets very busy!
