@@ -26,6 +26,7 @@ For the last assignment we had you implement a (what should have been) very stra
 * It is important to note that you will not need to create a new repository for this homework. You will be working in the same git repository you set up for the first homework.
 * This homework will be very focused on details. So make sure you read the description carefully and implement every detail described!
 * We have provided some files for you as well as a new driver for your project. You will need to replace your `Civilization.java` file from homework 1 with the `CivilizationGame.java` one found in [this folder](./hw2.zip). Unfortunately the first assignment wasn't quite complicated enough and we need to make sure everyone is caught up.
+* Note that many of the instance variables will require getter and setter methods that we did not explicitly describe. Just make sure that `CivilizationGame.java`compiles and you should be good to go!
 
 ## Solution Description
 
@@ -141,7 +142,9 @@ This class represents the population of a certain civilization as a whole.
     * `fish` takes in a River instance as a parameter and returns the result of the fishing trip
     * `canCook` takes in as parameters `Game` and some Coal. If possible, burn coal 4 times, increase the number of warriors by 40, increase the number of civillians by 60 and return true. Otherwise return false.
     * `canCook` takes in as parameters `Fish` and some Coal. If possible, burn coal 4 times, increase the number of warriors by 10, increase the number of civillians by 15, and return true. Otherwise return false.
+
 ### Settlements
+Below describes the classes involved in settling new cities.
 
 #### `Building.java`
 This class has already been written for you. We provide it's description below.
