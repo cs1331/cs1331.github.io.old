@@ -243,7 +243,7 @@ In order to submit your assignment you need to ensure that your working code is 
 
 You should have the following in your repository:
 
-* `Civilization.java`
+* `CivilizationGame.java`
 * `CoalMine.java`
 * `Treasury.java`
 * `Game.java`
