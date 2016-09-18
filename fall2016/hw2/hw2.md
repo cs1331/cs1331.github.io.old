@@ -173,7 +173,7 @@ You will be writing 3 civilization classes:
     * Returns whether or not the pyramid was built
     * It will increase the civilization's architecture experience by 10.
 * Has a method `practiceHieroglyphics`
-    * Practicing hieroglyphics will help Egyptian Philosophy by improving this civilization's writing by 10.
+    * Practicing hieroglyphics will help Egyptian Technology by improving this civilization's writing.
     * It will increase the Population's happiness by 10.
 
 #### `QinDynasty.java`
@@ -187,7 +187,7 @@ You will be writing 3 civilization classes:
     * Returns whether or not the house was built
     * It will increase the civilization's architecture experience by 10.
 * Has a method `establishLegalism`
-    * Studying a philosophy of legalism will help improve a civilization's Philosophy technology by 15.
+    * Studying a philosophy of legalism will help improve a civilization's philosophy technology.
     * It will decrease the happiness of your Population by a value of 20.
 
 #### `RomanEmpire.java`
@@ -206,7 +206,7 @@ You will be writing 3 civilization classes:
     * It will increase the civilization's architecture experience by 5.
 * Has a method `studyPhilosophy`
     * Studying Roman philosophy will decrease the happiness of your Population by a value of 10
-    * It will help improve your civilization's Philosophy technology by 15.
+    * It will help improve your civilization's Philosophy technology.
 
 ## As you work...
 Any time you get some code written and running you should push your changes up to the remote repository:
