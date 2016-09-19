@@ -26,7 +26,7 @@ For the last assignment we had you implement a (what should have been) very stra
 * It is important to note that you will not need to create a new repository for this homework. You will be working in the same git repository you set up for the first homework.
 * This homework will be very focused on details. So make sure you read the description carefully and implement every detail described!
 * We have provided some files for you as well as a new driver for your project. You will need to replace your `Civilization.java` file from homework 1 with the `CivilizationGame.java` one found in [this folder](./hw2.zip). Unfortunately the first assignment wasn't quite complicated enough and we need to make sure everyone is caught up.
-* Note that many of the instance variables will require getter and setter methods that we did not explicitly describe. Just make sure that `CivilizationGame.java`compiles and you should be good to go!
+* Note that many of the instance variables will require getter and setter methods (since all of your instance data should be private) that we did not explicitly describe in the homework description. If you complete all of the classes correctly then `CivilizationGame.java` should compile and run no problem! If you receive errors about missing methods, you should add that functionality to your class.
 
 ## Solution Description
 
@@ -37,7 +37,7 @@ Two additional resource classes, `CoalMine.java` and `Fish.java`, have already b
 #### `Treasury.java`:
 This is one of the most important classes in the game. Almost any action that your civilization takes will require using their Treasury.
 
-* A Treasury object has an `int` to represent the amount of gold coins the Civilization has.
+* A Treasury object has an `int` to represent the amount of gold coins the Civilization has. Each civilization starts out with 200 coins.
 * There are three actions that can be taken with a treasury:
     * `getCoins` - This method should return the number of coins contained in your Treasury Object
     * `spend` - This method takes in an `int` cost and checks to see if there are enough coins to pay the cost proposed. If there are enough coins, decrement the coins instance variable, and return true. If there are not, return false.
@@ -49,11 +49,11 @@ Wild game objects will provide food for your citizens!
 
 * They have one piece of instance data: an `int` healthIncrease.
 * Game should have two constructors. One should take in a proposed healthIncrease and assign it to the instance data. The second should assign healthIncrease to 20 automatically. Utilize constructor chaining.
-* You should write a method that will allow other classes to get the value of healthIncrease.
+* You should write a method that will allow other classes to get the value of healthIncrease called `getHealth`.
 
 
 #### `Fish.java`
-Fish will provide food for your citizens!
+Fish will provide food for your citizens! This class is also already provided for you. You do not need to change anything about the provided file. We provide it's description below.
 
 * They have one piece of instance data, an integer healthIncrease.
 * Fish should have two constructors. One should take in a proposed healthIncrease and assign it to the instance data. The second should assign healthIncrease to 20 automatically. Utilize constructor chaining.
@@ -61,7 +61,7 @@ Fish will provide food for your citizens!
 
 
 #### `CoalMine.java`
-* Coal is required to cook Game and Fish and feed your citizens!
+* Coal is required to cook Game and Fish and feed your citizens! This class is also already provided for you. You do not need to change anything about the provided file. We provide it's description below.
 * `CoalMine` has two pieces of instance data:
     * an `int coal` that represents the amount of coal present.
     * an `int` BURN_COST. Burn cost should be the same for all instances of coal and the value should *never change*. It should be initialized to a value of 10.
@@ -86,8 +86,7 @@ There will be some boolean values that will be used to determine if the player h
 * Architecture
     * Architecture is represented by an integer `experienceLevel` and one boolean value `builtWonderOfTheWorld`. `builtWonderOfTheWorld` will be initialized as false, and `experienceLevel` should be initialized as zero.
     * You should have a method `increaseExperience` that will increase the `experienceLevel` by the value passed in. If the `experienceLevel` surpasses 200, `builtWonderofTheWorld` should become true.
-
-If `foundMeaningOfLife` and `builtWonderOfTheWorld` become true then victory has been achieved!
+* Finally you will want to create a method that returns whether or not there is a technology win called `hasTechnologyWin`. If `foundMeaningOfLife` and `builtWonderOfTheWorld` become true then victory has been achieved!
 
 #### `Strategy.java`
 The strategy class has to do with war strategy.
@@ -105,9 +104,11 @@ If `conqueredTheWorld` gets set to true, then victory has been achieved!
 Your Civilization will have 3 Terrains: `Desert.java`, `Hills.java`, `River.java`. Terrains provide you with food and treasure.
 
 #### `River.java`
+* When a `River` object is created it must be given a name.
 * Your River object should have a name and an array of `Fish`. The River will never have more than 5 fish, and it will initialize with 5 fish with random integer healthIncrease values between 0 inclusive and 5 exclusive.
 * You should create a `getFish` method that will return a `Fish` from your array if there are any `Fish` available. Once one `Fish` object is returned from the array, you should never be able to access it again. If no `Fish` are available, `getFish` should return null.
-* However, all hope is not lost! You will also be writing a `replenishFish` method. This method will randomly generate 5 Fish to fill your backing array.
+* However, all hope is not lost! You will also be writing a `replenishFish` method. This method will randomly generate 5 Fish to fill your backing array. However, this method will only replenish the fish in the river if there are no more fish left! Return whether or not fish were replenished.
+    * This method gets called in the main class in `CivilizationGame.java` so you do not need to call it yourself.
 
 #### `Hills.java`
 `Hills.java` has been provided for you. We provide its description below, but you do not need to make any changes to this class.
@@ -124,37 +125,41 @@ The Hills terrain allows your citizens to gain 3 resources: Game, Gold, and Coal
 The primary function of a Desert is to find treasure of course!
 Some of `Desert.java` has been implemented for you. You will not need to add anything to the `lost` method.
 
-* You will be writing a method `findTreasure` that will randomly generate and return an integer value between 0 exclusive and 500 inclusive.
-* However, Deserts are also fairly dangerous, and our players may get lost. You will also be generating a random integer between 0 inclusive and 10 exclusive indicating whether or not the player has gotten lost while searching for treasure. If the player does get lost, you should call the lost method (written for you) to give them another shot at escaping the Desert. If lost() returns true, call lost() again. If lost() returns false, send your player off to find treasure again. A player should get lost 10% of the time.
+* You will be writing a method `findTreasure` that will randomly generate and return an integer value between 0 exclusive and 500 inclusive that represents the amount of coins that were found.
+* However, Deserts are also fairly dangerous, and our players may get lost. If the player does get lost, you should call the lost method (written for you) to give them another shot at escaping the Desert. If lost() returns true, call lost() again. If lost() returns false, send your player off to find treasure again. A player should get lost 10% of the time.
+    * Hint: Use random number generation to simulate the 10% requirement.
+    * One way is to generate a random integer between 0 inclusive and 10 exclusive indicating whether or not the player has gotten lost while searching for treasure. How would 10% be evaluated given a random number between 0 and 10?
+    * Hint: You will be calling the `lost` method inside of `findTreasure`.
 
 
 ### `Population.java`
 This class represents the population of a certain civilization as a whole.
 
-* Each population is made up of warriors and civilians. Amount of warriors and civilians should be made up of whole numbers.
-* A population also has a representation of the amount of happiness.
+* Each population is made up of warriors who go to battle and civilians who go to work. Amount of warriors and civilians should be made up of whole numbers.
+    * A population starts out with 50 warriors and 50 civilians
+* A population also has a representation of the amount of happiness that starts at 200.
 * Population has the ability to
     * `increaseHappiness` that takes in the integer amount to increase the happiness by.
     * `decreaseHappiness` that takes in the integer amount to decrease the happiness by. Note that happiness should never go below 0.
-    * `canWork` which takes in the number of workers needed and checks to see if there are enough civilians to satisfy the required number of workers.
+    * `canWork` which takes in the number of workers needed and checks to see if there are enough civilians to satisfy the required number of workers. If there are enough civilians, then the amount of civilians gets decreases by the input amount.
     * `canBattle` is provided for you and determines if you have enough warriors for a randomly generated battle.
     * `hunt` takes in a Hills instance as a parameter and returns the result of the hunt
     * `fish` takes in a River instance as a parameter and returns the result of the fishing trip
-    * `canCook` takes in as parameters `Game` and some Coal. If possible, burn coal 4 times, increase the number of warriors by 40, increase the number of civillians by 60 and return true. Otherwise return false.
-    * `canCook` takes in as parameters `Fish` and some Coal. If possible, burn coal 4 times, increase the number of warriors by 10, increase the number of civillians by 15, and return true. Otherwise return false.
+    * `canCook` takes in as parameters `Game` and the Civilization's `CoalMine`. If possible, burn coal 4 times, increase the number of warriors by 40, increase the number of civillians by 60 and return true. Otherwise return false.
+    * `canCook` takes in as parameters `Fish` and the Civilization's `CoalMine`. If possible, burn coal 4 times, increase the number of warriors by 10, increase the number of civillians by 15, and return true. Otherwise return false.
 
 ### Settlements
 Below describes the classes involved in settling new cities.
 
 #### `Building.java`
-This class has already been written for you. We provide it's description below.
+This class is also already provided for you. You do not need to change anything about the provided file. We provide it's description below.
 
 A Building object is the most basic element of a civilization. A building should have an integer cost and an integer workersRequired. A Building should have a constructor that takes in cost and workersRequired parameters and assigns them to each corresponding piece of instance data.
 
 #### `Settlement.java`
 A Settlement object is composed of Building objects. Your Settlement object MUST have an array of Building objects, as well as a String name. `Settlement` will have the following methods:
 
-* `addBuilding` takes in a Building as a parameter and adds it to the backing array
+* `addBuilding` takes in a Building as a parameter and adds it to the backing array. There is no limit to the number of buildings that can be in a settlement. I should be able to add as many buildings to a settlement as I want.
 * a method `public boolean build(int allottedMoney, Population population, int cost, int workersRequired)` that builds a new Building object and stores it in your backing array. A new Building should only be built if the cost is smaller than the allottedMoney, and the Population has enough civillians to complete the job.
 * `expandSettlement` which doubles the size of your backing array while retaining all of the buildings that have been built
 
@@ -164,7 +169,11 @@ You will be writing 3 civilization classes:
 `Egypt.java`, `RomanEmpire.java`, and `QinDynasty.java`
 
 * Each Civilization has a `Population`, a `Treasury`, a `CoalMine`, and a `River`.
-* Each Civilization also has a unique way to advance technologically
+* Each Civilization also has `Technology` and `Strategy`
+* Each Civilization has a way to `settle`
+    * `settle` take sin a prospective settlement, adds it to an array of settlements and returns whether or not the settlement was established.
+* Each Civilization can have a maximum of 10 `Settlement`s and should have a way of returning how many settlements have already been settled through a method called `getNumSettlements`.
+* Remember to consider how the methods you wrote interact here, especially when you are creating buildings.
 
 #### `Egypt.java`
 * `Egypt` has a `Desert`
@@ -188,7 +197,7 @@ You will be writing 3 civilization classes:
     * It will increase the civilization's architecture experience by 10.
 * Has a method `establishLegalism`
     * Studying a philosophy of legalism will help improve a civilization's philosophy technology.
-    * It will decrease the happiness of your Population by a value of 20.
+    * It will decrease the happiness of your Population by a value of 20. If the population's happiness would go below 0 after the completion of the action, the action should be aborted.
 
 #### `RomanEmpire.java`
 * `RomanEmpire` has `Hills`
@@ -200,12 +209,12 @@ You will be writing 3 civilization classes:
     * A Roman bath house costs 110 coins and requires 20 civillians.
     * Returns whether or not the bath house was built
     * It will increase the civilization's architecture experience by 10.
-* Has a method `buildVilla` that takes in a Settlement and builds a bath house in that settlement
+* Has a method `buildVilla` that takes in a Settlement and builds a villa in that settlement
     * A villa costs 80 coins and requires 15 civillians.
     * Returns whether or not the villa was built
     * It will increase the civilization's architecture experience by 5.
 * Has a method `studyPhilosophy`
-    * Studying Roman philosophy will decrease the happiness of your Population by a value of 10
+    * Studying Roman philosophy will decrease the happiness of your Population by a value of 10. If the population's happiness would go below 0 after the completion of the action, the action should be aborted.
     * It will help improve your civilization's Philosophy technology.
 
 ## As you work...
@@ -219,6 +228,7 @@ Any time you get some code written and running you should push your changes up t
 
 ## Tips, Tricks, and Reminders
 * You are not allowed to use `Arrays.java` or `ArrayList.java`
+* You are not allowed to use inheritence, polymorphism, or abstract classes. If you don't know what any of that is, ignore this message.
 * Confused about how to interpret the description and turn it into a class? Use the provided files and their corresponding descriptions to help you get started!
 * This has a lot of classes to it, but a lot of them are very similar to eachother. Remember to pay attention to details!
 * Start early. Ask for help early. Note that on the day homeworks are due the TA lab traditionally gets very busy!
