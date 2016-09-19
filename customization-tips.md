@@ -24,7 +24,7 @@ These go in your `~/.bash_profile`.
 
 Download [checkstyle-6.2.2.jar](resources/checkstyle-6.2.2.jar) to your `~/bin` directory. Create a file named `checkstyle` in your `~/bin` directory with the following contents:
 
-        #/usr/bin/env bash
+        #!/usr/bin/env bash
 
         java -jar ~/bin/checkstyle-6.2.2.jar "$@"
 
