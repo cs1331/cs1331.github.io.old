@@ -60,7 +60,7 @@
         "order": [10,11]
     },
     "review1": {
-        "topic": "Review 1",
+        "topic": "[Review 1](slides/review1.html)",
         "materials": [""],
         "order": [12]
     },
