@@ -122,7 +122,6 @@ Recall our definitions of ~Employee1~ and ~HourlyEmployee1~.
 public class Employee1 {
     // The only constructor in Employee
     public Employee1(String aName, Date aHireDate) {
-        disallowNullArguments(aName, aHireDate);
         name = aName;
         hireDate = aHireDate;
     }
@@ -147,18 +146,17 @@ Given our previous definitions of ~Employee1~ and ~HourlyEmployee1~, we can writ
 
 #+BEGIN_SRC java
 DateFormat df = DateFormat.getDateInstance();
-HourlyEmployee eva = new HourlyEmployee("Eva L. Uator",
-                                        df.parse("February 18, 2013"));
+HourlyEmployee eva =
+    new HourlyEmployee("Eva L. Uator",
+                       df.parse("February 18, 2013"));
 System.out.println(eva.getName() + " was hired on "
                    + eva.getHireDate());
 #+END_SRC
 
 Note that
 
-
 - we didn't have to define ~getName~ and ~getHireDate~ in ~HourlyEmployee~
 - our current implementation of ~HourlyEmployee~ doesn't add anything to ~Employee~
-
 
 ** Subclasses Specialize Superclasses
 
@@ -169,12 +167,11 @@ public class HourlyEmployee2 extends Employee2 {
     private double hourlyWage;
     private double monthlyHours;
 
-    public HourlyEmployee(String aName, Date aHireDate,
-                          double anHourlyWage, double aMonthlyHours) {
-        super(aName, aHireDate);
-        disallowZeroesAndNegatives(anHourlyWage, aMonthlyHours);
-        hourlyWage = anHourlyWage;
-        monthlyHours = aMonthlyHours;
+    public HourlyEmployee(String name, Date hireDate,
+                          double wage, double hours) {
+        super(name, hireDate);
+        hourlyWage = wage;
+        monthlyHours = hours;
     }
     public double getHourlyWage() { return hourlyWage;}
     public double getMonthlyHours() { return monthlyHours;}
@@ -225,14 +222,12 @@ public class HourlyEmployee2 extends Employee2 {
 
 because ~name~ and ~hireDate~ are private in ~Employee~.  But their getter methods are public:
 
-
-
 #+BEGIN_SRC java
 public class HourlyEmployee2 extends Employee2 {
-  // ...
   public String toString() {
-    return getName()+"; Hire Date: "+getHireDate() +"; Hourly Wage: "
-    + hourlyWage + "; Monthly Hours: " + monthlyHours;
+    return getName()+", Hire Date: "+getHireDate()
+           + ", Wage: "+ hourlyWage
+           + ", Hours: " + monthlyHours;
   }
 }
 #+END_SRC
