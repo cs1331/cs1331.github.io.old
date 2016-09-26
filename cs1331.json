@@ -75,27 +75,27 @@
         "order": [14]
     },
     "inheritance": {
-        "topic": "Inheritance",
+        "topic": "[Inheritance](slides/inheritance.pdf)",
         "materials": [""],
         "order": [15,16]
     },
     "polymorphism": {
-        "topic": "Polymorphism",
+        "topic": "[Polymorphism](slides/polymorphism.pdf)",
         "materials": [""],
         "order": [17,18]
     },
     "object-superclass": {
-        "topic": "The Object Superclass",
+        "topic": "[The Object Superclass](slides/object-superclass.pdf)",
         "materials": [""],
         "order": [19,20]
     },
     "exceptions": {
-        "topic": "Exceptions",
+        "topic": "[Exceptions](slides/exceptions.pdf)",
         "materials": [""],
         "order": [21,22]
     },
     "review2": {
-        "topic": "Review 2",
+        "topic": "[Review 2](slides/review2.pdf)",
         "materials": [""],
         "order": [23]
     },
