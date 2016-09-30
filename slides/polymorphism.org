@@ -34,7 +34,7 @@ That last part, dynamic method binding, provides for subtype *polymorphism*, whi
 UML class hierarchies depict the superclass-subclass relationships between families of related classes.
 
 #+BEGIN_CENTER
-#+ATTR_LATEX: height=.5in
+#+ATTR_LATEX: :height 1in
 [[file:employee-class-hierarchy.pdf]]
 #+END_CENTER
 
@@ -58,7 +58,7 @@ public final class SalariedEmployee3 extends Employee3 {
     public SalariedEmployee3(String aName, Date aHireDate,
                             double anAnnualSalary) {
         super(aName, aHireDate);
-        disallowZeroesAndNegatives(anAnnualSalary);
+        Disallowzeroesandnegatives(anAnnualSalary);
         annualSalary = anAnnualSalary;
     }
     public double getAnnualSalary() {
@@ -76,6 +76,7 @@ public final class SalariedEmployee3 extends Employee3 {
 We now have all the classes in our hierarchy:
 
 #+BEGIN_CENTER
+#+ATTR_LATEX: :height 1.5in
 [[file:employee-class-hierarchy.pdf]]
 #+END_CENTER
 
@@ -103,6 +104,7 @@ That last bullet motivates the use of polymorphism.
 ** Maintaining an Employee List
 
 With our current class hierarchy, we need to maintain separate (partial) arrays of hourly and salaried employees.  Because they're partial arrays we also need to keep track of how many of each type of employee we have.
+
 #+BEGIN_SRC java :exports code
 public class Company {
 
@@ -121,6 +123,7 @@ public class Company {
 ** Calculating Payroll the Hard Way
 
 With our employee lists, calculating payroll is accomplished with two loops:
+
 #+BEGIN_SRC java :exports code
 public class Company { // hypothetical
 
@@ -145,6 +148,7 @@ Seems reasonable.  But ...
 
 
 We'd like to be able to calculate payroll with a single loop over all employees:
+
 #+BEGIN_SRC java :exports code
 public class Company4 {
 
@@ -165,7 +169,7 @@ Much cleaner and less error-prone (e.g., we don't have the book-keeping of two p
 ** A More General Employee List
 
 
-The first step is to store one array of ~Employee~s:
+The first step is to store one array of ~Employee~ s:
 
 #+BEGIN_SRC java :exports code
 public class Company4 {
@@ -198,6 +202,7 @@ location: class Employee
 
 
 We need ~Employee~ to declare a ~monthlyPay~ method for subclasses to define.  Since we don't have a general definition for ~monthlyPay~ suitable for ~Employee~, ~Employee~ will need to be abstract.
+
 #+BEGIN_SRC java :exports code
 public abstract class Employee4 {
     // ...
@@ -216,6 +221,7 @@ This makes sense for our ~Employee4~ class.  We don't ever want to instantiate ~
 ** The ~Employee4~ Class Hierarchy
 
 #+BEGIN_CENTER
+#+ATTR_LATEX: :height 1.5in
 [[file:employee-uml.png]]
 #+END_CENTER
 
@@ -284,12 +290,13 @@ public abstract class Employee5 {
     // ...
 }
 #+END_SRC
+
 ~protected~ members
 
 - are accessible to subclasses and other classes in the same package, and
 - can be overriden in subclasses.
 
-~protected~ members provide encapsulation within a class hierarchy and package, ~private~ provides encapsulation within a single class.\\
+~protected~ members provide encapsulation within a class hierarchy and package, ~private~ provides encapsulation within a single class.
 
 Later we'll see a better way to re-use.
 
@@ -297,7 +304,9 @@ Later we'll see a better way to re-use.
 
 Let's add a summer intern class to our Employee hierarchy.
 
+
 #+BEGIN_CENTER
+#+ATTR_LATEX: :height 1.5in
 [[file:expanded-employee-class-hierarchy.pdf]]
 #+END_CENTER
 
@@ -310,9 +319,10 @@ Let's overload ~monthlyPay~ so we can get the payroll for any month, not just th
 
 ** Enum Types
 
-Enums are data types that have a predefined set of constant values (\href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.9}{JLS \S 8.9}, \href{http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html}{Java Enum Tutorial})
+Enums are data types that have a predefined set of constant values ([[http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.9][JLS \S 8.9], [[http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html][Java Enum Tutorial]])
 
 For example:
+
 #+BEGIN_SRC java :exports code
 public enum Month {
     JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
@@ -327,9 +337,10 @@ defines an enum type called ~Month~ that can take on only one of the predefined 
 ** Ad-Hoc Polymorphism: Overloaded Methods
 
 
-An overloaded method is a set of methods with the same names but different signatures (parameter lists)\footnote{More precisely, two methods with the same name whose signatures are not *override-equivalent* are overloaded.} (\href{http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.4.9}{JLS \S 8.4.9}).\\
+An overloaded method is a set of methods with the same names but different signatures (parameter lists)\footnote{More precisely, two methods with the same name whose signatures are not *override-equivalent* are overloaded.} ([[http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.4.9][JLS \S 8.4.9]]).\\
 
 Here's an overloaded ~monthlyPay~ for ~SummerIntern6~, along with a helper method demonstrating the use of the ~Month~ enum:
+
 #+BEGIN_SRC java :exports code
 public double monthlyPay() {
     Date today = new Date();
@@ -352,6 +363,7 @@ private boolean isSummer(Month month) {
 ** The ~Employee~ Class Hierarchy in UML
 
 #+BEGIN_CENTER
+#+ATTR_LATEX: :height 1.5in
 [[file:employee-uml.pdf]]
 #+END_CENTER
 
@@ -394,13 +406,10 @@ public abstract class Employee6 {
 
 In software engineering terms, we say that the code in ~Employee~ lacks *cohesion* - it has parts that aren't part of the *Employee* concept.  Such a design hinders reuse.
 
-
-
-
-
 ** Favor Composition over Inheritance
 
 If we move these protected methods into a separate class, like [[ValidationUtils.java][../code/employee/ValidationUtils.java]]
+
 #+BEGIN_SRC java :exports code
 public class ValidationUtils {
 
@@ -417,6 +426,7 @@ we can use them anywhere, e.g.,
         hireDate = aHireDate;
     }
 #+END_SRC
+
 With this refactoring, we have our final versions of [[../code/employee/Employee.java][Employee.java]],
 [[../code/employee/HourlyEmployee.java][HourlyEmployee.java]], and
 [[../code/employee/SalariedEmployee.java][SalariedEmployee.java]]
@@ -452,7 +462,5 @@ With encapsulation, inheritance, and polymorphism we have all the language featu
 - *L* liskov substitution principle: instances of subtypes should be substitutable wherever instances of supertypes are expected
 
     - A square is not a rectangle in an OO sense, but both are 2-D shapes
-
-
 
 In CS 2340 you'll learn several more OO design principles and several patterns that employ them.
