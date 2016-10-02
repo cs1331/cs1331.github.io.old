@@ -51,6 +51,7 @@ $ java -cp src/main/java runner.CivilizationGame
 ## Checkstyle
 * Remember that you may lose checkstyle points for this homework! So, make sure that you are frequently running checkstyle on your code to ensure that you don't lost unnecessary points.
 * There are currently two checkstyle errors in the homework that you are not responsible for. These are caused by some provided constructors taking in more than 7 parameters. You will not be penalized for these two checkstyle errors.
+* When writing MilitaryUnit.java, the constructor will also take in more than 7 parameters. You will not be penalized for this third checkstyle error either.
 * **The checkstyle cap on this assignment is 40 points**, where you lose one point per error.
 
 ## Solution Description
