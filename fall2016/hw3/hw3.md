@@ -47,6 +47,12 @@ $ javac -cp src/main/java src/main/java/runner/*.java
 $ javac -cp src/main/java src/main/java/*/*.java
 ```
 
+* AND IF THAT ONE DOESN'T WORK, this one should work for sure.
+
+```bash
+$ javac -cp src/main/java src/main/java/runner/*.java src/main/java/model/*.java src/main/java/view/*.java src/main/java/controller/*.java
+```
+
 * That command instructs java to compile all of our files while considering src/main/java to be our classpath.
 * To run the program, you should run:
 
