@@ -38,6 +38,12 @@ Now that you've had some practice working on a project with multiple classes, we
 * To compile the program in its totality run this command:
 
 ```bash
+$ javac -cp src/main/java src/main/java/runner/*.java
+```
+
+* If that one doesn't work for some reason, and you are using bash/git bash or something like that, try this one:
+
+```bash
 $ javac -cp src/main/java src/main/java/*/*.java
 ```
 
