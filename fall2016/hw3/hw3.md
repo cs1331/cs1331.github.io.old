@@ -38,7 +38,7 @@ Now that you've had some practice working on a project with multiple classes, we
 * To compile the program in its totality run this command:
 
 ```bash
-$ javac src/main/java/runner/*.java -cp src/main/java
+$ javac -cp src/main/java src/main/java/*/*.java
 ```
 
 * That command instructs java to compile all of our files while considering src/main/java to be our classpath.
