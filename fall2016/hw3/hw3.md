@@ -5,7 +5,9 @@ title: Homework 03
 
 # Homework 03
 
-Due: 2016-10-13T23:59:59
+Version: 1.6
+
+Due: 2016-10-20T23:59:59
 
 [Download zip](hw3.zip)
 
