@@ -111,7 +111,7 @@
     },
     "collections": {
         "topic": "Java Collections",
-        "materials": ["[Collections](slides/collectoins.pdf)"],
+        "materials": ["[Collections](slides/collections.pdf)"],
         "order": [26,27]
     },
     "collections-algorithms": {
