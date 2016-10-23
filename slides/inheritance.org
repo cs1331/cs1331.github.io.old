@@ -13,6 +13,7 @@
 #+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
 #+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
 
 * Inheritance
 
@@ -197,18 +198,13 @@ private & Y & N & N & N\\
 \end{tabular}
 \end{center}
 
-
 - Every class has an access level (for now all of our classes are ~public~).
 - Every member has an access level.
 - The defulat access level, no mofifier, is also called "package private."
 
-
 ** Access Restrictions Extend to Subclasses
 
-
 ~private~ members of superclasses are present in subclasses, but can't be directly accessed.  So this won't compile:
-
-
 
 #+BEGIN_SRC java
 public class HourlyEmployee2 extends Employee2 {
@@ -220,10 +216,10 @@ public class HourlyEmployee2 extends Employee2 {
 }
 #+END_SRC
 
-because ~name~ and ~hireDate~ are private in ~Employee~.  But their getter methods are public:
+because ~name~ and ~hireDate~ are private in ~Employee2~.  But their getter methods are public:
 
 #+BEGIN_SRC java
-public class HourlyEmployee2 extends Employee2 {
+public class HourlyEmployee3 extends Employee3 {
   public String toString() {
     return getName()+", Hire Date: "+getHireDate()
            + ", Wage: "+ hourlyWage
@@ -233,7 +229,6 @@ public class HourlyEmployee2 extends Employee2 {
 #+END_SRC
 
 ** Overriding Methods
-
 
 Overriding a method means providing a new definition of a superclass method in a subclass.  We've been doing this all along with ~toString~ and ~equals~, which are defined in ~java.lang.Object~, the highest superclass of all Java classes.
 
@@ -252,8 +247,7 @@ public class Object {
 We redefine these on our classes because
 
 - the default implementation of ~toString~ just prints the class name and hash code (which is the memory address by default).
-- the default implementation of ~equals~ just compares object references, i.e., identity equality, when what we want from ~equals~ is value equality
-
+- the default implementation of ~equals~ just compares object references, i.e., identity equality. What we want from ~equals~ is value equality.
 
 ** ~@Override~ Annotation
 
@@ -268,11 +262,12 @@ public class Employee2 {
   }
 }
 #+END_SRC
-Now if our subclass's ~toString()~ method doesn't actually override ~Java.lang.Object~'s (or some other class's) ~toString()~, the compiler will tell us.
+
+Now if our subclass's ~toString()~ method doesn't actually override ~java.lang.Object~'s (or some other intermediate superclass's) ~toString()~, the compiler will tell us.
 
 ** Explicit Constructor Invocation with ~this~
 
-What if we wanted to have default default values for hourly wages and monthly hours?  We can provide an alternate constructor that delegates to our main constructor with ~this~ [[../code/employee/HourlyEmployee3.java][HourlyEmployee3.java]]:
+What if we wanted to have default values for hourly wages and monthly hours?  We can provide an alternate constructor that delegates to our main constructor with ~this~ [[../code/employee/HourlyEmployee3.java][HourlyEmployee3.java]]:
 
 #+BEGIN_SRC java
 public final class HourlyEmployee3 extends Employee3 {
@@ -296,11 +291,9 @@ public final class HourlyEmployee3 extends Employee3 {
 
 ** ~this~ and ~super~
 
-
 - If present, an explicit constructor call must be the first statement in the constructor.
 - Can't have both a ~super~ and ~this~ call in a constructor.
 - A constructor with a ~this~ call must call, either directly or indirectly, a constructor with a ~super~ call (implicit or explicit).
-
 
 #+BEGIN_SRC java
 public final class HourlyEmployee3 extends Employee3 {
@@ -487,6 +480,8 @@ Two kinds of inheritance: *implementation* and *interface* inheritance.
 
 ** Default Methods in Interfaces
 
+Beginning with Java 8 (jdk1.8), interface methods can have default method implementations. These default methods can only reference local variables and static variables defined in the interface or any superinterfaces.
+
 ** Conflict Resolution for Default Methods
 
 - Superclasses win.
@@ -512,7 +507,5 @@ To get some practice writing classes that use inheritance, write:
 - a private instance variable ~dogs~ that is an array of ~Dog~
 - a single constructor that takes a variable number of single ~Dog~ parameters and initializes the ~dogs~ instance variable with the constructor's actual parameters.
 - a method ~soundOff()~ that prints to ~STDOUT~ (~System.out~) one line for each ~Dog~ in ~dogs~ that reads "[dog name] says [output of ~speak~ method]!", e.g. "Chloe says woof, woof!"
-
-
 
 We'll review this at the start of the next lecture.
