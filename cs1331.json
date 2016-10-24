@@ -116,12 +116,12 @@
         "order": [26,27]
     },
     "collections-algorithms": {
-        "topic": "Collections Algorithms](slides/collections-algorithms.pdf)",
+        "topic": "[Collections Algorithms](slides/collections-algorithms.pdf)",
         "materials": ["Tutorial: [Collections Algorithms](http://docs.oracle.com/javase/tutorial/collections/algorithms/index.html)"],
         "order": [28]
     },
     "lambda-expressions": {
-        "topic": "Lambda Expressions](slides/lambda-expressions.pdf)",
+        "topic": "[Lambda Expressions](slides/lambda-expressions.pdf)",
         "materials": ["Tutorial: [Lambda Expressions](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)",
                      "Tutorial: [Method References](http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html)"],
         "order": [29]
