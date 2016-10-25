@@ -46,13 +46,7 @@ In this assignment, you will in essence be implementing the Set class. A Set is 
 * As you work, you will need to individually compile the files you write to make sure that they work! So remember to compile often so that you don't have to deal with a mountain of errors! Keep in mind that when you compile only one file, it does not compile some of the other ones that it references. So, you will probably get alot of cannot find symbol errors. Don't worry about them, they appear because some dependency classes aren't compiled. You may also get warnings that methods aren't being overridden or something if you use the @Overide tag. Once again, that is because the superclass didn't get compiled if you compiled that file only.
 * This project makes use of several different packages to manage its many files. As a result, compiling and running this project is a bit different from projects you have worked on in the past.
 * Since our files are in many different packages, we have to make sure they get linked together properly. We do this by setting the class path when we compile and when we run.
-* To compile the program in its totality run this command:
-
-```bash
-$ javac -cp src/main/java src/main/java/runner/*.java
-```
-
-* If that one doesn't work for some reason, and you are using bash/git bash or something like that, try this one:
+* To compile the program in its totality run this command if using bash:
 
 ```bash
 $ javac -cp src/main/java src/main/java/*/*.java

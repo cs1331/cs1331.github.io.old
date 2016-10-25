@@ -76,62 +76,64 @@
     },
     "inheritance": {
         "topic": "[Inheritance](slides/inheritance.pdf)",
-        "materials": [""],
+        "materials": ["Tutorial: [OOP Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html)", "Liang: Ch 10"],
         "order": [15,16]
     },
     "polymorphism": {
         "topic": "[Polymorphism](slides/polymorphism.pdf)",
-        "materials": [""],
+        "materials": ["Tutorial: [Interfaces and Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/index.html)", "Liang: Ch 11, 13"],
         "order": [17,18]
     },
     "object-superclass": {
         "topic": "[The Object Superclass](slides/object-superclass.pdf)",
-        "materials": [""],
+        "materials": ["Tutorial: [Interfaces and Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/index.html)",
+                      "Tutorial: [Enum Types](http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)", "Liang: Ch 11, 13"],
         "order": [19,20]
-    },
-    "exceptions": {
-        "topic": "[Exceptions](slides/exceptions.pdf)",
-        "materials": [""],
-        "order": [21,22]
     },
     "review2": {
         "topic": "[Review 2](slides/review2.pdf)",
         "materials": [""],
-        "order": [23]
+        "order": [21]
     },
     "exam2": {
         "topic": "**Exam 2**",
         "materials": [""],
-        "order": [24]
+        "order": [22]
     },
     "pq2": {
         "topic": "**Programming Quiz 2**",
         "materials": [""],
-        "order": [25]
+        "order": [23]
+    },
+    "exceptions": {
+        "topic": "[Exceptions](slides/exceptions.pdf)",
+        "materials": ["Tutorial: [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/)", "Liang: Ch 12"],
+        "order": [24,25]
     },
     "collections": {
-        "topic": "Java Collections",
-        "materials": ["[Collections](slides/collections.pdf)"],
+        "topic": "[Collections](slides/collections.pdf)",
+        "materials": ["Tutorial: [Introduction to Collections](http://docs.oracle.com/javase/tutorial/collections/intro/index.html)"],
         "order": [26,27]
     },
     "collections-algorithms": {
-        "topic": "Collections Algorithms",
-        "materials": [""],
+        "topic": "[Collections Algorithms](slides/collections-algorithms.pdf)",
+        "materials": ["Tutorial: [Collections Algorithms](http://docs.oracle.com/javase/tutorial/collections/algorithms/index.html)"],
         "order": [28]
     },
     "lambda-expressions": {
-        "topic": "Lambda Expressions",
-        "materials": [""],
+        "topic": "[Lambda Expressions](slides/lambda-expressions.pdf)",
+        "materials": ["Tutorial: [Lambda Expressions](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)",
+                     "Tutorial: [Method References](http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html)"],
         "order": [29]
     },
     "iterators": {
-        "topic": "Iterators",
-        "materials": [""],
+        "topic": "[Iterators](slides/collections.pdf)",
+        "materials": ["Tutorial: [Collections Interface](https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html)"],
         "order": [30]
     },
     "hashed-collections": {
-        "topic": "Hashed Collections",
-        "materials": [""],
+        "topic": "[Hashed Collections](slides/hashed-collections.pdf)",
+        "materials": ["Tutorial: [Object as a Superclass](http://docs.oracle.com/javase/tutorial/java/IandI/objectclass.html)"],
         "order": [31]
     },
     "javafx": {
