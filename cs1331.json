@@ -118,28 +118,28 @@
     "collections-algorithms": {
         "topic": "[Collections Algorithms](slides/collections-algorithms.pdf)",
         "materials": ["Tutorial: [Collections Algorithms](http://docs.oracle.com/javase/tutorial/collections/algorithms/index.html)"],
-        "order": [28]
+        "order": [28,29]
     },
     "lambda-expressions": {
         "topic": "[Lambda Expressions](slides/lambda-expressions.pdf)",
         "materials": ["Tutorial: [Lambda Expressions](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)",
                      "Tutorial: [Method References](http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html)"],
-        "order": [29]
+        "order": [30]
     },
     "iterators": {
-        "topic": "[Iterators](slides/collections.pdf)",
+        "topic": "[Iterators](slides/iterators.pdf)",
         "materials": ["Tutorial: [Collections Interface](https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html)"],
-        "order": [30]
+        "order": [31]
     },
     "hashed-collections": {
         "topic": "[Hashed Collections](slides/hashed-collections.pdf)",
         "materials": ["Tutorial: [Object as a Superclass](http://docs.oracle.com/javase/tutorial/java/IandI/objectclass.html)"],
-        "order": [31]
+        "order": [32]
     },
     "javafx": {
         "topic": "JavaFX GUIs",
         "materials": [""],
-        "order": [32,33,34]
+        "order": [33,34]
     },
     "review3": {
         "topic": "Review 3",
