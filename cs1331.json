@@ -112,37 +112,45 @@
     },
     "collections": {
         "topic": "[Collections](slides/collections.pdf)",
-        "materials": ["Tutorial: [Introduction to Collections](http://docs.oracle.com/javase/tutorial/collections/intro/index.html)"],
+        "materials": ["Tutorial: [Introduction to Collections](http://docs.oracle.com/javase/tutorial/collections/intro/index.html)",
+                      "Liang 19, 20, 21"],
         "order": [26,27]
     },
     "collections-algorithms": {
         "topic": "[Collections Algorithms](slides/collections-algorithms.pdf)",
-        "materials": ["Tutorial: [Collections Algorithms](http://docs.oracle.com/javase/tutorial/collections/algorithms/index.html)"],
+        "materials": ["Tutorial: [Collections Algorithms](http://docs.oracle.com/javase/tutorial/collections/algorithms/index.html)",
+                      "Liang 19, 20, 21"],
         "order": [28,29]
     },
     "lambda-expressions": {
         "topic": "[Lambda Expressions](slides/lambda-expressions.pdf)",
         "materials": ["Tutorial: [Lambda Expressions](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)",
-                     "Tutorial: [Method References](http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html)"],
+                      "Tutorial: [Method References](http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html)",
+                      "Liang 15"],
         "order": [30]
     },
     "iterators": {
         "topic": "[Iterators](slides/iterators.pdf)",
-        "materials": ["Tutorial: [Collections Interface](https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html)"],
+        "materials": ["Tutorial: [Collections Interface](https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html)",
+                      "Liang 19, 20, 21"],
         "order": [31]
     },
     "hashed-collections": {
         "topic": "[Hashed Collections](slides/hashed-collections.pdf)",
-        "materials": ["Tutorial: [Object as a Superclass](http://docs.oracle.com/javase/tutorial/java/IandI/objectclass.html)"],
+        "materials": ["Tutorial: [Object as a Superclass](http://docs.oracle.com/javase/tutorial/java/IandI/objectclass.html)",
+                      "Liang 21"],
         "order": [32]
     },
     "javafx": {
         "topic": "JavaFX GUIs",
-        "materials": [""],
+        "materials": ["Tutorial: [JavaFX Overview](http://docs.oracle.com/javase/8/javafx/get-started-tutorial/jfx-overview.htm#JFXST784)",
+                      "Tutorial: [JavaFX UI Components](http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm)",
+                      "Tutorial: [JavaFX Scene Graph](http://docs.oracle.com/javase/8/javafx/scene-graph-tutorial/scenegraph.htm)",
+                      "Liang 14"],
         "order": [33,34]
     },
     "review3": {
-        "topic": "Review 3",
+        "topic": "[Review 3](slides/review3.pdf)",
         "materials": [""],
         "order": [35]
     },
