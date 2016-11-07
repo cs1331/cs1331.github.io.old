@@ -141,13 +141,21 @@
                       "Liang 21"],
         "order": [32]
     },
-    "javafx": {
-        "topic": "JavaFX GUIs",
+    "javafx-events": {
+        "topic": "[JavaFX Events](slides/javafx-events.pdf)",
         "materials": ["Tutorial: [JavaFX Overview](http://docs.oracle.com/javase/8/javafx/get-started-tutorial/jfx-overview.htm#JFXST784)",
                       "Tutorial: [JavaFX UI Components](http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm)",
                       "Tutorial: [JavaFX Scene Graph](http://docs.oracle.com/javase/8/javafx/scene-graph-tutorial/scenegraph.htm)",
                       "Liang 14"],
-        "order": [33,34]
+        "order": [33]
+    },
+    "javafx-guis": {
+        "topic": "[JavaFX GUIs](slides/javafx-guis.pdf)",
+        "materials": ["Tutorial: [JavaFX Overview](http://docs.oracle.com/javase/8/javafx/get-started-tutorial/jfx-overview.htm#JFXST784)",
+                      "Tutorial: [JavaFX UI Components](http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm)",
+                      "Tutorial: [JavaFX Scene Graph](http://docs.oracle.com/javase/8/javafx/scene-graph-tutorial/scenegraph.htm)",
+                      "Liang 14"],
+        "order": [34]
     },
     "review3": {
         "topic": "[Review 3](slides/review3.pdf)",
