@@ -173,23 +173,23 @@
         "order": [37]
     },
     "algorithms": {
-        "topic": "Algorithms",
+        "topic": "[Algorithms](slides/algorithms.pdf)",
         "materials": [""],
         "order": [100]
     },
     "recursion": {
-        "topic": "Recursion",
-        "materials": [""],
-        "order": [100]
-    },
-    "linked-lists": {
-        "topic": "Linked Lists",
+        "topic": "[Recursion](slides/recursion.pdf)",
         "materials": [""],
         "order": [38]
     },
-    "stacks-queues": {
-        "topic": "Stacks and Queues",
+    "linked-lists": {
+        "topic": "[Linked Lists](slides/linked-lists.pdf)",
         "materials": [""],
         "order": [39]
+    },
+    "stacks-queues": {
+        "topic": "[Stacks and Queues](slides/stacks-queues.pdf)",
+        "materials": [""],
+        "order": [40]
     }
 }
