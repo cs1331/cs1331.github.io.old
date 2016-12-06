@@ -5,5 +5,9 @@ title: iframe Redirect
 <!-- Sorry, Kristaps. - Keith and Joshua -->
 
 <div id="text" style="font-size:24px;display:flex;width:100%;height:100%;align-items:center;justify-content:center;">
-    <div>This is not the real CS 1331 Website! Go here instead: <a href="http://cs1331.gatech.edu" target="_parent">cs1331.gatech.edu</a></div>
+    <div>This is not the real CS 1331 Website! Go here instead: <a id="redirect" href="http://cs1331.gatech.edu" target="_parent">cs1331.gatech.edu</a></div>
 </div>
+
+<script>
+    document.getElementById("redirect").click();
+</script>
