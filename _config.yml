@@ -1,2 +1,5 @@
 name: CS 1331
 highlighter: rouge
+webrick:
+  headers:
+    X-Frame-Options: SAMEORIGIN
