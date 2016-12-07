@@ -33,15 +33,16 @@
       
       <!-- Your Move. - Keith and Joshua -->
       <div id="redirect_text" style="background:#fff;position:absolute;top:0;left:0;font-size:24px;display:flex;width:100%;height:100%;align-items:center;justify-content:center;">
-          <div>This is not the real CS 1331 Website! Go here instead: <a id="redirect" href="http://cs1331.gatech.edu" target="_parent">cs1331.gatech.edu</a></div>
+          <div>This is not the real CS 1331 Website! Go to http://cs1331.gatech.edu instead!</div>
       </div>
       <script>
         document.getElementById("redirect_text").setAttribute("style", "display:none");
+        document.getElementById("navbar").setAttribute("style", "display:block");
       </script>
      
 
       <!-- Fixed navbar -->
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="display:none" id="navbar">
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
