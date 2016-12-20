@@ -155,22 +155,22 @@
                       "Tutorial: [JavaFX UI Components](http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm)",
                       "Tutorial: [JavaFX Scene Graph](http://docs.oracle.com/javase/8/javafx/scene-graph-tutorial/scenegraph.htm)",
                       "Liang 14"],
-        "order": [34]
+        "order": [34,35]
     },
     "review3": {
         "topic": "[Review 3](slides/review3.pdf)",
         "materials": [""],
-        "order": [35]
+        "order": [36]
     },
     "exam3": {
         "topic": "**Exam 3**",
         "materials": [""],
-        "order": [36]
+        "order": [37]
     },
     "pq3": {
         "topic": "**Programming Quiz 3**",
         "materials": [""],
-        "order": [37]
+        "order": [38]
     },
     "algorithms": {
         "topic": "[Algorithms](slides/algorithms.pdf)",
@@ -180,16 +180,16 @@
     "recursion": {
         "topic": "[Recursion](slides/recursion.pdf)",
         "materials": [""],
-        "order": [38]
+        "order": [39]
     },
     "linked-lists": {
         "topic": "[Linked Lists](slides/linked-lists.pdf)",
         "materials": [""],
-        "order": [39]
+        "order": [40]
     },
     "stacks-queues": {
         "topic": "[Stacks and Queues](slides/stacks-queues.pdf)",
         "materials": [""],
-        "order": [40]
+        "order": [41]
     }
 }
