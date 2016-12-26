@@ -3,4 +3,4 @@ highlighter: rouge
 webrick:
   headers:
     X-Frame-Options: SAMEORIGIN
-exclude: ['*.jinja2']
+exclude: ['*.jinja2', 'slides/']
