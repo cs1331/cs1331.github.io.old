@@ -7,13 +7,7 @@ title: CS 1331 - Office Hours
 
 ## Professor Simpkins's Office Hours, CoC 133
 
-Mondays, Wednesdays, and Fridays 17:00-18:00 in CoC 133 or CoC 107. Any time my office door is open, feel free to walk in. Email me if you need to see me, even during office hours since I won't necessarily be in my office or the TA lab if I'm not expecting anyone.
-
-## Professor McDaniel's Office Hours, CoC 135
-
-Tuesdays 12:30 - 1:30 and 2:30 - 3:30
-Wednesdays 12:00 - 1:00
-Other times by appointment
+Tuesdays 12:00-15:00 in CoC 133 or CoC 107. Any time my office door is open, feel free to walk in. Email me if you need to see me, even during office hours since I won't necessarily be in my office or the TA lab if I'm not expecting anyone.
 
 ## TA Office Hours, CoC 107
 
