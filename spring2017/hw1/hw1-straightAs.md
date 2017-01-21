@@ -1,3 +1,8 @@
+---
+layout: homework
+title: Homework 1
+---
+
 # CS1331 Homework 01 - Straight As
 
 Welcome to your first full-fledged programming assignment for CS1331! In this homework, you will be tasked with reading data files and using what you've learned so far to create a visualization of the data in your terminal.
@@ -21,11 +26,11 @@ You should also understand the term "*project root*". This phrase refers to the 
 It is important you understand how to compile and run your code.
 Submitting
 
-1. **Compiling**: `javac` (for example `javac StraightAs.java`). 
+1. **Compiling**: `javac` (for example `javac StraightAs.java`).
 2. **Running**: `java` (for example `java StraightAs`). When running your code, you can also pass arguments to the program from the command line. The StraightAs program parses two arguments from the command line, in order: `<filename to parse>` and `<file's data separator>`. So running the command on `sample_data.csv` would look like `java StraightAs sample_data.csv ', '` on mac/linux or `java StraightAs sample_data.csv ", "` on windows cmd.
 
 ### Checkstyle:
-In this course, you will be running a style checking program on your code. For each violation the checkstyle tool finds, you will lose one point on your total homework grade. 
+In this course, you will be running a style checking program on your code. For each violation the checkstyle tool finds, you will lose one point on your total homework grade.
 
 To make things easier for you in the beginning of the semester, the first few homeworks will have a checkstyle cap, or a maximum amount of points that can be lost to checkstyle. For homework 1, the checkstyle cap is zero, meaning that checkstyle errors will not affect your homework 1 grade. As the semester goes on, this cap will increase with each homework and eventually go away. Despite the cap being zero for this homework, **you should attempt to fix all your checkstyle errors**, as it is good practice for future homeworks when checkstyle violations will drastically affect your grade.
 
@@ -58,7 +63,7 @@ However, the "comma" in "comma separated values" is misleading; the values in a 
 Notice that the data in the file is exactly the same as before, and only the formatting of the file has changed. If we opened this file in excel and set the `|` character as the data separator, it would display exactly the same as the excel screenshot above.
 
 ## Provided Data
-We've provided four csv files to you: 
+We've provided four csv files to you:
 To get you started, we've first provided a `sample_data.csv` file containing nicely formatted name and grade pairs.
 
 Then we have the three intercepted data files, `intercepted_data1.csv` through `intercepted_data3.csv`. Unfortunately, these are garbled, because they were intercepted from an encrypted communication. Luckily for us, the grades are still correct, even though the names are unreadable. The CSV separator is different for each file, so your code will have to account for this.
@@ -145,9 +150,9 @@ In this output mode, you will be outputting the data you read from the CSV in hi
 61- 70 | [][]
 51- 60 | []
 41- 50 | [][]
-31- 40 | 
-21- 30 | 
-11- 20 | 
+31- 40 |
+21- 30 |
+11- 20 |
  1- 10 | [][][]
 ```
 
