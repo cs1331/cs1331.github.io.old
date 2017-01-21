@@ -7,7 +7,7 @@ title: Homework 1
 
 Welcome to your first full-fledged programming assignment for CS1331! In this homework, you will be tasked with reading data files and using what you've learned so far to create a visualization of the data in your terminal.
 
-[Download zip](hw1.zip)
+[Download zip](hw1-straightAs.zip)
 
 ## Things to know
 
