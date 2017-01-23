@@ -143,6 +143,7 @@ A tester to ensure your data table output is correct has been provided to you.
 
 ### Histogram output
 In this output mode, you will be outputting the data you read from the CSV in histogram format. Here is a sample of histogram your program might output (more examples can be found in the provided `sample_out/` directory):
+
 ```
 91-100 | [][][][][][][][][]
 81- 90 | [][][][][]
