@@ -221,7 +221,7 @@ Capital of Alabama is Montgomery</code></pre></div>
 <p>Type checker &quot;proves&quot; that a type argument satisfies a type specification. Prove by substituting without causing contradictions:</p>
 <p><code>[GtStudent/T, Person/?]&lt;T extends Comparable&lt;? super T&gt;&gt;</code></p>
 <p><span class="math inline">\(\Rightarrow\)</span> <code>&lt;GtPerson extends Comparable&lt;Person super GtStudent&gt;</code></p>
-<p>We can sort a <code>List&lt;GtStudent&gt;</code> becuase</p>
+<p>We can sort a <code>List&lt;GtStudent&gt;</code> because</p>
 <ul>
 <li><code>GtStudent extends Person</code>,</li>
 <li><code>Person implements Comparable&lt;Person&gt;</code> and</li>

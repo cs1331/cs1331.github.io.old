@@ -188,9 +188,9 @@ An immutable class is a class whose instances cannot be modified.  To make a cla
 
 In general, make your classes immutable unless you have a good reason to make them mutable.  Why?  Because immutable objects
 
-- are simpler to design becuase you don't have to worry about enforcing class invariants in multiple places,
+- are simpler to design because you don't have to worry about enforcing class invariants in multiple places,
 - are easier to reason about because the state of an object never changes after instantiation,
-- are inherently thread-safe becuase access to mutable data need not be syncronized, and
+- are inherently thread-safe because access to mutable data need not be syncronized, and
 - enable safe instance sharing, so redundant copies need not be created.
 
 

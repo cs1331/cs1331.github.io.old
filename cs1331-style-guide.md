@@ -180,7 +180,7 @@ try {
 
 - Write Javadoc comments for the class and all public members of a class.
 - Don't write Javadoc comments for private members.
-- Write non-Javadoc comments for private members as necessary to explain aspects of the code that can't be expressed by the code itself. Such cases should be rare becuase your code should be self-documenting.
+- Write non-Javadoc comments for private members as necessary to explain aspects of the code that can't be expressed by the code itself. Such cases should be rare because your code should be self-documenting.
 - A class comment describes the class's purpose.
 - Inlcude an `@author` tag in all of your class comments with your Prism ID as your name.
 

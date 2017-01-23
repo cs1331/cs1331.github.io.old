@@ -57,7 +57,7 @@ public class ArrayParameters {
         int[] b = copyOf(a);
         int[] c = a;
         c[2] = 66;
-        b[2] = 42; // This doesn't modify a, becuase b is a different array
+        b[2] = 42; // This doesn't modify a, because b is a different array
         System.out.println(asString(a));
         System.out.println(asString(b));
         System.out.println(asString(c));

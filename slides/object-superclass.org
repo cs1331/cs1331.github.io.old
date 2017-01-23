@@ -195,7 +195,7 @@ static class SubLostPerson extends LostPerson {
   @Override public Person covariantReturn() {return this;}
 }
 #+END_SRC
-... becuase its ~covariantReturn~'s return type, ~Person~, is a supertype of ~LostPerson~.
+... because its ~covariantReturn~'s return type, ~Person~, is a supertype of ~LostPerson~.
 
 ** Non-Covariant Return
 
