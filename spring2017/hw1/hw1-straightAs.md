@@ -16,18 +16,17 @@ This homework has several files contained within it. Here are some notes about t
   - `StraightAs.java`: This is where you will be writing your solution.
   - `StraightAsStudentTests.class`: This is compiled java code that will test your solution against our expected values. We did not release the source code with the homework.
   - `build.gradle`: This file controls the gradle commands. *Do not move or modify this file!*
-  - `sample_data.csv`: This file contains your first sample input. More on CSV files below *do not modify this file*
-  - `intercepted_data1.csv` through `intercepted_data3.csv`: more input for your histogram *do not modify these files*
-  - `sample_out/`: This directory contains the sample output for each of the csv files provided. *do not modify these files*
+  - `sample_data.csv`: This file contains your first sample input. More on CSV files below *Do not modify this file*
+  - `intercepted_data1.csv` through `intercepted_data3.csv`: more input for your histogram *Do not modify these files*
+  - `sample_out/`: This directory contains the sample output for each of the csv files provided. *Do not modify these files*
 
 
 You should also understand the term "*project root*". This phrase refers to the "top level" directory of the homework project, which contains `build.gradle`, `StraightAs.java`, etc. You will be running all your commands for this homework in the project root.
 
 It is important you understand how to compile and run your code.
-Submitting
 
 1. **Compiling**: `javac` (for example `javac StraightAs.java`).
-2. **Running**: `java` (for example `java StraightAs`). When running your code, you can also pass arguments to the program from the command line. The StraightAs program parses two arguments from the command line, in order: `<filename to parse>` and `<file's data separator>`. So running the command on `sample_data.csv` would look like `java StraightAs sample_data.csv ', '` on mac/linux or `java StraightAs sample_data.csv ", "` on windows cmd.
+2. **Running**: `java` (for example `java StraightAs`). When running your code, you can also pass arguments to the program from the command line. The StraightAs program parses three arguments from the command line, in order: `<filename to parse>``<file's data separator>` and `<display mode>`. So running the command on `sample_data.csv` would look like `java StraightAs sample_data.csv ', ' table` on mac/linux or `java StraightAs sample_data.csv ", " table` on windows cmd.
 
 ### Checkstyle:
 In this course, you will be running a style checking program on your code. For each violation the checkstyle tool finds, you will lose one point on your total homework grade.
@@ -79,6 +78,7 @@ After you've compiled, you'll need to understand how to run your code.
 |`java StraightAs filename.csv separator displaymode`| Parses `filename.csv`, using `separator` as the separator and `displaymode` as the display mode|
 
 ## The arguments for your program
+
 ### The `filename` argument
 This argument contains the filename of the CSV file to parse. You have been provided with four CSV files to run your code against, although we may test against additional files. To make things interesting, you may only make one pass through the file when reading the CSV data. That is, for each piece of data in the file, you may only extract that piece from the file once.
 
@@ -162,10 +162,11 @@ In order to do this, you will need some way to keep track of how many grades fal
 Notice that like the `TABLE` display mode, the histogram also has padding on the numbers to make them line up. You can use the same padding methods used in the table to pad the histogram.
 
 ### Note on file reading
-You may only read each piece of data from the csv file **once** in the code you write. If your solution making multiple , you *will* lose points. Thus, you need to be careful when adding functionality for the `BOTH` argument. Although you print both the table and the histogram, the **file must still only be read once**.
+You may only read each piece of data from the csv file **once** in the code you write. If your solution makes multiple passes, you *will* lose points. Thus, you need to be careful when adding functionality for the `BOTH` argument. Although you print both the table and the histogram, the **file must still only be read once**.
 
 ## Collaboration with other students
 When completing homeworks for CS1331 you may talk with other students about:
+
 - what general strategies or algorithms you used to solve problems in the homeworks
 - parts of the homework you are unsure of and need more explanation
 - online resources that helped you find a solution
@@ -174,6 +175,7 @@ When completing homeworks for CS1331 you may talk with other students about:
 You may **not** discus, show, or share by other means the specifics of your code, including screenshots, file sharing, or showing someone else the code on your computer, or use code shared by others.
 
 Examples of approved/disapproved collaboration:
+
 - **approved**: "Hey, I'm really confused on how we are supposed to implement this part of the homework. What strategies/resources did you use to solve it?"
 - **disapproved**: "Yo it's 10:40 on Thursday... can I see your code? I won't copy it directly I promise"
 
