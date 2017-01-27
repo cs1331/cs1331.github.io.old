@@ -13,31 +13,31 @@ Week 3
 Week 4
 2017-01-30;data-abstraction
 2017-02-01;classes;[HW1 Due 2017-02-02](spring2017/hw1/hw1-straightAs.html)
-2017-02-03;classes
+2017-02-03;classes;HW2 Released
 Week 5
-2017-02-06;review1
-2017-02-08;exam1
-2017-02-10;pq1
+2017-02-06;enumerations
+2017-02-08;Practice PQ
+2017-02-10;Practice PQ
 Week 6
-2017-02-13;inheritance
-2017-02-15;inheritance
-2017-02-17;polymorphism
+2017-02-13;review1;HW2 Due
+2017-02-15;exam1
+2017-02-17;pq1;HW3 Released
 Week 7
-2017-02-20;polymorphism
-2017-02-22;object-superclass
-2017-02-24;object-superclass
+2017-02-20;inheritance
+2017-02-22;inheritance;
+2017-02-24;polymorphism
 Week 8
-2017-02-27;review2
-2017-03-01;exam2
-2017-03-03;pq2
+2017-02-27;polymorphism
+2017-03-01;object-superclass;HW 3 Due
+2017-03-03;object-superclass;HW4 Released
 Week 9
-2017-03-06;exceptions
-2017-03-08;exceptions
-2017-03-10;collections
+2017-03-06;review2
+2017-03-08;exam2
+2017-03-10;pq2
 Week 10
-2017-03-13;collections
-2017-03-15;collections-algorithms
-2017-03-17;collections-algorithms
+2017-03-13;excpetions
+2017-03-15;collections;HW4 Due
+2017-03-17;collections-algorithms;HW5 Released
 Week 11
 2017-03-20;Spring Break - No Class
 2017-03-22;Spring Break - No Class
@@ -47,8 +47,8 @@ Week 12
 2017-03-29;iterators
 2017-03-31;hashed-collections
 Week 13
-2017-04-03;javafx-events
-2017-04-05;javafx-guis
+2017-04-03;javafx-events;HW 5 Due
+2017-04-05;javafx-guis;HW 6 Released
 2017-04-07;javafx-guis
 Week 14
 2017-04-10;review3
@@ -57,7 +57,7 @@ Week 14
 Week 15
 2017-04-17;recursion
 2017-04-19;linked-lists
-2017-04-21;stacks-queues
+2017-04-21;stacks-queues;HW 6 Due
 Week 16
 2017-04-24;Special Topics
 2017-04-26;Special Topics
