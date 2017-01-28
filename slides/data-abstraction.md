@@ -29,7 +29,7 @@ Operations:
 - **new** - construct a new complex number
 - **plus** - add one complex number to another, yielding a new complex number
 
-An ADT is *abstract* becuase the data and operations of the ADT are declared independently of how they are implemented.  We say that an ADT *encapsulates* the data and the operations on the data.
+An ADT is *abstract* because the data and operations of the ADT are declared independently of how they are implemented.  We say that an ADT *encapsulates* the data and the operations on the data.
 
 <!--------------------------------- Slide ----------------------------------->
 # Data Abstractions with Classes

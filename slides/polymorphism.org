@@ -95,7 +95,7 @@ Let's refactor our ~Employee~ class hierarchy to give it a clean object-oriented
 Before we make ~monthlyPay~ polymorphic, we need an application to demonstrate why doing so is useful.  Let's design a ~Company~ class with the following specs:
 
 
-- A ~Company4~ has exactly 9 employees (becuase we haven't learned about dynamically resized data structures yet)
+- A ~Company4~ has exactly 9 employees (because we haven't learned about dynamically resized data structures yet)
 - A company calculates its monthly payroll by adding up the monthly pay of each of its employees.
 - A company can have any mix of hourly and salaried employees
 

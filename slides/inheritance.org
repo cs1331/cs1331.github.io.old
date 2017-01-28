@@ -379,7 +379,7 @@ public void g(Rectangle r) {
 #+END_SRC
 
 
-- Client (author of ~g~) assumes width and height are independent in ~r~ becuase ~r~ is a ~Rectangle~.
+- Client (author of ~g~) assumes width and height are independent in ~r~ because ~r~ is a ~Rectangle~.
 - If the ~r~ passed to ~g~ is actually an instance of ~Square~, what will be the value of ~r.area()~?
 
 The Object-oriented ~is-a~ relationship is about behavior.  ~Square~'s ~setWidth~ and ~setHeight~ methods don't behave the way a ~Rectangle~'s ~setWidth~ and ~setHeight~ methods are expected to behave, so a ~Square~ doesn't fit the object-oriented *is-a* ~Rectangle~ definition.  Let's make this more formal ...

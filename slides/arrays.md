@@ -196,7 +196,7 @@ Because arrays are allocated dynamically, this will compile:
 double[] scores = new double[-5];
 ```
 
-becuase the compiler only checks that `-5` is an `int` expression, but the code will produce an error at run-time:
+because the compiler only checks that `-5` is an `int` expression, but the code will produce an error at run-time:
 
 ```Java
 Exception in thread "main" java.lang.NegativeArraySizeException

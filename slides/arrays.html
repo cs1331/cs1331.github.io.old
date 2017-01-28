@@ -210,7 +210,7 @@ scores[scores.<span class="fu">length</span> - <span class="dv">1</span>] = <spa
 <h1>Array Creation Gotchas</h1>
 <p>Because arrays are allocated dynamically, this will compile:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">double</span>[] scores = <span class="kw">new</span> <span class="dt">double</span>[-<span class="dv">5</span>];</code></pre></div>
-<p>becuase the compiler only checks that <code>-5</code> is an <code>int</code> expression, but the code will produce an error at run-time:</p>
+<p>because the compiler only checks that <code>-5</code> is an <code>int</code> expression, but the code will produce an error at run-time:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Exception in thread <span class="st">&quot;main&quot;</span> java.<span class="fu">lang</span>.<span class="fu">NegativeArraySizeException</span>
         at ArrayBasics.<span class="fu">main</span>(ArrayBasics.<span class="fu">java</span>:<span class="dv">4</span>)</code></pre></div>
 </section>

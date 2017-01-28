@@ -73,7 +73,7 @@ public class ArrayListEqualsDemo {
 
         System.out.println("In each case below, the right answer is true.");
         // 1:
-        // Will print true becuase the default implementation of equals
+        // Will print true because the default implementation of equals
         // uses == for object identity, and we're using the same reference
         // that's stored in peeps
         System.out.println("1: Querying with alias: " + peeps.contains(wilma));

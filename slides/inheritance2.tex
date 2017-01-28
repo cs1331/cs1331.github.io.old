@@ -212,7 +212,7 @@ public void g(Rectangle r) {
 \end{lstlisting}
 
 \begin{itemize}
-\item Client (author of {\tt g}) assumes width and height are independent in {\tt r} becuase {\tt r} is a {\tt Rectangle}.
+\item Client (author of {\tt g}) assumes width and height are independent in {\tt r} because {\tt r} is a {\tt Rectangle}.
 \item If the {\tt r} passed to {\tt g} is actually an instance of {\tt Square}, what will be the value of {\tt r.area()}?
 \end{itemize}
 The Object-oriented {\tt is-a} relationship is about behavior.  {\tt Square}'s {\tt setWidth} and {\tt setHeight} methods don't behave the way a {\tt Rectangle}'s {\tt setWidth} and {\tt setHeight} methods are expected to behave, so a {\tt Square} doesn't fit the object-oriented {\it is-a} {\tt Rectangle} definition.  Let's make this more formal ...
