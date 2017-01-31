@@ -352,6 +352,7 @@ $RECYCLE.BIN/
 
 # Package Files #
 *.jar
+!hw1-submit.jar
 *.war
 *.ear
 
