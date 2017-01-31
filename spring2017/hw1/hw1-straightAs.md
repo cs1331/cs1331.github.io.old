@@ -8,6 +8,7 @@ title: Homework 1
 Welcome to your first full-fledged programming assignment for CS1331! In this homework, you will be tasked with reading data files and using what you've learned so far to create a visualization of the data in your terminal.
 
 [Download zip](hw1-straightAs.zip)
+
 [Submit Tool](hw1-submit.jar)
 
 ## Things to know
@@ -197,4 +198,4 @@ You should not import any libraries or packages that trivialize the assignment. 
 We are putting the finishing touches on the gradle submission tool, so we haven't included it yet. It is a single gradle file so it will be easy to drop into your homework directory once it is released without losing any of your work. You will run `gradle submit` to submit your homework for grading. Late submissions will not be accepted.
 </del>
 
-You can now download the submit tool using the link at the top of the page. After you download it, put it in the same directory as `StraightAs.java`. This is the only file that will be submitted. You can run the submitter by typing `java -jar hw1-submit.jar`. If you encounter any errors, make sure you have the most up to date version of java and if you are on Windows, make sure you are using cmd and not git bash. The submitter will give you a link to the submission it creates. Make sure to navigate to the link and check that the file it submitted is the one that you intended.
+You can now download the submit tool using the link at the top of the page. After you download it, put it in the same directory as `StraightAs.java`. This is the only file that will be submitted. You can run the submitter by typing `java -jar hw1-submit.jar`. If you encounter any errors, make sure you have the most up to date version of java and if you are on Windows, make sure you are using cmd and not git bash. Also, make sure that you can log in to the [GaTech Github](https://github.gatech.edu). The submitter will give you a link to the submission it creates. Navigate to the link and make sure that the file it submitted is the one that you intended.
