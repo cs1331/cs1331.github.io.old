@@ -108,7 +108,7 @@ This class represents the vending machine itself and is the bulk of the assignme
 
 - `public VendingMachine()`. This is the single no-arg constructor for `VendingMachine`s. You should initialize your fields and call `restock()` here so that your vending machine is ready to use as soon as someone initializes it.
 
-- `public VendingItem vend(String code)`. This method is used to dispense an item from the vending machine. It takes in a parameter `code` representing the user's input. This code will be formatted as a letter followed by a number (A6), which represents the the row and column of the selected item. You must dispense the item from the proper row and column and move the items behind it so that there is always (if possible) an item in the 0 position. This method should also take care of checking the `code` for validity before dispensing anything and should print an error statement and return `null` if something goes wrong. It should also print an error statement and return `null` if there is no item in the position that the user selected. If it is determined by the `free()` method that the item being dispensed is free for the user, this method should print a statement notifying the user as such. Finally, this method should  update the `totalSales` field as needed. Be careful not to update `totalSales` if the item was free or if something went wrong.
+- `public VendingItem vend(String code)`. This method is used to dispense an item from the vending machine. It takes in a parameter `code` representing the user's input. This code will be formatted as a letter followed by a number (A6), which represents the the row and column of the selected item. The rows start with the letter A and the columns start with the number 1, so grid[0][0] would correspond to A1 and so on. You must dispense the item from the proper row and column and move the items behind it so that there is always (if possible) an item in the 0 position. This method should also take care of checking the `code` for validity before dispensing anything and should print an error statement and return `null` if something goes wrong. It should also print an error statement and return `null` if there is no item in the position that the user selected. If it is determined by the `free()` method that the item being dispensed is free for the user, this method should print a statement notifying the user as such. Finally, this method should  update the `totalSales` field as needed. Be careful not to update `totalSales` if the item was free or if something went wrong.
 
 - `private boolean free()`. This private helper method should be used in conjuntion with `vend()` to determine if the current user should recieve their item for free. This method should have a percent chance equal to `freeChance` of returning `true` (use `rand`). If the method returns true, `freeChance` should be reset to 0. However, if the method returns false, `freeChance` should be incremented by 1, giving the next user a 1% higher probability of winning a free item.
 
@@ -178,9 +178,11 @@ To make things easier for you in the beginning of the semester, the first few ho
 
 - If you encounter trouble running checkstyle, check Piazza for a solution and/or ask a TA as soon as you can!
 
-- You can run checkstyle on your code by using the jar file found [on the course website](http://cs1331.gatech.edu/cs1331-style-guide.html) and the included xml file like so: `java -jar checkstyle-6.2.2.jar -c cs1331-checkstyle.xml *.java`.
+- You can run checkstyle on your code by using the jar file found [on the course website](http://cs1331.gatech.edu/cs1331-style-guide.html) and the included xml file like so: `java -jar checkstyle-6.2.2.jar *.java`.
 
-- **Note that the above is different from the normal method for running checkstyle.*** Now, because we want you to [javadoc](#Javadocs) your code, you must supply additional checkstyle rules with the provided `.xml` file
+- To check for proper Javadocs you can run the following command: `java -jar checkstyle-6.2.2.jar -j *.java`.
+
+- **Note that the above is different from the normal method for running checkstyle.** This command will only check for Javadoc errors so *you will have to run both commands to fully test for style errors*.
 
 - Javadoc errors are the same as checkstyle errors, as in each one is worth a single point and they are counted towards the checkstyle cap.
 
