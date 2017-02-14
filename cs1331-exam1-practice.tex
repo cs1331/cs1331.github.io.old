@@ -1,0 +1,512 @@
+\documentclass[addpoints,9pt]{exam}
+\usepackage{verbatim, multicol, tabularx,}
+\usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=1mm,
+  belowskip=0mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=true
+}
+
+
+\title{CS 1331 Exam 1 Practice}
+\date{}
+\setcounter{page}{0}
+\begin{document}
+
+\maketitle
+\thispagestyle{head}
+%% \firstpageheader{}
+%%               {\tiny Copyright \textcopyright\ 2014 All rights reserved. Duplication and/or usage for purposes of any kind without permission is strictly forbidden.}
+%%               {}
+
+
+\runningheader{}
+              {\tiny Copyright \textcopyright\ 2014 All rights reserved. Duplication and/or usage for purposes of any kind without permission is strictly forbidden.}
+              {}
+
+\footer{Page \thepage\ of \numpages}
+              {}
+              {Points available: \pointsonpage{\thepage} -
+               points lost: \makebox[.5in]{\hrulefill} =
+               points earned:  \makebox[.5in]{\hrulefill}.
+              Graded by: \makebox[.5in]{\hrulefill}}
+
+
+\ifprintanswers
+\begin{center}
+{\LARGE ANSWER KEY}
+\end{center}
+\else
+\vspace{0.1in}
+\hbox to \textwidth{Name (print clearly): \enspace\hrulefill}
+\vspace{0.3in}
+\hbox to \textwidth{Signature: \hrulefill}
+
+\vspace{0.3in}
+\hbox to \textwidth{GT account username (gtg, gth, msmith3, etc): \enspace\hrulefill}
+
+\fi
+
+\vfill
+
+\begin{itemize}
+\item Signing signifies you are aware of and in accordance with the {\bf Academic Honor Code of Georgia Tech}.
+\item Calculators and cell phones are NOT allowed.
+\item This is an object-oriented programming test.  Java is the required language.  Java is case-sensitive.  DO NOT WRITE IN ALL CAPS.  A Java program in all caps will not compile.  Good variable names and style are required.  Comments are not required.
+\end{itemize}
+
+\vfill
+
+% Points Table
+%\begin{center}
+\addpoints
+%\gradetable[v][pages]
+%\end{center}
+
+% Points Table
+\begin{center}
+\renewcommand{\arraystretch}{2}
+\begin{tabularx}{\textwidth}{|l|c|X|X|X|}
+        \hline
+Question & Points per Page & Points Lost & Points Earned & Graded By \\
+\hline
+Page 1 & \pointsonpage{1} & - & =  &\\
+\hline
+Page 2 & \pointsonpage{2} & - & =  &\\
+\hline
+Page 3 & \pointsonpage{3} & - & =  &\\
+\hline
+Page 4 & \pointsonpage{4} & - & =  &\\
+\hline
+Page 5 & \pointsonpage{5} & - & =  &\\
+\hline
+Page 6 & \pointsonpage{6} & - & =  &\\
+\hline
+TOTAL & \numpoints & - & =  & \\
+\hline
+\end{tabularx}
+\end{center}
+
+\newpage
+
+%\normalsize
+
+\pointsinmargin
+\bracketedpoints
+
+\marginpointname{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{questions}
+
+\question {\bf True or False}
+
+In each of the blanks below, write ``T'' if the statement beside the blank is true, ``F'' otherwise.\\
+
+\begin{parts}
+
+\ifprintanswers
+\part[1] \underline{ {\bf F} } A public top-level Java class may be defined in a source file with any base name as long as the file extension is {\tt .java}.\\
+\else
+\part[1] \makebox[.25in]{\hrulefill} A public top-level Java class may be defined in a source file with any base name as long as the file extension is {\tt .java}.\\
+\fi
+
+\ifprintanswers
+\part[1] \underline{ {\bf F} } Java identifiers can contain letters, digits, and the underscore symbol and may start with a digit.\\
+\else
+\part[1] \makebox[.25in]{\hrulefill} Java identifiers can contain letters, digits, and the underscore symbol and may start with a digit.\\
+\fi
+
+\ifprintanswers
+\part[1] \underline{ {\bf F} } The statement {\tt int x = 3f/4f;} will compile, but the result will be truncated so that {\tt x} gets the value {\tt 0}.\\
+\else
+\part[1] \makebox[.25in]{\hrulefill} The statement {\tt int x = 3f/4f;} will compile, but the result will be truncated so that {\tt x} gets the value {\tt 0}.\\
+\fi
+
+
+\ifprintanswers
+\part[1] \underline{ {\bf F} } In a for loop header, {\tt for (}{\it initializer}{\tt ;} {\it condition}{\tt ;} {\it update}{\tt )}, the Java compiler requires {\it initializer} to initialize a loop variable and {\it update} to update it.\\
+\else
+\part[1] \makebox[.25in]{\hrulefill} In a for loop header, {\tt for (}{\it initializer}{\tt ;} {\it condition}{\tt ;} {\it update}{\tt )}, the Java compiler  requires {\it initializer} to initialize a loop variable and {\it update} to update it.\\
+\fi
+
+\ifprintanswers
+\part[1] \underline{ {\bf T} } The declarations {\tt double scores[]} and {\tt double[] scores} are equivalent.\\
+\else
+\part[1] \makebox[.25in]{\hrulefill} The declarations {\tt double scores[]} and {\tt double[] scores} are equivalent.\\
+\fi
+
+\ifprintanswers
+\part[1] \underline{ {\bf F} } Java arrays have a variable number of elements of mixed types.\\
+\else
+\part[1] \makebox[.25in]{\hrulefill} Java arrays have a variable number of elements of mixed types.\\
+\fi
+
+\ifprintanswers
+\part[1] \underline{ {\bf F} } Given an array named {\tt scores}, the statement {\tt scores[scores.length + 1]} will not compile.\\
+\else
+\part[1] \makebox[.25in]{\hrulefill} Given an array named {\tt scores}, the statement {\tt scores[scores.length + 1]} will not compile.\\
+\fi
+
+
+\ifprintanswers
+\part[1] \underline{ {\bf F} } Instance methods of a class can be called without first instaniating an object of the class.\\
+\else
+\part[1] \makebox[.25in]{\hrulefill} Instance methods of a class can be called without first instaniating an object of the class.\\
+\fi
+
+\ifprintanswers
+\part[1] \underline{ {\bf F} } Every Java class has a default no-arg constructor in addition to the constructors you write yourself.\\
+\else
+\part[1] \makebox[.25in]{\hrulefill} Every Java class has a default no-arg constructor in addition to the constructors you write yourself.\\
+\fi
+
+\end{parts}
+
+\newpage
+
+\question {\bf Expression Evaluation}
+
+\begin{parts}
+
+For each expression below, write the value and then the Java data type of the evaluated legal expression in the space provided.  Be exact.  The type you give must be the {\bf exact spelling of a Java primitive type including uppercase vs lowercase as it would appear in your program.}\\\\
+
+\ifprintanswers
+\hspace{-.5in} Expression: {\tt 7 / 2}
+\part[1] Calculated value: \underline{ 3  }\\
+\part[1] Java primitive type: \underline{ {\tt int}  }\\\\
+\else
+\hspace{-.5in} Expression: {\tt 7 / 2}
+\part[1] Calculated value: \makebox[1in]{\hrulefill}\\
+\part[1] Java primitive type: \makebox[1in]{\hrulefill}\\\\
+\fi
+
+\ifprintanswers
+\hspace{-.5in} Expression: {\tt 64 - 16 * 2}
+\part[1] Calculated value: \underline{ 32  }\\
+\part[1] Java primitive type: \underline{ {\tt int}  }\\\\
+\else
+\hspace{-.5in} Expression: {\tt 64 - 16 * 2}
+\part[1] Calculated value: \makebox[1in]{\hrulefill}\\
+\part[1] Java primitive type: \makebox[1in]{\hrulefill}\\\\
+\fi
+
+\ifprintanswers
+\hspace{-.5in} Expression: {\tt 2.5f + 3.0 - 1.5f}
+\part[1] Calculated value: \underline{ 4.0  }\\
+\part[1] Java primitive type: \underline{ {\tt double}  }\\\\
+\else
+\hspace{-.5in} Expression: {\tt 2.5f + 3.0 - 1.5f}
+\part[1] Calculated value: \makebox[1in]{\hrulefill}\\
+\part[1] Java primitive type: \makebox[1in]{\hrulefill}\\\\
+\fi
+
+\ifprintanswers
+\hspace{-.5in} Expression: {\tt new Double(1) / 2}
+\part[1] Calculated value: \underline{ 0.5  }\\
+\part[1] Java primitive type: \underline{ {\tt double}  }\\\\
+\else
+\hspace{-.5in} Expression: {\tt new Double(1) / 2}
+\part[1] Calculated value: \makebox[1in]{\hrulefill}\\
+\part[1] Java primitive type: \makebox[1in]{\hrulefill}\\\\
+\fi
+
+\ifprintanswers
+\hspace{-.5in} Expression: {\tt true \&\& "Foo".equals("foo")}
+\part[1] Calculated value: \underline{ {\tt false}  }\\
+\part[1] Java primitive type: \underline{ {\tt boolean}  }\\
+\else
+\hspace{-.5in} Expression: {\tt true \&\& "Foo".equals("foo")}
+\part[1] Calculated value: \makebox[1in]{\hrulefill}\\
+\part[1] Java primitive type: \makebox[1in]{\hrulefill}\\
+\fi
+
+\end{parts}
+
+
+
+\newpage
+
+
+\question  {\bf Multiple Choice} Circle the letter of the correct choice.
+
+\begin{parts}
+
+Given:
+\begin{lstlisting}
+    public class Kitten {
+
+        private String name = "";
+
+        public Kitten(String name) {
+            name = name;
+        }
+
+        public String toString() {
+            return "Kitten: " + name;
+        }
+
+        public boolean equals(Object other) {
+            if (this == other) return true;
+            if (null == other) return false;
+            if (!(other instanceof Kitten)) return false;
+            Kitten that = (Kitten) other;
+            return this.name.equals(that.name);
+        }
+    }
+\end{lstlisting}
+Assume the following statements have been executed:
+\begin{lstlisting}
+        Kitten maggie = new Kitten("Maggie");
+        Kitten fiona = new Kitten("Fiona");
+        Kitten fiona2 = new Kitten("Fiona");
+        Kitten mittens = fiona;
+\end{lstlisting}
+
+\part[2] What is the value of {\tt maggie}?
+
+\begin{choices}
+\correctchoice the address of a {\tt Kitten} object
+\choice null
+\choice automatically set to 0
+\choice undefined
+\end{choices}
+
+
+\part[2] What is printed on the console after the following statement is executed?
+
+\verb@ System.out.println(maggie.toString());@
+
+\begin{choices}
+\correctchoice Kitten:
+\choice Kitten: null
+\choice Kitten: Maggie
+\end{choices}
+
+\part[2] What is the value of the expression {\tt fiona == mittens)}?
+
+\begin{choices}
+\correctchoice true
+\choice false
+\end{choices}
+
+\part[2] What is the value of the expression {\tt fiona.equals(fiona2) \&\& fiona == mittens}?
+
+\begin{choices}
+\correctchoice true
+\choice false
+\end{choices}
+
+\part[2] After executing {\tt Kitten[] kittens = new Kitten[5];} , what is the value of {\tt kittens[0]} ?
+
+\begin{choices}
+\correctchoice null
+\choice the address of a {\tt Kitten} object
+\choice automatically set to 0
+\choice undefined
+\end{choices}
+
+\end{parts}
+
+\newpage
+
+\question {\bf Tracing}
+
+\begin{parts}
+
+Consider the following code:
+\begin{lstlisting}
+public class StrangeLogic {
+    private static int counter = 0;
+
+    private static boolean incrementCounter() {
+        counter++;
+        return true;
+    }
+    public static void main(String args[]) {
+        boolean a = true, b = false;
+        if (b || incrementCounter()) {
+            System.out.print("Boo");
+        }
+        if ((a || b) && incrementCounter()) {
+            System.out.print(" ya!");
+        }
+        System.out.println(counter);
+    }
+}
+\end{lstlisting}
+
+\part[5] What is printed when main is executed?
+
+\begin{solution}[1in]
+Boo ya! 2  ( 1 pt for Boo, 2 for ya!, 2 for 2)
+\end{solution}
+
+Consider the following code:
+\begin{lstlisting}
+public class AlGore {
+
+    public static void main(String[] args) {
+        String mystery = "mnerigpaba";
+        String solved = "";
+        int len = mystery.length();
+        for (int i = 0, j = len - 1; i < len/2; ++i, --j) {
+            solved += mystery.charAt(i) + mystery.charAt(j);
+        }
+        System.out.println(solved);
+    }
+}
+\end{lstlisting}
+
+\part[5] What is printed when main is executed?
+
+\begin{solution}[1in]
+manbearpig
+\end{solution}
+
+
+\end{parts}
+
+\newpage
+
+\question {\bf Short Answer}
+\begin{parts}
+
+\part[2] Assume you have a Java class named {\tt Foo} that you want to be able to run from the command line.  Write the header for the method you need to define in {\tt Foo} to make it executable from the command line.
+
+\begin{solution}[.4in]
+{\tt public static void main(String[] args)}
+\end{solution}
+
+\part[2] Assume you are at the command line in the directory of the file that contains the definition for a Java class named {\tt Foo}.  Write the command that you would execute on the command line to compile {\tt Foo}.
+
+\begin{solution}[.4in]
+{\tt javac Foo.java}
+\end{solution}
+
+\part[2] If the command above executes successfully, what file will be produced?
+
+\begin{solution}[.4in]
+{\tt Foo.class}
+\end{solution}
+
+\part[2] Write the command that will execute the {\tt Foo} class you compiled above.
+
+\begin{solution}[.4in]
+{\tt java Foo}
+\end{solution}
+
+\part[3] What will the following code print?
+\begin{lstlisting}[language=Java]
+for (int i = 10; i > 0; i--);
+    System.out.print(``Meow! '');
+\end{lstlisting}
+
+\begin{solution}[.5in]
+Meow!
+\end{solution}
+
+\part[4] Assume you have the following start of a Student class and  Student constructor.  Finish the constructor.  Do not change the code that is given.
+
+\begin{verbatim}
+public class Student {
+    private String name;
+    private String email;
+    public Student(String name, String email) {
+        // Your code goes here
+\end{verbatim}
+\ifprintanswers
+\begin{lstlisting}
+        this.name = name;    // 2 point
+        this.email = email;  // 2 point
+\end{lstlisting}
+\else
+\vspace{.5in}
+\fi
+\begin{verbatim}
+}
+\end{verbatim}
+
+\part[5] Convert the following {\tt for} loop to an equivalent {\tt while} loop.
+
+\begin{lstlisting}[language=Java]
+for (int i = 10; i > 0; i--) {
+    System.out.println(i);
+}
+\end{lstlisting}
+
+\begin{solution}[1.5in]
+\begin{lstlisting}[language=Java]
+int i = 10;                    // 1 pts
+while (i > 0) {                // 1 pt
+    System.out.println(i);     // 1 pt
+    i--;                       // 1 pt
+}
+\end{lstlisting}
+\end{solution}
+
+\end{parts}
+
+\newpage
+
+\question {\bf Complete the Method}
+
+\begin{parts}
+
+\part[5] Fill in the code for the following method that takes an array of numbers and returns the number of even numbers in the array argument.  Your code should use a {\tt for} loop.
+
+\begin{verbatim}
+public int evens(int[] numbers) {
+    // Your code goes here
+\end{verbatim}
+\begin{solution}[3in]
+\begin{verbatim}
+    int count = 0;                  // 1 point
+    for (int number: numbers) {     // 1 point
+        if ((number % 2) == 0) {    // 1 point
+            count++;                // 1 point
+        }
+    }
+    return count;                   // 1 point
+\end{verbatim}
+\end{solution}
+\begin{verbatim}
+}
+\end{verbatim}
+
+\part[5] Fill in the code for the following method that takes an array of numbers and a number and returns {\tt true} if the array contains the number, {\tt false} otherwise.  You will need a loop, and your loop must not execute more iterations than necessary, and you cannot use {\tt break} or {\tt continue}.
+
+\begin{verbatim}
+public boolean contains(int[] numbers, int n) {
+    // Your code goes here
+\end{verbatim}
+\begin{solution}[3in]
+\begin{verbatim}
+boolean found = false;                     // 1 point for initializations
+int i = 0;                                 // 1 point
+do {
+    if (numbers[i] == n) {               // 1 point for conditional setting
+        found = true;                      //   of found to true
+    }
+    i++;
+} while (!found && (i < numbers.length))   // 1 point for termination condition
+return found;                              // 1 point for return
+\end{verbatim}
+\end{solution}
+\begin{verbatim}
+}
+\end{verbatim}
+
+\end{parts}
+
+\end{questions}
+
+\end{document}
