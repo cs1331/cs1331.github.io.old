@@ -1,3 +1,8 @@
+---
+layout: homework
+title: Homework 3
+---
+
 # CS1331 Homework 03 - Card Game
 
 Hello! In this assignment we will be testing your understanding of polymorphism,
