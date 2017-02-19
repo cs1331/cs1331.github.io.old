@@ -10,7 +10,7 @@ inheritance, abstract classes, and interfaces by having you create a simple
 children's card game. Remember to give this whole guide a good once over before
 you begin writing.
 
-[Download zip](hw3-cardGame.zip)
+[Download zip](hw3.zip)
 
 ## Table of Contents
 
@@ -158,7 +158,8 @@ acts as the second player, and all it does is put down cards from its hand).
 Cards, and Trap Cards.
 
 * Monster Cards have an attack power, and can attack an enemy's monster cards.
-Each player can have at most five monster cards on the field at once.
+
+* Each player can have at most five monster cards on the field at once.
 
 * Monster cards may only attack once per turn.
 
@@ -327,7 +328,7 @@ setters:
 
 * A properly overridden equals method that compares cards based on their names,
 descriptions, powers, and basePowers. Remember that you can reuse code from
-the Card class here, and you need not rewrite code for comparing the names
+the Card class here, and you need not rewrite code  for comparing the names
 and descriptions!
 
 * A properly overridden toString method that returns a String in the format:
@@ -365,6 +366,11 @@ Represents a card that has some instant effect and does not actually get
 placed onto the Field. This is an abstract class that **is a** Card and also
 **is** Special.
 
+This class has the following constructors:
+
+* One that takes in a String for the name, and a String for the description (in
+that order) and sets their corresponding instance fields.
+
 This class has the following public methods:
 
 * A properly overridden equals method that compares cards based on their names
@@ -374,8 +380,9 @@ name for example.
 
 ### Field.java
 
-Represents a game field that the cards can be placed on. This is a concrete
-class.
+Represents a single player's side of the game field that the cards can be placed
+on. There are two of these in the DuelMonstersAbridged class, where their
+interactions are managed. This is a concrete class.
 
 This class has the following private fields, **and associated getter methods for
 them (you need not write setter methods for this class)**:
@@ -393,11 +400,11 @@ for every spell currently on this field, and also set all monsters on the field
 to be able to attack. This gets run at the end of the player's turn.
 
 * `boolean addMonsterCard(MonsterCard card)` which will add card to the first
-non-null spot in the monsters array and return true, or return false if there is
+null spot in the monsters array and return true, or return false if there is
 no space in the array for it to be added.
 
 * `boolean addSpellCard(SpellCard card)` which will add card to the first
-non-null spot in the spells array and return true, or return false if there is
+null spot in the spells array and return true, or return false if there is
 no space in the array for it to be added.
 
 ### Player.java
@@ -447,12 +454,13 @@ and if it cannot, will deduct 500 lifepoints. Will also attempt to draw a
 Special card into the nextSpecial position.
 
 * `boolean playCardFromHand(int whichCard, Field myField)` should add the card
-at index whichCard in the hadn onto myField. Make sure to check that the
+at index whichCard in the hand onto myField. Make sure to check that the
 passed in index is within the bounds of hand. MonsterCards and SpellCards should
 be added to the field appropriately, while TrapCards should not be added (as
 they are just for quick play). Returns whether or not the card was successfully
 played (the play fails if there is not room on the field, or if the index is
-out of range). Should also remove the played card from the hand.
+out of range, or if the card at the selected index is null).
+Should also remove the played card from the hand.
 
 * `boolean playSpecial(Field myField)` works similarly to playCardFromHand,
 except it only tries to play nextSpecial. Remember to clear nextSpecial if
@@ -528,7 +536,8 @@ you can add them into the decks here.
 
 * Note: the current way the decks are setup, Red Eyes Black Dragon should be the
 first card that you draw from the mainDeck in the game, and Blue Eyes White
-Dragon should be your first special card.
+Dragon should be your first special card. Your hand should also not be all
+Red Eyes Black Dragons, as there is only one of those in the Deck.
 
 ## Javadocs
 
