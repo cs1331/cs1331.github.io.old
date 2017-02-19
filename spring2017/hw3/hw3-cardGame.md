@@ -10,7 +10,7 @@ inheritance, abstract classes, and interfaces by having you create a simple
 children's card game. Remember to give this whole guide a good once over before
 you begin writing.
 
-[Download zip](hw3.zip)
+[Download zip](hw3-cardGame.zip)
 
 ## Table of Contents
 
