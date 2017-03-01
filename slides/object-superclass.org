@@ -12,7 +12,7 @@
 #+LaTeX_CLASS_OPTIONS: [smaller]
 #+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
 #+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
 
 * The Object Superclass
@@ -36,10 +36,7 @@ The default implementation of ~equals(Object)~ in ~java.lang.Object~ is object i
 When should a class override ~equals(Object)~?
 
 - When logical equality differs from object identity, as is the case for *value* classes like ~Date~
-- When classes don't implement instance control.
-
-  - Instance control means that a class ensures that there is only one instance of a class.
-
+- When classes don't implement instance control, e.g., enum values.
 - When a suitable ~equals(Object)~ method is not provided by a superclass.
 
 
@@ -130,7 +127,7 @@ Note that the for-each loop implicitly uses an iterator.
 
 ** ~equals(Object)~ Method Examples
 
-In this simple class hierarchy, ~FoundPerson~ has a properly implemented ~equals(Object)~ method and ~LostPerson~ does not.
+In this simple class hierarchy, ~FoundPerson~ has a properly implemented ~equals(Object)~ method and ~LostPerson~ does not. See [[../code/collections/ArrayListEqualsDemo.java][ArrayListEqualsDemo.java]].
 
 #+BEGIN_SRC java :exports code
     abstract static class Person {
@@ -152,8 +149,6 @@ In this simple class hierarchy, ~FoundPerson~ has a properly implemented ~equals
         }
     }
 #+END_SRC
-
-Let's examine the code in [[../code/collections/ArrayListEqualsDemo.java][ArrayListEqualsDemo.java]].
 
 ** Override-Equivalence
 
