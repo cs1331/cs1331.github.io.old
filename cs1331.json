@@ -67,7 +67,8 @@
     },
     "exam1": {
         "topic": "**Exam 1**",
-        "materials": [""],
+        "materials": ["[cs1331-exam1-practice.pdf](cs1331-exam1-practice.pdf)",
+                      "[cs1331-exam1-practice-answers.pdf](cs1331-exam1-practice-answers.pdf)"],
         "order": [13]
     },
     "pq1": {
@@ -99,7 +100,8 @@
     },
     "exam2": {
         "topic": "**Exam 2**",
-        "materials": [""],
+        "materials": ["[cs1331-exam2-practice.pdf](cs1331-exam2-practice.pdf)",
+                      "[cs1331-exam2-practice-answers.pdf](cs1331-exam2-practice-answers.pdf)"],
         "order": [22]
     },
     "pq2": {
@@ -167,7 +169,8 @@
     },
     "exam3": {
         "topic": "**Exam 3**",
-        "materials": [""],
+        "materials": ["[cs1331-exam3-practice.pdf](cs1331-exam3-practice.pdf)",
+                      "[cs1331-exam3-practice-answers.pdf](cs1331-exam3-practice-answers.pdf)"],
         "order": [37]
     },
     "pq3": {
