@@ -36,7 +36,7 @@ they're using to manage the people at the event. As a promising Georgia Tech
 undergrad, they have hired you to work (for free) to fix their computer system
 and save the Olympics!
 
-<img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fchangeworkscom.co.uk%2Fweb-cont1001%2Fuploads%2FOlympic-Rings-large_transX9gqeEfKXQcqd954t2rXzvTSL8SM4yNVj_ZSDGesqAM.jpg&f=1" width=100%>
+![olympic rings](https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fchangeworkscom.co.uk%2Fweb-cont1001%2Fuploads%2FOlympic-Rings-large_transX9gqeEfKXQcqd954t2rXzvTSL8SM4yNVj_ZSDGesqAM.jpg&f=1)
 
 ## Problem Description
 
