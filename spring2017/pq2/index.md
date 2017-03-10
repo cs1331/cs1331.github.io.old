@@ -1,5 +1,4 @@
 ---
----
 layout: homework
 title: Cars Programming Quiz
 ---
