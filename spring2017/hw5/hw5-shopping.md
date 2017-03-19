@@ -8,15 +8,15 @@ title: Homework 5
 [Download zip](hw5-shopping.zip)
 
 ## Table of Contents
-* [Introduction] (#introduction)
-* [Problem Description] (#problem-description)
-* [Background] (#background)
-* [Solution Description] (#solution-description)
-* [Running and Testing] (#running-and-testing)
-* [Javadocs] (#javadocs)
-* [Checkstyle] (#checkstyle)
-* [Collaboration] (#collaboration)
-* [Submitting] (#submitting)
+* Introduction
+* Problem Description
+* Background
+* Solution Description
+* Running and Testing
+* Javadocs
+* Checkstyle
+* Collaboration
+* Submitting
 
 ## Introduction<a name="introduction"></a>
 
