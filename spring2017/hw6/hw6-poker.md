@@ -96,7 +96,7 @@ If you ever get stuck, try looking at these classes in JavaDocs they are very us
 * [ScrollPane](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollPane.html)
 
 ## Solution Description
-**Make sure you read the entire document before starting**
+**Make sure you read the entire document before starting.**
 Feel free to change any provided files even in the model or viewcontroller. Just realize that major changes in provided files will make it harder to give partial credit.
 
 ### Viewcontroller:
@@ -204,7 +204,7 @@ PokerGame has four methods: main(), start(), startGame(), and updatesMade().
 StartScreen is a StackPane that is displayed first when the program is run.
 
 When displayed StartScreen should look similar to this:
-![StartScreen](images/StartScreen.jpg)
+![StartScreen](images/StartScreen.jpg){:height="480px" width="480px"}
 
 - StartScreen only needs a constructor where you add the background image and start Button. The constructor also takes a PokerGame object as a parameter.
 - When the start Button is pressed, a prompt asking for the user's name should pop up which looks similar to this (don't worry if it is not exactly the same):
