@@ -204,12 +204,13 @@ PokerGame has four methods: main(), start(), startGame(), and updatesMade().
 StartScreen is a StackPane that is displayed first when the program is run.
 
 When displayed StartScreen should look similar to this:
-![StartScreen](images/StartScreen.jpg){:height="360px" width="640px"}
+
+![StartScreen](images/StartScreen.jpg){:height="525px" width="750px"}
 
 - StartScreen only needs a constructor where you add the background image and start Button. The constructor also takes a PokerGame object as a parameter.
 - When the start Button is pressed, a prompt asking for the user's name should pop up which looks similar to this (don't worry if it is not exactly the same):
 
-![StartScreen input](images/StartInput.jpg)
+![StartScreen input](images/StartInput.jpg){:height="525px" width="750px"}
 
 - Once the name is entered call the startGame() method in PokerGame and pass in the name.
 
@@ -220,19 +221,25 @@ GameScreen is a BorderPane and contains all of the UI related to playing the Gam
 * It will own four PlayerAreas and a BoardArea.
 
 * At the start of each round the GameScreen should look similar to this:
-![GameScreen start](images/GameScreen-start.jpg)
+
+![GameScreen start](images/GameScreen-start.jpg){:height="525px" width="750px"}
 
 * After the first three cards are dealt the GameScreen should look similar to this:
-![GameScreen 3 cards](images/GameScreen-3cards.jpg)
+
+![GameScreen 3 cards](images/GameScreen-3cards.jpg){:height="525px" width="750px"}
 
 * After the fourth card is dealt the GameScreen should look similar to this:
-![GameScreen 4 cards](images/GameScreen-4cards.jpg)
+
+![GameScreen 4 cards](images/GameScreen-4cards.jpg){:height="525px" width="750px"}
 
 * After the fifth card is dealt the GameScreen should look similar to this:
-![GameScreen 5 cards](images/GameScreen-5cards.jpg)
+
+![GameScreen 5 cards](images/GameScreen-5cards.jpg){:height="525px" width="750px"}
 
 * After the round is over the GameScreen should look similar to this with all cards revealed:
-![GameScreen end](images/GameScreen-end_game.jpg)
+
+![GameScreen end](images/GameScreen-end_game.jpg){:height="525px" width="750px"}
+
 Note also that AI_3 has folded and is therefore out of play so its cards were hidden.
 
 GameScreen has a constructor and two methods, updatesMade() and endOfRound()
@@ -247,10 +254,12 @@ PlayerArea owns a Pane where all of its contents will be added and contains all 
 
 * It will need a way to display the Player's two cards, name, chips, and an out of play indicator
 
-![PlayerArea](images/GameScreen-PlayerArea.jpg)
+![PlayerArea](images/GameScreen-PlayerArea.jpg){:height="525px" width="750px"}
+
 Above are two highlighted PlayerAreas. The PlayerArea where the user's cards are is in blue. Only the user's cards should be shown until the end of the round when all cards are shown.
 
-![PlayerArea](images/GameScreen-fold.jpg)
+![PlayerArea](images/GameScreen-fold.jpg){:height="525px" width="750px"}
+
 Above is highlighted a PlayerArea whose Player is out of play. Its cards have been hidden and the out of play indicator has been shown. All the other PlayerAreas' cards have been shown because it is the end of a round.
 
 PlayerArea has a constructor and two methods, playerPane() and update()
@@ -285,7 +294,8 @@ BoardArea owns an HBox that contains all of the UI elements that have to do with
 
 * It will need to display the CardViews of the cards on the board and the pot.
 
-![BoardArea](images/GameScreen-BoardArea.jpg)
+![BoardArea](images/GameScreen-BoardArea.jpg){:height="525px" width="750px"}
+
 Above is highlighted the BoardArea. At this point in the game only four cards are shown and the fifth is hidden. Also, the pot is shown with room for the fifth card to be shown.
 
 BoardArea has a constructor and two methods, getPane() and update().
@@ -303,7 +313,8 @@ ControlPane is an HBox that contains all of the UI for controlling the game.
 * The button for starting a new round should be hidden unless it is the end of a round.
 * The buttons for raise, call, and fold should be disabled unless it is the user's turn
 
-![ControlPane](images/GameScreen-ControlPane.jpg)
+![ControlPane](images/GameScreen-ControlPane.jpg){:height="525px" width="750px"}
+
 Above is highlighted the ControlPane. It is not the end of a round so the start new round button is hidden and it is the User's turn so the other buttons are not disabled.
 
 ConrtolPane has a constructor and two methods, playerTurn() and endOfRound().
@@ -321,7 +332,8 @@ Console is a ScrollPane and contains all of the UI elements for the Console at t
 * The horizontal scroll bar should be removed from the ScrollPane.
 * You can use `setVvalue()` in ScrollPane to automatically scroll to the top
 
-![Console](images/GameScreen-Console.jpg)
+![Console](images/GameScreen-Console.jpg){:height="525px" width="750px"}
+
 Above is highlighted the Console.
 
 Console has a constructor and four methods: addText(), clear(), putMessage(), and clearLog().
