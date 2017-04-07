@@ -204,7 +204,7 @@ PokerGame has four methods: main(), start(), startGame(), and updatesMade().
 StartScreen is a StackPane that is displayed first when the program is run.
 
 When displayed StartScreen should look similar to this:
-![StartScreen](images/StartScreen.jpg){:height="480px" width="480px"}
+![StartScreen](images/StartScreen.jpg){:height="360px" width="640px"}
 
 - StartScreen only needs a constructor where you add the background image and start Button. The constructor also takes a PokerGame object as a parameter.
 - When the start Button is pressed, a prompt asking for the user's name should pop up which looks similar to this (don't worry if it is not exactly the same):
