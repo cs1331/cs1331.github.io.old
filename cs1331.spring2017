@@ -25,6 +25,7 @@ Week 6
 Week 7
 2017-02-20;inheritance
 2017-02-22;inheritance;
+
 2017-02-24;polymorphism
 Week 8
 2017-02-27;polymorphism
@@ -44,23 +45,23 @@ Week 11
 2017-03-24;Spring Break - No Class
 Week 12
 2017-03-27;collections-algorithms
-2017-03-29;lambda-expressions
-2017-03-31;iterators
+2017-03-29;collections-algorithms
+2017-03-31;lambda-expressions
 Week 13
-2017-04-03;hashed-collections;[HW 5 Due 2017-04-04](spring2017/hw5/hw5-shopping.html)
-2017-04-05;javafx-events;HW 6 Released
-2017-04-07;javafx-guis
+2017-04-03;iterators;[HW 5 Due 2017-04-04](spring2017/hw5/hw5-shopping.html)
+2017-04-05;hashed-collections;[HW 6 Released 2017-04-06](spring2017/hw6/hw6-poker.html)
+2017-04-07;javafx-events
 Week 14
-2017-04-10;review3
+2017-04-10;javafx-guis
 2017-04-12;exam3
 2017-04-14;pq3
 Week 15
-2017-04-17;recursion
-2017-04-19;linked-lists
-2017-04-21;stacks-queues;HW 6 Due
+2017-04-17;javafx-guis
+2017-04-19;javafx-guis
+2017-04-21;recursion;[HW 6 Due 2017-04-21](spring2017/hw6/hw6-poker.html)
 Week 16
-2017-04-24;Special Topics
-2017-04-26;Special Topics
+2017-04-24;linked-lists
+2017-04-26;stacks-queues
 2017-04-28;C Section Final Exam: 14:50 - 17:40
 Week 17
 2017-05-01;B Section Final Exam: 14:50 - 17:40

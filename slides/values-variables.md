@@ -248,7 +248,7 @@ x += 2; // same as x = x + 2;
 - Pre- and post-increment and decrement:
 ```Java
 x++; // post-increment; same as x = x + 1;
-x--; // pre-decrement; same as x = x - 1;
+--x; // pre-decrement; same as x = x - 1;
 ```
 
 <!------------------------------- Slide -------------------------------------->
