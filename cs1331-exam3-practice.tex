@@ -1,0 +1,519 @@
+\documentclass[answers,addpoints,9pt]{exam}
+\usepackage{verbatim, multicol, tabularx,graphicx}
+\usepackage{amsmath,amsthm, amssymb, latexsym, listings}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=1mm,
+  belowskip=0mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=true
+}
+
+
+\title{CS 1331 Exam 3 Practice}
+\date{}
+\setcounter{page}{0}
+\begin{document}
+
+\maketitle
+\thispagestyle{head}
+\firstpageheader{}
+              {\tiny Copyright \textcopyright\ 2014 All rights reserved. Duplication and/or usage for purposes of any kind without permission is strictly forbidden.}
+              {}
+
+\runningheader{}
+              {\tiny Copyright \textcopyright\ 2014 All rights reserved. Duplication and/or usage for purposes of any kind without permission is strictly forbidden.}
+              {}
+\firstpagefooter{Page \thepage\ of \numpages}
+              {}
+              {Points available: \pointsonpage{ \thepage} -
+               points lost: \makebox[.5in]{\hrulefill} =
+               points earned:  \makebox[.5in]{\hrulefill}.
+              Graded by: \makebox[.75in]{\hrulefill}}
+
+\runningfooter{Page \thepage\ of \numpages}
+              {}
+              {Points available: \pointsonpage{ \thepage} -
+               points lost: \makebox[.5in]{\hrulefill} =
+               points earned:  \makebox[.5in]{\hrulefill}.
+              Graded by: \makebox[.75in]{\hrulefill}}
+
+\ifprintanswers
+\begin{center}
+{\LARGE ANSWER KEY}
+\end{center}
+\else
+\vspace{0.1in}
+\hbox to \textwidth{Name (print clearly): \enspace\hrulefill}
+\vspace{0.3in}
+\hbox to \textwidth{Signature: \hrulefill}
+
+\vspace{0.3in}
+\hbox to \textwidth{GT account username (gtg, gth, msmith3, etc): \enspace\hrulefill}
+
+\fi
+
+\vfill
+
+\begin{itemize}
+\item Signing signifies you are aware of and in accordance with the {\bf Academic Honor Code of Georgia Tech}.
+\item Calculators and cell phones are NOT allowed.
+\end{itemize}
+
+\section*{Note} This is an object-oriented programming test.  Java is the required language.  Java is case-sensitive.  DO NOT WRITE IN ALL CAPS.  A Java program in all caps will not compile.  Good variable names and style are required.  Comments are not required.
+
+\vfill
+
+
+% Points Table
+%\begin{center}
+\addpoints
+%\gradetable[h][pages]
+%\end{center}
+
+% Points Table
+\begin{center}
+\renewcommand{\arraystretch}{2}
+\begin{tabularx}{\textwidth}{|l|c|X|X|X|}
+        \hline
+Question & Points per Page & Points Lost & Points Earned & Graded By \\
+\hline
+Page 1 & \pointsonpage{1} & - & =  &\\
+\hline
+Page 2 & \pointsonpage{2} & - & =  &\\
+\hline
+Page 3 & \pointsonpage{3} & - & =  &\\
+\hline
+Page 4 & \pointsonpage{4} & - & =  &\\
+\hline
+Page 5 & \pointsonpage{5} & - & =  &\\
+\hline
+Page 6 & \pointsonpage{6} & - & =  &\\
+\hline
+TOTAL & \numpoints & - & =  & \\
+\hline
+\end{tabularx}
+\end{center}
+
+\newpage
+
+%\normalsize
+
+\pointsinmargin
+\bracketedpoints
+
+\marginpointname{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{questions}
+
+\question {\bf Multiple Choice} Circle the letter of the best answer.
+
+\begin{parts}
+
+\part[2] Given the following code:
+\begin{lstlisting}[language=Java]
+        ArrayList tasks = new ArrayList(10);
+        tasks.add("Eat");
+        tasks.add("Sleep");
+        tasks.add("Code");
+\end{lstlisting}
+
+How many more items can be added to {\tt tasks}?
+\begin{choices}
+\choice 0
+\choice 7
+\correctchoice as many as memory will allow, essentially unlimited
+\choice None of the above.
+\end{choices}
+
+\part[2] What is true about the following code:
+\begin{lstlisting}[language=Java]
+ArrayList<Integer> myInts = new ArrayList<Integer>();
+myInts.add(2);
+myInts.add(3);
+\end{lstlisting}
+
+\begin{choices}
+\choice It will not compile becuase no capacity was given in the {\tt ArrayList} constructor;
+\choice It will not compile because you can only add reference variables to collections.
+\correctchoice The {\tt int} arguments to {\tt add} will be auto-boxed to {\tt Integer}s.
+\choice None of the above.
+\end{choices}
+
+
+\part[2] After the following lines execute:
+
+\begin{lstlisting}[language=Java]
+  Map<String, String> capitals = new HashMap<>();
+  capitals.put("Georgia", "Atlanta");
+  capitals.put("Alabama", "Montgomery");
+  capitals.put("Florida", "Tallahassee");
+  capitals.put("Georgia", "Valdosta");
+\end{lstlisting}
+
+What would {\tt capitals.size()} return?
+
+\begin{choices}
+\correctchoice 3
+\choice 4
+\choice 8
+\end{choices}
+
+\part[2] After the following lines execute:
+
+\begin{lstlisting}[language=Java]
+  Map<String, String> capitals = new HashMap<>();
+  capitals.put("Georgia", "Atlanta");
+  capitals.put("Alabama", "Montgomery");
+  capitals.put("Florida", "Tallahassee");
+  capitals.put("Tennessee", "Atlanta")
+\end{lstlisting}
+
+What would {\tt capitals.size()} return?
+
+\begin{choices}
+\choice 3
+\correctchoice 4
+\choice 8
+\end{choices}
+
+\end{parts}
+
+\newpage
+
+\question {\bf Multiple Choice} Circle the letter of the best answer.
+
+\begin{parts}
+
+\part[2] Given the following classes and variable initializations:
+
+\begin{lstlisting}[language=Java]
+public class A implements Comparable<A> { ... }
+public class B extends A { ... }
+public class MyComparator implements Comparator<A> { ... }
+List<A> aList = ... ;
+List<B> bList = ... ;
+List<MyComparator> comparatorList = ... ;
+\end{lstlisting}
+
+and the signature of Collections.sort():
+
+\begin{lstlisting}[language=Java]
+public static <T extends Comparable<? super T>> void sort(List<T> list)
+\end{lstlisting}
+
+Which of the following lines will compile?
+
+\begin{choices}
+\choice {\tt Collections.sort(aList)}
+\choice {\tt Collections.sort(bList)}
+\choice {\tt Collections.sort(comparatorList)}
+\correctchoice A and B above
+\choice All of the above
+\end{choices}
+
+\part[2] Given the classes:
+
+\begin{verbatim}
+public interface Employee
+public class SalariedEmployee implements Employee
+public class HourlyEmployee implements Employee
+public class SummerIntern extends HourlyEmployee
+public class Company<T extends Employee>
+\end{verbatim}
+\vspace{.1in}
+
+Which of the following lines will {\bf not} compile?
+
+\begin{choices}
+\choice {\tt Company<SalariedEmployee> company = new Company<>();}
+\choice {\tt Company<HourlyEmployee> company = new Company<>();}
+\choice {\tt Company<SummerIntern> company = new Company<>();}
+\correctchoice All of the lines above will compile.
+\end{choices}
+
+
+\part[2] Consider the following class:
+
+\begin{lstlisting}[language=Java]
+public class MyCollection {
+    ...
+    public Iterator() iterator() { ... }
+}
+\end{lstlisting}
+
+What is true about the following code?
+
+\begin{lstlisting}[language=Java]
+MyCollection mc = new MyCollection();
+mc.add(...);
+...
+for (Object element: mc) {
+     ...
+}
+\end{lstlisting}
+
+\begin{choices}
+\choice It will compile and run without error.
+\choice It will compile but produce a runtime error.
+\correctchoice It will not compile.
+\end{choices}
+
+\end{parts}
+
+
+\newpage
+
+\question {\bf Multiple Choice} Circle the letter of the best answer. Assume {\tt Trooper} is defined as follows:
+\begin{lstlisting}[language=Java]
+public class Trooper {
+    private String name;
+    private boolean mustached;
+    public Trooper(String name, boolean hasMustache) {
+        this.name = name; this.mustached = hasMustache;
+    }
+    public String getName() { return name; }
+    public boolean hasMustache() { return mustached; }
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (null == other || !(other instanceof Trooper)) return false;
+        Trooper that = (Trooper) other;
+        return this.name.equals(that.name) && this.mustached == that.mustached;
+    }
+    public int hashCode() { return super.hashCode(); }
+}
+\end{lstlisting}
+And the following has been executed in the same scope as the code in the questions below:
+\begin{lstlisting}[language=Java]
+  ArrayList<Trooper> troopers = new ArrayList<>();
+  troopers.add(new Trooper("Farva", true));
+  troopers.add(new Trooper("Farva", true));
+  troopers.add(new Trooper("Rabbit", false));
+  troopers.add(new Trooper("Mac", true));
+\end{lstlisting}
+
+\begin{parts}
+
+\part[2] What would be the result of the statement   {\tt Collections.sort(troopers)}?
+
+\begin{choices}
+\correctchoice The code will not compile.
+\choice {\tt troopers} will be sorted in order by name.
+\choice {\tt troopers} will be sorted in order by mustache, then name.
+\choice {\tt troopers} will not have any duplicate elements.
+\end{choices}
+
+\part[2] After executing the statement {\tt Set<Trooper> trooperSet = new HashSet<>(troopers)}, what would be the value of {\tt trooperSet.contains(new Trooper("Mac", true))}?
+
+\begin{choices}
+\choice The code will not compile.
+\choice {\tt true}
+\correctchoice {\tt false}
+\choice {\tt void}
+\end{choices}
+
+\part[2] Given the definitions of {\tt troopers} and {\tt trooperSet} above, what would {\tt troopers.size()} return?
+
+\begin{choices}
+\choice {\tt true}
+\choice {\tt false}
+\choice 3
+\correctchoice 4
+\end{choices}
+
+\part[2] After the statement {\tt Set<String> stringSet = new HashSet<>(Arrays.asList("meow", "meow"))} executes, what would be the value of {\tt stringSet.size()}?
+
+\begin{choices}
+\choice {\tt true}
+\choice {\tt false}
+\correctchoice 1
+\choice 2
+\end{choices}
+
+
+
+\end{parts}
+
+\newpage
+
+\question {\bf Short Answer}
+\begin{parts}
+
+\part[5] Given the definition of {\tt Trooper} and the {\tt ArrayList<Trooper> troopers} in the previous question, write a {\bf single statement} that sorts {\tt troopers} by mustache, then name using {\tt Collections}'s\\ {\tt public static <T> void sort(List<T> list, Comparator<? super T> c)} method.  Assume that you have no helper objects to use.  All the comparison logic must be in this statement.
+
+\ifprintanswers
+\begin{lstlisting}[language=Java]
+        Collections.sort(troopers, new Comparator<Trooper>() {
+                public int compare(Trooper a, Trooper b) {
+                    if (a.hasMustache() && !b.hasMustache()) {
+                        return 1;
+                    } else if (b.hasMustache() && !a.hasMustache()) {
+                        return -1;
+                    } else {
+                        return a.getName().compareTo(b.getName());
+                    }
+                }
+            });
+\end{lstlisting}
+\else
+\vspace{2.5in}
+\fi
+
+\part[5] Write a single statement that assigns to a variable named {\tt byMustacheThenName} an object that implements {\tt Comparator<Trooper>} using the methods\\
+\begin{lstlisting}[language=Java]
+<U extends Comparable<? super U>> Comparator<T>
+        comparing(Function<? super T,? extends U> keyExtractor)
+
+<U extends Comparable<? super U>> Comparator<T>
+        thenComparing(Function<? super T,? extends U> keyExtractor)
+\end{lstlisting}
+from {\tt Comparator} and method references for {\tt Trooper}'s {\tt hasMustache()} and {\tt getName()} methods.
+
+\ifprintanswers
+\begin{lstlisting}[language=Java]
+Comparator<Trooper> byMustacheThenName = Comparator
+    .comparing(Trooper::hasMustache)
+    .thenComparing(Trooper::getName);
+\end{lstlisting}
+\else
+\vspace{2in}
+\fi
+
+
+
+
+
+\part[5] Following from the previous part, re-write the call to {\tt Collections}'s {\tt public static <T> void sort(List<T> list, Comparator<? super T> c)} from above using the helper object .
+
+\ifprintanswers
+\begin{lstlisting}[language=Java]
+Collections.sort(troopers, byMustacheThenName);
+\end{lstlisting}
+\else
+\vspace{1.5in}
+\fi
+
+
+\end{parts}
+
+\newpage
+
+\question {\bf Short Answer}
+\begin{parts}
+
+
+\part[5] Write a line of code that instantiates an {\tt ArrayList} object named {\tt labels} that can hold {\tt Label} elements (and only {\tt Label}s) with an initial capacity of 20 and does not produce any compiler errors or warnings. Assume necessary imports.
+
+\begin{solution}[.5in]
+\verb@ArrayList<Label> labels = new ArrayList<>(20);@
+\end{solution}
+
+\part[5] Continuing from the previous question, write a for-each loop that prints to the console the the text of each {\tt Label} in the {\tt labels} that is not disabled.  Assume {\tt Label} has {\tt String getText()} and {\tt boolean isDisabled()} methods.
+
+\begin{solution}[1.5in]
+\begin{verbatim}
+for (Label label: labels) {
+    if (!label.isDisabled()) {
+        System.out.println(label.getText());
+    }
+}
+\end{verbatim}
+\end{solution}
+
+
+\part[5] Write a stream pipeline that does the same thing as in the previous part above.
+
+\begin{solution}[1.5in]
+\begin{verbatim}
+labels.stream()
+    .filter(e -> !isDisabled())
+    .forEach(e -> System.out.println(e.getText()))
+\end{verbatim}
+\end{solution}
+
+
+
+\end{parts}
+
+\newpage
+
+\question[10] Fill in the {\tt hasNext()} and {\tt next()} methods in {\tt DynamicArrayIterator}.  If {\tt hasNext()} returns {\tt false}, a call to {\tt next()} should throw a {\tt NoSuchElementException}, which as a no-arg constructor.
+
+\begin{verbatim}
+import java.util.Arrays;
+import java.util.Iterator;
+
+public class DynamicArray<E> implements Iterable<E> {
+    private class DynamicArrayIterator implements Iterator<E> {
+        private int cursor = 0;
+
+        public boolean hasNext() {
+\end{verbatim}
+\ifprintanswers
+\begin{lstlisting}
+            return cursor <= lastIndex;
+\end{lstlisting}
+\else
+\vspace{.3in}
+\fi
+\begin{verbatim}
+        }
+
+        public E next() {
+\end{verbatim}
+\ifprintanswers
+\begin{lstlisting}
+            if (!hasNext()) { throw new NoSuchElementException(); }
+            E answer = get(cursor);
+            cursor++;
+            return answer;
+\end{lstlisting}
+\else
+\vspace{.4in}
+\fi
+\begin{verbatim}
+        }
+        public void remove() { throw new UnsupportedOperationException(); }
+    }
+
+    private Object[] elements;
+    private int lastIndex;
+
+    public DynamicArray() { this(10); }
+
+    public DynamicArray(int capacity) {
+        this.elements = new Object[capacity];
+        lastIndex = -1;
+    }
+    public Iterator<E> iterator() {
+        return new DynamicArrayIterator();
+    }
+    public void add(E item) {
+        if (lastIndex == elements.length - 1) {
+            int newCapacity = elements.length * 2;
+            elements = Arrays.copyOf(elements, newCapacity);
+        }
+        elements[++lastIndex] = item;
+    }
+    public E get(int index) {
+        if ((index < 0) || (index > lastIndex)) {
+            throw new IndexOutOfBoundsException(new Integer(index).toString());
+        }
+        return (E) elements[index];
+    }
+    public int size() { return lastIndex + 1; }
+}
+\end{verbatim}
+
+
+
+\end{questions}
+
+\end{document}
