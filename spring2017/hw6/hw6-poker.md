@@ -24,7 +24,7 @@ The creators of Poker are long gone and the game's rules are now a mystery. Pass
 
 ## Problem Description
 The logic of EXTREME Poker has already been coded and provided for you. **So you don't have to worry about the logic behind the game!!** Although knowing it might help with testing. You only need to write the code that creates the UI.
-Note that there are up to **50 possible bonus points** on this assignment.
+Note that there are up to **100 possible bonus points** on this assignment.
 
 ## Background
 The rules for EXTREME Poker are very similar to Texas Holdem and are as follows:
@@ -367,7 +367,6 @@ It also has a static variable of type Console which should be set to the current
 10. Finally, you can implement Console.java and fill anything else in that you didn't do earlier.
 
 ## Extra Credit Opportunities
-**Cap of 50 points extra credit**
 
 * **5 points** - add in a way to choose the amount of chips Players start with.
 * **5 points** - make the Card's suits have color
@@ -381,7 +380,7 @@ It also has a static variable of type Console which should be set to the current
     * Must add at least two new types of AI (two subclasses of AIPlayer) and have the AI Players be randomly assigned to one of the types.
     * Must document what the new types of AI do in comments and how they do it.
     * The two new types of AI must be intelligent i.e. they don't just bet or fold every time they have some decision making process.
-* **40 points** - add the ability to save your game to a file and reload it.
+* **50 points** - add the ability to save your game to a file and reload it.
     * Must add some visual way to save and load games.
 
 ## Compiling and Testing
