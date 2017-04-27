@@ -39,111 +39,111 @@
                       "Liang: Ch 2, 77-85"],
         "order": [6,7]
     },
-    "java-projects": {
-        "topic": "[Java Projects](slides/java-projects.html)",
-        "materials": [""],
-        "order": [8]
-    },
     "data-abstraction": {
         "topic": "[Data Abstraction](slides/data-abstraction.html)",
         "materials": ["Tutorial - [Classes](http://docs.oracle.com/javase/tutorial/java/javaOO/classes.html)",
                       "Liang: Ch 9",
                       "[Classes Example Code](https://github.com/cs1331/cs1331.github.io/tree/master/code/classes)]",
                       "Liang: Ch 9"],
-        "order": [9]
+        "order": [8]
     },
     "classes": {
         "topic": "[Classes](slides/classes.html)",
         "materials": ["Tutorial - [Classes](http://docs.oracle.com/javase/tutorial/java/javaOO/classes.html)",
                       "Liang: Ch 9",
                       "[Card Example](https://github.com/cs1331/card)"],
-        "order": [10,11]
+        "order": [9,10]
     },
     "review1": {
         "topic": "[Review 1](slides/review1.html)",
         "materials": ["[cs1331-exam1-practice.pdf](cs1331-exam1-practice.pdf)",
                       "[cs1331-exam1-practice-answers.pdf](cs1331-exam1-practice-answers.pdf)"],
-        "order": [12]
+        "order": [11]
     },
     "exam1": {
         "topic": "**Exam 1**",
         "materials": ["[cs1331-exam1-practice.pdf](cs1331-exam1-practice.pdf)",
                       "[cs1331-exam1-practice-answers.pdf](cs1331-exam1-practice-answers.pdf)"],
-        "order": [13]
+        "order": [12]
     },
     "pq1": {
         "topic": "**Programming Quiz 1**",
         "materials": [""],
-        "order": [14]
+        "order": [100]
     },
     "inheritance": {
         "topic": "[Inheritance](slides/inheritance.pdf)",
         "materials": ["Tutorial: [OOP Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html)", "Liang: Ch 10"],
-        "order": [15,16]
+        "order": [13,14]
     },
     "polymorphism": {
         "topic": "[Polymorphism](slides/polymorphism.pdf)",
         "materials": ["Tutorial: [Interfaces and Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/index.html)", "Liang: Ch 11, 13"],
-        "order": [17,18]
+        "order": [15,16]
     },
     "object-superclass": {
         "topic": "[The Object Superclass](slides/object-superclass.pdf)",
         "materials": ["Tutorial: [Interfaces and Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/index.html)",
                       "Tutorial: [Enum Types](http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)", "Liang: Ch 11, 13"],
-        "order": [19,20]
+        "order": [17,18]
     },
     "review2": {
         "topic": "[Review 2](slides/review2.pdf)",
         "materials": ["[cs1331-exam2-practice.pdf](cs1331-exam2-practice.pdf)",
                       "[cs1331-exam2-practice-answers.pdf](cs1331-exam2-practice-answers.pdf)"],
-        "order": [21]
+        "order": [19]
     },
     "exam2": {
         "topic": "**Exam 2**",
         "materials": ["[cs1331-exam2-practice.pdf](cs1331-exam2-practice.pdf)",
                       "[cs1331-exam2-practice-answers.pdf](cs1331-exam2-practice-answers.pdf)"],
-        "order": [22]
+        "order": [20]
     },
     "pq2": {
         "topic": "**Programming Quiz 2**",
         "materials": [""],
-        "order": [23]
+        "order": [100]
     },
     "exceptions": {
         "topic": "[Exceptions](slides/exceptions.pdf)",
         "materials": ["Tutorial: [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/)", "Liang: Ch 12"],
-        "order": [24,25]
+        "order": [21,22]
+    },
+    "java-projects": {
+        "topic": "[Java Projects](slides/java-projects.html)",
+        "materials": [""],
+        "order": [23]
     },
     "collections": {
         "topic": "[Collections](slides/collections.pdf)",
         "materials": ["Tutorial: [Introduction to Collections](http://docs.oracle.com/javase/tutorial/collections/intro/index.html)",
                       "Liang 19, 20, 21"],
-        "order": [26,27]
+        "order": [24,25]
     },
     "collections-algorithms": {
         "topic": "[Collections Algorithms](slides/collections-algorithms.pdf)",
         "materials": ["Tutorial: [Collections Algorithms](http://docs.oracle.com/javase/tutorial/collections/algorithms/index.html)",
                       "Liang 19, 20, 21"],
-        "order": [28,29]
+        "order": [26,27]
     },
     "lambda-expressions": {
         "topic": "[Lambda Expressions](slides/lambda-expressions.pdf)",
         "materials": ["Tutorial: [Lambda Expressions](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)",
                       "Tutorial: [Method References](http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html)",
                       "Liang 15"],
-        "order": [30]
+        "order": [28]
     },
     "iterators": {
         "topic": "[Iterators](slides/iterators.pdf)",
         "materials": ["Tutorial: [Collections Interface](https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html)",
                       "Liang 19, 20, 21"],
-        "order": [31]
+        "order": [29]
     },
     "hashed-collections": {
         "topic": "[Hashed Collections](slides/hashed-collections.pdf)",
         "materials": ["Tutorial: [Object as a Superclass](http://docs.oracle.com/javase/tutorial/java/IandI/objectclass.html)",
                       "Liang 21"],
-        "order": [32]
+        "order": [30]
     },
     "javafx-events": {
         "topic": "[JavaFX Events](slides/javafx-events.pdf)",
@@ -151,7 +151,7 @@
                       "Tutorial: [JavaFX UI Components](http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm)",
                       "Tutorial: [JavaFX Scene Graph](http://docs.oracle.com/javase/8/javafx/scene-graph-tutorial/scenegraph.htm)",
                       "Liang 14"],
-        "order": [33]
+        "order": [31]
     },
     "javafx-guis": {
         "topic": "[JavaFX GUIs](slides/javafx-guis.pdf)",
@@ -159,43 +159,48 @@
                       "Tutorial: [JavaFX UI Components](http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm)",
                       "Tutorial: [JavaFX Scene Graph](http://docs.oracle.com/javase/8/javafx/scene-graph-tutorial/scenegraph.htm)",
                       "Liang 14"],
-        "order": [34,35]
+        "order": [32,33]
     },
     "review3": {
         "topic": "[Review 3](slides/review3.pdf)",
         "materials": ["[cs1331-exam3-practice.pdf](cs1331-exam3-practice.pdf)",
                       "[cs1331-exam3-practice-answers.pdf](cs1331-exam3-practice-answers.pdf)"],
-        "order": [36]
+        "order": [34]
     },
     "exam3": {
         "topic": "**Exam 3**",
         "materials": ["[cs1331-exam3-practice.pdf](cs1331-exam3-practice.pdf)",
                       "[cs1331-exam3-practice-answers.pdf](cs1331-exam3-practice-answers.pdf)"],
-        "order": [37]
+        "order": [35]
     },
     "pq3": {
         "topic": "**Programming Quiz 3**",
         "materials": [""],
-        "order": [38]
+        "order": [100]
     },
     "algorithms": {
         "topic": "[Algorithms](slides/algorithms.pdf)",
         "materials": [""],
-        "order": [100]
+        "order": [36]
     },
     "recursion": {
         "topic": "[Recursion](slides/recursion.pdf)",
         "materials": [""],
-        "order": [39]
+        "order": [37]
     },
     "linked-lists": {
         "topic": "[Linked Lists](slides/linked-lists.pdf)",
         "materials": [""],
-        "order": [40]
+        "order": [38]
     },
     "stacks-queues": {
         "topic": "[Stacks and Queues](slides/stacks-queues.pdf)",
         "materials": [""],
-        "order": [41]
+        "order": [39]
+    },
+    "final-review": {
+        "topic": "Final Review",
+        "materials": ["[CS 1331 Final Exam Study Guide](cs1331-final-exam-study-guide.pdf)"],
+        "order": [39]
     }
 }

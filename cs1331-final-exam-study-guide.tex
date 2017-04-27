@@ -1,0 +1,988 @@
+\documentclass[addpoints,9pt]{exam}
+
+\usepackage{verbatim, multicol, tabularx,}
+\usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=1mm,
+  belowskip=0mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=true
+}
+
+\textwidth = 6.5 in
+\textheight = 9 in
+\oddsidemargin = 0.0 in
+\evensidemargin = 0.0 in
+\topmargin = -0.25 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\parskip = 0.0 in
+\parindent = 0.0 in
+
+
+
+\title{CS 1331 Final Exam}
+\date{Study Guide}
+\setcounter{page}{0}
+\begin{document}
+
+
+\def\a{& $\blacksquare\blacksquare\blacksquare$ & [ B ] & [ C ] & [ D ] \\}
+\def\b{& [ A ] & $\blacksquare\blacksquare\blacksquare$ & [ C ] & [ D ] \\}
+\def\c{& [ A ] & [ B ] & $\blacksquare\blacksquare\blacksquare$ & [ D ] \\}
+\def\d{& [ A ] & [ B ] & [ C ] & $\blacksquare\blacksquare\blacksquare$ \\}
+
+
+% \maketitle
+
+\begin{center}
+{\LARGE CS 1331 Final Exam}\\
+\vspace{.2in}
+{\large Study Guide}
+\end{center}
+
+\thispagestyle{head}
+
+
+\runningheader{}
+              {\tiny Copyright \textcopyright\ 2016 All rights reserved. Duplication and/or usage for purposes of any kind without permission is strictly forbidden.}
+              {}
+
+\footer{Page \thepage\ of \numpages}
+              {}
+              {Points available: \pointsonpage{\thepage} -
+               points lost: \makebox[.5in]{\hrulefill} =
+               points earned:  \makebox[.5in]{\hrulefill}.
+              Graded by: \makebox[.5in]{\hrulefill}}
+
+
+\ifprintanswers
+\begin{center}
+{\LARGE ANSWER KEY}
+\end{center}
+\else
+\fi
+
+\vfill
+
+% Points Table
+%\begin{center}
+\addpoints
+%\gradetable[v][pages]
+%\end{center}
+
+% Points Table
+Completely fill in the box corresponding to your answer choice for each question.
+
+\ifprintanswers
+\begin{multicols}{2}
+\begin{tabular}{lcccc}\\
+  1. \a
+  2. \a
+  3. \a
+  4. \a
+  5. \a
+  6. \a
+  7. \b
+  8. \b
+  9. \a
+  10. \a
+  11. \b
+  12. \b
+  13. \c
+  14. \b
+  15. \b
+  16. \a
+  17. \c
+  18. \b
+  19. \a
+  20. \a
+  21. \d
+  22. \a
+  23. \d
+  24. \a
+  25. \a
+\end{tabular}
+
+\columnbreak
+
+\begin{tabular}{lcccc}\\
+  26. \b
+  27. \a
+  28. \a
+  29. \a
+  30. \a
+  31. \a
+  32. \d
+  33. \a
+  34. \a
+  35. \c
+  36. \a
+  37. \b
+  %% 38. \a
+  %% 39. \a
+  %% 40. \a
+  %% 41. \a
+  %% 42. \a
+  %% 43. \a
+  %% 44. \a
+  %% 45. \a
+  %% 46. \a
+  %% 47. \a
+  %% 48. \a
+  %% 49. \a
+  %% 50. \a
+\end{tabular}
+
+\end{multicols}
+
+\else
+
+\begin{multicols}{2}
+
+\begin{tabular}{lcccc}\\
+  1. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  2. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  3. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  4. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  5. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  6. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  7. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  8. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  9. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  10. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  11. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  12. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  13. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  14. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  15. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  16. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  17. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  18. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  19. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  20. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  21. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  22. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  23. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  24. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  25. & [ A ] & [ B ] & [ C ] & [ D ] \\
+\end{tabular}
+
+\columnbreak
+
+\begin{tabular}{lcccc}\\
+  26. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  27 & [ A ] & [ B ] & [ C ] & [ D ] \\
+  28. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  29. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  30. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  31. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  32. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  33. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  34. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  35. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  36. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  37. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 38. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 39. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 40. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 41. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 42. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 43. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 44. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 45. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 46. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 47. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 48. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 49. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  %% 50. & [ A ] & [ B ] & [ C ] & [ D ] \\
+\end{tabular}
+
+
+\end{multicols}
+
+\fi
+
+\vspace{.2in}
+
+Number missed: \makebox[.5in]{\hrulefill} Final Score: \makebox[.5in]{\hrulefill}
+
+\newpage
+
+%\normalsize
+
+\pointsinmargin
+\bracketedpoints
+
+\marginpointname{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{questions}
+
+\begin{lstlisting}
+    public class Kitten {
+
+        private String name = "";
+
+        public Kitten(String name) {
+            name = name;
+        }
+
+        public String toString() {
+            return "Kitten: " + name;
+        }
+
+        public boolean equals(Object other) {
+            if (this == other) return true;
+            if (null == other) return false;
+            if (!(other instanceof Kitten)) return false;
+            Kitten that = (Kitten) other;
+            return this.name.equals(that.name);
+        }
+    }
+\end{lstlisting}
+Assume the following statements have been executed:
+\begin{lstlisting}
+        Object maggie = new Kitten("Maggie");
+        Object fiona = new Kitten("Fiona");
+        Object fiona2 = new Kitten("Fiona");
+\end{lstlisting}
+
+\question[3] What is the value of {\tt maggie}?
+
+\begin{choices}
+\correctchoice the address of a {\tt Kitten} object
+\choice null
+\choice automatically set to 0
+\choice undefined
+\end{choices}
+
+
+\question[3] What is printed on the console after the following statement is executed?
+
+\verb@ System.out.println(maggie.toString());@
+
+\begin{choices}
+\correctchoice Kitten:
+\choice Kitten: null
+\choice Kitten: Maggie
+\end{choices}
+
+\question[3] What is the value of the expression {\tt fiona.equals(fiona2)}?
+
+\begin{choices}
+\correctchoice true
+\choice false
+\end{choices}
+
+\question[3] What is the value of the expression {\tt fiona.equals(maggie)}?
+
+\begin{choices}
+\correctchoice true
+\choice false
+\end{choices}
+
+\question[3] After executing {\tt Kitten[] kittens = new Kitten[5];} , what is the value of {\tt kittens[0]} ?
+
+\begin{choices}
+\correctchoice null
+\choice the address of a {\tt Kitten} object
+\choice automatically set to 0
+\choice undefined
+\end{choices}
+
+\newpage
+
+\begin{lstlisting}[language=Java]
+public class Doberman {
+    private static int dobieCount = 0;
+    private String name;
+
+    public Doberman(String name) {
+        this.name = name;
+        dobieCount++;
+    }
+    public String reportDobieCount() {
+        return name + " says there are " + dobieCount + " dobies.";
+    }
+    public boolean equals(Doberman other) {
+        return this.name.equals(other.name);
+    }
+}
+\end{lstlisting}
+
+\question[3] If no {\tt Doberman} instances have been created, what is true about the following line from another class?
+\begin{lstlisting}[language=Java]
+        System.out.println("dobieCount: " + Doberman.dobieCount);
+\end{lstlisting}
+\begin{choices}
+\correctchoice It will not compile.
+\choice It will compile but will cause a {\tt ClassCastException} at run-time.
+\choice It will print ``dobieCount: 0''
+\end{choices}
+
+\question[3] What would be printed to the console after executing the following statements?
+\begin{lstlisting}[language=Java]
+        Doberman fido = new Doberman("Fido");
+        Doberman chloe = new Doberman("Chloe");
+        System.out.println(chloe.reportDobieCount());
+        Doberman prince = new Doberman("Prince");
+\end{lstlisting}
+
+\begin{choices}
+\choice Chloe says there are 1 dobies.
+\correctchoice Chloe says there are 2 dobies.
+\choice Chloe says there are 3 dobies.
+
+\end{choices}
+
+\question[3] What would be printed to the console after executing the following statements?
+\begin{lstlisting}[language=Java]
+        ArrayList daringDobermans = new ArrayList();
+        daringDobermans.add(new Doberman("Chloe"));
+        System.out.println(daringDobermans.contains(new Doberman("Chloe")));
+\end{lstlisting}
+
+\begin{choices}
+\choice {\tt true}
+\correctchoice {\tt false}
+\end{choices}
+
+\question[3] What would be printed to the console after executing the following statements?
+\begin{lstlisting}[language=Java]
+        ArrayList daringDobermans = new ArrayList();
+        Doberman chloe = new Doberman("Chloe");
+        daringDobermans.add(chloe);
+        System.out.println(daringDobermans.contains(chloe));
+\end{lstlisting}
+
+\begin{choices}
+\correctchoice {\tt true}
+\choice {\tt false}
+\end{choices}
+
+\question[3] Given {\tt Doberman chloe = new Doberman("Chloe")}, what would {\tt chloe.toString()} return?
+
+\begin{choices}
+\correctchoice Something like ``Doberman@deadbeef''
+\choice ``Chloe''
+\choice {\tt null}
+\end{choices}
+
+\newpage
+
+\begin{lstlisting}
+public class Super {
+    protected int x = 1;
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+public class Duper extends Super {
+    protected int y = 2;
+
+    public Duper(int n) { x += y + n; }
+
+    public String toString() { return new Integer(x).toString(); }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[numbers=left]
+public class Andes {
+    static int a = 0;
+    static boolean incA() { return ++a > 0; }
+
+    public static void main(String[] args) {
+        boolean b = Boolean.parseBoolean(args[0]);
+        System.out.println( b && incA() ? new Duper(a) : new Duper(a + 1));
+    }
+}
+\end{lstlisting}
+
+\question[3] What is printed when {\tt java Andes true} is executed on the command line?
+
+\begin{choices}
+\choice 3
+\correctchoice 4
+\choice 5
+\end{choices}
+
+\question[3] What is printed when {\tt java Andes false} is executed on the command line?
+
+\begin{choices}
+\choice 3
+\correctchoice 4
+\choice 5
+\end{choices}
+
+
+\vspace{.1in}
+\hspace{-.5in}For the next two questions, change line 3 in {\tt Andes.java} to
+\begin{lstlisting}
+    static boolean incA() { return a++ > 0; }
+\end{lstlisting}
+\vspace{.1in}
+
+\question[3] What is printed when {\tt java Andes true} is executed on the command line?
+
+\begin{choices}
+\choice 3
+\choice 4
+\correctchoice 5
+\end{choices}
+
+\question[3] What is printed when {\tt java Andes false} is executed on the command line?
+
+\begin{choices}
+\choice 3
+\correctchoice 4
+\choice 5
+\end{choices}
+
+\question[3] Will the expression {\tt new Duper()} compile?
+
+\begin{choices}
+\choice Yes
+\correctchoice No
+\end{choices}
+
+\newpage
+
+Assume {\tt Trooper} is defined as follows:
+\begin{lstlisting}[language=Java]
+public class Trooper {
+    private String name;
+    private boolean mustached;
+    public Trooper(String name, boolean hasMustache) {
+        this.name = name; this.mustached = hasMustache;
+    }
+    public String getName() { return name; }
+    public boolean hasMustache() { return mustached; }
+
+    public boolean equals(Trooper other) {
+        if (this == other) return true;
+        if (null == other || !(other instanceof Trooper)) return false;
+        Trooper that = (Trooper) other;
+        return this.name.equals(that.name) && this.mustached == that.mustached;
+    }
+    public int hashCode() { return 1; }
+}
+\end{lstlisting}
+And the following has been executed in the same scope as the code in the questions below:
+\begin{lstlisting}[language=Java]
+  ArrayList<Trooper> troopers = new ArrayList<>();
+  troopers.add(new Trooper("Farva", true));
+  troopers.add(new Trooper("Farva", true));
+  troopers.add(new Trooper("Rabbit", false));
+  troopers.add(new Trooper("Mac", true));
+\end{lstlisting}
+
+
+
+\question[3] What would be the result of the statement   {\tt Collections.sort(troopers)}?
+
+\begin{choices}
+\correctchoice The code will not compile.
+\choice {\tt troopers} will be sorted in order by name.
+\choice {\tt troopers} will be sorted in order by mustache, then name.
+\choice {\tt troopers} will not have any duplicate elements.
+\end{choices}
+
+\question[3] After executing the statement {\tt Set<Trooper> trooperSet = new HashSet<>(troopers)}, what would be the value of {\tt trooperSet.contains(new Trooper("Mac", true))}?
+
+\begin{choices}
+\choice The code will not compile.
+\choice {\tt true}
+\correctchoice {\tt false}
+\choice {\tt void}
+\end{choices}
+
+\question[3] Given the definitions of {\tt troopers} and {\tt trooperSet} above, what would {\tt trooperSet.size()} return?
+
+\begin{choices}
+
+\choice 3
+\correctchoice 4
+\end{choices}
+
+\question[3] After the statement {\tt Set<String> stringSet = new HashSet<>(Arrays.asList("meow", "meow"))} executes, what would be the value of {\tt stringSet.size()}?
+
+\begin{choices}
+\correctchoice 1
+\choice 2
+\end{choices}
+
+\question[3] What would {\tt new Trooper("Ursula", false).equals(new Trooper("Ursula", false)))} return?
+
+\begin{choices}
+\correctchoice {\tt true}
+\choice {\tt false}
+\end{choices}
+
+
+
+
+\newpage
+
+
+
+
+
+Given the following class definitions:
+\begin{lstlisting}
+public abstract class Animal {
+    public abstract void speak();
+    public int legs() { return 4; }
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+public class Mammal extends Animal {
+    public void speak() { System.out.println("Hello!"); }
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+public class Canine extends Mammal {
+    public void speak() { System.out.println("Grr!"); }
+}
+\end{lstlisting}
+
+
+\begin{lstlisting}
+public class Dog extends Canine {
+    public void speak(String to) { System.out.println("Woof, " + to); }
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+public class Cat extends Mammal {
+    public void speak() { System.out.println("Meow!"); }
+}
+\end{lstlisting}
+
+\question[3] Say we write a subclass of {\tt Mammal} named {\tt Kangaroo} in which we want to override the {\tt legs} method.  Which of the following methods overrides {\tt legs}?
+\begin{choices}
+\choice  {\tt public void legs() \{ System.out.println(2); \}}
+\choice  {\tt public Object legs() \{ return new Integer(2); \}}
+\choice  {\tt public double legs() \{ return 2; \}}
+\correctchoice None of the above.
+\end{choices}
+
+\question[3] Which of the following is an invocation of the method {\tt public void pet(Canine c)}?
+\begin{choices}
+\correctchoice {\tt pet(new Dog())}
+\choice {\tt pet(new Cat())}
+\choice {\tt pet(new Mammal())}
+\choice {\tt pet(new Animal())}
+\end{choices}
+
+
+\question[3] Assuming {\tt Mammal fido = new Dog();} has been executed, what does {\tt fido.speak()} print?
+\begin{choices}
+\choice  Hello!
+\choice  Woof! Woof!
+\choice  Meow!
+\correctchoice None of the above.
+\end{choices}
+
+\question[3] Assuming {\tt Mammal fido = new Dog();} has been executed, what does {\tt ((Mammal) fido).speak()} print?
+\vspace{-.05in}
+\begin{choices}
+\correctchoice Grr!
+\choice  Hello!
+\choice  Woof! Woof!
+\choice  Meow!
+\end{choices}
+
+\question[3] Assuming the statement {\tt Mammal sparky = new Mammal();} has been executed, which of the following statements will compile but cause a {\tt ClassCastException} at run-time?
+\begin{choices}
+\correctchoice  Dog fido = (Dog) sparky;
+\choice Mammal fido = new Dog();
+\choice Dog fido2 = (Dog) new Dog();
+\choice Cat c = new Dog()
+\end{choices}
+
+
+
+
+\newpage
+
+Given the following classes, which have no-arg constructors:
+
+\begin{lstlisting}[language=Java]
+public class A extends Throwable { ... }
+public class B extends A { ... }
+public class C extends RuntimeException { ... }
+\end{lstlisting}
+
+\question[3] Which of the following will {\bf not} compile?
+
+\begin{choices}
+\choice
+\begin{lstlisting}[language=Java]
+    A foo(B b) throws C {
+        if (true) throw new C();
+        return new B();
+    }
+\end{lstlisting}
+
+\correctchoice
+\begin{lstlisting}[language=Java]
+    A baz(B b) throws B {
+        if (true) throw new A();
+        return new B();
+    }
+\end{lstlisting}
+
+\end{choices}
+
+\question[3] Which of the following will {\bf not} compile?
+
+\begin{choices}
+\correctchoice
+\begin{lstlisting}[language=Java]
+    A foo(B b) throws C {
+        if (true) throw new B();
+        return new B();
+    }
+\end{lstlisting}
+
+\choice
+\begin{lstlisting}[language=Java]
+    A bar(B b) throws C {
+        if (true) throw new RuntimeException("c");
+        return new B("c");
+    }
+\end{lstlisting}
+
+\choice
+\begin{lstlisting}[language=Java]
+    A baz(B b) throws A {
+        if (true) throw new A("a");
+        return new B("c");
+    }
+\end{lstlisting}
+\end{choices}
+
+\question[3] Given the method signature {\tt A bar(B q) throws C}, will this code
+ compile?
+\begin{lstlisting}[language=Java]
+A m() throws C {
+    return bar(new B());
+}
+\end{lstlisting}
+
+\begin{choices}
+\correctchoice Yes
+\choice No
+\end{choices}
+
+\question[3] Given the method signature {\tt A bar(B q) throws B}, which of the following will {\bf not} compile?
+
+\begin{choices}
+\correctchoice
+\begin{lstlisting}[language=Java]
+A m() throws C {
+    return bar(new B());
+}
+\end{lstlisting}
+
+\choice
+\begin{lstlisting}[language=Java]
+A m() throws Throwable {
+    return bar(new B());
+}
+\end{lstlisting}
+
+\choice All of the above will compile.
+\end{choices}
+
+\question[3] What is the highest superclass of all exceptions?
+
+\begin{choices}
+\correctchoice {\tt java.lang.Object}
+\choice {\tt java.lang.Throwable}
+\choice {\tt java.lang.Exception}
+\end{choices}
+
+
+
+\newpage
+
+
+Given the following definitions:
+
+\small
+
+\begin{lstlisting}[language=Java]
+public interface Predicate<T> {
+    boolean test(T t);
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java]
+    static <E> E find(List<E> es, Predicate<E> p) {
+        for (E e: es) if (p.test(e)) return e;
+        return null;
+    }
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java]
+public interface Function<T, R> {
+    R apply(T t);
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java]
+    static <E, R> List<R> map(List<E> es, Function<E, R> f) {
+        List<R> result = new ArrayList<>();
+        for (E e: es) result.add(f.apply(e));
+        return result;
+    }
+\end{lstlisting}
+
+and the list:
+\begin{lstlisting}[language=Java]
+List<String> words = Arrays.asList("Welcome", "To", "Java", "8");
+\end{lstlisting}
+
+\normalsize
+
+\question[3] Which of the following expressions would return the first word in {\tt words} that starts with an upper case character?
+
+\begin{choices}
+\correctchoice {\tt find(words, s -> Character.isUpperCase(s.charAt(0)))}
+\choice {\tt find(map(words, String::split), a -> a[0].isUpperCase())}
+\choice {\tt find(words, s -> s.toUpperCase())}
+\choice All of the above.
+\end{choices}
+
+\question[3] Which of the following expressions would return a list of the lengths of the words in {\tt words}?
+
+\begin{choices}
+\choice {\tt map(words, (String s) -> s.length())}
+\choice {\tt map(words, String::length)}
+\choice {\tt map(map(words, s -> s.split("")), a -> a.length)}
+\correctchoice All of the above.
+\end{choices}
+
+%% \question[3] What is the type of the following lambda expression?
+
+%% \begin{lstlisting}[language=Java]
+%% (String s) -> {System.out.println(s);}
+%% \end{lstlisting}
+
+%% \begin{choices}
+%% \choice {\tt Function<String>}
+%% \choice {\tt Consumer<String>}
+%% \choice {\tt Predicate<String>}
+%% \correctchoice The answer cannot be determined from the information given.
+%% \end{choices}
+
+\question[3] Is {\tt Comparable<T>} a functional interface?
+
+\begin{choices}
+\correctchoice Yes
+\choice No
+\end{choices}
+
+
+%% \question[3] The time complexity of finding an element in a singly-linked list with only a reference to the first node is \makebox[.25in]{\hrulefill}.
+%% \begin{choices}
+%% \choice $O(1)$
+%% \choice $O(\log n)$
+%% \correctchoice $O(n)$
+%% \choice $O(n^2)$
+%% \choice $O(2^n)$
+%% \end{choices}
+
+%% \question[3] The time complexity of adding an element to the front of a singly-linked list with only a reference to the first node is \makebox[.25in]{\hrulefill}.
+%% \begin{choices}
+%% \correctchoice $O(1)$
+%% \choice $O(\log n)$
+%% \choice $O(n)$
+%% \choice $O(n^2)$
+%% \choice $O(2^n)$
+%% \end{choices}
+
+%% \question[3] A stack is a \makebox[.25in]{\hrulefill} data structure.
+
+%% \begin{choices}
+%% \correctchoice LIFO
+%% \choice LIPO
+%% \choice FIFO
+%% \choice FIDO
+%% \end{choices}
+
+%% \question[3] A queue is a \makebox[.25in]{\hrulefill} data structure.
+
+%% \begin{choices}
+%% \choice LIFO
+%% \choice LIPO
+%% \correctchoice FIFO
+%% \choice FIDO
+%% \end{choices}
+
+%% \question[3] What is true about this code?
+
+%% \begin{lstlisting}
+%%     public static int fac(int n) {
+%%         return n * fac(n + 1);
+%%     }
+%%     // ...
+%%     int fac5 = fac(5);
+%% \end{lstlisting}
+
+%% \begin{choices}
+%% \choice Compiles and runs without errors or exceptions.
+%% \correctchoice Compiles but program terminates with an error or exception.
+%% \end{choices}
+
+\newpage
+
+\question[3] What is true about this code?
+
+\begin{lstlisting}
+    public static int fac(int n) {
+        if (n >= 1) return 1;
+        else return n * fac(n + 1);
+    }
+    // ...
+        int fac5 = fac(5);
+\end{lstlisting}
+
+\begin{choices}
+\correctchoice Compiles and runs without errors or exceptions.
+\choice Compiles but program terminates with an error or exception.
+\end{choices}
+
+%% \question[3] Given the following recursive method:
+%% \begin{lstlisting}[language=Java]
+%%     private static int bs(int[] array, int queryValue, int lo, int hi) {
+%%         if (lo > hi) return -1;
+%%         int middle = (lo + hi)/2;
+%%         if (queryValue == array[middle]) return middle;
+%%         else if (queryValue < array[middle]) {
+%%             return bs(array, queryValue, middle + 1, hi);
+%%         } else {
+%%             return bs(array, queryValue, lo, middle - 1);
+%%         }
+%%     }
+%% \end{lstlisting}
+%% and an array defined as {\tt int[] a = \{1,2,3,4,5,6,7,8\}}, what would be returned by the call {\tt bs(a, 5, 0, a.length - 1)}? {\bf Examine the code carefully.}
+
+%% \begin{choices}
+%% \correctchoice -1
+%% \choice 4
+%% \choice 5
+%% \end{choices}
+
+%% \question[3] What is the worst-case time complexity (Big-O) of the following method?
+%% \begin{lstlisting}[language=Java]
+%% public int f(int n) {
+%%     int s = 0;
+%%     for (int i = 0; i < n; i++)
+%%         for (int j = 0; j < i; j++)
+%%             for (int k = 0; k < j; k++)
+%%             s += k;
+%%     return s;
+%% }
+%% \end{lstlisting}
+
+%% \begin{choices}
+%% \choice $O(\lg n)$
+%% \choice $O(n)$
+%% \choice $O(n^2)$
+%% \correctchoice $O(n^3)$
+%% \end{choices}
+
+%% \question[3] Meow!
+
+%% \begin{choices}
+%%   \correctchoice True
+%% \end{choices}
+
+\vspace{.1in}
+
+\begin{lstlisting}[language=Java]
+    public static int f(int n) {
+        if (n < 0) throw new IllegalArgumentException("n < 0");
+        if (n <= 1) {
+            return n;
+        } else {
+            return f(n - 1) + f(n - 2);
+        }
+    }
+\end{lstlisting}
+
+\question[3] Given the method {\tt f} above, what is {\tt f(5)}?
+
+\begin{choices}
+\choice 0
+\choice 4
+\correctchoice 5
+\choice 120
+\end{choices}
+
+%% \question[3] Given the method {\tt f} above, what is {\tt f(4)}?
+
+%% \begin{choices}
+%% \choice 0
+%% \correctchoice 3
+%% \choice 4
+%% \choice 24
+%% \end{choices}
+
+\vspace{.2in}
+
+\begin{lstlisting}[language=Java]
+public class ArrayListQueue<E> {
+    private ArrayList<E> elems = new ArrayList<>();
+    public void enqueue(E item) {
+        ???
+    }
+    public E dequeue() {
+        ???
+    }
+    public boolean isEmpty() {
+        return elems.isEmpty();
+    }
+}
+\end{lstlisting}
+
+\question[3] Given the partial {\tt ArrayListQueue} implementation above, which of the following statements for line 5 would implement {\tt enqueue} in $O(1)$ time?  Do not consider any particular implementation for {\tt dequeue}.
+
+\begin{choices}
+\correctchoice {\tt elems.add(item);}
+\choice {\tt elems.add(0, item);}
+\choice {\tt return elems.remove(elems.size() - 1);}
+\end{choices}
+
+\question[3] Given the partial {\tt ArrayListQueue} implementation above, which of the following statements for line 5 would implement {\tt enqueue} in $O(n)$ time? Do not consider any particular implementation for {\tt dequeue}.
+
+\begin{choices}
+\choice {\tt elems.add(item);}
+\correctchoice {\tt elems.add(0, item);}
+\choice {\tt return elems.remove(elems.size() - 1);}
+\end{choices}
+
+%% \question[3] Which data structure would you use in an algorithm that tests a string for balanced parentheses of many kinds, e.g., {\tt (), {}, []}?
+
+%% \begin{choices}
+%% \choice list
+%% \correctchoice stack
+%% \choice queue
+%% \end{choices}
+
+
+\end{questions}
+
+\end{document}
