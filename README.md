@@ -8,7 +8,69 @@ To run this site locally you'll need to follow [GitHub's instructions](https://h
 sudo apt-get install ruby-dev zlib1g-dev liblzma-dev
 ```
 
-# Slides
+## Generating the Schedule
+
+I use my own [course tools](https://github.com/csimpkins/course-tools) to generate the schedule each semester. At the beginning of the semester, create a file containing the breaks. For example, `summer2017-breaks.json` (note that all dates are in [ISO 8601](https://xkcd.com/1179/) format):
+
+```js
+{
+    "2017-05-29": "Memorial Day",
+    "2017-07-03": "Independence Day Break",
+    "2017-07-04": "Independence Day Break"
+}
+```
+
+Then run `make_schedule.py` to generate a starter schedule like this:
+
+```sh
+make_schedule.py -f 2017-05-15 -l 2017-07-25 -d TR -b summer2017-breaks.json -c cs1331.json -o cs1331.summer2017
+```
+
+This will create a file named `cs1331.summer2017` with contents like:
+
+```
+Week 1
+2017-05-16;intro-cs1331
+2017-05-18;intro-java
+Week 2
+2017-05-23;values-variables
+2017-05-25;programs-methods
+```
+
+You'll need to customize this file, especially for summer semesters. For the rest of the semester, you'll update the schedule by modifying this file and running `render_schedule.py` like this:
+
+```sh
+render_schedule.py -s cs1331.summer2017 -c cs1331.json -t summer2017.html.jinja2 -o summer2017.html
+```
+
+Which creates the `summer2017.html` file. (Remember to update the redirect in [`schedule.html`](schedule.html) to point to the new file at the beginning of the semester.)
+
+If you wish, you can use a custom course materials file instead of [`cs1331.json`](cs1331.json).
+
+### Adding Materials and Reminders
+
+To add materials, edit the schedule file, e.g., [`cs1331.summer2017`](blob/master/cs1331.summer2017) and add text to the third field. For example (note that fields are separated with semicolons, items within fields are separated with commas):
+
+```
+Week 1
+2017-05-16;intro-cs1331,intro-java, values-variables;Grades and HW Submissions on T-Square
+2017-05-18;control-structures, programs-methods
+```
+
+To add reminders, such as homework links, add text to the fourth field. Note that if the third field is empty, you'll have what appears to be an extra `;`. For example (note the line for 2017-05-23):
+
+```
+Week 1
+2017-05-16;intro-cs1331,intro-java, values-variables;Grades and HW Submissions on T-Square;[HW0 Assigned](summer2017/hw0/hw0.html)
+2017-05-18;control-structures, programs-methods
+Week 2
+2017-05-23;arrays;;[HW0 Due](summer2017/hw0/hw0.html)
+2017-05-25;data-abstraction, classes
+```
+
+Be sure to commit any changes to the schedule file, schedule template, and schedule to the repo.
+
+## Slides
 
 Some slides are HTML Reveal.js slides produced from Markdown sources. Source files use a `.md` ending. We use [Pandoc](http://pandoc.org/) to  [produce the slides](http://pandoc.org/README.html#producing-slide-shows-with-pandoc)
 
