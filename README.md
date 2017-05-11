@@ -61,12 +61,14 @@ To add reminders, such as homework links, add text to the fourth field. Note tha
 
 ```
 Week 1
-2017-05-16;intro-cs1331,intro-java, values-variables;Grades and HW Submissions on T-Square;[HW0 Assigned](summer2017/hw0/hw0.html)
+2017-05-16;intro-cs1331,intro-java, values-variables; [T-Square Site](https://t-square.gatech.edu/portal/site/gtc-b435-1ace-5039-bb99-451228e2b767);[HW0 Assigned](summer2017/hw0/hw0.html)
 2017-05-18;control-structures, programs-methods
 Week 2
 2017-05-23;arrays;;[HW0 Due](summer2017/hw0/hw0.html)
 2017-05-25;data-abstraction, classes
 ```
+
+Note that links using the Markdown `[link text](link target)` syntax are rendered as links.
 
 Be sure to commit any changes to the schedule file, schedule template, and schedule to the repo.
 
