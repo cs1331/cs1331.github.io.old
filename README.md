@@ -2,11 +2,15 @@
 
 This repository contains the [Jekyll](http://jekyllrb.com/) source of the public web site for [Chris Simpkins](https://github.com/csimpkins)'s sections of CS 1331 at Georgia Tech.
 
-To run this site locally you'll need to follow [GitHub's instructions](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/), which is basically means installing ruby-bundler on your system since the Gemfile is already in this repository. Since some of the gems used by GitHub pages depend on nativce extensions you'll need to install several things on your system. On Ubuntu:
+## Running the Site locally
 
+I used to include GitHub's Gemfile so that we could run the site locally using [GitHub's instructions](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/), but GitHub insists on using that awful piece of garbage Nokogiri which means you'll need to lose hours of your life randomly every few months solving installation problems. I'm not a Ruby dev expert and I don't want to become one just so I can run GitHub Pages locally. So I removed GitHub's Gemfile and you can just run the site locally like you would any other Jekyll site:
+
+```sh
+jekyll serve
 ```
-sudo apt-get install ruby-dev zlib1g-dev liblzma-dev
-```
+
+And visit [http://localhost:4000](http://localhost:4000) in your browser. Some minor Markdown rendering details may differ from GitHub when running locally.
 
 ## Generating the Schedule
 
