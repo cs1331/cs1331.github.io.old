@@ -49,11 +49,11 @@ If you wish, you can use a custom course materials file instead of [`cs1331.json
 
 ### Adding Materials and Reminders
 
-To add materials, edit the schedule file, e.g., [`cs1331.summer2017`](blob/master/cs1331.summer2017) and add text to the third field. For example (note that fields are separated with semicolons, items within fields are separated with commas):
+To add materials, edit the schedule file, e.g., [`cs1331.summer2017`](cs1331.summer2017) and add text to the third field. For example (note that fields are separated with semicolons, items within fields are separated with commas):
 
 ```
 Week 1
-2017-05-16;intro-cs1331,intro-java, values-variables;Grades and HW Submissions on T-Square
+2017-05-16;intro-cs1331,intro-java, values-variables;[T-Square Site](https://t-square.gatech.edu/portal/site/gtc-b435-1ace-5039-bb99-451228e2b767)
 2017-05-18;control-structures, programs-methods
 ```
 
@@ -68,7 +68,7 @@ Week 2
 2017-05-25;data-abstraction, classes
 ```
 
-Note that links using the Markdown `[link text](link target)` syntax are rendered as links.
+Note you can make links using the Markdown `[link text](link target)` syntax.
 
 Be sure to commit any changes to the schedule file, schedule template, and schedule to the repo.
 
