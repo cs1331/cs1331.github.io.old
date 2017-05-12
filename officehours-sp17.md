@@ -14,4 +14,4 @@ Any time my office door is open, feel free to walk in. Email me if you need to s
 
 ## TA Office Hours, CoC 107
 
-<iframe style="width: 1100px; height: 1200px;" src="https://docs.google.com/spreadsheets/d/12jLV7xLOMQxPFNyOI6eASwA2T_2zNIoHCnacPTq_YmI/edit?usp=sharing;single=true&amp;widget=true&amp;headers=false"></iframe>
+<iframe style="width: 1100px; height: 1200px;" src=";single=true&amp;widget=true&amp;headers=false"></iframe>
