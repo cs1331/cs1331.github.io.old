@@ -50,7 +50,7 @@ We expect academic honor and integrity from students. Please study and follow th
 
 #### Due Dates, Late Work, and Missed Work
 
-* Programming assignments are submitted via T-Square. Programming quizzes are due by the end of class. Homework assignments are due at 23:59 on the due date. Multiple resubmissions are allowed, so submit early and often so you aren't in a rush on the due date. Late submissions receive a 0.
+* Programming assignments are submitted via T-Square. Programming quizzes are due by the end of class. Homework assignments are due at 23:55 on the due date. Multiple resubmissions are allowed, so submit early and often so you aren't in a rush on the due date. Late submissions receive a 0.
 
 * There are no makeup exams. Exceptions are only considered under special circumstances such as serious illness, hospitalization, death in the family, judicial procedures, military service, or official school functions. Provide us with a copy of your letter from the registrar in advance for official school functions. For other excused absences you must provide documentation to the Dean of Students **within one week of your return from illness/activity**. The Dean of Students will verifiy your excuse and send us a notice. Excusal from coursework or make-up opportunities are granted at the sole discretion of your instructor.
 
