@@ -5,9 +5,11 @@ title: CS 1331 - Office Hours
 
 # Office Hours
 
-## Professor McDaniel's Office Hours
+## Professor McDaniel's Office Hours located in CoC 135
 
--TBD
+-Wednesdays 11:00 - 12:00
+-Tuesdays and Thursdays 14:30 - 15:00
+-Other times by appt.
 
 ## TA Office Hours, CoC 107
 
