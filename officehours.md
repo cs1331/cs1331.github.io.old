@@ -22,9 +22,13 @@ This schedule is subject to change so be sure to double check this page before c
 ### TA Contact Information
 
 Heather: hschirra@gatech.edu
+
 Mark: mclayton@gatech.edu
+
 Leo: lchen396@gatech.edu
+
 Shyamal: spatel475@gatech.edu
+
 Yash: ysingh31@gatech.edu
 
 
