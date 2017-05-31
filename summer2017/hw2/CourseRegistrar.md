@@ -5,6 +5,8 @@ title: Homework 2
 
 # CS1331 Homework 02 - Course Registrar
 
+[HW2 Files](hw2.zip)
+
 ## Introduction
 
 This assignment will have you working with arrays, classes, getters, setters, and enums.
@@ -129,6 +131,7 @@ You should not import any libraries or packages that trivialize the assignment. 
 - This assignment has many methods that are dependent on one another. It may help to test them individually, rather than all at once at the end.
 
 ## Compiling and Testing Your Code
+
 To compile your code, you need to go to the root directory (the folder hw2) and run `javac registration/*.java utils/*.java`.
 
 If you wish to test your code by creating a new java file put the test file in the root directory (hw2) and at the top of the test file (above the `public class ...`) include the lines following lines:
