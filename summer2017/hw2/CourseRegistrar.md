@@ -127,6 +127,7 @@ You should not import any libraries or packages that trivialize the assignment. 
 - You may assume that we will not pass in null Objects into to your methods. However, make sure you are not internally passing in any such null objects!
 - You may also assume that arguments will be valid, unless specifically otherwise specified in the instructions.
 - This assignment has many methods that are dependent on one another. It may help to test them individually, rather than all at once at the end.
+
 ## Compiling and Testing Your Code
 To compile your code, you need to go to the root directory (the folder hw2) and run `javac registration/*.java utils/*.java`.
 
