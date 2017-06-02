@@ -6,6 +6,7 @@ title: Homework 2
 # CS1331 Homework 02 - Course Registrar
 
 [HW2 Files](hw2.zip)
+
 [Tester](Test.java)
 
 ## Introduction
