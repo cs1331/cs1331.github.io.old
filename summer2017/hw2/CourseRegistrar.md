@@ -6,6 +6,7 @@ title: Homework 2
 # CS1331 Homework 02 - Course Registrar
 
 [HW2 Files](hw2.zip)
+[Tester](Test.java)
 
 ## Introduction
 
@@ -88,7 +89,7 @@ Additionally the class should contain the following methods:
 * `public Course[] getWaitlists[]`: A getter method for waitlists
 * `public boolean availableAt(LectureTime time)`: Takes in a LectureTime and returns `true` if the student does not have a class (both waitlisted and those he's successfully taking) at the same time as LectureTime, and `false` if they do.
 * `protected void register(Course course)`: Adds `course` to `courses`. Note that if `courses` is full, then the size of `courses` should be doubled and `course` should then be added.
-* `protected boolean waitlist(Course course)`: Returns false if the student is waitlisted for five or more courses, and true otherwise. If the student is registered for fewer than 5 courses,  the method adds `course` to `waitlists`. (In our registration system, we do not allow a student to be waitlisted for more than five courses.)
+* `protected boolean waitlist(Course course)`: Returns false if the student is waitlisted for five or more courses, and true otherwise. If the student is waitlisted for fewer than 5 courses,  the method adds `course` to `waitlists`. (In our registration system, we do not allow a student to be waitlisted for more than five courses.)
 * `public boolean registeredForCourse(Course course)`: Returns true if the student is either taking or waitlisted for a a course and false otherwise.
 * `public String toString()`: toString method for the Student class. Should return the name of the student.
 * `public boolean signUp(Course course)`: Calls and returns `course.addStudent(this)`. (If addStudent is implemented correctly, it should returns whether the student was successfully registered for the class). This method is provided for you, and should not be modified.
@@ -133,6 +134,8 @@ You should not import any libraries or packages that trivialize the assignment. 
 ## Compiling and Testing Your Code
 
 To compile your code, you need to go to the root directory (the folder hw2) and run `javac registration/*.java utils/*.java`.
+
+We have provided a tester file for hw2. To run the tests, move the [Test.java](Test.java) into the hw2 directory. To compile, open you command prompt and ensure that you are in the root directoy (the hw2 folder). Then, use the command javac registration/*.java utils/*.java *.java to compile your code. To run you code simply use the java Test command. Also, note that passing these test cases will not guarantee that you will get an 100 or not lose any points on the assignment. While this file should help you debug your code, we highly encourage you to look through your own code and do some of your owns tests to ensure it's bug free.
 
 If you wish to test your code by creating a new java file put the test file in the root directory (hw2) and at the top of the test file (above the `public class ...`) include the lines following lines:
 
