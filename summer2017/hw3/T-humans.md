@@ -56,7 +56,7 @@ This class should have the following methods:
 - `public double getAvgGPA()`: returns avgGPA
 - `public String[] getClasses()`: returns an array of classes
 - `public String toString()`: returns a string with the following format:
-- 'public int getGTID()': returns gtID
+- `public int getGTID()`: returns gtID
   - `name` is `age` years old from `homeTown` with gtid `gtID`
   - You should write this toString method in the way that maximizes code reuse.
 - properly overridden equals method that checks `name`, `age`, `hometown`, and `gtID`
