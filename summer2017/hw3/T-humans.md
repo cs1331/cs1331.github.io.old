@@ -56,7 +56,7 @@ This class should have the following methods:
 - `public double getAvgGPA()`: returns avgGPA
 - `public String[] getClasses()`: returns an array of classes
 - `public String toString()`: returns a string with the following format:
-- 'public double getGTID()': returns gtID
+- 'public int getGTID()': returns gtID
   - `name` is `age` years old from `homeTown` with gtid `gtID`
   - You should write this toString method in the way that maximizes code reuse.
 - properly overridden equals method that checks `name`, `age`, `hometown`, and `gtID`
@@ -114,8 +114,8 @@ This class should have the following methods:
 This class has the following instance variables:
 
 - `private String name`: the name of the university
-- `private Students[] students`: stores an array of Students
-- `private Professors[] professors`: stores an array of Professors
+- `private Student[] students`: stores an array of Students
+- `private Professor[] professors`: stores an array of Professors
 
 This class requires an explicit constructor that must take in and set `name` as well as instantiate `students` and `professors`.
 
