@@ -3,7 +3,7 @@ layout: homework
 title: Homework 3
 ---
 
-# CS1331 Homework 03 - T-humans
+# CS1331 Homework 03 - T-humans 
 
 ## Introduction
 
