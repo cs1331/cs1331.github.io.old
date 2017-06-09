@@ -31,7 +31,7 @@ This class has the following methods:
 - `public String getHometown()`: returns homeTown
 - `public String toString()`: returns a string with following format:
    - `name` is `age` years old from `homeTown`
-- properly overridden equals method that checks `name`, `age`, and `hometown`.
+- properly overridden equals method that checks `name`, `age`, and `homeTown`.
 
 The constructors for this class should be able to accept one, two, or all three arguments (instance variable values).
 
@@ -59,7 +59,7 @@ This class should have the following methods:
 - `public int getGTID()`: returns gtID
   - `name` is `age` years old from `homeTown` with gtid `gtID`
   - You should write this toString method in the way that maximizes code reuse.
-- properly overridden equals method that checks `name`, `age`, `hometown`, and `gtID`
+- properly overridden equals method that checks `name`, `age`, `homeTown`, and `gtID`
 	- You should write this equals method in the way that maximizes code reuse.
 
 ### The Undergrad Class
@@ -75,7 +75,7 @@ This class has the following methods:
 - `public String toString()`: returns a string with following format:
   - undergrad `name` is `age` years old from `homeTown` with gtid `gtID`is only sleeping `sleepHours` hours per night
   - You should write this toString method in the way that maximizes code reuse.
-- properly overridden equals method that checks `name`, `age`, `hometown`, `gtID`, and `sleepHours`
+- properly overridden equals method that checks `name`, `age`, `homeTown`, `gtID`, and `sleepHours`
 	- You should write this equals method in the way that maximizes code reuse.
 
 ### The Grad Class
@@ -91,7 +91,7 @@ This class has the following methods:
 - `public String toString()`: returns a string with following format:
   - grad `name` is `age` years old from `homeTown` with gtid `gtID`
   - You should write this toString method in the way that maximizes code reuse.
-- properly overridden equals method that checks `name`, `age`, `hometown`, `gtID`, and `thesisTitle`
+- properly overridden equals method that checks `name`, `age`, `homeTown`, `gtID`, and `thesisTitle`
 	- You should write this equals method in the way that maximizes code reuse.
 
 ### The Professor Class
@@ -107,7 +107,7 @@ This class should have the following methods:
 - `public String[] getClasses()`: returns an array of classes
 - `public String toString()`: returns a string with following format:
   - Professor `name` has a class of `classSize` students
-- properly overridden equals method that checks `name`, `age`, `hometown`, and `classSize`
+- properly overridden equals method that checks `name`, `age`, `homeTown`, and `classSize`
 	- You should write this equals method in the way that maximizes code reuse.
 
 ### The University Class
