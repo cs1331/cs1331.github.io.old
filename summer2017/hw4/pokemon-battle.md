@@ -7,12 +7,12 @@ title: Homework 4
 
 [HW4 Files](hw4.zip)
 
-##Introduction
+## Introduction
 
 In this assignment, you will be using inheritance and polymorphism to depict Pokemon and their interactions.
 
 
-##Problem Description
+## Problem Description
 
 You wanna be the very best (programmer), like no one ever was! To have great Object Oriented Design is your real test, to learn it is your cause!
 
@@ -21,7 +21,7 @@ You wanna be the very best (programmer), like no one ever was! To have great Obj
 You will be given a GUI that represents the Pokemon world, separated into territories that help or hinder certain types of Pokemon. Within this world you will build classes that represent 5 different species of Pokemon. You will then form logic to make Pokemon species (instances) of different types interact with others.
 
 
-##Solution Description
+## Solution Description
 
 Three blank files have been provided for you with the correct names, you should write your code in these files.
 
