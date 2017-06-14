@@ -31,7 +31,7 @@ We are giving you a GUI that represents the Pokemon world. The three files that 
 and `ControlPanel.java`. Also, we have included `Pokemon.java` with one method filled out for you.
 
    * `PokeBattle.java` is the driver for your program. You should not need to edit this file.
-   * `PokeWorld.java` is the panel in which your Pokemon will be running around. Each Pokemon is represented by an image of its species, which will move around the PokeWorld. You should not need to edit this file.
+   * `PokeWorld.java` is the panel in which your Pokemon will be running around. Each Pokemon is represented by an image of its species, which will move around the PokeWorld.
    * `ControlPanel.java` is a panel with buttons that will control which Pokemon gets instantiated next onto the GUI.
    * `Pokemon.java` is the abstract parent class for all your Pokemon species. We are giving you the shell for this class with the a few methods already written for you.
 
