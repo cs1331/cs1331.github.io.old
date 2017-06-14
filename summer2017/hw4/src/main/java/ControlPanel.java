@@ -29,17 +29,17 @@ public class ControlPanel extends JPanel {
     public ControlPanel() {
         setPreferredSize(new Dimension(150, PokeWorld.HEIGHT));
 
-        blaziken = new JButton("Blaziken");
-        blaziken.addActionListener(new ButtonListener("Blaziken"));
-        add(blaziken);
+        rapidash = new JButton("Rapidash");
+        rapidash.addActionListener(new ButtonListener("Rapidash"));
+        add(rapidash);
 
         poliwhirl = new JButton("Poliwhirl");
         poliwhirl.addActionListener(new ButtonListener("Poliwhirl"));
         add(poliwhirl);
 
-        torterra = new JButton("Torterra");
-        torterra.addActionListener(new ButtonListener("Torterra"));
-        add(torterra);
+        venusaur = new JButton("Venusaur");
+        venusaur.addActionListener(new ButtonListener("Venusaur"));
+        add(venusaur);
 
         //TODO
         // Uncomment the code below and replace the variables and
@@ -57,9 +57,9 @@ public class ControlPanel extends JPanel {
         */
 
         //default starting pokemon
-        pokemonSpecies = "Blaziken";
+        pokemonSpecies = "Rapidash";
         add(new JLabel("Current Pokemon"));
-        current = new JLabel("Blaziken");
+        current = new JLabel("Rapidash");
         add(current);
 
     }
