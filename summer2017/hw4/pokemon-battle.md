@@ -105,7 +105,7 @@ Some notes about all Pokemon Types:
 
    When a special type Pokemon is in its white quadrant (bottom-right), it gains any combination of the available abilities. Just ensure that it receives at least one ability.
 
-###Pokemon Species
+### Pokemon Species
 
 Some notes about all Pokemon species:
 
