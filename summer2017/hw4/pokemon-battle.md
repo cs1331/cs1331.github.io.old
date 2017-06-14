@@ -99,7 +99,7 @@ Some notes about all Pokemon Types:
 
 #### Special`Type`
 
-   >**Note: You can call this class whatever you want (though coding convention highly suggests it be Something`Type` for clarity).**
+   >Note: You can call this class whatever you want (though coding convention highly suggests it be Something`Type` for clarity).
 
    The harming relationship between your special type and the other given types can be whatever you decide, but _make sure to include it when you are writing the classes for the other types!_
 
