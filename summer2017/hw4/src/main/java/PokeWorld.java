@@ -167,10 +167,10 @@ public class PokeWorld extends JPanel {
                 // and replace the "Pokemon1" and "Pokemon2" with
                 // your actual species names. Don't forget to
                 // delete the TODO to fix checkstyle!
-                if (pokemonSpecies.equals("Blaziken")) {
-                    types.add(new Blaziken(p.x, p.y, bounds));
-                } else if (pokemonSpecies.equals("Torterra")) {
-                    types.add(new Torterra(p.x, p.y, bounds));
+                if (pokemonSpecies.equals("Rapidash")) {
+                    types.add(new Rapidash(p.x, p.y, bounds));
+                } else if (pokemonSpecies.equals("Venusaur")) {
+                    types.add(new Venusaur(p.x, p.y, bounds));
                 } else if (pokemonSpecies.equals("Poliwhirl")) {
                     types.add(new Poliwhirl(p.x, p.y, bounds));
                 } /* else if (pokemonSpecies.equals("Pokemon1")) {
