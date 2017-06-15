@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
  * @version 1.0
  */
 public class ControlPanel extends JPanel {
-    private JButton blaziken, poliwhirl, torterra;
+    private JButton rapidash, poliwhirl, venusaur;
 
     //TODO
     // uncomment and change line 23 below to reflect
