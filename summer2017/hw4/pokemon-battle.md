@@ -18,7 +18,7 @@ You wanna be the very best (programmer), like no one ever was! To have great Obj
 
 >Note: You don't need any prior knowledge about Pokemon to succeed with this assignment. The instructions will provide all necessary information to help you understand what needs to be done.
 
-You will be given a GUI that represents the Pokemon world, separated into territories that help or hinder certain types of Pokemon. Within this world you will build classes that represent 5 different species of Pokemon. You will then form logic to make Pokemon species (instances) of different types interact with others.
+You will be given a GUI that represents the Pokemon world, separated into territories that help or hinder certain types of Pokemon. Within this world you will build classes that represent 4 different species of Pokemon. You will then form logic to make Pokemon species (instances) of different types interact with others.
 
 
 ## Solution Description
