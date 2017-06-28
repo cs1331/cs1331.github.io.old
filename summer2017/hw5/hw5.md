@@ -1,3 +1,8 @@
+---
+layout: homework
+title: Homework 5
+---
+
 # CS1331 Homework 5 - Collections
 
 [HW5 Files](hw5.zip)
