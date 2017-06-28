@@ -147,8 +147,8 @@ You may **not** discuss, show, or share by other means the specifics of your cod
 
 Examples of approved/disapproved collaboration:
 
-- **approved**: "Hey, I`m really confused on how we are supposed to implement this part of the homework. What strategies/resources did you use to solve it?"
-- **disapproved**: "Yo it`s 10:40 on Thursday... can I see your code? I won`t copy it directly I promise"
+- **approved**: "Hey, I'm really confused on how we are supposed to implement this part of the homework. What strategies/resources did you use to solve it?"
+- **disapproved**: "Yo it's 10:40 on Thursday... can I see your code? I won't copy it directly I promise"
 
 Collaborating with others in a way that violates the approved means is a Georgia Tech Honor Code violation.
 
