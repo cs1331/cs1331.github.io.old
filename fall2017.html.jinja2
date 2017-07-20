@@ -1,0 +1,82 @@
+---
+layout: default
+title: CS 1331 - Fall 2017
+---
+
+<h1>Fall 2017</h1>
+
+<ul>
+
+  <li>Lecture: Mondays, Wednesdays, and Fridays</li>
+  <ul>
+    <li>A: 10:10 - 11:00 in Instr Center 103</li>
+    <li>B: 11:15 - 12:05 in Instr Center 103</li>
+    <li>C: 12:20 - 13:10 in Clough COmmons 152</li>
+  </ul>
+
+  <li>Recitation: Tuesdays</li>
+  <ul>
+    <li>A01: 16:30 - 17:45 in Instr Center 213</li>
+    <li>A04: 18:00 - 19:15 in Instr Center 205</li>
+    <li>B01,GR: 16:30 - 17:45 in Instr Center 109</li>
+    <li>B02: 16:30 - 17:45 in Molecular Sciences & Engineering 1222</li>
+    <li>C01: 18:00 - 19:15 in Instr Center 215</li>
+    <li>C02: 18:00 - 19:15 in Instr Center 115</li>
+    <li>C03: 16:30 - 17:45 in Weber SST III 2</li>
+    <li>C04: 16:30 - 17:45 in Instr Center 105</li>
+  </ul>
+
+
+  <li><a href='officehours.html'>Office Hours Schedule</a></li>
+</ul>
+
+<h2>Lecture Schedule</h2>
+
+<p>
+  Topics link to slides, where available.  Topics noted with (Recitation) are covered in recitation that week, not in lecture. You're responsible for everything listed on this schedule, some of which may not be covered in lecture or recitation.
+</p>
+
+<ul>
+  <li>Tutorial means <a href="http://docs.oracle.com/javase/tutorial/">Oracle's Java Tutorial</a></li>
+  <li>Liang means <a href="http://www.amazon.com/gp/product/0133761312" target="_blank">Introduction to Java Programming, Comprehensive Version</a> by Y. Daniel Liang</li>
+  <li>CJI means <a href="http://www.amazon.com/Core-Java-Impatient-Cay-Horstmann/dp/0321996321" target="_blank">Core Java for the Impatient</a> by Cay Horstmann (<a href="http://www.informit.com/store/core-java-for-the-impatient-9780321996329" target="_blank">e-book</a>)</li>
+</ul>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+
+    <tr class="table-header active">
+      <th>Date</th>
+      <th>Topics</th>
+      <th>Reading and Resources</th>
+      <th>Reminders</th>
+    </tr>
+    {% for row in table %}
+    {% if "internal_header" in row %}
+    <tr class="active"><td colspan="4">{{row["internal_header"]}}</td></tr>
+    {% else %}
+    <tr>
+      <td>{{row["date"]}}</td>
+      <td>
+        {% for item in row["topics"][:-1] %}
+        {{(item|markdown).replace("<p>","").replace("</p>","")}}<br/>
+        {% endfor %}
+        {{(row["topics"][-1]|markdown).replace("<p>","").replace("</p>","")}}
+      </td>
+      <td>
+        {% for item in row["materials"][:-1] %}
+        {{(item|markdown).replace("<p>","").replace("</p>","")}}<br/>
+        {% endfor %}
+        {{(row["materials"][-1]|markdown).replace("<p>","").replace("</p>","")}}
+      </td>
+      <td>
+        {% for item in row["reminders"][:-1] %}
+        {{(item|markdown).replace("<p>","").replace("</p>","")}}<br/>
+        {% endfor %}
+        {{(row["reminders"][-1]|markdown).replace("<p>","").replace("</p>","")}}
+      </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </table>
+</div>
