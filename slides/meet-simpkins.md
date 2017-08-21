@@ -10,6 +10,7 @@
 
 <center>
 <img src="chris-pfunk-dice.jpg" height="500"/>
+<img src="simpkins-dissertation-cover-page.png" height="500"/>
 </center>
 
 # What I've Done
