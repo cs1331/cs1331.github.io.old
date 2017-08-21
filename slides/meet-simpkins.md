@@ -6,10 +6,10 @@
 <img src="jean-val-jean.jpg" width="720"/>
 </center>
 
-# My PhD Advisor
+# Number 12
 
 <center>
-<img src="charles-tenure.jpg" width="720"/>
+<img src="chris-pfunk-dice.jpg" height="500"/>
 </center>
 
 # What I've Done
