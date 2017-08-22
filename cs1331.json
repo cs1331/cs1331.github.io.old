@@ -9,7 +9,7 @@
         "order": [1]
     },
     "intro-java": {
-        "topic": "[Intro to Java](slides/introduction.pdf)",
+        "topic": "[Intro to Java](slides/intro-java.pdf)",
         "materials": ["[Getting Started on  Unix](http://docs.oracle.com/javase/tutorial/getStarted/cupojava/unix.html)",
                       "[Getting Started on Windows](http://docs.oracle.com/javase/tutorial/getStarted/cupojava/win32.html)",
                       "Liang: Ch 2"],
