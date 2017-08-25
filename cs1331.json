@@ -16,7 +16,7 @@
         "order": [2]
     },
     "values-variables": {
-        "topic": "[Values and Variables](slides/values-variables.html)",
+        "topic": "[Values and Variables](slides/values-variables.pdf)",
         "materials": ["Tutorial [Variables](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/variables.html), [Primitive Types](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html), [Operators](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html), [Expressions and Statements](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/expressions.html)", "Liang: Ch 2", "[Basics Example Code](https://github.com/cs1331/code-basics)"],
         "order": [3]
     },
