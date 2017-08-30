@@ -1,0 +1,139 @@
+#+TITLE: Programs and Methods
+#+AUTHOR:
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smaller]
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+
+* Programs and Methods
+
+** The Anatomy of a Java Program
+
+#+BEGIN_SRC java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}
+#+END_SRC
+
+- First line declares ~HelloWorld~ class. ~class~ is the syntax for declaring a class, and prepending with the ~public~ modifer means the class will be visible outside ~HelloWorld~'s package.
+- The code between the curly braces, ~{~ ... ~}~ define the contents of the ~HelloWorld~ class, in this case a single method, ~main~
+
+** The ~main~ Method
+
+In order to make a class executable with the ~java~ command, it must have a main method:
+#+BEGIN_SRC java
+public static void main(String[] args) { ... }
+#+END_SRC
+
+- ~public~ means method can be called from outside the class
+- ~static~ means the method can be called without instantiating an object of the class.  Static methods (and variables) are sometimes called *class* methods.
+- ~void~ is the return type.  In particular, ~main~ returns nothing.
+
+    - Sometimes such subprograms are called *procedures* and distinguished from *functions*, which return values.
+
+- After the method name, ~main~, comes the parameter list.  ~main~ takes a single parameter of type ~String[]~ - an array of ~String~s.  ~args~ is the name of the parameter, which we can refer to within the body of ~main~
+
+** Methods
+
+The ~main~ method is a special method that is used as the entry point for a Java program.  We can define other methods as well.  Consider this method from [[\code/basics/NameParser.java][NameParser.java]]:
+
+#+BEGIN_SRC java
+public static String extractLastName(String name) {
+    int commaPos = name.indexOf(",");
+    int len = name.length();
+    String lastName = name.substring(0, commaPos).trim();
+    return lastName;
+}
+#+END_SRC
+Similar to our ~main~ method but:
+
+- ~return~ s a ~String~ value
+- takes a single parameter of type ~String~
+
+** Method Parameters
+
+In this method:
+#+BEGIN_SRC java
+public static String extractLastName(String name) {
+    int commaPos = name.indexOf(",");
+    int len = name.length();
+    String lastName = name.substring(0, commaPos).trim();
+    return lastName;
+}
+#+END_SRC
+
+~name~ is a *parameter* (or *formal parameter*), a local scope variable within the ~extractLastName~ method.  It is bound to a value when the method is called.  In the statement:
+
+#+BEGIN_SRC java
+String lastName = extractLastName(fullName);
+#+END_SRC
+
+the right-hand side, ~extractLastName(fullName)~, is a *method invocation* (or *method call*).  We say that ~fullName~ is the *argument* (or *actual parameter*) to this invocation of the ~extractLastName~ method.
+
+** Local Variables
+
+Method parameters and variables declared inside the method are local to the method, invisible outside the method.  Local variables "shadow" variables of the same name in an enclosing scope
+
+#+BEGIN_SRC java
+public class Methods {
+
+    // Note that static variables cannot appear inside methods
+    static String message = "Global message.";
+    static int a = 5;
+
+    public static int add(int a, int b) {
+        String message = "Adding " + a + " and " + b;
+        System.out.println(message);
+        return a + b;
+    }
+...
+#+END_SRC
+
+In the ~add~ method, the parameter ~a~ shadows the ~static~ variable ~a~, and the local variable ~message~ shadows the ~static~ variable ~message~
+
+** Methods as Expressions
+
+Methods that return values are expressions which can be used anywhere a value of the method's return type can be used.  Given:
+
+#+BEGIN_SRC java
+public static int add(int a, int b) { ... }
+#+END_SRC
+
+which returns an ~int~, this:
+
+#+BEGIN_SRC java
+x + (x + y)
+#+END_SRC
+is equivalent to this:
+
+#+BEGIN_SRC java
+x + add(x, y)
+#+END_SRC
+
+See Methods.java.
+
+
+** Closing Thougts
+
+Methods are subprograms with
+
+- input (parameters),
+- processing (a sequence of statements), and
+- output (return value).
+
+
+Methods are a powerful form of procedural abstraction, another step in the building of complex programs from simple parts.

@@ -1,0 +1,470 @@
+#+TITLE: Control Structures
+#+AUTHOR:
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smaller]
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+
+* Control Structures
+
+** Control Flow Issues
+
+- Multiple vs. single entry ("How did we get here?")
+- Multiple vs. single exit ("Where do we go from here?")
+- ~goto~ considered harmful (~goto~ makes it hard to answer questions above)
+
+** Structured Programming
+
+All algorithms expressed by:
+
+- Sequence - one statement after another
+- Selection - conditional execution (not conditional jumping)
+- Iteration - loops
+
+No ~goto~
+
+** Boolean Values
+
+Four kinds of boolean expressions:
+
+- ~boolean~ literals: ~true~ and ~false~
+- ~boolean~ variables
+- expressions formed by combining non-~boolean~ expressions with comparison operators
+- expressions formed by combining ~boolean~ expressions with logical operators
+
+** Comparison Expressions
+
+- Equal to: ~==~, like $=$ in math
+
+    - Remember, ~=~ is assignment operator, ~==~ is comparison operator!
+
+- Not equal to: ~!=~, like $\ne$ in math
+- Greater than: ~>~, like $>$ in math
+- Greater than or equal to: ~>=~, like $\ge$ in math
+
+
+** Comparison Examples
+
+#+BEGIN_SRC java
+1 == 1 // true
+1 != 1 // false
+1 >= 1 // true
+1 > 1  // false
+#+END_SRC
+
+** Logical Combinations
+
+- And: `&&`, like $\land$ in math
+- Or: `||`, like $\lor$ in math
+Examples:
+#+BEGIN_SRC java
+(1 == 1) &&  (1 != 1) // false
+(1 == 1) ||  (1 != 1) // true
+#+END_SRC
+
+Also, unary negation operator ~!~:
+
+#+BEGIN_SRC java
+!true     // false
+!(1 == 2) // true
+#+END_SRC
+
+** ~if-else~ Statement
+
+#+BEGIN_SRC java
+if (*booleanExpression*)
+    // a single statement executed when booleanExpression is true
+else
+    // a single statement executed when booleanExpression is false
+#+END_SRC
+
+- *booleanExpression* must be enclosed in parentheses
+- ~else~ not required
+
+
+** ~if-else~ Example
+
+#+BEGIN_SRC java
+if ((num % 2) == 0)
+    System.out.printf("I like %d.%n", num);
+else
+    System.out.printf("I'm ambivalent about %d.%n", num);
+#+END_SRC
+
+** Conditional Assignment
+
+~if-else~ is a statement, so conditional assignment like this:
+
+#+BEGIN_SRC java
+String dinner = null;
+if (temp > 60) {
+    dinner = "grilled";
+} else {
+    dinner = "baked";
+}
+#+END_SRC
+
+** Ternary If-Else Expression
+
+The ternary operator combines the above into one expression (expressions have values):
+
+#+BEGIN_SRC java
+String dinner = (temp > 60) ? "grilled" : "baked";
+#+END_SRC
+
+** Blocks
+
+Enclose any number of statements in curly braces ({ ... }) to create a block, which is like a single statement.
+
+#+BEGIN_SRC java
+if ((num % 2) == 0) {
+    System.out.printf("%d is even.%n", num);
+    System.out.println("I like even numbers.");
+} else {
+    System.out.printf("%d is odd.%n", num);
+    System.out.println("I'm ambivalent about odd numbers.");
+}
+#+END_SRC
+
+Always use curly braces in control structures.
+
+** Nested ~if-else~
+
+This is hard to follow:
+
+#+BEGIN_SRC java
+if (color.toUpperCase().equals("RED")) {
+    System.out.println("Redrum!");
+} else {
+    if (color.toLowerCase().equals("yellow")) {
+        System.out.println("Submarine");
+    } else {
+        System.out.println("A Lack of Color");
+
+}
+#+END_SRC
+
+** Multi-way ~if-else~
+
+This multi-way ~if-else~ is equivalent, and clearer:
+
+#+BEGIN_SRC java
+if (color.toUpperCase().equals("RED")) {
+    System.out.println("Redrum!");
+} else if (color.toLowerCase().equals("yellow")) {
+    System.out.println("Submarine");
+} else {
+    System.out.println("A Lack of Color");
+}
+#+END_SRC
+
+** Short-Circuit Evaluation
+
+Common idiom for testing an operand before using it:
+#+BEGIN_SRC java
+if ((kids !=0) && ((pieces / kids) >= 2))
+    System.out.println("Each kid may have two pieces.");
+#+END_SRC
+
+If ~kids !=0~ evaluates to ~false~, then the second sub-expression is not evaluated, thus avoiding a divide-by-zero error.
+
+See [[https://github.com/cs1331/code-basics/blob/master/Conditionals.java][Conditionals.java]] for examples.
+
+** ~switch~
+
+#+BEGIN_SRC java
+switch (expr) {
+case 1:
+    // executed only when case 1 holds
+    break;
+case 2:
+    // executed only when case 2 holds
+case 3:
+    // executed whenever case 2 or 3 hold
+    break;
+default:
+    // executed only when other cases don't hold
+}
+#+END_SRC
+
+- Execution jumps to the first matching case and continues until a ~break~, ~default~, or ~switch~ statement's closing curly brace is reached
+- Type of ~expr~ can be ~char~, ~int~, ~short~, ~byte~, or ~String~
+
+** Avoid ~switch~
+
+The ~switch~ statement is error-prone.
+
+- ~switch~ considered harmful -- 97% of fall-throughs unintended
+- Anachronism from "structured assembly language", a.k.a. C (a "switch" is just a jump table)
+
+You can do without the ~switch~.  See
+
+- [[https://github.com/cs1331/code-basics/blob/master/CharCountSwitch.java][CharCountSwitch.java]] for a ~switch~ example,
+- [[https://github.com/cs1331/code-basics/blob/master/CharCountIf.java][CharCountIf.java]] for the same program using an ~if~ statement in place of the ~switch~ statement, and
+-  [[https://github.com/cs1331/code-basics/blob/master/CharCount.java][CharCount.java]] for the same program using standard library utility methods.
+
+
+** Repeated Operations
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mXPeLctgvQI" frameborder="0" allowfullscreen></iframe>
+
+** Loops and Iteration
+
+Algorithms often call for repeated action or iteration, e.g. :
+
+-  "repeat ... while (or until) some condition is true" (looping) or
+-  "for each element of this array/list/etc. ..." (iteration)
+
+** Java Loop/Iteration Structures
+
+-  ~while~ loop
+-  ~do-while~ loop
+-  ~for~ iteration statement
+
+** ~while~
+
+~while~ loops are pre-test loops: the loop condition is tested before the loop body is executed
+#+BEGIN_SRC java
+while (condition) { // condition is any boolean expression
+      // loop body executes as long as condition is true
+}
+#+END_SRC
+
+** ~do-while~
+
+~do-while~ loops are post-test loops: the loop condition is tested after the loop body is executed
+#+BEGIN_SRC java
+do {
+      // loop body executes as long as condition is true
+} while (condition)
+#+END_SRC
+The body of a ~do-while~ loop will always execute at least once.
+
+
+** ~for~ Statements
+
+The general ~for~ statement syntax is:
+#+BEGIN_SRC java
+for(initializer; condition; update) {
+     // body executed as long as condition is true
+}
+#+END_SRC
+
+-  *intializer* is a statement
+-  *condition* is a boolean expression -- when ~false~ loop exits
+-  *update* is a statement
+
+** ~for~ vs. ~while~
+
+
+The ~for~ statement:
+#+BEGIN_SRC java
+for(int i = 0; i < 10; i++) {
+     // body executed as long as condition is true
+}
+#+END_SRC
+is equivalent to:
+
+#+BEGIN_SRC java
+int i = 0
+while (i < 10) {
+  // body
+  i++;
+}
+#+END_SRC
+
+~for~ is Java's primary iteration structure.  In the future we'll see generalized versions, but for now ~for~ statements are used primarily to iterate through the indexes of data structures and to repeat code a particular number of times.
+
+** Simple Repetition
+
+And here's a simple example of repeating an action a fixed number of times:
+#+BEGIN_SRC java
+for (int i = 0; i < 10; ++i)
+        System.out.println("Meow!");
+#+END_SRC
+
+** Iterating With Indexes
+
+From  [[code/basics/CharCount.java][CharCount.java]].  We use the ~for~ loop's loop variable to index each character in a ~String~
+
+#+BEGIN_SRC java
+int digitCount = 0, letterCount = 0;
+for (int i = 0; i < input.length(); ++i) {
+    char c = input.charAt(i);
+    if (Character.isDigit(c)) digitCount++;
+    if (Character.isAlphabetic(c)) letterCount++;
+}
+#+END_SRC
+
+** Multiple Loop Variables
+
+You can have multiple loop indexes separated by commas:
+
+#+BEGIN_SRC java
+String mystery = "mnerigpaba", solved = ""; int len = mystery.length();
+for (int i = 0, j = len - 1; i < len/2; ++i, --j) {
+    solved = solved + mystery.charAt(i) + mystery.charAt(j);
+}
+#+END_SRC
+
+Note that the loop above is one loop, not nested loops.
+
+** Loop Gotchas
+
+Beware of common "extra semicolon" syntax error:
+
+#+BEGIN_SRC java
+for (int i = 0; i < 10; ++i); // oops!  semicolon ends the statement
+    print(meow);  // this will only execute once, not 10 times
+#+END_SRC
+
+** ~for~ Statement Subtleties
+
+
+Better to declare loop index in ~for~ to limit it's scope.  Prefer:
+
+#+BEGIN_SRC java
+for (int i = 0; i < 10; ++i)
+#+END_SRC
+
+to:
+
+#+BEGIN_SRC java
+int i; // Bad.  Looop index variable visible outside loop.
+for (i = 0; i < 10; ++i)
+#+END_SRC
+
+** Forever
+
+Infinite means "as long as the program is running."
+
+With ~for~:
+#+BEGIN_SRC java
+for (;;) {
+    // ever
+}
+#+END_SRC
+
+and with ~while~:
+#+BEGIN_SRC java
+while (true) {
+    // forever
+}
+#+END_SRC
+
+See [[code/Loops.java][Loops.java]] for loop examples.
+
+
+** ~break~ and ~continue~
+
+
+Non-structured ways to alter loop control flow:
+
+-  ~break~ exit the loop, possibly to a labeled location in the program
+-  ~continue~ skip the remainder of a loop body and continue with the next iteration
+
+Consider the following while loop:
+#+BEGIN_SRC java
+boolean shouldContinue = true;
+while (shouldContinue) {
+    System.out.println("Enter some input (exit to quit):");
+    String input = System.console().readLine();
+    doSomethingWithInput(input); // We do something with "exit" too.
+    shouldContinue = (input.equalsIgnoreCase("exit")) ? false : true;
+}
+#+END_SRC
+We don't test for the termination sentinal, "exit," until after we do something with it.  Situations like these often tempt us to use ~break~ ...
+
+
+** `break`ing out of a `while` Loop}
+
+
+We could test for the sentinal and ~break~ before processing:
+
+#+BEGIN_SRC java
+boolean shouldContinue = true;
+while (shouldContinue) {
+    System.out.println("Enter some input (exit to quit):");
+    String input = System.console().readLine();
+    if (input.equalsIgnoreCase("exit")) break;
+    doSomethingWithInput(input);
+}
+#+END_SRC
+
+But it's better to use structured programming:
+
+#+BEGIN_SRC java
+boolean shouldContinue = true;
+while (shouldContinue) {
+    System.out.println("Enter some input (exit to quit):");
+    String input = System.console().readLine();
+    if (input.equalsIgnoreCase("exit")) {
+        shouldContinue = false;
+    } else {
+        doSomethingWithInput(input);
+    }
+}
+#+END_SRC
+
+
+** Reasoning About Imperative Programs
+
+What will this code print?
+
+#+BEGIN_SRC java
+public class ShortCircuit {
+
+    private static int counter = 0;
+
+    private static boolean inc() {
+        counter++;
+        return true;
+    }
+    public static void main(String args[]) {
+        boolean a = false;
+        if (a || inc()) {
+            System.out.println("Meow");
+        }
+        System.out.println("counter: " + counter);
+        if (a && inc()) {
+            System.out.println("Woof");
+        }
+        System.out.println("counter: " + counter);
+    }
+}
+#+END_SRC
+
+** Reasoning About Imperative Programs
+
+Substitute values, trace code, track `counter` and output:
+
+#+BEGIN_SRC java
+Code                                       counter  Output
+
+boolean a = false;                         0
+if (a || inc()) {                          1
+    System.out.println("Meow");            1        Meow
+}                                          1
+System.out.println("counter: " + counter); 1        counter: 1
+if (a && inc()) {                          1
+    System.out.println("Woof");            1
+}                                          1
+System.out.println("counter: " + counter); 1        counter: 1
+#+END_SRC
+
+Key points:
+
+- `inc()` always returns `true`
+- Due to short-curcuit evaluation, `inc()` not always evaluated

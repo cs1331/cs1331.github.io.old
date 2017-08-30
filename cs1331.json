@@ -21,14 +21,14 @@
         "order": [3]
     },
     "programs-methods": {
-        "topic": "[Programs and Methods](slides/programs-methods.html)",
+        "topic": "[Programs and Methods](slides/programs-methods.pdf)",
         "materials": ["Lecture Notes: [Programs and Methods](http://cs1331.gatech.edu/lecture-notes/programs-methods.pdf)",
                       "Tutorial: [Closer Look at Hello World](http://docs.oracle.com/javase/tutorial/getStarted/application/index.html), [Common Problems](http://docs.oracle.com/javase/tutorial/getStarted/problems/index.html), [I/O from Command Line](http://docs.oracle.com/javase/tutorial/essential/io/cl.html)",
                       "Liang: Ch 2"],
         "order": [4]
     },
     "control-structures": {
-        "topic": "[Control Structures](slides/control-structures.html)",
+        "topic": "[Control Structures](slides/control-structures.pdf)",
         "materials": ["Tutorial: [Control Flow Statements](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html)",
                       "Liang: Ch 3-5 (return statement)"],
         "order": [5]
