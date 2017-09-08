@@ -80,10 +80,9 @@ You may use the following helper method to read the file:
 
 ### Discussion
 
-You can read the
 
 - [PGN Standard](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm)
-
+- [Chess Notation](9http://www.chesscorner.com/tutorial/basic/notation/notate.htm) -- look at abbreviated algebraic notation.
 
 ![Annotated chess board](chess-board.jpg)
 
