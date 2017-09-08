@@ -25,7 +25,7 @@ You are writing a chess game database that will import chess games in [PGN](http
 
 Write a class called `PgnReader` that contains the following `public` `static` methods:
 
-- `tagValue` takes a `String` tag name and a `String` argument which contains a PGN-formatted game and returns a `String` containing the value from the `Event` tag pair in the PGN game text. If there is no `Event` tag pair, return `"NOT GIVEN"`.
+- `tagValue` takes two `String` arguments: a tag name and a `String`  which contains a PGN-formatted game, and returns a `String` containing the value from the `tag name` tag pair in the PGN game text. If there is no `tag name` tag pair, return `"NOT GIVEN"`.
 - `finalPosition` takes a single `String` argument which contains a PGN-formatted game and returns a `String` containing the game's final position in [FEN](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm#c16.1)
 
 Write a main method that reads the file named in the `PgnReader`'s first command-line argument into a `String` and uses that `String` as the argument to each method above in order to print game information to the console. For example, given a file called `tal-fischer-1959-10-11.pgn` with the following contents:
@@ -56,7 +56,7 @@ a shell session with your program would look like this:
 ```sh
 ```
 
-Each PGN file will contain a single game and you may assume that the game contains no illegal moves. You may use the following helper function to help you read the file:
+Each PGN file will contain a single game and you may assume that the game contains no illegal moves. You may use the following helper function to read the PGN game file ad return its contents:
 
 You may use the following helper method to read the file:
 
