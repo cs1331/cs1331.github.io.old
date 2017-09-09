@@ -26,37 +26,37 @@ You are writing a chess game database that will import chess games in [PGN](http
 Write a class called `PgnReader` that contains the following `public` `static` methods:
 
 - `tagValue` takes two `String` arguments: a tag name and a `String`  which contains a PGN-formatted game, and returns a `String` containing the value from the `tag name` tag pair in the PGN game text. If there is no `tag name` tag pair, return `"NOT GIVEN"`.
-- `finalPosition` takes a single `String` argument which contains a PGN-formatted game and returns a `String` containing the game's final position in [FEN](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm#c16.1)
+- `finalPosition` takes a single `String` argument which contains a PGN-formatted game and returns a `String` containing the game's final position in FOrsyth-Edwards Notation ([FEN](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm#c16.1)).
 
-Write a main method that reads the file named in the `PgnReader`'s first command-line argument into a `String` and uses that `String` as the argument to each method above in order to print game information to the console. For example, given a file called `tal-fischer-1959-10-11.pgn` with the following contents:
+Write a main method that reads the file named in the `PgnReader`'s first command-line argument into a `String` and uses that `String` as the argument to each method above in order to print game information to the console. First, print the tag names and associated values for the core seven tags of the PGN standard: Event, Site, Date, Round, White, Black, Result. Then print a line reading "Final Position:" and a line displaying the final game position in FEN. Note that in this assignment we only care about the piece placement data, not the other elements of FEN such as active color or castling availability.
 
-```pgn
-[Event "Bled-Zagreb-Belgrade Candidates"]
-[Site "Bled, Zagreb & Belgrade YUG"]
-[Date "1959.10.11"]
-[Round "20"]
-[Result "1-0"]
-[White "Mikhail Tal"]
-[Black "Robert James Fischer"]
-
-1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. e4 d6 5.
-Be2 O-O 6. Nf3 e5 7. d5 Nbd7 8. Bg5 h6 9.
-Bh4 a6 10. O-O Qe8 11. Nd2 Nh7 12. b4 Bf6
-13. Bxf6 Nhxf6 14. Nb3 Qe7 15. Qd2 Kh7 16.
-Qe3 Ng8 17. c5 f5 18. exf5 gxf5 19. f4 exf4
-20. Qxf4 dxc5 21. Bd3 cxb4 22. Rae1 Qf6 23.
-Re6 Qxc3 24. Bxf5+ Rxf5 25. Qxf5+ Kh8 26.
-Rf3 Qb2 27. Re8 Nf6 28. Qxf6+ Qxf6 29. Rxf6
-Kg7 30. Rff8 Ne7 31. Na5 h5 32. h4 Rb8 33.
-Nc4 b5 34. Ne5 1-0
-```
-
-a shell session with your program would look like this:
+For example, using the [fegatello.pgn](fegatello.pgn), a shell session with your program would look like this:
 
 ```sh
+$ java PgnReader fegatello.pgn
+Event: Fegatello Attack
+Site: NOT GIVEN
+Date: NOT GIVEN
+Round: NOT GIVEN
+White: NOT GIVEN
+Black: NOT GIVEN
+Result: NOT GIVEN
+Final Position:
+r1bqkb1r/ppp2Npp/2n5/3np3/2B5/8/PPPP1PPP/RNBQK2R
 ```
 
-Each PGN file will contain a single game and you may assume that the game contains no illegal moves. You may use the following helper function to read the PGN game file ad return its contents:
+```sh
+$ java PgnReader tal-fischer-1959-10-11.pgn
+Event: Bled-Zagreb-Belgrade Candidates
+Site: Bled, Zagreb & Belgrade YUG
+Date: 1959.10.11
+Round: 20
+White: Tal, Mikhail
+Black: Fischer, Robert James
+Result: 1-0
+```
+
+Each PGN file will contain a single game and you may assume that the game contains no illegal moves. You may use the following helper function to read the PGN game file and return its contents as a `String`:
 
 You may use the following helper method to read the file:
 
@@ -80,11 +80,14 @@ You may use the following helper method to read the file:
 
 ### Discussion
 
+You don't need to know how to play chess, you only need to know how the pieces and pawns move and how to record chess moves. Use the following links for this purpose:
 
-- [PGN Standard](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm)
+- [Learn to Play Chess](http://www.chesscorner.com/tutorial/learn.htm) -- You only need to read the information under "Rules of Chess."
 - [Chess Notation](9http://www.chesscorner.com/tutorial/basic/notation/notate.htm) -- look at abbreviated algebraic notation.
 
-![Annotated chess board](chess-board.jpg)
+
+And, of course, you need to know the [PGN Standard](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm), specifically
+
 
 ## Turn-in Procedure
 
