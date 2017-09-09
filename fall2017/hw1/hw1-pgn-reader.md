@@ -77,12 +77,14 @@ And, of course, you need to know the [PGN Standard](http://www.saremba.de/chessg
 
 ## Grading
 
-- 40 points for correctly extracting tag values.
+There are 20 bonus points on this assignment.
+
+- 50 points for correctly extracting tag values.
 - 10 points for correctly finding final position of simple games or openings ([fools-mate.pgn](fools-mate.pgn), [scholars-mate.pgn](scholars-mate.pgn), [fegatello.pgn](fegatello.pgn))
 - 10 points for correctly finding final position of games that contain castling moves
 - 10 points for correctly finding final position of games that contain en passant pawn captures
 - 10 points for correctly finding final position of games that contain pawn promotions
-- 10 points for correctly finding final position of games that contain moves requiring disambiguation of starting file or rank but not both to distinguish between two pieces that could make the same move
+- 10 points for correctly finding final position of games that contain moves requiring disambiguation of starting file or rank (but not both) to distinguish between two pieces that could make the same move
 - 10 points for correctly finding final position of games that contain moves requiring disambiguation of starting file and rank to distinguish between two pieces that could make the same move
 - 10 points for correctly finding final position of games that require knowledge of tactics (e.g., pinned pieces) to disambiguate to distinguish between two pieces that could make the same move ([tal-fischer-1959-10-11.pgn](tal-fischer-1959-10-11.pgn))
 
