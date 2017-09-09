@@ -65,7 +65,9 @@ Each PGN file will contain a single game and you may assume that the game contai
     }
 ```
 
-### Discussion
+As your program reads the moves in a game it will need to maintain the state of the board, which you should represent as a 2-d array. You will also need to translate between the algebraic notation used to represent moves in PGN, and the internal representation you use for board state.
+
+### Domain Knowledge
 
 You don't need to know how to play chess, you only need to know how the pieces and pawns move and how to record chess moves. Use the following links for this purpose:
 
