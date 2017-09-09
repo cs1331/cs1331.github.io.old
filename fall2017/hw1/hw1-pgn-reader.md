@@ -15,7 +15,7 @@ In this assignment you will practice
 - using arrays, and
 - maintaining state.
 
-You may use classes from `java.util` and `java.io`, but you may not write your own classes. If you already know some object-oriented programming, you will find these restrictions annoying.
+You may use classes from the Java standard library, but you may not write your own classes. If you already know some object-oriented programming, you will find these restrictions annoying.
 
 ## Problem Description
 
@@ -26,7 +26,7 @@ You are writing a chess game database that will import chess games in [PGN](http
 Write a class called `PgnReader` that contains the following `public` `static` methods:
 
 - `tagValue` takes two `String` arguments: a tag name and a `String`  which contains a PGN-formatted game, and returns a `String` containing the value from the `tag name` tag pair in the PGN game text. If there is no `tag name` tag pair, return `"NOT GIVEN"`.
-- `finalPosition` takes a single `String` argument which contains a PGN-formatted game and returns a `String` containing the game's final position in FOrsyth-Edwards Notation ([FEN](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm#c16.1)).
+- `finalPosition` takes a single `String` argument which contains a PGN-formatted game and returns a `String` containing the game's final position in Forsyth-Edwards Notation ([FEN](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm#c16.1)).
 
 Write a main method that reads the file named in the `PgnReader`'s first command-line argument into a `String` and uses that `String` as the argument to each method above in order to print game information to the console. First, print the tag names and associated values for the core seven tags of the PGN standard: Event, Site, Date, Round, White, Black, Result. Then print a line reading "Final Position:" and a line displaying the final game position in FEN. Note that in this assignment we only care about the piece placement data, not the other elements of FEN such as active color or castling availability.
 
@@ -45,20 +45,7 @@ Final Position:
 r1bqkb1r/ppp2Npp/2n5/3np3/2B5/8/PPPP1PPP/RNBQK2R
 ```
 
-```sh
-$ java PgnReader tal-fischer-1959-10-11.pgn
-Event: Bled-Zagreb-Belgrade Candidates
-Site: Bled, Zagreb & Belgrade YUG
-Date: 1959.10.11
-Round: 20
-White: Tal, Mikhail
-Black: Fischer, Robert James
-Result: 1-0
-```
-
 Each PGN file will contain a single game and you may assume that the game contains no illegal moves. You may use the following helper function to read the PGN game file and return its contents as a `String`:
-
-You may use the following helper method to read the file:
 
 ```Java
     public static String fileContent(String fileName) {
@@ -86,8 +73,20 @@ You don't need to know how to play chess, you only need to know how the pieces a
 - [Chess Notation](9http://www.chesscorner.com/tutorial/basic/notation/notate.htm) -- look at abbreviated algebraic notation.
 
 
-And, of course, you need to know the [PGN Standard](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm), specifically
+And, of course, you need to know the [PGN Standard](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm). PGN is simple, and you can learn it well enough by simply looking at example PGN games.
 
+## Grading
+
+- 40 points for correctly extracting tag values.
+- 10 points for correctly finding final position of simple games or openings
+- 10 points for correctly finding final position of games that contain castling moves
+- 10 points for correctly finding final position of games that contain en passant pawn captures
+- 10 points for correctly finding final position of games that contain pawn promotions
+- 10 points for correctly finding final position of games that contain moves requiring disambiguation of starting file or rank but not both to distinguish between two pieces that could make the same move
+- 10 points for correctly finding final position of games that contain moves requiring disambiguation of starting file and rank to distinguish between two pieces that could make the same move
+- 10 points for correctly finding final position of games that require knowledge of tactics (e.g., pinned pieces) to disambiguate to distinguish between two pieces that could make the same move
+
+that contain no castles, en passant pawn captures, pawn promotions, awareness of tactics (e.g., pinned pieces) to reso
 
 ## Turn-in Procedure
 
