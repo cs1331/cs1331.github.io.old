@@ -58,7 +58,7 @@ r1bqkb1r/ppp2Npp/2n5/3np3/2B5/8/PPPP1PPP/RNBQK2R
 You don't need to know how to play chess, you only need to know how the pieces and pawns move and how to record chess moves. Use the following links for this purpose:
 
 - [Learn to Play Chess](http://www.chesscorner.com/tutorial/learn.htm) -- You only need to read the information under "Rules of Chess."
-- [Chess Notation](9http://www.chesscorner.com/tutorial/basic/notation/notate.htm) -- look at abbreviated algebraic notation.
+- [Chess Notation](http://www.chesscorner.com/tutorial/basic/notation/notate.htm) -- look at abbreviated algebraic notation.
 
 
 And, of course, you need to know the [PGN Standard](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm). You only need sections 2.3, 8.1-8.2.3.6, 16.1.3.1 and 16.1.4. PGN is simple, and you can learn it well enough by simply looking at example PGN games.
@@ -68,8 +68,8 @@ And, of course, you need to know the [PGN Standard](http://www.saremba.de/chessg
 
 - Write your program incrementally. Start with `tagValue`, which is easy. Then write your `finalPosition` method so that it correctly analyzes simple games. Finish a 10 point grading category before moving on to the next. After you finish the next grading category, make sure your program is still correct with games in the previous categories. For example, after you finish writing the code to handle castling moves, make sure your program still handle simple games correctly.
 - `char` is an integral type. That means you can do arithemtic with `char`s like `algebraicSquare.charAt(0) - 'a'` to translate a file letter to an integer index.
-- The `String` class's `split` method takes a regular expression as the delimiter, so you can, for example, use any number token (1 or more digits) followed by a period to split a `String` into a `String[]`.
-- The `Character` class includes static utility methods for testing `char`s. For example, `Character.isDigit('1')` returns `true`, `Character.isDigit('N')` returns `false`. There are similar methods for detecting upper and lower case `char`s.
+- The [`String`](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html) class's `split` method takes a regular expression as the delimiter, so you can, for example, use any number token (1 or more digits) followed by a period to split a `String` into a `String[]`.
+- The [`Character`](https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html) class includes static utility methods for testing `char`s. For example, `Character.isDigit('1')` returns `true`, `Character.isDigit('N')` returns `false`. There are similar methods for detecting upper and lower case `char`s.
 
 ## Grading
 
