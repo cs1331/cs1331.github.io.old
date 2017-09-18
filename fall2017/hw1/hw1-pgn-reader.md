@@ -15,7 +15,7 @@ In this assignment you will practice
 - using arrays, and
 - maintaining state.
 
-You may use classes from the Java standard library, but you may not write your own classes other than the single class that holds your static methods. If you already know some object-oriented programming this restriction may frustrate you. But this restriction will gain confidence with Java control structures and arrays, and you will appreciate data abstraction with classes.
+You may use File IO, stream scanning (`java.util.Scanner`) and regular expression classes from the Java standard library, but you may not use any collections classes or write your own classes other than the single class that holds your static methods. You may only use language features we've covered through arrays. If you already know some object-oriented programming this restriction may frustrate you. But this restriction will gain confidence with Java control structures and arrays, and you will appreciate data abstraction with classes.
 
 ## Problem Description
 
@@ -65,7 +65,6 @@ And, of course, you need to know the [PGN Standard](http://www.saremba.de/chessg
 
 ### Tips
 
-
 - Write your program incrementally. Start with `tagValue`, which is easy. Then write your `finalPosition` method so that it correctly analyzes simple games. Finish a 10 point grading category before moving on to the next. After you finish the next grading category, make sure your program is still correct with games in the previous categories. For example, after you finish writing the code to handle castling moves, make sure your program still handle simple games correctly.
 - `char` is an integral type. That means you can do arithemtic with `char`s like `algebraicSquare.charAt(0) - 'a'` to translate a file letter to an integer index.
 - The [`String`](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html) class's `split` method takes a regular expression as the delimiter, so you can, for example, use any number token (1 or more digits) followed by a period to split a `String` into a `String[]`.
@@ -76,11 +75,12 @@ And, of course, you need to know the [PGN Standard](http://www.saremba.de/chessg
 There are 20 bonus points on this assignment.
 
 - 50 points for correctly extracting tag values.
-- 10 points for correctly finding final position of simple games or openings ([fools-mate.pgn](fools-mate.pgn), [scholars-mate.pgn](scholars-mate.pgn), [fegatello.pgn](fegatello.pgn))
-- 10 points for correctly finding final position of games that contain castling moves ([A Night at the Opera](morphy-isouard-karl-1958.pgn))
-- 10 points for correctly finding final position of games that contain pawn promotions
-- 10 points for correctly finding final position of games that contain en passant pawn captures
-- 10 points for correctly finding final position of games that contain moves requiring disambiguation of starting file or rank (but not both) to distinguish between two pieces that could make the same move
+- 10 points for correctly finding final position of simple openings (in which no piece moves more than once, e.g., each move starts from a home square). ([giuoco-piano.pgn](giuoco-piano.pgn), [ruy-lopez.pgn](ruy-lopez.pgn), [petrov-defense.pgn](petrov-defense.pgn))
+- 10 points for simple games or extended openings ([fools-mate.pgn](fools-mate.pgn), [scholars-mate.pgn](scholars-mate.pgn), [fegatello.pgn](fegatello.pgn))
+- 10 points for correctly finding final position of simple games or openings that contain castling moves ([ruy-lopez-closed.pgn](ruy-lopez-closed.pgn))
+- 10 points for correctly finding final position of games that contain pawn promotions ([panandh-amirpb007-2011.pgn](panandh-amirpb007-2011.pgn))
+- 10 points for correctly finding final position of games that contain en passant pawn captures ([french-with-ep.pgn](french-with-ep.pgn), [petrov-with-ep.pgn](petrov-with-ep.pgn))
+- 10 points for correctly finding final position of games that contain moves requiring disambiguation of starting file or rank (but not both) to distinguish between two pieces that could make the same move ([A Night at the Opera](morphy-isouard-karl-1958.pgn))
 - 10 points for correctly finding final position of games that contain moves requiring disambiguation of starting file and rank to distinguish between two pieces that could make the same move
 - 10 points for correctly finding final position of games that require knowledge of tactics (e.g., pinned pieces) to disambiguate to distinguish between two pieces that could make the same move ([tal-fischer-1959-10-11.pgn](tal-fischer-1959-10-11.pgn))
 
