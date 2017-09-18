@@ -54,6 +54,11 @@
                       "[Card Example](https://github.com/cs1331/card)"],
         "order": [9,10]
     },
+    "file-io": {
+        "topic": "[File IO](slides/file-io.pdf)",
+        "materials": ["Tutorial - [File IO](https://docs.oracle.com/javase/tutorial/essential/io/fileio.html)"],
+        "order": [100]
+    },
     "review1": {
         "topic": "[Review 1](slides/review1.html)",
         "materials": ["[cs1331-exam1-practice.pdf](cs1331-exam1-practice.pdf)",
