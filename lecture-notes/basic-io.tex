@@ -1,0 +1,264 @@
+\documentclass{article}
+
+\usepackage{framed}
+\usepackage{eurosym}
+\usepackage{fancybox}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage[english]{babel}
+
+
+% "define" Scala
+\lstdefinelanguage{scala}{
+  morekeywords={abstract,case,catch,class,def,%
+    do,else,extends,false,final,finally,%
+    for,if,implicit,import,match,mixin,%
+    new,null,object,override,package,%
+    private,protected,requires,return,sealed,%
+    super,this,throw,trait,true,try,%
+    type,val,var,while,with,yield},
+  otherkeywords={=>,<-,<\%,<:,>:,\#,@},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[n]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[b]""",
+}
+
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% Default settings for code listings
+\lstset{frame=tb,
+  language=scala,
+  aboveskip=2mm,
+  belowskip=2mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=true,
+  keepspaces=true
+  %tabsize=3
+}
+
+\title{Basic Input/Output}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Screen Output}
+
+
+The Java standard library provides three primary methods in the {\tt System.out} object for sending text output to the screen.
+
+\begin{itemize}
+\item {\tt System.out.print}
+\item {\tt System.out.println}
+\item {\tt System.out.printf} (which just calls {\tt System.out.format})
+\end{itemize}
+
+
+\section{{\tt System.out.print}}
+
+
+{\tt System.out.print} takes a {\tt String} parameter and sends the string to the screen.  The statements
+\begin{lstlisting}[language=Java]
+System.out.print("Me");
+System.out.print("ow!");
+\end{lstlisting}
+will produce the output
+\begin{lstlisting}[language=Java]
+Meow!
+\end{lstlisting}
+
+
+\section{{\tt System.out.println}}
+
+
+{\tt System.out.println} does the same as {\tt System.out.print} but adds a newline character.  The statements
+\begin{lstlisting}[language=Java]
+System.out.println("Johnny");
+System.out.println("Chimpo");
+\end{lstlisting}
+will produce the output
+\begin{lstlisting}[language=Java]
+Johnny
+Chimpo
+\end{lstlisting}
+
+
+\section{{\tt System.out.printf}}
+
+
+{\tt System.out.printf} takes a {\it format string} and any number of additional arguments, and prints the result of inserting the additional arguments into the format string according to the format specifiers in the format string
+\begin{itemize}
+\item The format string can contain other text in addition to format specifiers
+\item Each format specifier begins with {\tt \%} and ends with a {\it conversion character}
+\item You can think of each format specifier as defining a field into which a value is inserted
+\item Like {\tt print}, {\tt printf} does not print a newline character at the end.  End your format string with {\tt \\n} if you want to end your output with a newline
+\end{itemize}
+ {\tt printf} is a convenience method for {\tt format}
+
+\section{{\tt System.out.printf} Examples}
+
+
+For full details, see \url{http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax}.  Here are a few examples
+\begin{itemize}
+
+\item ``Decimals'' (integers) - {\tt d}, Strings - {\tt s}
+\begin{lstlisting}[language=Java]
+System.out.printf("%d %s.\n", 7, "Samurai");
+\end{lstlisting}
+prints
+\begin{lstlisting}[language=Java]
+7 Samurai.
+\end{lstlisting}
+
+\item Floating point numbers - {\tt f}
+\begin{lstlisting}[language=Java]
+ System.out.printf("I like %3.2f.%n", Math.PI);
+\end{lstlisting}
+prints
+\begin{lstlisting}[language=Java]
+I like 3.14.
+\end{lstlisting}
+
+\end{itemize}
+
+Play around with \href{../code/ConsoleOutput.java}{ConsoleOutput.java} to get a feel for {\tt printf}.
+
+\newpage
+
+\section{Number Formatting}
+
+
+{\tt printf} is useful for general formatting, but if you need to print currency amounts and you want to ``internationalize'' your code, use a CurrencyFormatter {\tt NumberFormat}.
+
+\begin{lstlisting}[language=Java]
+NumberFormat us = NumberFormat.getCurrencyInstance();
+System.out.println(us.format(3.14));
+
+NumberFormat de = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+System.out.println(de.format(3.14));
+\end{lstlisting}
+prints\\
+\begin{framed}
+\$3.14\\
+3,14 \euro
+\end{framed}
+
+
+\section{Packages and Imports}
+
+\begin{itemize}
+\item All Java classes are organized in packages
+\item We've been using the default package (by not specifying a package)
+\item To use a class from a different package, you must either fully qualify it every time you use it, or import it
+\end{itemize}
+
+{\tt NumberFormat} is in the {\tt java.text} package.  The top of the {\tt NumberFormat} class contains the line:
+
+\begin{lstlisting}[language=Java]
+package java.text;
+\end{lstlisting}
+
+And {\tt Locale} is in the {\tt java.util} package.  So for our example from the previous slide to work we must include the following import statements at the top of our source file:
+
+\begin{lstlisting}[language=Java]
+import java.text.NumberFormat;
+import java.util.Locale;
+\end{lstlisting}
+
+See \href{../CurrencyFormatting.java}{CurrencyFormatting.java}
+
+\newpage
+
+\section{Console Input}
+
+
+You can read input from the console using the {\tt Scanner} class
+\begin{itemize}
+\item First import it from the {\tt java.util} package
+\begin{lstlisting}[language=Java]
+import java.util.Scanner;
+\end{lstlisting}
+\item Then you can use a {\tt Scanner} object to read, for example, three integers like this:
+\begin{lstlisting}[language=Java]
+Scanner keyboard = new Scanner(System.in);
+System.out.println("Enter your 3 test scores, separated by spaces.");
+exam1 = keyboard.nextInt();
+exam2 = keyboard.nextInt();
+exam3 = keyboard.nextInt();
+examAvg = (exam1 + exam2 + exam3) / 3.0; // Why 3.0 instead of 3?
+System.out.printf("Your exam average is %.1f%n", examAvg);\end{lstlisting}
+\end{itemize}
+
+\section{Basic File Input using {\tt Scanner}}
+
+
+You can read from a file the same way you read from a keyboard by simply initializing with a {\tt File} instead of {\tt System.in}
+\begin{lstlisting}[language=Java]
+Scanner gradeFile = new Scanner(new File("grades.txt"));
+\end{lstlisting}
+{\tt Scanner}'s {\tt hasNext} method tells you whether there's more input to consume.  A common idiom for reading all the lines of a text file is:
+\begin{lstlisting}[language=Java]
+Scanner fileScanner = new Scanner(new File("ScannerFun.java"));
+while (fileScanner.hasNext()) {
+    String line = fileScanner.nextLine();
+    // do something with line
+}
+
+\end{lstlisting}
+
+See \href{../code/CourseAverage.java}{CourseAverage.java} for a more detailed example.
+
+\section{Basic File Output using {\tt PrintStream}}
+
+Look up {\tt System.out} in the Java API documentaion.  What's the type of {\tt System}'s {\tt out} static variable?
+
+\begin{itemize}
+\item {\tt System.out} is initialized to use the program's {\tt stdout} file desicriptor, which is the console if output hasn't been redirected.
+\item We can create {\tt PrintStream}s with other files or {\tt OutputStream}s and write to them jsut like we've been eriting to the console.
+\end{itemize}
+
+\begin{lstlisting}[language=Java]
+PrintStream outFile = new PrintStream(new File("somefile.txt"));
+outFile.println(...);
+\end{lstlisting}
+
+Stop and think about this for a moment.  We can write to a text file the same way we write to a text console.  What general principle in computing/programming is this an example of?
+
+
+\section{Programming Exercise}
+
+Write a program that
+\begin{itemize}
+\item reads all the lines of a file whose name is given at the command line,
+\item creates a new file whose file name is the original file name with ``-uppercase'' appended to the base name\footnote{The base name of a file is the part that appears before the extension, e.g., the basename of {\tt MyClass.java} is {\tt MyClass}.}, and
+\item writes all the lines of the original file to the new file but in uppercase letters.
+\end{itemize}
+To do this, you'll need to look up {\tt String}'s {\tt lastIndexOf}, {\tt substring}, {\tt toUpperCase} methods in the Java API.
+
+\begin{itemize}
+\item Note: {\tt File}'s constructor throws a {\tt FileNotFoundException}.  For now, deal with this by appending {\tt throws Exception} to the signature of any method that instantiates a {\tt File} or calls a method that does so.  For example, in your solution to this exercise the main method's signature should be:
+
+\begin{lstlisting}[language=Java]
+public static void main(String[] args) throws Exception
+\end{lstlisting}
+
+\end{itemize}
+
+\end{document}
