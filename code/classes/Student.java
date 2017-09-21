@@ -25,7 +25,7 @@ public class Student {
 
     public static void main(String[] args) {
         Student[] studs = {new Student("Abdallah"), new Student("Barbara"),
-                           new Student("Chen"), new Student("Dharma"),
+                           new Student("Chen"), new Student("Devi"),
                            new Student("Chen")};
         // Compare primitive values using ==
         System.out.println("studs[2].getHours() == studs[4].getHours(): "
