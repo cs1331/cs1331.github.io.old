@@ -22,14 +22,16 @@
     },
     "programs-methods": {
         "topic": "[Programs and Methods](slides/programs-methods.pdf)",
-        "materials": ["Lecture Notes: [Programs and Methods](../lecture-notes/programs-methods.pdf), [Basic IO](lecture-notes/basic-io.pdf)",
-                      "Tutorial: [Closer Look at Hello World](http://docs.oracle.com/javase/tutorial/getStarted/application/index.html), [Common Problems](http://docs.oracle.com/javase/tutorial/getStarted/problems/index.html), [I/O from Command Line](http://docs.oracle.com/javase/tutorial/essential/io/cl.html)",
+        "materials": ["Lecture Notes: [Programs and Methods](../lecture-notes/programs-methods.pdf)",
+                      "Tutorial: [Closer Look at Hello World](http://docs.oracle.com/javase/tutorial/getStarted/application/index.html), [Common Problems](http://docs.oracle.com/javase/tutorial/getStarted/problems/index.html)",
                       "Liang: Ch 2"],
         "order": [4]
     },
     "control-structures": {
         "topic": "[Control Structures](slides/control-structures.pdf)",
         "materials": ["Tutorial: [Control Flow Statements](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html)",
+                      "Tutorial: [Basic IO](http://docs.oracle.com/javase/tutorial/essential/io/index.html)",
+                      "[Basic IO Lecture Notes](lecture-notes/basic-io.pdf)",
                       "Liang: Ch 3-5 (return statement)"],
         "order": [5]
     },
