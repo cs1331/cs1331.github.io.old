@@ -50,7 +50,7 @@
         "order": [8]
     },
     "classes": {
-        "topic": "[Classes](slides/classes.html)",
+        "topic": "[Classes](slides/classes.pdf)",
         "materials": ["Tutorial - [Classes](http://docs.oracle.com/javase/tutorial/java/javaOO/classes.html)",
                       "Liang: Ch 9",
                       "[Card Example](https://github.com/cs1331/card)"],
