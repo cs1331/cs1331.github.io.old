@@ -12,7 +12,7 @@
 #+LaTeX_CLASS_OPTIONS: [smaller]
 #+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
 #+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
 
 * Inheritance
@@ -113,7 +113,7 @@ The ~HourlyEmployee~ concept extends the ~Employee~ concept.
 - If an explicit ~super~ call is not present and the superclass has a no-arg constructor, ~super()~ will implicitly be the first statement in any constructor
 - If there is no no-arg constructor in a superclass (for example, if the superclass defines other constructors without explicitly defining a no-arg constructor), then subclass constructors must explicitly include a ~super~ call.
 
-Together, these rules enforce an "inside-out" construction order for objects: the highest superclass piece of an object is initialzed first, followed by the second highest, and so on.
+Together, these rules create a constructor chain from the highest superclass of a class to the class itself.
 
 ** Subclass Constructors
 
