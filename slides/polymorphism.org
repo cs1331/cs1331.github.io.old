@@ -12,7 +12,7 @@
 #+LaTeX_CLASS_OPTIONS: [smaller]
 #+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
 #+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
 
 * Polymorphism
@@ -374,20 +374,7 @@ private boolean isSummer(Month month) {
 - Each class has all the public methods in its superclasses, and possibly additional methods.
 - ~SummerIntern6~ only *specializes* ~HourlyEmployee6~, that is, it modifies some behavior of its superclass but does not add any additional behavior.
 
-** Forecasting Payroll
-
-
-Now with our overloaded  ~montlyPay~ method we can forecast payroll:
-#+BEGIN_SRC java :exports code
-  Company6 c = new Company6();
-  System.out.println("Monthly payroll this month: " + c.monthlyPayroll());
-  System.out.printf("Monthly payroll for May: %.2f%n",
-                    c.monthlyPayroll(Month.MAY));
-  System.out.printf("Monthly payroll for June: %.2f%n",
-                    c.monthlyPayroll(Month.JUN));
-#+END_SRC
-
-** Inheritance Hinders Re-use
+** Implementation Inheritance Hinders Re-use
 
 Recall the ~disallowZeroesAndNegatives~ method that we refactored so that it's in the ~Employee~ class and inherited by subclasses:
 
