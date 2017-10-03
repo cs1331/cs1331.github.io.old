@@ -52,6 +52,21 @@ Write the following classes and enums:
 - A subclass of `Piece` named `Rook` which overrides `Piece`'s abstract methods appropriately
 - A subclass of `Piece` named `Pawn` which overrides `Piece`'s abstract methods appropriately
 
+We will test your classes by simply using them, for example:
+
+```Java
+Piece knight = new Knight(Color.BLACK);
+assert knight.algebraicName().equals("N");
+assert knight.fenName().equals("n");
+Square[] attackedSquares = knight.movesFrom(new Square("f6"));
+// test that attackedSquares contains e8, g8, etc.
+Square a1 = new Square("a1");
+Square otherA1 = new Square('a', '1');
+Square h8 = new Square("h8");
+assert a1.equals(otherA1);
+assert !a1.equals(h8);
+```
+
 ## Grading
 
 There are many bonus points on this assignment.
