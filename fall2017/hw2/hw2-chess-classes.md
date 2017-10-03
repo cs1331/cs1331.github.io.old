@@ -88,7 +88,7 @@ Checkstyle deduction will be capped at 10 points for this homework.
 ## Tips
 
 - `Color` and 'Square` are easy and you need to get these right in order to get credit for other things.
-- While most of 'Piece` and the subclasses depend on `Color` and 'Square`, we will try to grade most of `Piece` and its subclasses in isolation. Stub methods so that all classes compile and return values. That way if you, say, don't get and `movesFrom` methods working (the only challenging part of this homework), you can still get 110 points.
+- While most of `Piece` and the subclasses depend on `Color` and `Square`, we will try to grade most of `Piece` and its subclasses in isolation. Stub methods so that all classes compile and return values. That way if you, say, don't get any `movesFrom` methods working, you can still earn 110 points.
 
 ## Turn-in Procedure
 
