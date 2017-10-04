@@ -52,6 +52,8 @@ Write the following classes and enums:
 - A subclass of `Piece` named `Rook` which overrides `Piece`'s abstract methods appropriately
 - A subclass of `Piece` named `Pawn` which overrides `Piece`'s abstract methods appropriately
 
+For each class include a Javadoc comments as described in the [CS 1331 style guide](../../cs1331-style-guide.html).
+
 We will test your classes by simply using them, for example:
 
 ```Java
@@ -83,7 +85,7 @@ There are many bonus points on this assignment.
 - 5 points `Piece`'s `movesFrom(Square square)` method
 - 15 points for each subclass of `Piece` being instantiable and having correct implementations of the abstract methods from 'Piece`
 
-Checkstyle deduction will be capped at 10 points for this homework.
+Checkstyle deduction will be capped at 20 points for this homework.
 
 ## Tips
 
