@@ -52,7 +52,7 @@ Write the following classes and enums:
 - A subclass of `Piece` named `Rook` which overrides `Piece`'s abstract methods appropriately
 - A subclass of `Piece` named `Pawn` which overrides `Piece`'s abstract methods appropriately
 
-For each class include a Javadoc comments as described in the [CS 1331 style guide](../../cs1331-style-guide.html).
+For each class include Javadoc comments as described in the [CS 1331 style guide](../../cs1331-style-guide.html).
 
 We will test your classes by simply using them, for example:
 
@@ -71,7 +71,7 @@ assert !a1.equals(h8);
 
 ## Grading
 
-There are many bonus points on this assignment.
+There are many bonus points available in this assignment.
 
 - 5 points `Color` enum
 - 5 points constructor `Square(char file, char rank)`
