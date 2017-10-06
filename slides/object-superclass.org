@@ -54,16 +54,17 @@ Obey the general contract of ~equals(Object)~ (\href{}{JLS }), which says that ~
 
 ** A Recipe for Implementing ~equals(Object)~
 
-Obeying the general contract of ~equals(Object)~ is easier if you follow these steps.\\
+Obeying the general contract of ~equals(Object)~ is easier if you follow this recipe [fn:1].\\
 
-1. Ensure the other object is not null.
-2. Check for reference equality with == (are we comparing to self?).
+1. Check for reference equality with == (are we comparing to self?).
+2. Ensure the other object is not null.
 3. Check that the other object is an ~instanceof~ this object's class.
 4. Cast the other object to this's type (guaranteed to work after instanceof test)
 5. Check that each ``significant'' field in the other object ~equals(Object)~ the corresponding field in this object.
 
-
 After seeing an example applicaiton of this recipe we'll motivate the proper implementation of ~equals(Object)~ methods by introducing our first collection class, ~ArrayList~.
+
+[fn:1] http://www.informit.com/store/effective-java-9780134685991
 
 ** An Example ~equals(Object)~ Method
 
@@ -78,8 +79,8 @@ Assume we have a ~Person~ class with a single ~name~ field.
 Applying the recipe:
 #+BEGIN_SRC java :exports code
       public boolean equals(Object other) {
-1:        if (null == other) { return false; }
-2:        if (this == other) { return true; }
+1:        if (this == other) { return true; }
+2:        if (null == other) { return false; }
 3:        if (!(other instanceof Person)) { return false; }
 4:        Person that = (Person) other;
 5:        return this.name.equals(that.name);
