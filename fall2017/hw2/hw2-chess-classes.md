@@ -43,7 +43,7 @@ Write the following classes and enums:
 
   - a public abstract instance method `fenName()` which returns a `String` containing the [FEN](http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm#c16.1) name for the piece.
 
-  - a public abstract instance method `movesFrom(Square square)` which returns a `Square[]` containg all the squares the piece could move to form `square` on a chess board containing only the piece.
+  - a public abstract instance method `movesFrom(Square square)` which returns a `Square[]` containg all the squares the piece could move to from `square` on a chess board containing only the piece.
 
 - A subclass of `Piece` named `King` which overrides `Piece`'s abstract methods appropriately
 - A subclass of `Piece` named `Queen` which overrides `Piece`'s abstract methods appropriately
