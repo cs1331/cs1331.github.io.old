@@ -7,7 +7,7 @@ title: Homework 3 - Exceptions
 
 ## Introduction
 
-In this assignment you will practice
+In this "mini-homework" assignment you will practice
 
 - writing exceptions,
 - using exceptions, and
@@ -15,11 +15,11 @@ In this assignment you will practice
 
 ## Problem Description
 
-You need to to add invalid square checking to your square class and ensure that it works properly before continuing to rewrite your PGN reader.
+You need to add invalid square checking to your square class and ensure that it works properly before continuing to rewrite your PGN reader.
 
 ## Solution Description
 
-Write the following classes and enums:
+Write or modify the following classes:
 
 - Write an exception named `InvalidSquareException`. The message returned by `getMessage` should be the square that's invalid, e.g. `a9` or `i1` -- a square that doesn't exist on the chess board.
 
@@ -33,18 +33,18 @@ Write the following classes and enums:
 
 For each class include Javadoc comments as described in the [CS 1331 style guide](../../cs1331-style-guide.html).
 
-We will test your classes with code similar to the following. You should too. (Assume `fail(String)` and `assertEquals(boolean)` are implemented appropriately in these examples.)
+We will test your classes with code similar to the following. You should too. (Assume `fail(String)` and `assertEquals(T, T)` are implemented appropriately in these examples.)
 
 ```Java
 try {
     new Square("a1");
 } catch (InvalidSquareException e) {
-    fail("InvalidSquareexception for valid square: " + e.getMessage());
+    fail("InvalidSquareException for valid square: " + e.getMessage());
 }
 try {
     String invalidSquare = "a9";
     new Square(invalidSquare);
-    fail("No InvalidSquareexception for invalid square: " + invalidSquare);
+    fail("No InvalidSquareException for invalid square: " + invalidSquare);
 } catch (InvalidSquareException e) {
     // Success
 }
@@ -58,19 +58,15 @@ assertEquals("e4", s2.toString());
 ## Grading
 
 - 10 points: `InvalidSquareException` *is-a* appropriate `Throwable`
-- 10 points:  Justification for `InvalidSquareException` beign checked or unchecked
-- 10 points: `Square` throws `InvalidSquareException` for square with invalid file
-- 10 points: `Square` throws `InvalidSquareException` for square with invalid rank
-- 10 points: `Square` does not throw `InvalidSquareException` for square with valid file
-- 10 points: `Square` does not throw `InvalidSquareException` for square with valid rank
-- 5 points `Square` getter for file has correct visibility
-- 5 points `Square` getter for file has correct return type
-- 5 points `Square` getter for file has correct name
-- 5 points `Square` getter for file has correct parameter list
-- 5 points `Square` getter for rank has correct visibility
-- 5 points `Square` getter for rank has correct return type
-- 5 points `Square` getter for rank has correct name
-- 5 points `Square` getter for rank has correct parameter list
+- 10 points:  Justification for `InvalidSquareException` being checked or unchecked
+- 10 points: `Square` throws `InvalidSquareException` for square with invalid file (both constructors)
+- 10 points: `Square` throws `InvalidSquareException` for square with invalid rank (both constructors)
+- 10 points: `Square` does not throw `InvalidSquareException` for square with valid file (both constructors)
+- 10 points: `Square` does not throw `InvalidSquareException` for square with valid rank (both constructors)
+- 10 points: `InvalidSquareException.getMessage` returns correct value when thrown from `Square` constructor
+- 10 points: `Square` getter for file has correct visibility, return type, name, parameter list, and returns correct value
+- 10 points: `Square` getter for rank has correct visibility, return type, name, parameter list, and returns correct value
+- 10 points: `Square.toString` returns correct value
 
 Checkstyle deduction will be capped at 30 points for this homework.
 
