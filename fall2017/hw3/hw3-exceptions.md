@@ -24,16 +24,16 @@ Write the following classes and enums:
 - Write an exception named `InvalidSquareException`. The message returned by `getMessage` should be the square that's invalid, e.g. `a9` or `i1` -- a square that doesn't exist on the chess board.
 
   - Decide whether your `InvalidSquareException` should be a checked or unchecked exception and implement it appropriately.
-  - In the JavaDoc comment for your `InvalidSquare` class write a sentence or two justifying your choice of checked or unchecked exception.
+  - In the JavaDoc comment for your `InvalidSquareException` class write a sentence or two justifying your choice of checked or unchecked exception.
 
 - Modify your `Square` class from HW2 to make the following changes:
 
-  - The constructors should should throw an `InvalidSquare` exception if the file is not in the range [`'a'`, `'h'`] or the rank is not in the range [`'1'`, `'8'`].
-  - Add public getter methods for the file and rank fields
+  - The constructors should should throw an `InvalidSquareException` exception if the file is not in the range [`'a'`, `'h'`] or the rank is not in the range [`'1'`, `'8'`].
+  - Add public getter methods for the file and rank fields.
 
 For each class include Javadoc comments as described in the [CS 1331 style guide](../../cs1331-style-guide.html).
 
-We will test your classes with code similar to the following (assume `fail(String)` and `assertEquals(boolean)` are implemented appropriately). You should too.
+We will test your classes with code similar to the following. You should too. (Assume `fail(String)` and `assertEquals(boolean)` are implemented appropriately in these examples.)
 
 ```Java
 try {
