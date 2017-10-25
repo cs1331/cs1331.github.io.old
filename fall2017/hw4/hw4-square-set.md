@@ -16,6 +16,7 @@ In this assignment you will practice
 
 ## Problem Description
 
+You need to create a class that implements the Set interface and contains Square objects- a SquareSet if you will. You may use the Square class and InvalidSquareException you created for previous homeworks.
 
 
 ## Solution Description
@@ -29,7 +30,9 @@ In this assignment you will practice
 
 ## Grading
 
-
+- 15 points: `SquareSet` implements `Set<Square>`
+- 75 points: 5 points for each correctly implemented method
+- 10 points: `Square` throws `InvalidSquareException` for invalid squares
 Checkstyle deduction will be capped at 40 points for this homework.
 
 ## Turn-in Procedure
