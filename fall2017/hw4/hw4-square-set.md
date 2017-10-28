@@ -16,21 +16,41 @@ In this assignment you will practice
 
 ## Problem Description
 
-
+You want a convenient collection class for `Square`s.
 
 ## Solution Description
 
-`SquareSet` should implement `Set<Square>`.
+Write a `SquareSet` class that implements `Set<Square>`.
 
-- Implement all required methods as well as the `add` and `remove` optional methods. For all other optional methods follow the instructions in the [`Set` API documentation](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html).
+- Implement all required methods as well as the `add` method. For all other optional methods follow the instructions in the [`Set` API documentation](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html) (what happens when a user calls an optional method that has not been implemented?).
 - If an invalid square is added, throw the `InvalidSquareException` you created in the previous homework. You may need to modify your `InvalidSquareException` class.
 - Use an array as your backing store.
-
+- `Set<E>` implements `Iterable<E>`. So you'll also need to write a class that implements `Iterator<Square>`, an instance of which you should return from `SquareSet`'s `iterator` method. Your `Iterator<Square>` class should be an inner class.
 
 ## Grading
 
+-  5 points: no-arg contsructor creates an instance of `SquareSet`
+-  5 points: `add` method adds a valid `Square` not already in the set
+-  5 points: `add` method throws exceptoin for attempt to add and invalid `Square`
+-  5 points: `add` method does not add a valid `Square` already in the set
+- 10 points: `contains`
+- 10 points: `containsAll`
+- 10 points: `equals`
+- 10 points: `hashCode`
+- 10 points: `isEmpty`
+- 10 points: `iterator`
+-  5 points: `size`
+-  5 points: `toArray`
+- 10 points: `toArray(T[] a)`
 
-Checkstyle deduction will be capped at 40 points for this homework.
+**Bonus**:
+
+- 10 points: `addAll` adds all `Square`s in argument if all squares are valid
+- 10 points: `addAll` throws `InvalidSquareExceptoin` and adds no `Square`s from argument if any `Square` in argument is invalid
+- 10 points: `addAll` adds `Square`s from arguemnt that are not already in set but not any `Square`'s that are already in the set
+- 10 points: `remove` removes argument from set
+
+Checkstyle deduction will be capped at 50 points for this homework.
 
 ## Turn-in Procedure
 
