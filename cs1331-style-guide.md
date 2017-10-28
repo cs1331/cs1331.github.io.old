@@ -19,7 +19,7 @@ In the simplest case, run checkstyle on your Java files like so:
 java -jar checkstyle-6.2.2.jar MyJavaFile.java
 ```
 
-For more advanced options (which will be necessary in later portions of the semester), check out the options available for running checkstyle.
+For more advanced options (which will be necessary in later portions of the semester), check out the options available for running checkstyle by running java -jar checkstyle-6.2.2.jar with no additional parameters.
 The rest of this document summarizes and in some cases clarifies Sun/Oracle's Java Code Conventions (and in some places copies it directly) and the Checkstyle checks specified in [cs1331-checkstyle.xml](resources/cs1331-checkstyle.xml). The Checkstyle web site also documents each of its standard checks here: http://checkstyle.sourceforge.net/checks.html
 
 ## Names
@@ -194,6 +194,7 @@ import java.time.Month;
  * Represents an employee who is paid an hourly wage.
  *
  * @author jdoe3
+ * @version 13.31
  */
 public class HourlyEmployee extends Employee {
 
@@ -203,6 +204,9 @@ public class HourlyEmployee extends Employee {
     /**
      * Creates an HourlyEmployee with hourly wage of 20 and
      * monthly hours of 160.
+     *
+     * @param aName the employees offical full name
+     * @param aHireDate the date on which the employee was hired
      */
     public HourlyEmployee(String aName, LocalDate aHireDate) {
         this(aName, aHireDate, 20.00, 160.0);
@@ -212,7 +216,7 @@ public class HourlyEmployee extends Employee {
      * Creates an HourlyEmployee with all required parameters.
      *
      * @param aName the employees offical full name
-     * @param aHireDate the data on which the employee was hired
+     * @param aHireDate the date on which the employee was hired
      * @param anHourlyWage this employee's non-overtime hourly wage
      * @param aMonthlyHours the number of hours this employee must work every
      *                      month
