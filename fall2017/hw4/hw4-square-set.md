@@ -31,7 +31,7 @@ Write a `SquareSet` class that implements `Set<Square>`.
 
 -  5 points: no-arg constructor creates an instance of `SquareSet`
 -  5 points: `add` method adds a valid `Square` not already in the set
--  5 points: `add` method throws exception for attempt to add and invalid `Square`
+-  5 points: `add` method throws exception for attempt to add an invalid `Square`
 -  5 points: `add` method does not add a valid `Square` already in the set
 - 10 points: `contains`
 - 10 points: `containsAll`
