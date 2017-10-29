@@ -23,18 +23,23 @@ You want a convenient collection class for `Square`s.
 Write a `SquareSet` class that implements `Set<Square>`.
 
 - Implement all required methods as well as the `add` method. For all other optional methods follow the instructions in the [`Set` API documentation](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html) (what happens when a user calls an optional method that has not been implemented?).
+- Implement the two constructors specified in the `Collections` interface documentation.
 - If an invalid square is added, throw the `InvalidSquareException` you created in the previous homework. You may need to modify your `InvalidSquareException` class.
+- If a `null` is added, throw a `NullPointerException`.
 - Use an array as your backing store.
 - `Set<E>` implements `Iterable<E>`. So you'll also need to write a class that implements `Iterator<Square>`, an instance of which you should return from `SquareSet`'s `iterator` method. Your `Iterator<Square>` class should be an inner class.
+
+For each class include Javadoc comments as described in the [CS 1331 style guide](../../cs1331-style-guide.html).
 
 ## Grading
 
 -  5 points: no-arg contsructor creates an instance of `SquareSet`
+-  5 points: `SquareSet(Collection<Square>)` contsructor creates an instance of `SquareSet` with no duplicates or `null`s
 -  5 points: `add` method adds a valid `Square` not already in the set
 -  5 points: `add` method throws exceptoin for attempt to add and invalid `Square`
 -  5 points: `add` method does not add a valid `Square` already in the set
 - 10 points: `contains`
-- 10 points: `containsAll`
+-  5 points: `containsAll`
 - 10 points: `equals`
 - 10 points: `hashCode`
 - 10 points: `isEmpty`
