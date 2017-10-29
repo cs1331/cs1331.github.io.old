@@ -29,9 +29,9 @@ Write a `SquareSet` class that implements `Set<Square>`.
 
 ## Grading
 
--  5 points: no-arg contsructor creates an instance of `SquareSet`
+-  5 points: no-arg constructor creates an instance of `SquareSet`
 -  5 points: `add` method adds a valid `Square` not already in the set
--  5 points: `add` method throws exceptoin for attempt to add and invalid `Square`
+-  5 points: `add` method throws exception for attempt to add and invalid `Square`
 -  5 points: `add` method does not add a valid `Square` already in the set
 - 10 points: `contains`
 - 10 points: `containsAll`
@@ -47,7 +47,7 @@ Write a `SquareSet` class that implements `Set<Square>`.
 
 - 10 points: `addAll` adds all `Square`s in argument if all squares are valid
 - 10 points: `addAll` throws `InvalidSquareExceptoin` and adds no `Square`s from argument if any `Square` in argument is invalid
-- 10 points: `addAll` adds `Square`s from arguemnt that are not already in set but not any `Square`'s that are already in the set
+- 10 points: `addAll` adds `Square`s from argument that are not already in set but not any `Square`'s that are already in the set
 - 10 points: `remove` removes argument from set
 
 Checkstyle deduction will be capped at 50 points for this homework.
