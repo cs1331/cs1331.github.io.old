@@ -72,7 +72,7 @@ And, of course, you need to know the [PGN Standard](http://www.saremba.de/chessg
 
 ## Grading
 
-There are 20 bonus points on this assignment.
+There are 30 bonus points on this assignment.
 
 - 50 points for correctly extracting tag values.
 - 10 points for correctly finding final position of simple openings (in which no piece moves more than once, e.g., each move starts from a home square). ([giuoco-piano.pgn](giuoco-piano.pgn), [ruy-lopez.pgn](ruy-lopez.pgn), [petrov-defense.pgn](petrov-defense.pgn))
