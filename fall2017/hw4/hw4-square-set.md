@@ -51,7 +51,7 @@ For each class include Javadoc comments as described in the [CS 1331 style guide
 **Bonus**:
 
 - 10 points: `addAll` adds all `Square`s in argument if all squares are valid
-- 10 points: `addAll` throws `InvalidSquareExceptoin` and adds no `Square`s from argument if any `Square` in argument is invalid
+- 10 points: `addAll` throws `InvalidSquareException` and adds no `Square`s from argument if any `Square` in argument is invalid
 - 10 points: `addAll` adds `Square`s from arguemnt that are not already in set but not any `Square`'s that are already in the set
 - 10 points: `remove` removes argument from set
 
