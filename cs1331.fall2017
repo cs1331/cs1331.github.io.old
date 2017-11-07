@@ -40,23 +40,23 @@ Week 10
 2017-10-27;iterators;;Withdrawal Deadline 2017-10-28
 Week 11
 2017-10-30;iterators
-2017-11-01;lambda-expressions
-2017-11-03;hashed-collections;;[HW5 Released 2017-11-03]()
+2017-11-01;Word Count Exercise
+2017-11-03;Word Count Exercise
 Week 12
-2017-11-06;javafx-events;;[HW4 Due 2017-11-07](fall2017/hw4/hw4-square-set.html)
-2017-11-08;javafx-guis;;[HW5 Due 2017-11-09](),[HW6 Released 2017-11-09]()
-2017-11-10;javafx-guis
+2017-11-06;hashed-collections;;[HW4 Due 2017-11-07](fall2017/hw4/hw4-square-set.html),[HW5 Released 2017-11-07]()
+2017-11-08;lambda-expressions
+2017-11-10;javafx-events
 Week 13
-2017-11-13;review3
+2017-11-13;review3;;[HW5 Due 2017-11-14](),[HW6 Released 2017-11-14]()
 2017-11-15;exam3
-2017-11-17;algorithms;;[HW7 Released 2017-11-17]()
+2017-11-17;javafx-guis;;[HW7 Released 2017-11-17]()
 Week 14
 2017-11-20;No Class
 2017-11-22;Student Recess - No Class
 2017-11-24;Thanksgiving Break - No Class
 Week 15
-2017-11-27;recursion
-2017-11-29;linked-lists
+2017-11-27;algorithms
+2017-11-29;recursion,linked-lists
 2017-12-01;stacks-queues
 Week 16
 2017-12-04;final-review
