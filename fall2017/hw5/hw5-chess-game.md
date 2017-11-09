@@ -94,13 +94,13 @@ Non compiling code will receive an automatic zero.
 
     - Each field is correctly declared and assigned (2pts per field)
     - Has a constructor that takes in the fields (2pts)
-    - Getter/Setter methods (5pts)
+    - Getter methods (5pts)
 
 - Move (10 points)
 
     - Each field is correctly declared and assigned (2pts per field)
     - Has a constructor that takes in the fields (2pts)
-    - Getter/Setter methods (4pts)
+    - Getter methods (4pts)
 
 - ChessGame (75 points)
     - ListMove is correctly declared and assigned (5pts)
@@ -122,6 +122,7 @@ Files needed:
 - Move
 - Color
 - Square
+- InvalidSquareException
 
 ## Verify the Success of Your Submission to T-Square
 
