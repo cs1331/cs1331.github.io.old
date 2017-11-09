@@ -1,4 +1,4 @@
-\documentclass[answers,addpoints,9pt]{exam}
+\documentclass[addpoints,9pt]{exam}
 \usepackage{verbatim, multicol, tabularx,graphicx}
 \usepackage{amsmath,amsthm, amssymb, latexsym, listings}
 
@@ -428,15 +428,15 @@ for (Label label: labels) {
 \end{solution}
 
 
-\part[5] Write a stream pipeline that does the same thing as in the previous part above.
+%% \part[5] Write a stream pipeline that does the same thing as in the previous part above.
 
-\begin{solution}[1.5in]
-\begin{verbatim}
-labels.stream()
-    .filter(e -> !isDisabled())
-    .forEach(e -> System.out.println(e.getText()))
-\end{verbatim}
-\end{solution}
+%% \begin{solution}[1.5in]
+%% \begin{verbatim}
+%% labels.stream()
+%%     .filter(e -> !isDisabled())
+%%     .forEach(e -> System.out.println(e.getText()))
+%% \end{verbatim}
+%% \end{solution}
 
 
 
