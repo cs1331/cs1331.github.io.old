@@ -38,7 +38,7 @@ public class Knight extends Piece {
             sq[counter++] = new Square(files[2], ranks[3]);
         }
         if (isInBoard(files[3], ranks[1])) {
-            sq[counter++] = new Square(files[2], ranks[1]);
+            sq[counter++] = new Square(files[3], ranks[1]);
         }
         if (isInBoard(files[3], ranks[2])) {
             sq[counter++] = new Square(files[3], ranks[2]);
