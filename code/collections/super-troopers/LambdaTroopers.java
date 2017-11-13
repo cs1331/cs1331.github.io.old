@@ -35,6 +35,10 @@ public class LambdaTroopers {
         troopers.add(new Trooper("Rabbit", false));
         troopers.add(new Trooper("Mac", true));
         troopers.add(new Trooper("Foster", true));
+        troopers.add(new Trooper("Grady", false));
+        troopers.add(new Trooper("Ursula", false));
+        troopers.add(new Trooper("Rando", true));
+
 
         System.out.println("Before sorting:\n" + troopers);
 
@@ -77,10 +81,36 @@ public class LambdaTroopers {
                 ? t1.getName().compareTo(t2.getName())
                 : (t1.hasMustache() ? 1 : -1));
 
+        /////////////////////////////////////////////////////////////////////
+        // Method reference examples
+
+        List<Trooper> spurbury = new ArrayList<>();
+        spurbury.add(new Trooper("Grady", false));
+        spurbury.add(new Trooper("Ursula", false));
+        spurbury.add(new Trooper("Rando", true));
+        spurbury.add(null);
+
+        System.out.println("\nSpurbury officers with a null:");
+        System.out.println(spurbury);
+
+        // Class::staticMethod method reference
+        spurbury.removeIf(Objects::isNull);
+        System.out.println("\nSpurbury officers with nulls removed:");
+        System.out.println(spurbury);
+
+
+        List<Trooper> superTroopers = new ArrayList<>(troopers);
+        // object::instanceMethod method reference
+        superTroopers.removeIf(spurbury::contains);
+        System.out.println("\nJust super troopers:");
+        System.out.println(superTroopers);
+
+
         // Using a composed comparator
         // Trooper::hasMustache is a method reference to an instance method
         // It is equivalent to (Trooper e) -> e.hasMustache()
         Comparator<Trooper> byMustacheThenName =
+            // Class::instanceMethod method reference
             Comparator.comparing(Trooper::hasMustache)
             .thenComparing(Trooper::getName);
         Collections.sort(troopers, byMustacheThenName);
