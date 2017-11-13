@@ -171,7 +171,9 @@
     "review3": {
         "topic": "[Review 3](slides/review3.pdf)",
         "materials": ["[cs1331-exam3-practice.pdf](cs1331-exam3-practice.pdf)",
-                      "[cs1331-exam3-practice-answers.pdf](cs1331-exam3-practice-answers.pdf)"],
+                      "[cs1331-exam3-practice-answers.pdf](cs1331-exam3-practice-answers.pdf)",
+                      "[cs1331-fall2016-exam3-practice.pdf](cs1331-fall2016-exam3-practice.pdf)",
+                      "[cs1331-fall2016-exam3-practice-answers.pdf](cs1331-fall2016-exam3-practice-answers.pdf)"],
         "order": [34]
     },
     "exam3": {
