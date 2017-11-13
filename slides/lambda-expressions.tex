@@ -298,21 +298,26 @@ doo(x -> System.out.println(x));
 
 Three kinds of method references:
 \begin{itemize}
-\item {\it object}::{\it instanceMethod} - like {\tt x -> object.instanceMethod(x)}
-
-\item {\it Class}::{\it staticMethod} - like {\tt x -> Class.staticMethod(x)}
-\begin{lstlisting}[language=Java]
-someList.forEach(System.out::println);
-\end{lstlisting}
 
 \item {\it Class}::{\it instanceMethod} - like {\tt (x, y) -> x.instanceMethod(y)}
 \begin{lstlisting}[language=Java]
 Comparator<Trooper> byName = Comparator.comparing(Trooper::getName);
 \end{lstlisting}
 
+\item {\it Class}::{\it staticMethod} - like {\tt x -> Class.staticMethod(x)}
+\begin{lstlisting}[language=Java]
+someList.removeIf(Object::isNull);
+\end{lstlisting}
+
+
+\item {\it object}::{\it instanceMethod} - like {\tt x -> object.instanceMethod(x)}
+\begin{lstlisting}[language=Java]
+someList.forEach(System.out::println);
+\end{lstlisting}
+
 \end{itemize}
 
-Let's see some examples ...
+See \link{\code/collections/super-troopers/LambdaTroopers.java}{LambdaTroopers.java} for more examples.
 
 \end{frame}
 %------------------------------------------------------------------------
