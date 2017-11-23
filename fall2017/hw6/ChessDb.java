@@ -1,16 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
 
 public class ChessDb {
 
-    List<ChessGame> games;
+    private List<ChessGame> games;
+
     public ChessDb() {
         games = new ArrayList<>();
         games.add(morphyIsouard());
+        games.add(talFischer());
     }
 
-    public
+    public List<ChessGame> getGames() {
+        return games;
+    }
 
     private ChessGame morphyIsouard() {
         ChessGame game = new ChessGame(

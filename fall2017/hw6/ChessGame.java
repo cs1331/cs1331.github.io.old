@@ -1,25 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class ChessGame {
 
-
-    private String event;
-    private String site;
-    private String date;
-    private String white;
-    private String black;
-    private String result;
+    private StringProperty event = new SimpleStringProperty(this, "NA");
+    private StringProperty site = new SimpleStringProperty(this, "NA");
+    private StringProperty date = new SimpleStringProperty(this, "NA");
+    private StringProperty white = new SimpleStringProperty(this, "NA");
+    private StringProperty black = new SimpleStringProperty(this, "NA");
+    private StringProperty result = new SimpleStringProperty(this, "NA");
     private List<String> moves;
 
     public ChessGame(String event, String site, String date,
                      String white, String black, String result) {
-        this.event = event;
-        this.site = site;
-        this.date = date;
-        this.white = white;
-        this.black = black;
+        this.event.set(event);
+        this.site.set(site);
+        this.date.set(date);
+        this.white.set(white);
+        this.black.set(black);
+        this.result.set(result);
         moves = new ArrayList<>();
     }
 
@@ -31,9 +32,27 @@ public class ChessGame {
         return moves.get(n - 1);
     }
 
-    public String getEvent() { return event; }
-    public String getSite() { return site; }
-    public String getDate() { return date; }
-    public String getWhite() { return white; }
-    public String getBlack() { return black; }
+    public String getEvent() {
+        return event.get();
+    }
+
+    public String getSite() {
+        return site.get();
+    }
+
+    public String getDate() {
+        return date.get();
+    }
+
+    public String getWhite() {
+        return white.get();
+    }
+
+    public String getBlack() {
+        return black.get();
+    }
+
+    public String getResult() {
+        return result.get();
+    }
 }
