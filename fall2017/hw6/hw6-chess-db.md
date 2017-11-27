@@ -18,9 +18,9 @@ You have a bunch of PGN games and want to display them easily.
 
 ## Solution Description
 
-Write a GUI program in a file named `ChessGui.java` that displays the metadata of [`ChessGame`](ChessGame.java)s, one per line, of each game in [`ChessDb`](ChessDb.java) in a [TableView](https://docs.oracle.com/javafx/2/api/javafx/scene/control/TableView.html). In the bottom of the main screen should be two buttons: "View" and "Dismiss".
+Write a GUI program in a file named `ChessGui.java` that displays the metadata of [`ChessGame`](ChessGame.java)s, one per line, of each game in [`ChessDb`](ChessDb.java) in a [TableView](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html). In the bottom of the main screen should be two buttons: "View" and "Dismiss".
 
-"View" should be disabled if no game is selected in the table. If a game is selected, "View" should be enabled and, when clicked, should show a dialog box with the metadata and moves of the selected game in a [ListView](https://docs.oracle.com/javafx/2/api/javafx/scene/control/ListView.html) or some other GUI control of your choosing.
+"View" should be disabled if no game is selected in the table. If a game is selected, "View" should be enabled and, when clicked, should show a dialog box with the metadata and moves of the selected game. This dialog may be as simple as you wish.
 
 "Dismiss" should exit the program.
 
@@ -28,7 +28,7 @@ Your main screen should look something like this:
 
 ![](chessgui.png)
 
-Once you figure out how to hook up the domain objects that we give you ([`ChessGame`](ChessGame.java) and [`ChessDb`](ChessDb.java)) to the [TableView](https://docs.oracle.com/javafx/2/api/javafx/scene/control/TableView.html), this assignment is very easy.
+Once you figure out how to hook up the domain objects that we give you ([`ChessGame`](ChessGame.java) and [`ChessDb`](ChessDb.java)) to the [TableView](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html), this assignment is very easy.
 
 ## Extra Credit
 
@@ -40,10 +40,13 @@ Once you figure out how to hook up the domain objects that we give you ([`ChessG
 
   - If you add the ability read PGN files to your GUI, please submit your test PGN files as attachments with your submission so we can test your code with the same files.
 
-
 ## Tips and Considerations
 
-The [JavaFx API](https://docs.oracle.com/javafx/2/api/index.html) contains everything you will need for this assignment. Please look for a solution to any problem in the API **before** you ask on Piazza.
+- The [JavaFx API](https://docs.oracle.com/javase/8/javafx/api/index.html) contains everything you will need for this assignment. Please look for a solution to any problem in the API **before** you ask on Piazza.
+- See the email example application on the class web site:
+  - [EmailMessage.java](http://cs1331.gatech.edu/code/javafx/email/EmailMessage.java)
+  - [EmailDb.java](http://cs1331.gatech.edu/code/javafx/email/EmailDb.java)
+  - [EmailGui.java](http://cs1331.gatech.edu/code/javafx/email/EmailGui.java)
 
 
 ## Checkstyle
