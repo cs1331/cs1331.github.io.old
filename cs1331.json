@@ -209,7 +209,8 @@
     },
     "final-review": {
         "topic": "Final Review",
-        "materials": ["[CS 1331 Final Exam Study Guide](cs1331-final-exam-study-guide.pdf)"],
+        "materials": ["[CS 1331 Final Exam Study Guide](cs1331-final-exam-study-guide.pdf)",
+                      "[CS 1331 Final Exam Study Guide Answers](cs1331-final-exam-study-guide-answers.pdf)"],
         "order": [39]
     }
 }
