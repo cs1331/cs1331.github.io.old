@@ -45,15 +45,15 @@ title: CS 1331 - Spring 2018
 <div class="table-responsive">
   <table class="table table-bordered table-hover">
 
-    <thead class="thead-dark">
+    <tr class="table-header active">
       <th>Date</th>
       <th>Topics</th>
       <th>Reading and Resources</th>
       <th>Reminders</th>
-    </thead>
+    </tr>
     {% for row in table %}
     {% if "internal_header" in row %}
-    <thead class="thead-light"><th colspan="4">{{(row["internal_header"]|markdown)}}</th></thead>
+    <tr class="active"><td colspan="4">{{row["internal_header"]}}</td></tr>
     {% else %}
     <tr>
       <td>{{row["date"]}}</td>
