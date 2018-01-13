@@ -5,53 +5,53 @@ Week 1
 2018-01-12;intro-java;;Registration Deadline (2018-01-12)
 Week 2
 2018-01-15;MLK Day - No Class
-2018-01-17;values-variables;;[HW0 Due 2018-01-18](spring2018/hw0/hw0.html)
+2018-01-17;values-variables;;[HW1 Released 2018-01-17](spring2018/hw1/hw1.html),[HW0 Due 2018-01-18](spring2018/hw0/hw0.html)
 2018-01-19;programs-methods
 Week 3
 2018-01-22;control-structures
-2018-01-24;control-structures
-2018-01-26;arrays;;Verification of Participation (Faculty) (2018-01-26)
+2018-01-24;control-structures;;[HW1 Due 2018-01-25](spring2018/hw1/hw1.html)
+2018-01-26;arrays;;[HW2 Released 2018-01-26](spring2018/hw2/hw2.html),Verification of Participation (Faculty) (2018-01-26)
 Week 4
 2018-01-29;arrays
-2018-01-31;data-abstraction
-2018-02-02;classes
+2018-01-31;classes;;[HW2 Due 2018-02-01](spring2018/hw2/hw2.html)
+2018-02-02;classes;;[HW3 Released 2018-02-02](spring2018/hw3/hw3.html)
 Week 5
-2018-02-05;classes
+2018-02-05;data-abstraction
 2018-02-07;review1
 2018-02-09;exam1
 Object-Oriented Programming
 Week 6
-2018-02-12;inheritance
-2018-02-14;inheritance
+2018-02-12;inheritance;;[HW3 Due 2018-02-13](spring2018/hw3/hw3.html)
+2018-02-14;inheritance;;[HW4 Released 2018-02-14](spring2018/hw4/hw4.html)
 2018-02-16;polymorphism
 Week 7
 2018-02-19;polymorphism;;Progress Reports Due (Faculty) (2018-02-19)
 2018-02-21;polymorphism
 2018-02-23;object-superclass
 Week 8
-2018-02-26;object-superclass
+2018-02-26;object-superclass;;[HW4 Due 2018-02-27](spring2018/hw5/hw5.html)
 2018-02-28;review2
 2018-03-02;exam2
 OOP Case Studies
 Week 9
-2018-03-05;java-projects
+2018-03-05;exceptions;;[HW5 Released 2018-03-05](spring2018/hw5/hw5.html)
 2018-03-07;exceptions
-2018-03-09;exceptions
+2018-03-09;collections
 Week 10
 2018-03-12;collections
-2018-03-14;collections;;Grade Mode Deadline, Grade Substitution Deadline, Withdrawal Deadline (2018-03-14)
-2018-03-16;collections-algorithms
+2018-03-14;collections-algorithms;;;[HW5 Due 2018-03-14](spring2018/hw5/hw5.html);Grade Mode Deadline (2018-03-14), Grade Substitution Deadline (2018-03-14), Withdrawal Deadline (2018-03-14)
+2018-03-16;collections-algorithms;;[HW6 Released 2018-03-16](spring2018/hw6/hw6.html)
 Week 11
 2018-03-19;Spring Break - No Class
 2018-03-21;Spring Break - No Class
 2018-03-23;Spring Break - No Class
 Week 12
-2018-03-26;collections-algorithms
+2018-03-26;lambda-expressions
 2018-03-28;lambda-expressions
 2018-03-30;iterators
 Week 13
-2018-04-02;hashed-collections
-2018-04-04;javafx-events
+2018-04-02;hashed-collections;;[HW6 Due 2018-04-03](spring2018/hw6/hw6.html)
+2018-04-04;javafx-events;;[HW7 Released 2018-04-04](spring2018/hw7/hw7.html)
 2018-04-06;javafx-guis
 Week 14
 2018-04-09;javafx-guis
@@ -59,7 +59,7 @@ Week 14
 2018-04-13;exam3
 Algorithms and Data Structures
 Week 15
-2018-04-16;algorithms,recursion
+2018-04-16;algorithms,recursion;;[HW7 Due 2018-04-17](spring2018/hw7/hw7.html)
 2018-04-18;linked-lists,stacks-queues
 2018-04-20;final-review
 Week 16
