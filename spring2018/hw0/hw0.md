@@ -34,9 +34,9 @@ You are a CS 1331 student who needs to install the JDK, configure it for command
   * Note: avoid putting spaces in file and directory names, since doing so complicates the use of some command line tools.
 4. Create a subdirectory of your `cs1331` directory named `hw0`.
 5. Download [Schools.java](Schools.java) to your `hw0` directory.
-6.  On the command line, make sure you are in the `hw0` folder. Enter these commands:
+6.  On the command line, make sure you are in the `hw0` folder. Enter these commands (remember that '$' is the shell prompt (something like 'C:\>' on Windows) -- don't type the shell prompt character(s)):
 
-        $ javac -version 2> hw0-output.txt
+        $ javac -version > hw0-output.txt
         $ java -version 2>> hw0-output.txt
 
 Please note what is happening here:
@@ -93,7 +93,7 @@ the error, you would add
         runtime
         2. public static void main(String[] args) {
 
-to the file.
+to the file. Be sure to follow the instructions -- no extra blank lines, capitalization (or lack of capitalization) as modeled above, etc. Get used to being pedantic about instructions. Computers are nitpicky
 
 ## Turn-in Procedure
 
