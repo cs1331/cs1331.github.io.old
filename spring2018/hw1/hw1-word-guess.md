@@ -27,7 +27,7 @@ Download [WordGuess.java](WordGuess.java) and complete the definition of the `Wo
 ### Rules of Word Guess
 
 - If the player makes five incorrect guesses ("misses"), the player loses.
-- Player can only guess one letter at at time.
+- Player can only guess one letter at time.
 - If a player guesses a letter that occurs in the secret word multiple times, each occurrence of the letter is revealed.
 
 ### Game Play
