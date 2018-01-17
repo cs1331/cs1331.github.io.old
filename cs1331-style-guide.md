@@ -13,13 +13,23 @@ The file you need to run Checkstyle:
 
 - [checkstyle-6.2.2.jar](resources/checkstyle-6.2.2.jar)
 
-In the simplest case, run checkstyle on your Java files like so:
+
+To run checkstyle on all Java files in the current directory:
 
 ```sh
-java -jar checkstyle-6.2.2.jar MyJavaFile.java
+java -jar checkstyle-6.2.2.jar *.java
 ```
 
-For more advanced options (which will be necessary in later portions of the semester), check out the options available for running checkstyle by running java -jar checkstyle-6.2.2.jar with no additional parameters.
+To check the Javadocs in all Java files in the current directory:
+
+```sh
+java -jar checkstyle-6.2.2.jar -j *.java
+```
+
+To fully check your code you will need to run both checks above.
+
+To see all available checkstyle options run `java -jar checkstyle-6.2.2.jar` without specifying a file to check.
+
 The rest of this document summarizes and in some cases clarifies Sun/Oracle's Java Code Conventions (and in some places copies it directly) and the Checkstyle checks specified in [cs1331-checkstyle.xml](resources/cs1331-checkstyle.xml). The Checkstyle web site also documents each of its standard checks here: http://checkstyle.sourceforge.net/checks.html
 
 ## Names

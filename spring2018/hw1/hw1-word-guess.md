@@ -164,14 +164,14 @@ See the [CS 1331 Style Guide](http://cs1331.gatech.edu/cs1331-style-guide.html) 
 
 ## Checkstyle
 
-As mentioned in the previously, you will be running a style checking program on your code. For each violation the tool finds, you will lose one point on your total grade for this assignment.
+For each of your homwork assignments we will run checkstyle and deduct one point for every checkstyule error.
 
-Since checkstyle may be an unfamiliar topic for some, the first few homeworks will have a checkstyle cap, or a maximum amount of points that can be lost to checkstyle. *For this homework*, the **checkstyle cap is 25**, meaning you can lose up to 25 points on this assignment due to style errors. As the semester goes on, this cap will increase with each homework and eventually go away. Run checkstyle early and often! Get in the habit of writing style compliant code the first time. **Do NOT wait until 5 minutes before the deadline of any assignment to run checkstyle!** You may find out that you have 100+ tedious violations to fix!
+For this homework the **checkstyle cap is 10**, meaning you can lose up to 10 points on this assignment due to style errors. This limit will increase with each homework.
 
 - If you encounter trouble running checkstyle, check Piazza for a solution and/or ask a TA as soon as you can!
-- You can run checkstyle on your code by using the jar file found on the course website and the included xml file. Once you have both files, run the following command: `java -jar checkstyle-6.2.2.jar *.java`.
-- To check if you properly wrote your Javadocs, you can run the following command: `java -jar checkstyle-6.2.2.jar -j *.java`.
-- Note that the above is **different** from the normal method for running checkstyle. This command will **only check for Javadoc errors** so you will have to run both commands to fully test for style errors.
+- You can run checkstyle on your code by using the jar file found on the course website that includes xml configuration file specifying our checks. To check the style of your coed run  `java -jar checkstyle-6.2.2.jar *.java`.
+- To check your Javadocs run  `java -jar checkstyle-6.2.2.jar -j *.java`.
+- Note that the command for checking code and the command for checking Javadocs are different. You will have to run both commands to fully test for style errors.
 - Javadoc errors are the same as checkstyle errors, as in each one is worth a single point and they are counted towards the checkstyle cap.
 - **You will be responsible for running checkstyle on *ALL* of your code.**
 - Depending on your editor, you might be able to change some settings to make it easier to write style-compliant code. See the [customization tips](http://cs1331.gatech.edu/customization-tips.html) page for more information.
