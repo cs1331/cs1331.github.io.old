@@ -32,7 +32,8 @@
         "materials": ["Tutorial: [Control Flow Statements](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html)",
                       "Tutorial: [Basic IO](http://docs.oracle.com/javase/tutorial/essential/io/index.html)",
                       "[Basic IO Lecture Notes](lecture-notes/basic-io.pdf)",
-                      "Liang: Ch 3-5 (return statement)"],
+                      "Liang: Ch 3-5 (return statement)",
+                     "Exercise: [Guess Number](exercises/guess-number.html)"],
         "order": [5]
     },
     "arrays": {
