@@ -39,7 +39,7 @@
     "arrays": {
         "topic": "[Arrays](slides/arrays.html)",
         "materials": ["Tutorial: [Arrays](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html)",
-                      "Liang: Ch 2, 77-85"],
+                      "Liang: Ch 2, 77-85", "Exercise: [Array Utils](exercises/array-util.html)"],
         "order": [6,7]
     },
     "data-abstraction": {
