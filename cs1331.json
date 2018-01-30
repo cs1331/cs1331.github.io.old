@@ -54,7 +54,8 @@
         "topic": "[Classes](slides/classes.pdf)",
         "materials": ["Tutorial - [Classes](http://docs.oracle.com/javase/tutorial/java/javaOO/classes.html)",
                       "Liang: Ch 9",
-                      "[Card Example](https://github.com/cs1331/card)"],
+                      "[Card Example](https://github.com/cs1331/card)",
+                     "Exercise: [Vector2](exercises/vector2.html)"],
         "order": [9,10]
     },
     "file-io": {
