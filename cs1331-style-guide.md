@@ -7,6 +7,8 @@ title: CS 1331 - Style Guide
 
 Style is very important when writing code. Often code is not judged simply base on how effectively it performs a specific function, but also how easily it can be understood by a human reader. While rules of style vary, it is important to be able to learn to write code which conforms to a given standard.
 
+## Checkstyle
+
 In this class, the style rules that you are asked to follow are crystallized into an automated tool, called Checkstyle. This tool is configurable to check for a large number of different stylistic errors. Additional details about how to run checkstyle on your code can be found here.
 
 The file you need to run Checkstyle:
@@ -29,6 +31,29 @@ java -jar checkstyle-6.2.2.jar -j *.java
 To fully check your code you will need to run both checks above.
 
 To see all available checkstyle options run `java -jar checkstyle-6.2.2.jar` without specifying a file to check.
+
+### Checkstyle Script
+
+Download [checkstyle-6.2.2.jar](resources/checkstyle-6.2.2.jar) to your `~/bin` directory. Create a file named `checkstyle` in your `~/bin` directory with the following contents:
+
+        #!/usr/bin/env bash
+
+        java -jar ~/bin/checkstyle-6.2.2.jar "$@"
+
+Then make it executable:
+
+        $ cd bin
+        $ chmod +x checkstyle
+
+Now you can run checkstyle on any Java file like this:
+
+        $ checkstyle Foo.java
+        Audit done. Errors (potential points off):
+        0
+        $ checkstyle -j Foo.java
+        ...
+
+## Style Guidelines
 
 The rest of this document summarizes and in some cases clarifies Sun/Oracle's Java Code Conventions (and in some places copies it directly) and the Checkstyle checks specified in [cs1331-checkstyle.xml](resources/cs1331-checkstyle.xml). The Checkstyle web site also documents each of its standard checks here: http://checkstyle.sourceforge.net/checks.html
 
