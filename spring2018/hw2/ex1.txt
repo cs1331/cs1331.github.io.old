@@ -1,0 +1,341 @@
+Player 1 (7 hits left):
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+Enter missile location: b2
+Hit!
+Player 1 (6 hits left):
+~ ~ ~ ~ 
+~ X ~ ~ 
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 2 (7 hits left):
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+Enter missile location: c3
+Miss!
+Player 2 (7 hits left):
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+~ ~ O ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 1 (6 hits left):
+~ ~ ~ ~ 
+~ X ~ ~ 
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+Enter missile location: c2
+Miss!
+Player 1 (6 hits left):
+~ ~ ~ ~ 
+~ X ~ ~ 
+~ O ~ ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 2 (7 hits left):
+~ ~ ~ ~ 
+~ ~ ~ ~ 
+~ ~ O ~ 
+~ ~ ~ ~ 
+Enter missile location: b4
+Hit!
+Player 2 (6 hits left):
+~ ~ ~ ~ 
+~ ~ ~ X 
+~ ~ O ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 1 (6 hits left):
+~ ~ ~ ~ 
+~ X ~ ~ 
+~ O ~ ~ 
+~ ~ ~ ~ 
+Enter missile location: b2
+b2 has aleady been chosen
+Player 1 (6 hits left):
+~ ~ ~ ~ 
+~ X ~ ~ 
+~ O ~ ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 2 (6 hits left):
+~ ~ ~ ~ 
+~ ~ ~ X 
+~ ~ O ~ 
+~ ~ ~ ~ 
+Enter missile location: a1
+Hit!
+Player 2 (5 hits left):
+X ~ ~ ~ 
+~ ~ ~ X 
+~ ~ O ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 1 (6 hits left):
+~ ~ ~ ~ 
+~ X ~ ~ 
+~ O ~ ~ 
+~ ~ ~ ~ 
+Enter missile location: b3
+Hit!
+Player 1 (5 hits left):
+~ ~ ~ ~ 
+~ X X ~ 
+~ O ~ ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 2 (5 hits left):
+X ~ ~ ~ 
+~ ~ ~ X 
+~ ~ O ~ 
+~ ~ ~ ~ 
+Enter missile location: a2
+Hit!
+Player 2 (4 hits left):
+X X ~ ~ 
+~ ~ ~ X 
+~ ~ O ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 1 (5 hits left):
+~ ~ ~ ~ 
+~ X X ~ 
+~ O ~ ~ 
+~ ~ ~ ~ 
+Enter missile location: b4
+Miss!
+Player 1 (5 hits left):
+~ ~ ~ ~ 
+~ X X O 
+~ O ~ ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 2 (4 hits left):
+X X ~ ~ 
+~ ~ ~ X 
+~ ~ O ~ 
+~ ~ ~ ~ 
+Enter missile location: a3
+Hit!
+Player 2 (3 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ ~ O ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 1 (5 hits left):
+~ ~ ~ ~ 
+~ X X O 
+~ O ~ ~ 
+~ ~ ~ ~ 
+Enter missile location: c3
+Miss!
+Player 1 (5 hits left):
+~ ~ ~ ~ 
+~ X X O 
+~ O O ~ 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 2 (3 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ ~ O ~ 
+~ ~ ~ ~ 
+Enter missile location: c4
+Miss!
+Player 2 (3 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ ~ O O 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 1 (5 hits left):
+~ ~ ~ ~ 
+~ X X O 
+~ O O ~ 
+~ ~ ~ ~ 
+Enter missile location: c4
+Hit!
+Player 1 (4 hits left):
+~ ~ ~ ~ 
+~ X X O 
+~ O O X 
+~ ~ ~ ~ 
+
+
+----------
+
+
+Player 2 (3 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ ~ O O 
+~ ~ ~ ~ 
+Enter missile location: d2
+Hit!
+Player 2 (2 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ ~ O O 
+~ X ~ ~ 
+
+
+----------
+
+
+Player 1 (4 hits left):
+~ ~ ~ ~ 
+~ X X O 
+~ O O X 
+~ ~ ~ ~ 
+Enter missile location: d4
+Hit!
+Player 1 (3 hits left):
+~ ~ ~ ~ 
+~ X X O 
+~ O O X 
+~ ~ ~ X 
+
+
+----------
+
+
+Player 2 (2 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ ~ O O 
+~ X ~ ~ 
+Enter missile location: d3
+Miss!
+Player 2 (2 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ ~ O O 
+~ X O ~ 
+
+
+----------
+
+
+Player 1 (3 hits left):
+~ ~ ~ ~ 
+~ X X O 
+~ O O X 
+~ ~ ~ X 
+Enter missile location: a1
+Hit!
+Player 1 (2 hits left):
+X ~ ~ ~ 
+~ X X O 
+~ O O X 
+~ ~ ~ X 
+
+
+----------
+
+
+Player 2 (2 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ ~ O O 
+~ X O ~ 
+Enter missile location: c2 
+Hit!
+Player 2 (1 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ X O O 
+~ X O ~ 
+
+
+----------
+
+
+Player 1 (2 hits left):
+X ~ ~ ~ 
+~ X X O 
+~ O O X 
+~ ~ ~ X 
+Enter missile location: a2
+Miss!
+Player 1 (2 hits left):
+X O ~ ~ 
+~ X X O 
+~ O O X 
+~ ~ ~ X 
+
+
+----------
+
+
+Player 2 (1 hits left):
+X X X ~ 
+~ ~ ~ X 
+~ X O O 
+~ X O ~ 
+Enter missile location: a4
+Hit!
+Player 2 (0 hits left):
+X X X X 
+~ ~ ~ X 
+~ X O O 
+~ X O ~ 
+
+
+----------
+
+
+The winner is Player 2

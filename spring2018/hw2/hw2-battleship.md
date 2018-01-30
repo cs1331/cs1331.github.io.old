@@ -184,6 +184,7 @@ In addition to the above rules, note that it is not allowed to upload your code 
 
 ## Submission
 
-To be determined ...
+- Submit your `Battleship.java` file as an attachment to the `hw2` assignment on Canvas. You can submit as many times as you want, so feel free to submit as you make substantial progress on the homework. We only grade your **last** submission, meaning we will ignore any previous submissions.
+- As always, late submissions will not be accepted and non-compiling code will be given a score of 0. For this reason, we recommend submitting early and then confirming that you submitted ALL of the necessary files by re-downloading your file(s) and compiling/running them.
 
 ## Have fun!
