@@ -9,27 +9,27 @@ Week 2
 2018-01-19;values-variables,control-structures
 Week 3
 2018-01-22;control-structures;;[HW0 Due 2018-01-23](spring2018/hw0/hw0.html)
-2018-01-24;control-structures,programs-methods;;[HW1 Due 2018-01-25](spring2018/hw1/hw1-word-guess.html)
+2018-01-24;control-structures,programs-methods
 2018-01-26;arrays;;[HW2 Released 2018-01-26](spring2018/hw2/hw2.html),Verification of Participation (Faculty) (2018-01-26)
 Week 4
-2018-01-29;arrays
-2018-01-31;classes;;[HW2 Due 2018-02-01](spring2018/hw2/hw2.html)
+2018-01-29;arrays;;[HW1 Due 2018-01-29](spring2018/hw1/hw1-word-guess.html),[HW2 Released 2018-01-29](spring2018/hw2/hw2-battleship.html)
+2018-01-31;data-abstraction
 2018-02-02;classes;;[HW3 Released 2018-02-02](spring2018/hw3/hw3.html)
 Week 5
-2018-02-05;data-abstraction
+2018-02-05;classes;;[HW2 Due 2018-02-06](spring2018/hw2/hw2.html)
 2018-02-07;review1
 2018-02-09;exam1
 Object-Oriented Programming
 Week 6
-2018-02-12;inheritance;;[HW3 Due 2018-02-13](spring2018/hw3/hw3.html)
-2018-02-14;inheritance;;[HW4 Released 2018-02-14](spring2018/hw4/hw4.html)
+2018-02-12;inheritance;;
+2018-02-14;inheritance;;[HW3 Due 2018-02-14](spring2018/hw3/hw3.html),[HW4 Released 2018-02-14](spring2018/hw4/hw4.html)
 2018-02-16;polymorphism
 Week 7
 2018-02-19;polymorphism;;Progress Reports Due (Faculty) (2018-02-19)
 2018-02-21;polymorphism
 2018-02-23;object-superclass
 Week 8
-2018-02-26;object-superclass;;[HW4 Due 2018-02-27](spring2018/hw5/hw5.html)
+2018-02-26;object-superclass;;[HW4 Due 2018-02-27](spring2018/hw4/hw4.html)
 2018-02-28;review2
 2018-03-02;exam2
 OOP Case Studies
@@ -39,8 +39,8 @@ Week 9
 2018-03-09;collections
 Week 10
 2018-03-12;collections
-2018-03-14;collections-algorithms;;[HW5 Due 2018-03-14](spring2018/hw5/hw5.html),Grade Mode Deadline (2018-03-14), Grade Substitution Deadline (2018-03-14), Withdrawal Deadline (2018-03-14)
-2018-03-16;collections-algorithms;;[HW6 Released 2018-03-16](spring2018/hw6/hw6.html)
+2018-03-14;collections-algorithms;;[HW5 Due 2018-03-15](spring2018/hw5/hw5.html),Grade Mode Deadline (2018-03-14), Grade Substitution Deadline (2018-03-14), Withdrawal Deadline (2018-03-14)
+2018-03-16;collections-algorithms;;[HW6 Released 2018-04-03](spring2018/hw6/hw6.html)
 Week 11
 2018-03-19;Spring Break - No Class
 2018-03-21;Spring Break - No Class
