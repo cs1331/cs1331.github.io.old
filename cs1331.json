@@ -46,7 +46,7 @@
         "topic": "[Data Abstraction](slides/data-abstraction.html)",
         "materials": ["Tutorial - [Classes](http://docs.oracle.com/javase/tutorial/java/javaOO/classes.html)",
                       "Liang: Ch 9",
-                      "[Classes Example Code](https://github.com/cs1331/cs1331.github.io/tree/master/code/classes)]",
+                      "[Classes Example Code](https://github.com/cs1331/cs1331.github.io/tree/master/code/classes)",
                       "Liang: Ch 9"],
         "order": [8]
     },

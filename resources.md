@@ -13,7 +13,6 @@ Complete these steps during the first week of class!
 
 - [Install Java](install-java.html).
 - Choose and install a <a href="text-editors.html" target="_blank">programmer's text editor</a>.
-- [Install Git](git.html)
 
 ## Get Help
 
