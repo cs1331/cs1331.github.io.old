@@ -17,7 +17,7 @@ In this programming project you will practice:
 
 ## Problem Description
 
-You are to code up a modified Battleship game (https://en.wikipedia.org/wiki/Battleship_(game)). This game of Battleship involves two players that are trying to sink each other's ships. Each player has a grid of their current hits, misses and unguessed squares. Players take turns in guessing locations on the opposing player's board on where they think a boat is. Depending on that guess and the locations of the ships, the attempt can be a hit or a miss. In our version of Battleship, each player has only one shot (guess) per turn and even if it's a successful hit, that player's turn ends. The game ends when a player has successfully hit all of their opponent’s ships.
+You are to code up a modified [Battleship game](https://en.wikipedia.org/wiki/Battleship_(game)). This game of Battleship involves two players that are trying to sink each other's ships. Each player has a grid of their current hits, misses and unguessed squares. Players take turns in guessing locations on the opposing player's board on where they think a boat is. Depending on that guess and the locations of the ships, the attempt can be a hit or a miss. In our version of Battleship, each player has only one shot (guess) per turn and even if it's a successful hit, that player's turn ends. The game ends when a player has successfully hit all of their opponent’s ships.
 
 ## Solution Description
 
