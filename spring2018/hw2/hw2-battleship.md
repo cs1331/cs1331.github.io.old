@@ -23,13 +23,13 @@ You are to code up a modified [Battleship game](https://en.wikipedia.org/wiki/Ba
 
 Download [Battleship.java](Battleship.java). You will be modifying this file that has many stubbed methods that you will complete along with the main method. The board will have letters representing the columns and numbers representing the rows. So the coordinate ‘a7’ will mean the "a"th column and 7th row. Your code should treat a7 and A7 as the same spot. Rows will start from 1 not 0. Treat the top left corner as ‘a1’.
 
-You will be provided a .txt file that will provide the boards for each player. The first line will have the dimension of each player's board on the first line (e.g. 3 corresponds with a 3x3 board). The second line will be the positions of player 1's ships. The third line will be the positions of player 2 ships. The placements of the ships will be guaranteed to be valid, and there can be a varying number of ship locations (however player 1 and 2 will have the same number).
+You will be provided a .txt file that will provide the boards for each player. The first line will have the dimension of each player's board on the first line (e.g. 3 corresponds with a 3x3 board). The second line will be the positions of player 1's ships. The third line will be the positions of player 2 ships. The placements of the ships will be guaranteed to be valid, and there can be a varying number of ship locations (however player 1 and 2 will have the same number). You can use these boards as example inputs: [game0.txt](game0.txt), [game1.txt](game1.txt), [game2.txt](game2.txt) and [game3.txt](game3.txt).
 
 ex.
 ```sh
-5                                     //board will be 5x5
-b4 b3 a4 a6 a7 c3 c5 f3 //player 1’s ship locations
-c3 c4 f5 f3 a2 b3 d1 d2  //player 2’ ship locations
+8                       // board will be 8x8
+b4 b3 a4 a6 a7 c3 c5 f3 // player 1’s ship locations
+c3 c4 f5 f3 a2 b3 d1 d2 // player 2’ ship locations
 ```
 
 The game should start by printing what player 1 sees (a grid of player 2’s board) and how many hits they have remaining. ‘\~’ should represent unguessed squares, ‘X’ for hit squares and ‘O’ for missed squares.
@@ -40,7 +40,6 @@ At the end of the game, print which player (1 or 2) was the winner.
 ### Methods
 
 **IMPORTANT:** you may not change the method headers
-
 - initBoard(): will take in parameter **n** and create a 2D char array of size n x n. Returns the initialized char[][].
 - printBoard(): this method prints the **board** array, treat the top left corner as [0][0].
 - fireMissle(): this method will take in a player’s **board**, the **target** string of the location being fired at, a **shipLocations** string array of where the ships were originally placed, and **hitsLeft** representing the number of hits the player firing needs to hit left. If the selected target location has already been hit, print to the command line “**target**(e.g. a4) has already been chosen!” and should still be counted as a turn. Returns how many hits left the firing player has left after calling this fireMissle() method.
@@ -110,7 +109,6 @@ see [ex1.txt](ex1.txt) for the full example
 
 
 ## Tips and Considerations
-
 - the String split() method will be useful for splitting a String into a String[] using a delimiter
 - the String toLowerCase() and toUpperCase() methods might be useful
 - make sure you know the difference between comparing the equality of primitives and Objects
@@ -119,19 +117,18 @@ see [ex1.txt](ex1.txt) for the full example
 
 
 ## Grading
-
-- [5] initializes ship locations from file correctly
-- [10] initBoard method
-- [10] printBoard method
-- [5] convertLocations method
-- [10] isShip method
-- [5] fireMissile doesn’t redo previous hits/misses
-- [10] fireMissile registers hit correctly
-- [10] fireMissile registers miss correctly
-- [10] hits left counts are properly updated
-- [10] game ends when all ship locations are hit
-- [5] prints the correct winner
-- [10] switches players after every turn
+- [+5] initializes ship locations from file correctly
+- [+10] initBoard method
+- [+10] printBoard method
+- [+5] convertLocations method
+- [+10] isShip method
+- [+5] fireMissile doesn’t redo previous hits/misses
+- [+10] fireMissile registers hit correctly
+- [+10] fireMissile registers miss correctly
+- [+10] hits left counts are properly updated
+- [+10] game ends when all ship locations are hit
+- [+5] prints the correct winner
+- [+10] switches players after every turn
 
 
 ## Javadocs
@@ -184,7 +181,8 @@ In addition to the above rules, note that it is not allowed to upload your code 
 
 ## Submission
 
-- Submit your `Battleship.java` file as an attachment to the `hw2` assignment on Canvas. You can submit as many times as you want, so feel free to submit as you make substantial progress on the homework. We only grade your **last** submission, meaning we will ignore any previous submissions.
-- As always, late submissions will not be accepted and non-compiling code will be given a score of 0. For this reason, we recommend submitting early and then confirming that you submitted ALL of the necessary files by re-downloading your file(s) and compiling/running them.
+* Submit your `Battleship.java` file as an attachment to the `hw2` assignment on Canvas. You can submit as many times as you want, so feel free to submit as you make substantial progress on the homework. We only grade your **last** submission, meaning we will ignore any previous submissions.
+
+* As always, late submissions will not be accepted and non-compiling code will be given a score of 0. For this reason, we recommend submitting early and then confirming that you submitted ALL of the necessary files by re-downloading your file(s) and compiling/running them.
 
 ## Have fun!
