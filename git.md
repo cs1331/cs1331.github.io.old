@@ -3,6 +3,10 @@ layout: default
 title: CS 1331 - Git and GitHub
 ---
 
+# Git
+
+This guide provides a brief intruduction to <a href="https://git-scm.com/" target="_blank">Git</a> and <a href="https://github.com/" target="_blank">GitHub</a>.
+
 ## Installation
 
 ### Linux
@@ -38,7 +42,7 @@ brew upgrade
 
 ### Windows
 
-Download the Git for Windows installer from https://git-scm.com/downloads and run it. Then you'll also have `git-bash`, which gives you a Bash shell on your Windows machine (a superior alternative to `cmd` or Power[sic] Shell.
+Download the Git for Windows installer from [Git's official downloads page](https://git-scm.com/downloads) and run it. Then you'll also have `git-bash`, which gives you a Bash shell -- a superior alternative to `cmd` or Power[sic] Shell.
 
 ## Single-User Usage
 

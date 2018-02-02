@@ -26,6 +26,7 @@ Complete these steps during the first week of class!
 - <a href="https://www.computerhope.com/issues/chusedos.htm" target="_blank">Windows command line tutorial</a>
 - <a href="https://technet.microsoft.com/en-us/library/bb490890.aspx" target="_blank">Windows command line reference</a>
 - [Customization Tips](customization-tips.html) for the bash shell, Atom text editor, and Sublime Text editor.
+- Use [Git](git.html).
 
 ## Learn About Java
 
