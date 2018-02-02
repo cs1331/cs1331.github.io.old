@@ -53,7 +53,7 @@ public class Card {
 
 ** The Card Class Example
 
-In this two-part lecture we'll use a running example stored in a Git repo. Go to [[https://github.com/cs1331/card][https://github.com/cs1331/card]], click on "Clone or download" and copy the clone URL. Then open your terminal and do this:
+In this lecture we'll use a running example stored in a Git repo. Go to [[https://github.com/cs1331/card][https://github.com/cs1331/card]], click on "Clone or download" and copy the clone URL. Then open your terminal and do this:
 
 #+BEGIN_SRC sh
 cd cs1331
@@ -63,17 +63,7 @@ cd card
 
 Note that if you've uplaoded your public SSH key you may use an SSH clone URL.
 
-Now you're ready to follow along.
-
-
-** A Card Class, v0.0 [fn:1]
-
-Consider how to represent a Card ADT:
-
-- rank - the rank of a playing card, e.g., 2, jack, ace
-- suit - the suit of a playing card, e.g., spades, diamonds
-
-Here's how you would check out version 0.0:
+Now you're ready to follow along. Start by checking out v0.0 [fn:1]:
 
 #+BEGIN_SRC sh
 git checkout v0.0
@@ -81,10 +71,12 @@ git checkout v0.0
 
 [fn:1] [[http://semver.org/][Semantic Versioning]]
 
+** A Card Class, v0.0
 
-**  ~Card~ , v0.0
+Consider how to represent a Card ADT:
 
-And your  ~Card.java~  will then contain:
+- rank - the rank of a playing card, e.g., 2, jack, ace
+- suit - the suit of a playing card, e.g., spades, diamonds
 
 #+BEGIN_SRC java
 public class Card {
@@ -101,6 +93,13 @@ Let's "do something" with  ~Card~  by adding a main method and bumping to v0.1.
 
 
 **  ~Card~  v0.1
+
+After
+#+BEGIN_SRC sh
+git checkout v0.1
+#+END_SRC
+
+we have (we won't include the git commands in future slides):
 
 #+BEGIN_SRC java
 public class Card {
@@ -331,8 +330,10 @@ public class Dealer {
     }
 }
 #+END_SRC
+
 yields:
-#+END_SRCbash
+
+#+BEGIN_SRC bash
 $ java Dealer
 base is not a valid suit.
 #+END_SRC
@@ -405,7 +406,7 @@ A constructor is what's being called when you invoke operator  ~new~ .
 Since we didn't write our own constructor, Java provided a default no-arg constructor
 - default no-arg ctor sets instance variables (that don't have their own declaration-point intializations) to their default values.
 
-That's why  ~Card~  objects are  ~null of null~  after they're instantiated.  We have to call the setters on a  ~Card~  instance before we have a valid object.
+That's why a ~Card~  object's instance variables are ~null~ (" ~null of null~ ") after they're instantiated.  We have to call the setters on a  ~Card~  instance before we have a valid object.
 
 ** Innitialization Style
 
@@ -419,7 +420,8 @@ The way to fix this is by writing our own constructor.
 
 ** A Constructor for Card, v2.0
 
-If we write a constructor, Java won't provide a default no-arg constructor. (We may choose to provide one.)
+If we write a constructor, Java won't provide a default no-arg constructor.
+
 #+BEGIN_SRC java
 public class Card {
     // ...
@@ -430,6 +432,8 @@ public class Card {
     // ...
 }
 #+END_SRC
+
+If we want a no-arg constructor in addition to other constructors, we must write it explicitly.
 
 **  ~Dealer~  v2.0
 
@@ -469,14 +473,14 @@ public class Dealer {
 }
 #+END_SRC
 
-** Intermission
+# ** Intermission
 
-#+BEGIN_CENTER
-#+ATTR_LaTeX: :height 0.8\textheight
-[[file:AceofBaseTheSignAlbumcover.jpg]]
-#+END_CENTER
+# #+BEGIN_CENTER
+# #+ATTR_LaTeX: :height 0.8\textheight
+# [[file:AceofBaseTheSignAlbumcover.jpg]]
+# #+END_CENTER
 
-Source: [[http://en.wikipedia.org/wiki/File:AceofBaseTheSignAlbumcover.jpg][Wikipedia]]
+# Source: [[http://en.wikipedia.org/wiki/File:AceofBaseTheSignAlbumcover.jpg][Wikipedia]]
 
 
 
@@ -484,14 +488,27 @@ Source: [[http://en.wikipedia.org/wiki/File:AceofBaseTheSignAlbumcover.jpg][Wiki
 
 Let's review our progress with our Card class design:
 
-- We have a nice string representation of Card objects ( ~Card~ ).
-- We have encapsulated the rank and suit in private instance variables ( ~Card~ ) with mutator methods ( ~Card~ ) to set their values.
-- We validate the rank and suit in the mutator methods so we can't set invalid ranks and suits in Card objects ( ~Card~ ).
-  -  ~Card~  has a constructor, which ensures that instance variables are initialized when an instance of  ~Card~  is created.
+- We have a nice string representation of Card objects.
+- We have encapsulated the rank and suit in private instance variables with mutator methods to set their values.
+- We validate the rank and suit in the mutator methods so we can't set invalid ranks and suits in Card objects.
+-  ~Card~  has a constructor, which ensures that instance variables are initialized when an instance of  ~Card~  is created.
 
-** Static Members, Card v2.1
+** Valid Ranks and Suits
+
+=Recall the declarations and definitions of our ~VALID_RANKS~ and ~VALID_SUITS~ :
+
+#+BEGIN_SRC java
+public final String[] VALID_RANKS =
+    {"2", "3", "4", "5", "6", "7", "8", "9",
+     "10", "jack", "queen", "king", "ace"};
+
+public final String[] VALID_SUITS =
+    {"diamonds", "clubs", "hearts","spades"};
+#+END_SRC
 
 Do we need a separate instance of  ~VALID_RANKS~  and  ~VALID_SUITS~  for each instance of our Card class?
+
+** Static Members, Card v2.1
 
  ~static~  members are shared with all instances of a class:
 
@@ -502,6 +519,7 @@ public static final String[] VALID_RANKS =
 public static final String[] VALID_SUITS =
     {"diamonds", "clubs", "hearts","spades"};
 #+END_SRC
+
 Given the declarations above:
 
 - Each instance shares a single copy of  ~VALID_RANKS~  and a single copy of  ~VALID_SUITS~
@@ -546,37 +564,100 @@ public Card(String aRank, String aSuit) { // constructor
 Note the use of another idiom for disambiguating constructor paramters from instance variables (as opposed to using  ~this~ ).
 
 
-** Designing Immutable Classes
+# ** Designing Immutable Classes
 
-An immutable class is a class whose instances cannot be modified.  To make a class immutable:
+# An immutable class is a class whose instances cannot be modified.  To make a class immutable:
 
-- Don't provide mutator methods ("setters")
-- Make the class  ~final~  so it can't be extended (there's another way to accomplish this, but making the class  ~final~  is good enough for now)
-- Make all fields  ~final~
-- Make all fields  ~private~
-- For fields of mutable class types, return defensive copies in accessor methods (we'll discuss this later)
+# - Don't provide mutator methods ("setters")
+# - Make the class  ~final~  so it can't be extended (there's another way to accomplish this, but making the class  ~final~  is good enough for now)
+# - Make all fields  ~final~
+# - Make all fields  ~private~
+# - For fields of mutable class types, return defensive copies in accessor methods (we'll discuss this later)
 
-** Prefer Immutable Classes
+# ** Prefer Immutable Classes
 
-In general, make your classes immutable unless you have a good reason to make them mutable.  Why?  Because immutable objects
+# In general, make your classes immutable unless you have a good reason to make them mutable.  Why?  Because immutable objects
 
-- are simpler to design because you don't have to worry about enforcing class invariants in multiple places,
-- are easier to reason about because the state of an object never changes after instantiation,
-- are inherently thread-safe because access to mutable data need not be syncronized, and
-- enable safe instance sharing, so redundant copies need not be created.
+# - are simpler to design because you don't have to worry about enforcing class invariants in multiple places,
+# - are easier to reason about because the state of an object never changes after instantiation,
+# - are inherently thread-safe because access to mutable data need not be syncronized, and
+# - enable safe instance sharing, so redundant copies need not be created.
 
 ** A Few Final Bits of Polish
 
-Take a look at the final evolution of our Card class.  It contains a few more enhancements:
+Take a look at the final evolution of our Card class.
 
-- Instead of simply terminating the program, the constructor throws  ~IllegalArgumentException~  on invalid input so that client code can choose to deal with the exception at run-time.
-- Input is normalized to lower case and spaces trimmed to make the Card object robust to oddly formatted input.
-- It has an  ~equals()~  method.
+#+BEGIN_SRC sh
+git checkout master
+#+END_SRC
+
+It contains a few more enhancements:
+
+- It has an  ~equals()~ method for comparing cards of equal value.
+  - We'll learn the role of the ~equals~ method today and learn how to write one in a couple of weeks.
+- It uses ~enum~ s for rank and suit.
+
+** Enums
+
+#+BEGIN_SRC java
+public enum Rank {
+    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
+}
+#+END_SRC
+
+#+BEGIN_SRC java
+public enum Rank {
+    TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
+}
+#+END_SRC
+
+Now we get static type checking for ~Rank~ and ~Suit~ -- no need for run-time validity checks.
+
+#+BEGIN_SRC java
+public class Card {
+
+    private Rank rank;
+    private Suit suit;
+
+    public Card(Rank aRank, Suit aSuit) {
+        rank = aRank;
+        suit = aSuit;
+    }
+...
+}
+#+END_SRC
 
 ** Equality
 
--  ~==~  means identity equality (aliasing) for reference types (objects).
-- The  ~equals(Object)~  tests value equality for objects.
+- For reference types:
+  -  ~==~  means identity equality (aliasing testing).
+  - ~equals(Object)~  tests value equality, as defined by the class.
+
+- For primitive types ~==~ means value equality and is the only equality test.
+
+Here's the final ~Card~ class, with a definition of value equality for ~Card~ instances:
+
+#+BEGIN_SRC java
+public class Card {
+    private Rank rank;
+    private Suit suit;
+    public Card(Rank aRank, Suit aSuit) {
+        rank = aRank;
+        suit = aSuit;
+    }
+    public String toString() { return rank + " of " + suit; }
+
+    public boolean equals(Object other) {
+        if (null == other) { return false; }
+        if (this == other) { return true; }
+        if (!(other instanceof Card)) { return false; }
+        Card that = (Card) other;
+        return this.rank.equals(that.rank) && this.suit.equals(that.suit);
+    }
+}
+#+END_SRC
+
+** Equality Tests
 
 Given our finished Card class with a properly implemented  ~equals(Object)~  method, this code:
 
