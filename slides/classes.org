@@ -495,7 +495,7 @@ Let's review our progress with our Card class design:
 
 ** Valid Ranks and Suits
 
-=Recall the declarations and definitions of our ~VALID_RANKS~ and ~VALID_SUITS~ :
+Recall the declarations and definitions of our ~VALID_RANKS~ and ~VALID_SUITS~ :
 
 #+BEGIN_SRC java
 public final String[] VALID_RANKS =
@@ -525,7 +525,7 @@ Given the declarations above:
 - Each instance shares a single copy of  ~VALID_RANKS~  and a single copy of  ~VALID_SUITS~
 - Since they're  ~final~ , we can safely make them  ~public~  so clients of our Card class can use them
 
-** One Final Enhancement
+** Stateful ~Card~ Objects?
 
  ~Card~  v2.1 is pretty good, but we can write code like this:
 
@@ -540,6 +540,7 @@ public class Dealer {
     }
 }
 #+END_SRC
+
 Does this make sense?  Should Card objects be mutable?
 
 ** Immutable Objects
