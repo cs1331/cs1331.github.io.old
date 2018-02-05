@@ -72,7 +72,7 @@ Player 1 (6 hits left):
 ~ O ~ ~ 
 ~ ~ ~ ~ 
 Enter missile location: b2
-b2 has aleady been chosen
+b2 has already been chosen
 Player 1 (6 hits left):
 ~ ~ ~ ~ 
 ~ X ~ ~ 
