@@ -21,7 +21,9 @@ You are to code up a modified [Battleship game](https://en.wikipedia.org/wiki/Ba
 
 ## Solution Description
 
-Download [Battleship.java](Battleship.java). You will be modifying this file that has many stubbed methods that you will complete along with the main method. The board will have letters representing the columns and numbers representing the rows. So the coordinate ‘a7’ will mean the "a"th column and 7th row. Your code should treat a7 and A7 as the same spot. Rows will start from 1 not 0. Treat the top left corner as ‘a1’.
+Download [Battleship.java](Battleship.java). You will be modifying this file that has many stubbed methods that you will complete along with the main method. The board will have letters representing the columns and numbers representing the rows. So the coordinate ‘a7’ will mean the "a"th **row** and 7th **column**. Your code should treat a7 and A7 as the same spot. Rows will start from 1 not 0. Treat the top left corner as ‘a1’.
+
+**N.B. The above description has changed to reflect that the letter refers to the row and the number refers to the column. Sorry for the inconvenience!**
 
 You will be provided a .txt file that will provide the boards for each player. The first line will have the dimension of each player's board on the first line (e.g. 3 corresponds with a 3x3 board). The second line will be the positions of player 1's ships. The third line will be the positions of player 2 ships. The placements of the ships will be guaranteed to be valid, and there can be a varying number of ship locations (however player 1 and 2 will have the same number). You can use these boards as example inputs: [game0.txt](game0.txt), [game1.txt](game1.txt), [game2.txt](game2.txt) and [game3.txt](game3.txt).
 
@@ -44,8 +46,8 @@ At the end of the game, print which player (1 or 2) was the winner.
 - printBoard(): this method prints the **board** array, treat the top left corner as [0][0].
 - fireMissle(): this method will take in a player’s **board**, the **target** string of the location being fired at, a **shipLocations** string array of where the ships were originally placed, and **hitsLeft** representing the number of hits the player firing needs to hit left. If the selected target location has already been hit, print to the command line “**target**(e.g. a4) has already been chosen!” and should still be counted as a turn. Returns how many hits left the firing player has left after calling this fireMissle() method.
 - isShip(): **target** is the string coordinate of where on the board to look, **shipLocations** is a string array of where the ships were originally placed. Returns whether the location is a ship or not.
-- convertLocation(): takes in a string **coordinate** e.g. f1 and converts this to an int array of the corresponding indices of the board e.g. {0, 5} (represented by f1). Note that the row must be the first element and the column the second
-- main(): the main method is where you will be writing the code to play the game. Here is where you will ask the players to make a console input of a coordinate. The input should rotate between player 1 and player 2. You must use all of the methods above inside your main method.
+- convertLocation(): takes in a string **coordinate** e.g. f1 and converts this to an int array of the corresponding indices of the board e.g. {5, 0} (represented by f1). Note that the row must be the first element and the column the second
+- main(): the main method is where you will be writing the code to play the game. Here is where you will ask the players to make a console input of a coordinate. The input should rotate between player 1 and player 2. You must use all of the methods above in your main method, either calling it directly or indirectly through another method.
 
 ### Sample Output
 
@@ -55,7 +57,7 @@ Player 1 (7 hits left):
 ~ ~ ~ ~
 ~ ~ ~ ~
 ~ ~ ~ ~
-Player 1 enter missile location: b2
+Enter missile location: b2
 Hit!
 Player 1 (6 hits left):
 ~ ~ ~ ~
@@ -70,7 +72,7 @@ Player 2 (7 hits left):
 ~ ~ ~ ~
 ~ ~ ~ ~
 ~ ~ ~ ~
-Player 2 enter missile location: c3
+Enter missile location: c3
 Miss!
 Player 2 (7 hits left):
 ~ ~ ~ ~
@@ -85,7 +87,7 @@ X X X ~
 ~ ~ ~ X
 ~ X O O
 ~ X O ~
-Player 2 enter missile location: a4
+Enter missile location: a4
 Hit!
 Player 2 (0 hits left):
 X X X X
@@ -97,7 +99,7 @@ X X X X
 
 The winner is Player 2
 ```
-see [ex1.txt](ex1.txt) for the full example
+see [ex1.txt](ex1.txt) for the full example.
 
 ### Solution Constraints
 
