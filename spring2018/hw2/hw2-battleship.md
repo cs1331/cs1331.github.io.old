@@ -47,7 +47,7 @@ At the end of the game, print which player (1 or 2) was the winner.
 - fireMissle(): this method will take in a player’s **board**, the **target** string of the location being fired at, a **shipLocations** string array of where the ships were originally placed, and **hitsLeft** representing the number of hits the player firing needs to hit left. If the selected target location has already been hit, print to the command line “**target**(e.g. a4) has already been chosen!” and should still be counted as a turn. Returns how many hits left the firing player has left after calling this fireMissle() method.
 - isShip(): **target** is the string coordinate of where on the board to look, **shipLocations** is a string array of where the ships were originally placed. Returns whether the location is a ship or not.
 - convertLocation(): takes in a string **coordinate** e.g. f1 and converts this to an int array of the corresponding indices of the board e.g. {5, 0} (represented by f1). Note that the row must be the first element and the column the second
-- main(): the main method is where you will be writing the code to play the game. Here is where you will ask the players to make a console input of a coordinate. The input should rotate between player 1 and player 2. You must use all of the methods above in your main method, either directly or indrectly through another method.
+- main(): the main method is where you will be writing the code to play the game. Here is where you will ask the players to make a console input of a coordinate. The input should rotate between player 1 and player 2. You must use all of the methods above in your main method, either calling it directly or indirectly through another method.
 
 ### Sample Output
 
@@ -57,7 +57,7 @@ Player 1 (7 hits left):
 ~ ~ ~ ~
 ~ ~ ~ ~
 ~ ~ ~ ~
-Player 1 enter missile location: b2
+Enter missile location: b2
 Hit!
 Player 1 (6 hits left):
 ~ ~ ~ ~
@@ -72,7 +72,7 @@ Player 2 (7 hits left):
 ~ ~ ~ ~
 ~ ~ ~ ~
 ~ ~ ~ ~
-Player 2 enter missile location: c3
+Enter missile location: c3
 Miss!
 Player 2 (7 hits left):
 ~ ~ ~ ~
@@ -87,7 +87,7 @@ X X X ~
 ~ ~ ~ X
 ~ X O O
 ~ X O ~
-Player 2 enter missile location: a4
+Enter missile location: a4
 Hit!
 Player 2 (0 hits left):
 X X X X
@@ -99,7 +99,7 @@ X X X X
 
 The winner is Player 2
 ```
-see [ex1.txt](ex1.txt) for the full example. This example corresponds with game2.txt.
+see [ex1.txt](ex1.txt) for the full example.
 
 ### Solution Constraints
 
