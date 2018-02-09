@@ -1,6 +1,6 @@
 ---
 layout: homework
-title: Homework 2 - Battleship
+title: Homework 2 - BuzzCard
 ---
 
 # Homework 3 - BuzzCard Class
