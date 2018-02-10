@@ -1,3 +1,8 @@
+---
+layout: homework
+title: Homework 2 - Battleship
+---
+
 # Homework 3 - BuzzCards For Days (Not actual title)
 
 ## Introduction
