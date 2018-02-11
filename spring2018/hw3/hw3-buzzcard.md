@@ -1,9 +1,9 @@
 ---
 layout: homework
-title: Homework 2 - Battleship
+title: Homework 3 - BuzzCard
 ---
 
-# Homework 3 - BuzzCards For Days (Not actual title)
+# Homework 3 - BuzzCard Class
 
 ## Introduction
 
