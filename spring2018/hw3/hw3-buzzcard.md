@@ -71,6 +71,10 @@ This class has the following public methods:
 
 ```"Student named (name) with ID: (id)"``` + BuzzCard info from the BuzzCard toString().
 
+This class has the following constructors:
+
+One that takes in an a `BuzzCard` object and stores it in `card`, a `String` and stores it in `name`, and an `int` and stores it in `id`.
+
 ## Running and Testing
 
 Creating a `Driver` class with a `main` method to create a simulation to test of all the methods would be the best course of action.
