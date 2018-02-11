@@ -19,7 +19,7 @@ You are hungry after taking an infamous CS1331 exam, so you decide to go get foo
 
 ## Solution Description
 
-Download [hw3.zip](hw3.zip) and complete the Student and BuzzCard classes that implemenets the point of sales systems for the three restaurants provided: Subway, Brittain, and Burdells. We have included the skeletions for both classes. The implementation guid can be found below
+Download [hw3.zip](hw3.zip) and complete the Student and BuzzCard classes that implements the point of sales systems for the three restaurants provided: Subway, Brittain, and Burdells. We have included the skeletons for both classes. The implementation guide can be found below
 
 **Do not modify the code we give you.**
 
@@ -30,7 +30,7 @@ This class has the following private fields, **and associated getter and setter 
 * `diningDollars` which is a double that represents the amount of dining dollars left.
 * `buzzFunds` which is a double that represents the amount of buzzfunds left.
 
-Make sure to make a three instance fields private so that only your methods within the class has access to them!
+Make sure to make the three instance fields private so that only your methods within the class has access to them!
 
 This class has the following constructors:
 
@@ -107,7 +107,7 @@ See the [CS 1331 Style Guide](http://cs1331.gatech.edu/cs1331-style-guide.html) 
 
 ## Checkstyle
 
-For each of your homwork assignments we will run checkstyle and deduct one point for every checkstyule error.
+For each of your homwork assignments we will run checkstyle and deduct one point for every checkstyle error.
 
 For this homework the **checkstyle cap is 20**, meaning you can lose up to 20 points on this assignment due to style errors. This limit will increase with each homework.
 
