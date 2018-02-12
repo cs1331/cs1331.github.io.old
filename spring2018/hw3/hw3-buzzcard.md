@@ -66,6 +66,8 @@ This class has the following public methods:
 * `void buySubwayBuzzFunds(SubwayItem item)` which will allow the student to buy items from Subway using BuzzFunds. If the student does not have the amount needed to buy them item, print to the console `"You do not have the amount to buy this item :("`
 
 
+* For all of the above methods, decrement the appropriate value on the student's buzzcard.
+
 
 * `String toString()` which returns the `String` representations of the student's information in the following format:
 
