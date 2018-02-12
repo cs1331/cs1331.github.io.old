@@ -65,13 +65,13 @@ What this means is that `>` (or `2>`) will overwrite the file, so if you go back
 
         $ javac NimblyBimbly.java
         $ ls
-        NimblyBimbly.class NimblyBimbly.java hw0-output.txt build.gradle index.md ...
+        NimblyBimbly.class NimblyBimbly.java hw0-output.txt ...
 
         Windows:
 
         C:\...\cs1331\hw0> javac NimblyBimbly.java
         C:\...\cs1331\hw0> dir
-        NimblyBimbly.class NimblyBimbly.java hw0-output.txt build.gradle index.md ...
+        NimblyBimbly.class NimblyBimbly.java hw0-output.txt ...
 
 3. Now enter `java NimblyBimbly` to run the program and see its output on the command line.
 4. Add the output of your program to `hw0-output.txt` by running
