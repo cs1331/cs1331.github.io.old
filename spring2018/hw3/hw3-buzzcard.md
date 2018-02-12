@@ -75,6 +75,21 @@ This class has the following constructors:
 
 One that takes in an a `BuzzCard` object and stores it in `card`, a `String` and stores it in `name`, and an `int` and stores it in `id`.
 
+## Grading
+- [5] Properly declaring private variables for `BuzzCard` and `Student`.
+- [5] Constructor for `BuzzCard`.
+- [5] Constructor for `Student`.
+- [5] Getter methods for `BuzzCard`.
+- [5] Setter methods for `BuzzCard`.
+- [10] `BuzzCard.toString()`.
+- [5] Getter methods for `Student`.
+- [10] `Student.buyBrittainMealSwipes()`.
+- [10] `Student.buyBrittainBuzzFunds()`.
+- [10] `Student.buyBurdellsBuzzFunds()`.
+- [10] `Student.buySubwayDiningDollars()`.
+- [10] `Student.buySubwayBuzzFunds()`.
+- [10] `Student.toString()`.
+
 ## Running and Testing
 
 Creating a `Driver` class with a `main` method to create a simulation to test of all the methods would be the best course of action.
