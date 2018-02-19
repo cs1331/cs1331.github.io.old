@@ -67,9 +67,9 @@ Download the abstract class [Character.java](Character.java). Implement all the 
 
 - Implement the `attack(Character c)` method. The attack method of `Cleric` should decrement the health of the parameter character by 6 plus the cleric's wisdom variable. If the character's `isDead` variable is true, this method should do nothing besides printing `"Cannot attack a dead character"` to the console.
 
-- Implement the `levelUp()` method. This method should increase the character's `level` by 1, reset the `health` to it's maximum (5 times the `level`), increase `Wisdom` by 2, and all other stats by 1.
+- Implement the `levelUp()` method. This method should increase the character's `level` by 1, reset the `health` to it's maximum (5 times the `level`), increase `wisdom` by 2, and all other stats by 1.
 
-- Create a new method called `heal(Character c)` which increases the parameter characters health by a random number between 1 and 6 (inclusive), but not beyond their maximum health (5 times their level). If a character is dead, do nothing except print `"Cannot heal a dead character"` to the console.
+- Create a new method called `heal(Character c)` which increases the parameter characters health by 6 plus the clerics wisdom variable, but not beyond their maximum health (5 times their level). If a character is dead, do nothing except print `"Cannot heal a dead character"` to the console.
 
 - a `toString()` method that returns a string with format `"Level (level) cleric named (name) with (strength) strength, (dexterity) dexterity, (intelligence) intelligence, and (wisdom) wisdom."`
 
