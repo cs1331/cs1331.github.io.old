@@ -77,7 +77,7 @@ Download the abstract class [Character.java](Character.java). Implement all the 
 
 - This class should extend `Character` and implement all of its abstract methods.
 
-- Implement the `attack(Character c)` method. The attack method of `Wizard` should decrement the health of the parameter character by a 4 plus the cleric's wisdom variable. If the character's `isDead` variable is true, this method should do nothing besides printing `"Cannot attack a dead character"` to the console.
+- Implement the `attack(Character c)` method. The attack method of `Wizard` should decrement the health of the parameter character by a 4 plus the wizard's intelligence variable. If the character's `isDead` variable is true, this method should do nothing besides printing `"Cannot attack a dead character"` to the console.
 
 - Implement the `levelUp()` method. This method should increase the character's `level` by 1, reset the `health` to it's maximum (5 times the `level`), increase `intelligence` by 2, and all other stats by 1.
 
@@ -146,10 +146,10 @@ For this homework the **checkstyle cap is 50**, meaning you can lose up to 50 po
 
 When completing homeworks for CS1331 you may talk with other students about:
 
-_ What general strategies or algorithms you used to solve problems in the homeworks
-_ Parts of the homework specification you are unsure of and need more explanation
-_ Online resources that helped you find a solution
-_ Key course concepts and Java language features used in your solution
+- What general strategies or algorithms you used to solve problems in the homeworks
+- Parts of the homework specification you are unsure of and need more explanation
+- Online resources that helped you find a solution
+- Key course concepts and Java language features used in your solution
 - **You may not discuss, show, or share by other means the specifics of your code, including screenshots, file sharing, or showing someone else the code on your computer, or use code shared by others.**
 
 ### Examples of approved/disapproved collaboration:
