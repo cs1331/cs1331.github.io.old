@@ -132,7 +132,7 @@ See the [CS 1331 Style Guide](http://cs1331.gatech.edu/cs1331-style-guide.html) 
 
 For each of your homwork assignments we will run checkstyle and deduct one point for every checkstyle error.
 
-For this homework the **checkstyle cap is 100**, meaning you can lose up to 100 points on this assignment due to style errors. This limit will increase with each homework.
+For this homework the **checkstyle cap is 50**, meaning you can lose up to 50 points on this assignment due to style errors. This limit will increase on the next homework.
 
 - If you encounter trouble running checkstyle, check Piazza for a solution and/or ask a TA as soon as you can!
 - You can run checkstyle on your code by using the jar file found on the course website that includes xml configuration file specifying our checks. To check the style of your coed run  `java -jar checkstyle-6.2.2.jar *.java`.
@@ -150,7 +150,7 @@ _ What general strategies or algorithms you used to solve problems in the homewo
 _ Parts of the homework specification you are unsure of and need more explanation
 _ Online resources that helped you find a solution
 _ Key course concepts and Java language features used in your solution
-_ **You may not discuss, show, or share by other means the specifics of your code, including screenshots, file sharing, or showing someone else the code on your computer, or use code shared by others.**
+- **You may not discuss, show, or share by other means the specifics of your code, including screenshots, file sharing, or showing someone else the code on your computer, or use code shared by others.**
 
 ### Examples of approved/disapproved collaboration:
 
