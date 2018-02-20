@@ -33,13 +33,13 @@ Download the abstract class [Character.java](Character.java). Implement all the 
 	2. level
 	3. 4 stats (strength, dexterity, intelligence and wisdom)
 	4. health
-	5. isAlive
+	5. isDead
 
 - Implement the getter and setter methods that have been partially provided.
 
 - Two constructors
   1. Assigning `String name, int level, int strength, int dexterity, int intelligence, int wisdom`. The `health` variable should start equal to five times the character level, and should never go above that. If the `health` variable ever goes below 0, `isDead` should be set to `true` and the `health` variable be reset to 0.
-  2. Only taking in a name and a seed, sets the level to one, sets health to 5, and randomly sets the other non-health stats to a number between 1 and 6 (inclusive) by using a Random object using the given seed. Make sure that you generate the other stats in order using this Random object (i.e. `strength`, then `dexterity`, then `intelligence`, then `wisdom`).
+  2. Only taking in a name and a seed, sets the level to one, sets health to 5, and randomly sets the other non-health stats to a number between 1 and 6 (inclusive) by using a Random object using the given seed. Make sure that you generate the other stats in order using this Random object (i.e. `strength`, then `dexterity`, then `intelligence`, then `wisdom`). You do not have to use explicit constructor invocation (aka constructor delegation) for this.
 
 ## Fighter.java
 
@@ -51,6 +51,8 @@ Download the abstract class [Character.java](Character.java). Implement all the 
 
 - a `toString()` method that returns a string with format `"Level (level) fighter named (name) with (strength) strength, (dexterity) dexterity, (intelligence) intelligence, and (wisdom) wisdom."`
 
+- Implement 2 constructors coorresponding with each of the constructors of the superclass.
+
 ## Rogue.java
 
 - This class should extend `Character` and implement all of its abstract methods.
@@ -60,6 +62,9 @@ Download the abstract class [Character.java](Character.java). Implement all the 
 - Implement the `levelUp()` method. This method should increase the character's `level` by 1, reset the `health` to it's maximum (5 times the `level`), increase `dexterity` by 3, and all other stats by 2.
 
 - a `toString()` method that returns a string with format `"Level (level) rogue named (name) with (strength) strength, (dexterity) dexterity, (intelligence) intelligence, and (wisdom) wisdom."`
+
+- Implement 2 constructors coorresponding with each of the constructors of the superclass.
+
 
 ## Cleric.java
 
@@ -73,6 +78,9 @@ Download the abstract class [Character.java](Character.java). Implement all the 
 
 - a `toString()` method that returns a string with format `"Level (level) cleric named (name) with (strength) strength, (dexterity) dexterity, (intelligence) intelligence, and (wisdom) wisdom."`
 
+- Implement 2 constructors coorresponding with each of the constructors of the superclass.
+
+
 ## Wizard.java
 
 - This class should extend `Character` and implement all of its abstract methods.
@@ -85,13 +93,16 @@ Download the abstract class [Character.java](Character.java). Implement all the 
 
 - a `toString()` method that returns a string with format `"Level (level) wizard named (name) with (strength) strength, (dexterity) dexterity, (intelligence) intelligence, and (wisdom) wisdom."`
 
+- Implement 2 constructors coorresponding with each of the constructors of the superclass.
+
+
 ## Grading
 
 - [10] Getter and setter methods for `Character`.
 - [5] Properly change `Character.isDead`.
 - [5] `health` never goes above `level` * 5.
 - [5 * 2 = 10] Each constructor for `Character`.
-- [10 * 4 = 40] Each `attack()` method for `Rogue`, `Fighter`, `Wizard`, and `Cleric`.
+- [5 * 4 = 20] Each `attack()` method for `Rogue`, `Fighter`, `Wizard`, and `Cleric`.
 - [5 * 4 = 20] Each`levelUp()` method for `Rogue`, `Fighter`, `Wizard`, and `Cleric`.
 - [5] `Wizard.multiAttack()`
 - [5] `Cleric.heal()`.
@@ -99,13 +110,13 @@ Download the abstract class [Character.java](Character.java). Implement all the 
 
 ## Running and Testing
 
-Creating a `Game` class with a `main` method to create a simulation to test of all the methods would be the best course of action.
+Creating a `Game` class with a `main` method to create a simulation to test of all the methods would be the best course of action. __Do not submit this.__
 
 ## Tips and Considerations
 
 If anything seems confusing, read through the entire description and instructions again. As always, feel free to contact your TAs, post on Piazza, or come in for office hours. In addition, here are some tips specific to this homework:
 
-Import `java.util.Random`.
+Import `java.util.Random`, but not anything that trivializes the assignment.
 
 Use the java API when you need help thinking of how to do something.
 
