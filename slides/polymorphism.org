@@ -14,6 +14,8 @@
 #+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
 
 * Polymorphism
 
@@ -26,11 +28,9 @@ Today we'll learn how to combine all the elements of object-oriented programming
 - Inheritance
 - Dynamic method binding
 
-
 That last part, dynamic method binding, provides for subtype *polymorphism*, which we'll learn today.
 
 ** Class Hierarchies
-
 
 UML class hierarchies depict the superclass-subclass relationships between families of related classes.
 
@@ -39,14 +39,11 @@ UML class hierarchies depict the superclass-subclass relationships between famil
 [[file:employee-class-hierarchy.pdf]]
 #+END_CENTER
 
-
 - ~Employee~ is the superclass of ~HourlyEmployee~ and ~SalariedEmployee~
 - ~Employee~ is more general than ~HourlyEmployee~ and ~SalariedEmployee~, e.g., there at least as many ~Employee~ s as either ~HourlyEmployee~ s or ~SalariedEmployee~ s
 - ~HourlyEmployee~ and ~SalariedEmployee~ are richer than ~Employee~ becuse they extend ~Employee~ with additional features
 
-
 ** A ~SalariedEmployee~ Class
-
 
 Let's add ~SalariedEmployee~ to our class hierarchy.
 
@@ -83,8 +80,8 @@ We now have all the classes in our hierarchy:
 
 But our classes aren't well factored.
 
-- ~SalariedEmployee3~ and ~HourlyEmployee3~ have duplicate copies of ~disallowZeroesAndNegatives~
-- ~SalariedEmployee3~ and ~HourlyEmployee3~ both have ~monthlyPay~ methods, but these methods are not polymorphic because they're not defined in ~Employee3~
+- [[../code/employee/SalariedEmployee3.java][SalariedEmployee3]] and [[../code/employee/HourlyEmployee3.java][HourlyEmployee3]] have duplicate copies of ~disallowZeroesAndNegatives~
+- [[../code/employee/SalariedEmployee3.java][SalariedEmployee3]] and [[../code/employee/HourlyEmployee3.java][HourlyEmployee3]] both have ~monthlyPay~ methods, but these methods are not polymorphic because they're not defined in [[../code/employee/Employee3.java][Employee3]]
 
 
 Let's refactor our ~Employee~ class hierarchy to give it a clean object-oriented design.
@@ -95,10 +92,9 @@ Let's refactor our ~Employee~ class hierarchy to give it a clean object-oriented
 Before we make ~monthlyPay~ polymorphic, we need an application to demonstrate why doing so is useful.  Let's design a ~Company~ class with the following specs:
 
 
-- A ~Company4~ has exactly 9 employees (because we haven't learned about dynamically resized data structures yet)
+- A [[../code/employee/Company4.java][Company4]] has exactly 9 employees (because we haven't learned about dynamically resized data structures yet)
 - A company calculates its monthly payroll by adding up the monthly pay of each of its employees.
 - A company can have any mix of hourly and salaried employees
-
 
 That last bullet motivates the use of polymorphism.
 
@@ -201,7 +197,6 @@ location: class Employee
 
 ** Abstract Classes
 
-
 We need ~Employee~ to declare a ~monthlyPay~ method for subclasses to define.  Since we don't have a general definition for ~monthlyPay~ suitable for ~Employee~, ~Employee~ will need to be abstract.
 
 #+BEGIN_SRC java :exports code
@@ -245,7 +240,6 @@ public class Company4 {
 }
 #+END_SRC
 
-
 - The static type of the elements of ~employees~ is ~Employee4~
 - The dynamic type can be any subclass of ~Employee4~, in this case they are all ~SalariedEmployee4~ and ~HourlyEmployee4~
 - When a method is invoked on an object, the method of the dynamic (run-time) type is used, no matter what the static (compile-time) type is.
@@ -254,7 +248,6 @@ public class Company4 {
 
 
 ** Refactoring Duplicate Code in a Class Hierarchy
-
 
 Recall the definition of ~disallowZeroesAndNegatives~:
 
@@ -275,10 +268,8 @@ private void disallowZeroesAndNegatives(double ... args) {
 }
 #+END_SRC
 
-
 - This method is duplicated in ~HourlyEmployee4~ and ~SalariedEmployee4~
 - Let's move the definition of ~disallowZeroesAndNegatives~ into ~Employee5~ so it will be shared (rather than duplicated) in ~SalariedEmployee5~ and ~HourlyEmployee5~.
-
 
 ** ~protected~ Members
 
@@ -301,78 +292,78 @@ public abstract class Employee5 {
 
 Later we'll see a better way to re-use.
 
-** The ~Employee~ Class Hierarchy
+# ** The ~Employee~ Class Hierarchy
 
-Let's add a summer intern class to our Employee hierarchy.
-
-
-#+BEGIN_CENTER
-#+ATTR_LATEX: :height 1.5in
-[[file:expanded-employee-class-hierarchy.pdf]]
-#+END_CENTER
+# Let's add a summer intern class to our Employee hierarchy.
 
 
-- We can get the payRoll for the current month by making use of the polymorphic ~getMonthlyPay~ method.
-- What if we wanted to get the payroll for a particular month?
+# #+BEGIN_CENTER
+# #+ATTR_LATEX: :height 1.5in
+# [[file:expanded-employee-class-hierarchy.pdf]]
+# #+END_CENTER
 
 
-Let's overload ~monthlyPay~ so we can get the payroll for any month, not just the current month.
-
-** Enum Types
-
-Enums are data types that have a predefined set of constant values ([[http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.9][JLS \S 8.9], [[http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html][Java Enum Tutorial]])
-
-For example:
-
-#+BEGIN_SRC java :exports code
-public enum Month {
-    JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-}
-#+END_SRC
-defines an enum type called ~Month~ that can take on only one of the predefined constants ~Month.JAN~, ~Month.FEB~, ..., ~Month.DEC~
-
-- Enum types are a class.
-- Java automatically defines convenience methods for enum types, like ~valueOf(String)~ and ~values()~ (See the [[Enum API][http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html]]).
-- Because they define a class, enum types can include programmer-defined additional constructors and methods.
-
-** Ad-Hoc Polymorphism: Overloaded Methods
+# - We can get the payRoll for the current month by making use of the polymorphic ~getMonthlyPay~ method.
+# - What if we wanted to get the payroll for a particular month?
 
 
-An overloaded method is a set of methods with the same names but different signatures (parameter lists)\footnote{More precisely, two methods with the same name whose signatures are not *override-equivalent* are overloaded.} ([[http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.4.9][JLS \S 8.4.9]]).\\
+# Let's overload ~monthlyPay~ so we can get the payroll for any month, not just the current month.
 
-Here's an overloaded ~monthlyPay~ for ~SummerIntern6~, along with a helper method demonstrating the use of the ~Month~ enum:
+# ** Enum Types
 
-#+BEGIN_SRC java :exports code
-public double monthlyPay() {
-    Date today = new Date();
-    Month thisMonth = Month.values()[today.getMonth()];
-    return monthlyPay(thisMonth);
-}
-public double monthlyPay(Month month) {
-    return isSummer(month) ? super.monthlyPay() : 0.0;
-}
-private boolean isSummer(Month month) {
-    return month == Month.JUN
-        || month == Month.JUL
-        || month == Month.AUG;
-}
-#+END_SRC
+# Enums are data types that have a predefined set of constant values ([[http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.9][JLS \S 8.9], [[http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html][Java Enum Tutorial]])
 
-- In which classes should these methods be declared? Defined?
+# For example:
 
+# #+BEGIN_SRC java :exports code
+# public enum Month {
+#     JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+# }
+# #+END_SRC
+# defines an enum type called ~Month~ that can take on only one of the predefined constants ~Month.JAN~, ~Month.FEB~, ..., ~Month.DEC~
 
-** The ~Employee~ Class Hierarchy in UML
+# - Enum types are a class.
+# - Java automatically defines convenience methods for enum types, like ~valueOf(String)~ and ~values()~ (See the [[Enum API][http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html]]).
+# - Because they define a class, enum types can include programmer-defined additional constructors and methods.
 
-#+BEGIN_CENTER
-#+ATTR_LATEX: :height 1.5in
-[[file:employee-uml.pdf]]
-#+END_CENTER
+# ** Ad-Hoc Polymorphism: Overloaded Methods
 
 
-- Italicized names are abstract (e.g., *Employee* is an abstract class, *+ getMonthlyPay(month: Month)* is an abstract method).
-- We've only shown public methods (denoted by the '+' symbols in front of their names).
-- Each class has all the public methods in its superclasses, and possibly additional methods.
-- ~SummerIntern6~ only *specializes* ~HourlyEmployee6~, that is, it modifies some behavior of its superclass but does not add any additional behavior.
+# An overloaded method is a set of methods with the same names but different signatures (parameter lists)\footnote{More precisely, two methods with the same name whose signatures are not *override-equivalent* are overloaded.} ([[http://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.4.9][JLS \S 8.4.9]]).\\
+
+# Here's an overloaded ~monthlyPay~ for ~SummerIntern6~, along with a helper method demonstrating the use of the ~Month~ enum:
+
+# #+BEGIN_SRC java :exports code
+# public double monthlyPay() {
+#     Date today = new Date();
+#     Month thisMonth = Month.values()[today.getMonth()];
+#     return monthlyPay(thisMonth);
+# }
+# public double monthlyPay(Month month) {
+#     return isSummer(month) ? super.monthlyPay() : 0.0;
+# }
+# private boolean isSummer(Month month) {
+#     return month == Month.JUN
+#         || month == Month.JUL
+#         || month == Month.AUG;
+# }
+# #+END_SRC
+
+# - In which classes should these methods be declared? Defined?
+
+
+# ** The ~Employee~ Class Hierarchy in UML
+
+# #+BEGIN_CENTER
+# #+ATTR_LATEX: :height 1.5in
+# [[file:employee-uml.pdf]]
+# #+END_CENTER
+
+
+# - Italicized names are abstract (e.g., *Employee* is an abstract class, *+ getMonthlyPay(month: Month)* is an abstract method).
+# - We've only shown public methods (denoted by the '+' symbols in front of their names).
+# - Each class has all the public methods in its superclasses, and possibly additional methods.
+# - ~SummerIntern6~ only *specializes* ~HourlyEmployee6~, that is, it modifies some behavior of its superclass but does not add any additional behavior.
 
 ** Implementation Inheritance Hinders Re-use
 
@@ -427,12 +418,9 @@ We've now seen two kinds of polymorphism:
 - Ad-hoc polymorphism (method overloading), and
 - Subtype polymorphism (overriding methods in subtypes).
 
-
 *Subtype polymorphism* is core feature of OOP.  Polymorphism makes it possible to reuse *concepts* in a way that makes programs extensible without requiring rewriting existing code - this is the *open-closed principle*.
 
 In the next block we'll see one more kind of polymorphism: type parameter polymorphism, or *parametric polymorphism*.
-
-
 
 
 ** Object-oriented Design
