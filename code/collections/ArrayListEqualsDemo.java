@@ -30,7 +30,6 @@ public class ArrayListEqualsDemo {
         public FoundPerson(String name) { super(name); }
 
         public boolean equals(Object other) {
-            if (null == other) { return false; }
             if (this == other) { return true; }
             if (!(other instanceof Person)) { return false; }
             return ((Person) other).name.equals(this.name);
@@ -41,7 +40,6 @@ public class ArrayListEqualsDemo {
         public OverloadedPerson(String name) { super(name); }
 
         public boolean equals(OverloadedPerson other) {
-            if (null == other) { return false; }
             if (this == other) { return true; }
             if (!(other instanceof OverloadedPerson)) { return false; }
             return ((OverloadedPerson) other).name.equals(this.name);
@@ -55,7 +53,6 @@ public class ArrayListEqualsDemo {
     //      * This method won't compile because int is not a subtype of boolean.
     //      */
     //     public int equals(Object other) {
-    //         if (null == other) return 0;
     //         if (this == other) return 1;
     //         if (!(other instanceof Person)) return 0;
     //         return ((Person) other).name.equals(this.name) ? 1 : 0;
@@ -71,13 +68,22 @@ public class ArrayListEqualsDemo {
         peeps.add(new LostPerson("Barney"));
         peeps.add(new OverloadedPerson("Bam-Bam"));
 
-        System.out.println("In each case below, the right answer is true.");
+        System.out.println("peeps contains:");
+        System.out.println("wilma (a refrence to a LostPerson)");
+        System.out.println("new FoundPerson(\"Fred\")");
+        System.out.println("new LostPerson(\"Barney\")");
+        System.out.println("new OverloadedPerson(\"Bam-Bam\")");
+
+        System.out.println("\nIn each case below, the 'right' answer is true.");
         // 1:
         // Will print true because the default implementation of equals
         // uses == for object identity, and we're using the same reference
         // that's stored in peeps
-        System.out.println("1: Querying with alias: " + peeps.contains(wilma));
-        System.out.println("1.1: Querying with equal-valued distinct object: "
+        System.out.println("\n1: Querying with alias: ");
+        System.out.println("peeps.contains(wilma)) == "
+                           + peeps.contains(wilma));
+        System.out.println("\n1.1: Querying with equal-valued distinct object: ");
+        System.out.println("peeps.contains(new LostPerson(\"Wilma\")) == "
                            + peeps.contains(new LostPerson("Wilma")));
 
         // The rest of the examples each use new objects, so can't rely
@@ -89,13 +95,15 @@ public class ArrayListEqualsDemo {
         // Will print true because we're querying with a FoundPerson,
         // which has a properly implemented equals()
         System.out.println("\nSearching for FoundPerson in list.");
-        System.out.println("2: Querying with FoundPerson object: "
+        System.out.println("\n2: Querying with FoundPerson object: ");
+        System.out.println("peeps.contains(new FoundPerson(\"Fred\")) == "
                            + peeps.contains(new FoundPerson("Fred")));
 
         // 3:
         // Will print false because we're querying with a LostPerson,
         // which does not hashave a properly implemented equals()
-        System.out.println("3: Querying with LostPerson: "
+        System.out.println("\n3: Querying with LostPerson: ");
+        System.out.println("peeps.contains(new LostPerson(\"Fred\")) == "
                            + peeps.contains(new LostPerson("Fred")));
 
         // 4:
@@ -111,12 +119,16 @@ public class ArrayListEqualsDemo {
 
         // 5:
         // Will print false because we're querying with a LostPerson,
-        // which does not hashave a properly implemented equals()
-        System.out.println("5: Querying with LostPerson: "
+        // which does not have a properly implemented equals()
+        System.out.println("\n5: Querying with LostPerson: ");
+        System.out.println("peeps.contains(new LostPerson(\"Barney\")) == "
                            + peeps.contains(new LostPerson("Barney")));
 
-        System.out.println("\nSearching for OverloadedPerson in list.");
-        System.out.println("5: Querying with OverloadedPerson: "
+        // 6:
+        // Will print false because OverloadedPerson does not override equals,
+        // rather OverloadedPerson overloads equals.
+        System.out.println("\n6: Querying with OverloadedPerson: ");
+        System.out.println("peeps.contains(new OverloadedPerson(\"Bam-Bam\"))== "
                            + peeps.contains(new OverloadedPerson("Bam-Bam")));
     }
 

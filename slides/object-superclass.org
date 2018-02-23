@@ -14,6 +14,8 @@
 #+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
 
 * The Object Superclass
 
@@ -57,10 +59,9 @@ Obey the general contract of ~equals(Object)~ (\href{}{JLS }), which says that ~
 Obeying the general contract of ~equals(Object)~ is easier if you follow this recipe [fn:1].\\
 
 1. Check for reference equality with == (are we comparing to self?).
-2. Ensure the other object is not null.
-3. Check that the other object is an ~instanceof~ this object's class.
-4. Cast the other object to this's type (guaranteed to work after instanceof test)
-5. Check that each ``significant'' field in the other object ~equals(Object)~ the corresponding field in this object.
+2. Check that the other object is an ~instanceof~ this object's class.
+3. Cast the other object to this's type (guaranteed to work after instanceof test)
+4. Check that each ``significant'' field in the other object ~equals(Object)~ the corresponding field in this object.
 
 After seeing an example applicaiton of this recipe we'll motivate the proper implementation of ~equals(Object)~ methods by introducing our first collection class, ~ArrayList~.
 
@@ -70,20 +71,18 @@ After seeing an example applicaiton of this recipe we'll motivate the proper imp
 
 Assume we have a ~Person~ class with a single ~name~ field.
 
-1. Ensure the other object is not null.
-2. Check for reference equality with == (are we comparing to self?).
-3. Check that the other object is an ~instanceof~ this object's class.
-4. Cast the other object to this's type (guaranteed to work after instanceof test)
-5. Check that each ``significant'' field in the other object ~equals(Object)~ the corresponding field in this object.
+1. Check for reference equality with == (are we comparing to self?).
+2. Check that the other object is an ~instanceof~ this object's class.
+3. Cast the other object to this's type (guaranteed to work after instanceof test)
+4. Check that each ``significant'' field in the other object ~equals(Object)~ the corresponding field in this object.
 
 Applying the recipe:
 #+BEGIN_SRC java :exports code
       public boolean equals(Object other) {
 1:        if (this == other) { return true; }
-2:        if (null == other) { return false; }
-3:        if (!(other instanceof Person)) { return false; }
-4:        Person that = (Person) other;
-5:        return this.name.equals(that.name);
+2:        if (!(other instanceof Person)) { return false; }
+3:        Person that = (Person) other;
+4:        return this.name.equals(that.name);
       }
 #+END_SRC
 
@@ -204,7 +203,6 @@ static class SubLostPerson extends LostPerson {
          * This method won't compile because int is not a subtype of boolean.
          */
         public int equals(Object other) {
-            if (null == other) return 0;
             if (this == other) return 1;
             if (!(other instanceof Person)) return 0;
             return ((Person) other).name.equals(this.name) ? 1 : 0;
@@ -221,7 +219,6 @@ It's easy to make this mistake:
         public OverloadedPerson(String name) { super(name); }
 
         public boolean equals(OverloadedPerson other) {
-            if (null == other) { return false; }
             if (this == other) { return true; }
             if (!(other instanceof OverloadedPerson)) { return false; }
             return ((OverloadedPerson) other).name.equals(this.name);
