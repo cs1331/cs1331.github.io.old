@@ -123,7 +123,7 @@ Note that the for-each loop implicitly uses an iterator.
 - A class whose instances will be stored in a collection must have a properly implemented ~equals(Object)~ method.
 - The ~contains~ method in collections uses the ~equals(Object)~ method in the stored objects.
 - The default implementation of ~equals(Object)~ (object identity - true only for same object in memory) only rarely gives correct results.
-- Note that ~hashcode()~ also has a defualt implementation that uses the object's memory address.  As a rule, whenever you override ~equals(Object)~, you should also override ~hashcode~\footnote{~hashcode()~ is used in objects that are keys in ~Map~s.  You'll learn about ~Map~s later in the course.}.
+- Note that ~hashcode()~ also has a default implementation that uses the object's memory address.  As a rule, whenever you override ~equals(Object)~, you should also override ~hashcode~\footnote{~hashcode()~ is used in hash-based collections, which we'll learn in a few weeks.}.
 
 ** ~equals(Object)~ Method Examples
 
