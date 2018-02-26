@@ -84,7 +84,7 @@ At least one of:
 * Official textbook: Introduction to Java Programming, Comprehensive Version, 10th Edition by Y. Daniel Liang, ISBN-10: 0133761312, ISBN-13: 978-0133761313
 * Course websites: all course materials will be on the public web site at [http://cs1331.org](http://cs1331.org). All student grade information will be on the course's T-Square site.
 
-* Textbook: The textbook is not required, but examples from it will be used frequently in class, therefore it is strongly recommended. 
+* Textbook: The textbook is not required, but examples from it will be used frequently in class, therefore it is strongly recommended.
 
 ## Non-Discrimination
 

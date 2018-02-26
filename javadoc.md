@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CS 1331 - Writing Javadocs 
+title: CS 1331 - Writing Javadocs
 ---
 
 # Javadocs
@@ -26,7 +26,7 @@ Take note of:
 ## Class Headers
 All public classes should be commented in the following format:
 
-```java 
+```java
 /**
  * Represents a canine animal
  * @author Thomas Shields
@@ -49,9 +49,9 @@ Method headers should be commented as follows:
 
 ```java
 /**
- * Calculates the speed an object was travelling given the distance and time 
+ * Calculates the speed an object was travelling given the distance and time
  * @param time      How long the object is moving for
- * @param distance  How far the object moved 
+ * @param distance  How far the object moved
  * @throws ArithmeticException If the time is zero.
  * @return a double representing the speed at which the object was travelling.
  */
