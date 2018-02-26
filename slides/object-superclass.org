@@ -233,6 +233,16 @@ It's easy to make this mistake:
 
 Using the ~@Override~ annotation helps you avoid this mistake.
 
+** Equals Methods in Subclasses of Instantiable Classes
+
+Take a look at
+
+- [[../code/hipster/Person.java][Person.java]]
+- [[../code/hipster/Hipster.java][Hipster.java]]
+- [[../code/hipster/CoffeeShop.java][CoffeeShop.java]]
+
+Both [[../code/hipster/Person.java][Person.java]] and [[../code/hipster/Hipster.java][Hipster.java]] have properly implemented ~equals~ methods, but as the [[../code/hipster/CoffeeShop.java][CoffeeShop.java]] code shows they don't properly implement an equivalence relation. The problem is that [[../code/hipster/Hipster.java][Hipster.java]] is a subclass of an instantiable class. How would you fix the design of your Person-Hipster class hierarchy?
+
 ** Closing Thoughts
 
 - ~java.lang.Object~ is the root superclass of every Java class.

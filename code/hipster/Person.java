@@ -1,4 +1,4 @@
-public class Person implements Comparable<Person> {
+public class Person {
 
     private String name;
 
@@ -17,12 +17,7 @@ public class Person implements Comparable<Person> {
         return name;
     }
 
-    public int compareTo(Person other) {
-        return name.compareTo(other.name);
-    }
-
     public boolean equals(Object other) {
-        if (null == other) { return false; }
         if (this == other) { return true; }
         if (!(other instanceof Person)) { return false; }
         Person that = (Person) other;

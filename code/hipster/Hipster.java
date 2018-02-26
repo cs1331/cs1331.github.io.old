@@ -24,7 +24,6 @@ public class Hipster extends Person {
     }
 
     public boolean equals(Object other) {
-        if (null == other) { return false; }
         if (this == other) { return true; }
         if (!(other instanceof Hipster)) { return false; }
         Hipster that = (Hipster) other;
