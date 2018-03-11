@@ -3,6 +3,7 @@
  *
  * @author CS1331 TAs
  * @version 13.3.1
+ * @param <T> A subtype of Athlete
  */
 public interface AthleteListInterface<T extends Athlete> {
 
@@ -19,7 +20,7 @@ public interface AthleteListInterface<T extends Athlete> {
      * resized, you should resize it and then carry on the add operation
      * as normal.
      * @throws IllegalArgumentException if the element to be added is null
-     * @param T Element to be added to the AthleteList
+     * @param t Element to be added to the AthleteList
      */
     void add(Athlete t);
 
@@ -34,7 +35,8 @@ public interface AthleteListInterface<T extends Athlete> {
      * though.
      * @throws IndexOutOfBoundsException if the index is less than zero or is
      * greater than or equal to the number of elements in the AthleteList.
-     * @param int index Index of the element to be removed.
+     * @param index Index of the element to be removed.
+     * @return The Athlete removed from the AthleteList.
      */
     Athlete remove(int index);
 
@@ -42,7 +44,8 @@ public interface AthleteListInterface<T extends Athlete> {
      * Returns the element at the specified index.
      * @throws IndexOutOfBoundsException if the index is less than zero or
      * greater than or equal to the number of elements in the AthleteList.
-     * @param int index Index of the element to be returned.
+     * @param index Index of the element to be returned.
+     * @return Athlete at the passed-in index
      */
     Athlete get(int index);
 
@@ -69,7 +72,7 @@ public interface AthleteListInterface<T extends Athlete> {
      * index via their train() method.
      * @throws IndexOutOfBoundsException if index is less than zero or greater
      * than or equal to the number of elements in the AthleteList.
-     * @param int index Index of the Athlete to be trained.
+     * @param index Index of the Athlete to be trained.
      */
     void train(int index);
 
@@ -78,14 +81,14 @@ public interface AthleteListInterface<T extends Athlete> {
      * method.
      * @throws IndexOutOfBoundsException if index is less than zero or greater
      * than or equal to the number of elements in the AthleteList.
-     * @param int index Index of the athlete to be rested.
+     * @param index Index of the athlete to be rested.
      */
     void rest(int index);
 
     /**
-     * Returns an array of Athletes with the same elements as your backing array,
-     * but with only size() elements. There should be no null elements in this
-     * array.
+     * Returns an array of Athletes with the same elements as your backing
+     * array, but with only size() elements. There should be no null elements
+     * in this array.
      * @return an array of Athletes as described above.
      */
     Athlete[] asArray();
