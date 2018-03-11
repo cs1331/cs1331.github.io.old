@@ -25,7 +25,6 @@ public interface AthleteListInterface<T extends Athlete> {
 
     /**
      * Removes the element at the specified index, and returns it.
-     * If the element isn't in the AthleteList, return null.
      * You should shift every element to the right of the removed
      * element one spot to the left, so that all the null elements are
      * in the back of the array. For example, suppose there's a list with
@@ -61,7 +60,7 @@ public interface AthleteListInterface<T extends Athlete> {
 
     /**
      * Returns whether this AthleteList is empty or not.
-     * @return true if this AthleteList contains elements, false otherwise.
+     * @return true if this AthleteList is empty, false otherwise.
      */
     boolean isEmpty();
 
