@@ -32,6 +32,7 @@ Something else to be noted in our discussion of ArrayLists is the distinction we
 ## Solution Description
 
 You will be provided the following files. **You may only modify `train()` in Athlete!**
+The file names are clickable, and take you to the Java files.
 
 - [`AthleteListInterface`](AthleteListInterface.java) -- your `AthleteList` class will need to implement this interface. All details regarding the abstract methods you will override has been provided in the Javadocs, and have been repeated below for convenience. `AthleteListInterface` contains the following abstract methods:
     - `void add(Athlete t)` -- This method adds an `Athlete` to the `AthleteList` . If the `AthleteList` is full, you'll need to resize it to twice the current capacity prior to adding the element. If the element passed in is null, throw an `IllegalArgumentException` .
@@ -85,6 +86,8 @@ accept a String as a parameter and invoke the constructor in the super class tha
 
 - As always, you shouldn't use anything that will oversimplify the assignment (like `ArrayList`).
 - You don't need to import anything for this assignment. If you find yourself needing to import something in the course of this assignment, rethink how you're approaching the problem.
+- **You may not use the Arrays class nor System.copyof for this homework!** Doing so
+will be considered trivializing the assignment and you will lose most, if not all, points.
 
 ### Tips and Considerations
 
@@ -98,7 +101,7 @@ accept a String as a parameter and invoke the constructor in the super class tha
 - [10] `add()` correctly adds an element to `AthleteList`
 - [5] `add()` correctly resizes the backing array when necessary
 - [10] `remove()` correctly removes an element from `AthleteList`
-- [5] 'remove()' correctly shifts elements after removal
+- [5] `remove()` correctly shifts elements after removal
 - [10] `get()`
 - [10] `clear()`
 - [5] `size()`
