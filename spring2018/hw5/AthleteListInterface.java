@@ -83,9 +83,10 @@ public interface AthleteListInterface<T extends Athlete> {
     void rest(int index);
 
     /**
-     * Returns the ENTIRE backing array used in your implementation of
-     * AthleteList.
-     * @return Your backing array.
+     * Returns an array of Athletes with the same elements as your backing array,
+     * but with only size() elements. There should be no null elements in this
+     * array.
+     * @return an array of Athletes as described above.
      */
     Athlete[] asArray();
 
