@@ -2,7 +2,7 @@
  * Interface for an AthleteList!
  *
  * @author CS1331 TAs
- * @version 13.3.1
+ * @version 14.4.2
  * @param <T> A subtype of Athlete
  */
 public interface AthleteListInterface<T extends Athlete> {
@@ -22,7 +22,7 @@ public interface AthleteListInterface<T extends Athlete> {
      * @throws IllegalArgumentException if the element to be added is null
      * @param t Element to be added to the AthleteList
      */
-    void add(Athlete t);
+    void add(T t);
 
     /**
      * Removes the element at the specified index, and returns it.
@@ -38,7 +38,7 @@ public interface AthleteListInterface<T extends Athlete> {
      * @param index Index of the element to be removed.
      * @return The Athlete removed from the AthleteList.
      */
-    Athlete remove(int index);
+    T remove(int index);
 
     /**
      * Returns the element at the specified index.
@@ -47,7 +47,7 @@ public interface AthleteListInterface<T extends Athlete> {
      * @param index Index of the element to be returned.
      * @return Athlete at the passed-in index
      */
-    Athlete get(int index);
+    T get(int index);
 
     /**
      * Removes all elements from the AthleteList, and resets it back
@@ -91,10 +91,5 @@ public interface AthleteListInterface<T extends Athlete> {
      * in this array.
      * @return an array of Athletes as described above.
      */
-    Athlete[] asArray();
-
-
-
-
-
+    T[] asArray();
 }

@@ -6,6 +6,18 @@
   <title>{{ page.title }}</title>
   <meta name="viewport" content="width=device-width">
 
+  <script>
+    // try to stop pirate broadcasts
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hostname != 'cs1331.gatech.edu' && window.location.hostname != 'localhost') {
+      document.body.innerHTML = '<img src="http://i3.kym-cdn.com/photos/images/newsfeed/001/060/689/927.jpg" alt="it\'s time to stop!">';
+      document.body.style = 'background-color: red; text-align: center; color: white;';
+      alert('Press OK to be redirected to the real cs1331 website (cs1331.gatech.edu). This is an unsafe mirror of the cs1331 course website and should not be used.');
+      window.location = 'http://cs1331.gatech.edu' + window.location.pathname;
+    }
+  });
+  </script>
+
   <!-- syntax highlighting CSS -->
   <link rel="stylesheet" href="/css/syntax.css">
 
@@ -30,7 +42,7 @@
 
     </head>
     <body>
-      
+
       <!-- Fixed navbar -->
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
