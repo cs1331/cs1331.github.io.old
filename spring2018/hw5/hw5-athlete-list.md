@@ -86,7 +86,7 @@ accept a String as a parameter and invoke the constructor in the super class tha
 
 - As always, you shouldn't use anything that will oversimplify the assignment (like `ArrayList`).
 - You don't need to import anything for this assignment. If you find yourself needing to import something in the course of this assignment, rethink how you're approaching the problem.
-- **You may not use the Arrays class nor System.copyof for this homework!** Doing so
+- **You may not use the Arrays class nor System.arraycopy for this homework!** Doing so
 will be considered trivializing the assignment and you will lose most, if not all, points.
 
 ### Tips and Considerations
