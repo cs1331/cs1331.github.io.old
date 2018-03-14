@@ -5,6 +5,10 @@ title: Homework 5 - Collections and Exceptions
 
 # Homework 5 - AthleteList
 
+
+## Caution: The AthleteListInterface file was updated on Wednesday, March 14th. 
+#### Please [redownload](AthleteListInterface.java) it and ensure that the version you are compiling against has `@version 14.4.2` in the interface javadoc.
+
 ## Introduction
 
 In this assignment, you'll practice
@@ -34,19 +38,16 @@ Something else to be noted in our discussion of ArrayLists is the distinction we
 You will be provided the following files. **You may only modify `train()` in Athlete!**
 The file names are clickable, and take you to the Java files.
 
-- [`AthleteListInterface`](AthleteListInterface.java) -- your `AthleteList` class will need to implement this interface. All details regarding the abstract methods you will override has been provided in the Javadocs, and have been repeated below for convenience. `AthleteListInterface` contains the following abstract methods:
-    - `void add(Athlete t)` -- This method adds an `Athlete` to the `AthleteList` . If the `AthleteList` is full, you'll need to resize it to twice the current capacity prior to adding the element. If the element passed in is null, throw an `IllegalArgumentException` .
+- [`AthleteListInterface` (download)](AthleteListInterface.java) -- your `AthleteList` class will need to implement this interface. All details regarding the abstract methods you will override has been provided in the Javadocs, and have been repeated below for convenience. `AthleteListInterface` contains the following abstract methods:
+- `void add(T t)` -- This method adds a `<T extends Athlete>` object to the `AthleteList` . If the `AthleteList` is full, you'll need to resize it to twice the current capacity prior to adding the element. If the element passed in is null, throw an `IllegalArgumentException` .
 
-    - `Athlete remove(int index)` -- Removes the athlete at the passed-in index and returns it. You
-    should shift every element to the right of the
-    removed element one spot to the left, so that
-    there are no gaps in the middle of the `AthleteList` . See the interface for an example. If `index` is less than zero or greater than or equal to the number of elements remaining in the `AthleteList` , you should throw an `IndexOutOfBoundsException` .
+    - `T remove(int index)` -- Removes the Athlete at the passed-in index and returns it. You should shift every element to the right of the removed element one spot to the left, so that there are no gaps in the middle of the `AthleteList` . See the interface for an example. If `index` is less than zero or greater than or equal to the number of elements remaining in the `AthleteList` , you should throw an `IndexOutOfBoundsException` .
 
-    - `Athlete get(int index)` -- Returns the element at the specified index. If `index` is less than zero or greater than or equal to the number of elements remaining in the `AthleteList` , you should throw an `IndexOutOfBoundsException` .
+    - `T get(int index)` -- Returns the element at the specified index. If `index` is less than zero or greater than or equal to the number of elements remaining in the `AthleteList` , you should throw an `IndexOutOfBoundsException` .
 
-    - `void clear()` -- Empties the `AthleteList` of all elements and resets it back to its original capacity.
+    - `void clear()` -- Empties the `AthleteList` of all elements and resets the backing array back to its original capacity.
 
-    - `int size()` -- Returns the number of elements currently in the `AthleteList` .
+    - `int size()` -- Returns the number of elements currently in the `AthleteList`.
 
     - `boolean isEmpty()` -- Returns whether the `AthleteList` is empty or not.
 
@@ -55,9 +56,9 @@ The file names are clickable, and take you to the Java files.
     - `void rest(int index)` -- Calls the `rest()` method of the `Athlete` at the passed-in index. If
     `index` is out of bounds, throw an `IndexOutOfBoundsException` .
 
-    - `Athlete[] asArray()` -- This method is for our grading (and your testing!) purposes. Return an array with the same elements as the backing array, but with `size()` elements, that is, no `null` elements from right-padding a backing array that is bigger than the number of elements currently stored in the `AthleteList`.
+    - `T[] asArray()` -- This method is for our grading (and your testing!) purposes. Return an array with the same elements as the backing array, but with `size()` elements, that is, no `null` elements from right-padding a backing array that is bigger than the number of elements currently stored in the `AthleteList`.
 
-- [`Athlete`](Athlete.java) -- A class used to model an athlete. An `Athlete` has the following instance variables and instance methods:
+- [`Athlete` (download)](Athlete.java) -- A class used to model an athlete. An `Athlete` has the following instance variables and instance methods:
     - `name` -- A String representing the name of the `Athlete`.
 
     - `energy` -- An int representing the amount of energy the `Athlete` has left. This depletes as the `Athlete` trains.
@@ -86,8 +87,8 @@ accept a String as a parameter and invoke the constructor in the super class tha
 
 - As always, you shouldn't use anything that will oversimplify the assignment (like `ArrayList`).
 - You don't need to import anything for this assignment. If you find yourself needing to import something in the course of this assignment, rethink how you're approaching the problem.
-- **You may not use the Arrays class nor System.copyof for this homework!** Doing so
-will be considered trivializing the assignment and you will lose most, if not all, points.
+- **You may not use the `java.util.Arrays` class nor `System.arrayCopy` for this homework!** Doing so
+will be considered oversimplifying the assignment and you will lose most, if not all, points.
 
 ### Tips and Considerations
 
