@@ -39,7 +39,7 @@ You will be provided the following files. **You may only modify `train()` in Ath
 The file names are clickable, and take you to the Java files.
 
 - [`AthleteListInterface` (download)](AthleteListInterface.java) -- your `AthleteList` class will need to implement this interface. All details regarding the abstract methods you will override has been provided in the Javadocs, and have been repeated below for convenience. `AthleteListInterface` contains the following abstract methods:
-- `void add(T t)` -- This method adds a `<T extends Athlete>` object to the `AthleteList` . If the `AthleteList` is full, you'll need to resize it to twice the current capacity prior to adding the element. If the element passed in is null, throw an `IllegalArgumentException` .
+    - `void add(T t)` -- This method adds a `<T extends Athlete>` object to the `AthleteList` . If the `AthleteList` is full, you'll need to resize it to twice the current capacity prior to adding the element. If the element passed in is null, throw an `IllegalArgumentException` .
 
     - `T remove(int index)` -- Removes the Athlete at the passed-in index and returns it. You should shift every element to the right of the removed element one spot to the left, so that there are no gaps in the middle of the `AthleteList` . See the interface for an example. If `index` is less than zero or greater than or equal to the number of elements remaining in the `AthleteList` , you should throw an `IndexOutOfBoundsException` .
 
