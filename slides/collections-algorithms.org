@@ -1,0 +1,213 @@
+#+TITLE: Collections Algorithms
+#+AUTHOR:
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smaller]
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+
+* Collections Algorithms
+
+
+** The Collections Framework
+
+[[file:colls-coreInterfaces.png]]
+
+- A /collection/ is an object that represents a group of objects.
+- The collections framework allows different kinds of collections to be dealt with in an implementation-independent manner.
+
+
+** ~Collections.sort(List<T> list)~
+
+The collections framework includes algorithms that operate on collections.  These algorithms are implemented as static methods of the ~Collections~ class.  A good example is the (overloaded) ~sort~ method:
+
+#+BEGIN_SRC java
+public static <T extends Comparable<? super T>> void sort(List<T> list)
+#+END_SRC
+
+This method signature demonstrates how to declare a generic method (so far we've seen only generic classs): put a type parameter before the return type.
+
+- This ~sort~ uses the "natural ordering" of the list, that is, the ordering defined by ~Comparable~.
+- ~<? super T>~ is a /type bound/.  It means "some superclass of ~T~."
+
+For now just think of it this way: the type parameter ~<T extends Comparable<? super T>>~ means that the element type ~T~ or some superclass of ~T~ must implement ~Comparable~.
+
+** The ~java.lang.Comparable Interface~
+
+#+BEGIN_SRC java
+public interface Comparable<T> {
+
+    public int compareTo(T o);
+}
+#+END_SRC
+
+~compareTo(T o)~ Compares this object with the specified object for order. Returns
+
+- a negative integer if this object is less than the other object,
+- zero if this object is equal to the other object, or
+- a positive integer if this object is greater than the other object.
+
+** Implementing ~java.lang.Comparable<T>~
+
+Here's a ~Person~ class whose natural ordering is based on age:
+
+#+BEGIN_SRC java
+public class Person implements Comparable<Person> {
+
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String toString() {
+        return name;
+    }
+
+    public int compareTo(Person other) {
+        return this.age - other.age;
+    }
+}
+#+END_SRC
+
+** Analyzing ~<T extends Comparable<? super T>>~
+
+Given the ~Collections~ static method:
+
+#+BEGIN_SRC java
+public static <T extends Comparable<? super T>> void sort(List<T> list)
+#+END_SRC
+
+And the classes:
+
+#+BEGIN_SRC java
+public class Person implements Comparable<Person>
+public class GtStudent extends Person { ... }
+#+END_SRC
+
+Can we sort a ~List<GtStudent>~?
+
+Type checker "proves" that a type argument satisfies a type bound.  Prove by substituting without causing contradictions:
+
+#+BEGIN_QUOTE
+~[GtStudent/T, Person/?]<T extends Comparable<? super T>>~
+$\Rightarrow$ ~<GtPerson extends Comparable<Person super GtStudent>~
+#+END_QUOTE
+
+Yes, we can sort a ~List<GtStudent>~ because
+
+- ~GtStudent extends Person~,
+- ~Person implements Comparable<Person>~, so
+- ~GtStudent~ is a subtype of ~Comparable<Person>~ and
+- ~Person~ is a supertype of ~GtStudent~
+
+** Using ~Collections.sort(List<T> list)~
+
+Given the ~Collections~ static method:
+
+#+BEGIN_SRC java
+public static <T extends Comparable<? super T>> void sort(List<T> list)
+#+END_SRC
+
+We could sort a ~List<Person>~ because ~Person implements Comparable<Person>~:
+
+#+BEGIN_SRC java
+List<Person> peeps = new ArrayList<>();
+peeps.add(new Person(...));
+...
+Collections.sort(peeps);
+#+END_SRC
+
+And if we have a class:
+
+#+BEGIN_SRC java
+public class GtStudent extends Person { ... }
+#+END_SRC
+
+We could also sort a ~List<GtStudent>~ because
+
+- ~GtStudent extends Person~,
+- ~Person implements Comparable<Person>~ and
+- ~Person~ is a supertype of ~GtStudent~
+
+
+** Using ~Collections.sort(List<T>) on Raw Lists~
+
+Java uses /type erasure/ to implement generics, meaning that the compiled code is nearly identical to non-generic code.  Type erasure allows for compile-time type checking while preserving the ability to work with legacy code.  So you can sort a raw ~List~ of ~Person~ using the ~compareTo(Person)~ method:
+
+#+BEGIN_SRC java
+List rawPeeps = new ArrayList();
+rawPeeps.add(new Person(...));
+...
+Collections.sort(rawPeeps);
+#+END_SRC
+
+
+** Using ~Collections.sort(List<T>) on Raw Lists~
+
+Overriding only happens when methods have identical signatures.  To allow generic classes to work in non-generic settings, the compiler inserts /bridge/ methods.  So ~Person~ looks like:
+
+#+BEGIN_SRC java
+public class Person implements Comparable<Person> {
+    // ...
+
+    // This is a bridge method inserted by the compiler to allow this
+    // class to work with legacy non-generic code
+    public int compareTo(Object other) {
+        return compareTo((Person) other);
+    }
+
+    public int compareTo(Person other) {
+        return this.age - other.age;
+    }
+}
+#+END_SRC
+
+
+
+** Using ~java.util.Comparator<T>~
+
+
+#+BEGIN_SRC java
+public interface Comparator<T> {
+
+    int compare(T o1, T o2);
+
+    boolean equals(Object obj);
+}
+#+END_SRC
+
+~Comparator<T>~ is an interface with two methods:
+
+- ~int compare(T o1, T o2)~ -  same contract as ~o1.compareTo(o2)~
+- ~boolean equals(Object obj)~
+
+It's always safe to use the inherited ~equals~ method, so the one you need to implement is ~compare~.\\
+
+See [[../code/collections/super-troopers/SortTroopers.java][SortTroopers.java]] and [[../code/collections/super-troopers/Trooper.java][Trooper.java]] for examples using ~Comparable~, ~Comparator~ and ~Collections.sort(...)~.
+
+
+** Programming Exercise
+
+Write a class to represent Georgia Tech students called, say, ~GtStudent~.
+
+- Give ~GtStudent~ name, major, GPA, and year fields/properties.
+- Have ~GtStudent~ implement ~Comparable<T>~ with some ordering that makes sense to you -- perhaps some majors are harder than others, so GPAs are adjusted in comparisons.
+- Add instances of ~GtStudents~ to an ~ArrayList<E>~.
+- Sort the ~ArrayList~ of ~GtStudent~s using ~Collections.sort(List<E>)~.
+- Write a ~Comparator<GtStudent>~ and sort your list with ~Collections.sort(List<E>, Comparator<E>)~.
+
+Extra: add thousands of randomly-gnerated ~GtStudent~s to an ~ArrayList~ and a ~LinkedList~ and time ~Collections.sort(List<E>)~ method invocations for each of them.  Is one faster?  Why (or why not)?
