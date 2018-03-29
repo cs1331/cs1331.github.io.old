@@ -36,7 +36,7 @@ Classes:
     - `LocalDateTime date`
     - `boolean isImportant`
   - Methods:
-    - Getter methods for all fields.
+    - Getter methods for all 6 fields.
   - Constructor with the following signature.
     - `public Message(Optional<String> contactName, String to, String from, String body, LocalDateTime date, boolean isImportant)`
 
@@ -44,17 +44,18 @@ Classes:
   - Fields:
     - `List<Message> messages`
   - Methods:
-    - `Message getMessage(int n)`: Returns the nth message where 0 <= n < size of list.
-    - `List<Message> getMessages()`: Returns all the messages stored in the database.
-    - `List<Message> filter(Predicate<Message> filter)`: Returns the list of messages filtered by the predicate. Must not change `messages` field.
-    - `List<Message> getMessagesBetween(LocalDateTime start, LocalDateTime end)`: Returns a list of messages if the time that the message is sent is between the start LocalDateTime and the end LocalDateTime (inclusive). Must not change `messages` field. Must call `filter` with a **lambda expression**.
-    - `Map<String, List<Message>> sortMessagesByContact()`: Returns a Map that stores a contact name as a key and a list of messages from that contact as a value. If a message has no associated contact, it should not appear in the Map. Must not change `messages` field. Must call `filter` with an **anonymous inner class** in the method body.
-    - `List<Message> getMessagesWithKeyword(String keyword)`: Returns a list of messages if the body of the message contains the keyword. **Note:** The messages don't need to match the case of the keyword (ex. "LOL" would match "lol"). Must not change `messages` field. Must call `filter` with an instance of an **inner class**. The inner class must not be anonymous.
-    - `List<Message> getMessagesWithPriority()`: Returns a list of messages if the message is marked as important. Must not change `messages` field. Must call `filter` with a **method reference**.
-  - Constructor that takes in a `List` of messages.
+    - `Message getMessage(int n)` - Returns the nth message where 0 <= n < size of list.
+    - `List<Message> getMessages()` - Returns all the messages stored in the database.
+    - `List<Message> filter(Predicate<Message> filter)` - Returns the list of messages filtered by the predicate. Must not change `messages` field.
+    - `List<Message> getMessagesBetween(LocalDateTime start, LocalDateTime end)` - Returns a list of messages if the time that the message is sent is between the start LocalDateTime and the end LocalDateTime (inclusive). Must not change `messages` field. Must call `filter` with a **lambda expression**.
+    - `Map<String, List<Message>> sortMessagesByContact()` - Returns a Map that stores a contact name as a key and a list of messages from that contact as a value. If a message has no associated contact, it should not appear in the Map. Must not change `messages` field. Must call `filter` with an **anonymous inner class** in the method body.
+    - `List<Message> getMessagesWithKeyword(String keyword)` - Returns a list of messages if the body of the message contains the keyword. **Note:** The messages don't need to match the case of the keyword (ex. "LOL" would match "lol"). Must not change `messages` field. Must call `filter` with an instance of an **inner class**. The inner class must not be anonymous.
+    - `List<Message> getMessagesWithPriority()` - Returns a list of messages if the message is marked as important. Must not change `messages` field. Must call `filter` with a **method reference**.
+  - Constructor with the following signature.
+    - `public Database(List<Message> messages)`
 
 **Important:**
-`getMessagesBetween(LocalDateTime start, LocalDateTime end)`, `sortMessagesByContact()`, `getMessageWithKeyword(String keyword)`, `getMessagesWithPriority()` must use `filter` with a lambda expression, an anonymous inner class, inner class, and method reference respectively.
+`getMessagesBetween(LocalDateTime start, LocalDateTime end)`, `sortMessagesByContact()`, `getMessageWithKeyword(String keyword)`, and `getMessagesWithPriority()` must use `filter` with a lambda expression, an anonymous inner class, an inner class, and a method reference respectively.
 
 Make the visibility of all the methods and fields as you see best fits good programming style.
 
@@ -66,7 +67,7 @@ Import `java.util.function.Predicate`, `java.util.Optional`, `java.time.LocalDat
 
 If there are any classes that you are unfamiliar with (e.g. Predicate, LocalDateTime, Optional), look them up in the [Java API](https://docs.oracle.com/javase/9/docs/api/index.html?overview-summary.html).
 
-Test things out in jshell!
+Test things out in JShell!
 
 ## Grading
 
@@ -93,7 +94,7 @@ Non compiling code will receive an automatic zero.
 
 ## Checkstyle
 
-For each of your homwork assignments we will run checkstyle and deduct one point for every checkstyle error.
+For each of your homework assignments we will run checkstyle and deduct one point for every checkstyle error.
 
 For this homework the **checkstyle cap is 100**, meaning you can lose up to 100 points on this assignment due to style errors.
 
