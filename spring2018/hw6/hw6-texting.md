@@ -1,3 +1,8 @@
+---
+layout: homework
+title: Homework 6 - Texting
+---
+
 # Homework 6 - Texting
 
 ## Introduction
