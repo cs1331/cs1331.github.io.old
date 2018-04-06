@@ -1,0 +1,239 @@
+#+TITLE: Streams
+#+AUTHOR:
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smaller]
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+
+* Streams
+
+** Streams and Pipelines
+
+A stream is a sequence of elements.
+
+- Unlike a collection, it is not a data structure that stores elements.
+- Unlike an iterator, streams do not allow modification of the underlying source
+
+A stream carries values from a source through a pipeline.
+
+A pipeline contains the following components:
+
+- A *source*: This could be a collection, an array, a generator function, or an I/O channel.
+- Zero or more *intermediate operations*. An intermediate operation, such as filter, produces a new stream
+- A *terminal operation*. A terminal operation, such as forEach, produces a non-stream result, such as a primitive value (like a double value), a collection, or in the case of forEach, no value at all.
+
+** Stream Example: How Many Mustaches?
+
+Consider this simple example from
+
+[[../code/collections/super-troopers/SuperTroopers.java][SuperTroopers.java]]:
+
+#+BEGIN_SRC java
+long mustaches = troopers.stream().filter(Trooper::hasMustache).count();
+System.out.println("Mustaches: " + mustaches);
+#+END_SRC
+
+- ~troopers.stream()~ is the /source/
+- ~.filter(Trooper::hasMustache)~ is an /intermediate operation/
+- ~.count()~ is the /terminal operation/
+
+The terminal operation yields a new value which results from applying all the intermediate operations and finally the terminal operation to the source.
+
+Let's look at this simple stream in detail.
+
+** Stream.filter
+
+Here's the signature of the ~filter~ method in ~Stream<T>~:
+
+#+BEGIN_SRC java
+Stream<T> filter(Predicate<? super T> predicate)
+#+END_SRC
+
+- ~filter~ takes a ~Predicate<? super T> predicate)~
+
+Here's ~Predicate<T>~
+#+BEGIN_SRC java
+public interface Predicate<T> {
+    default Predicate<T> and(Predicate<? super T> other) { ... }
+
+    static <T> Predicate<T> isEqual(Object targetRef) { ... }
+
+    default Predicate<T> negate() { ... }
+
+    default Predicate<T> or(Predicate<? super T> other) { ... }
+
+    boolean test(T t);
+}
+#+END_SRC
+
+What is the single abstract method (SAM) in ~Predicate<T>~?
+
+** A ~Predicate<T>~ Class
+
+A ~Predicate<T>~ is an object that has a ~boolean test(T t)~ method. Here's a ~Predicate<T>~ class:
+
+#+BEGIN_SRC java
+public class HasMustache implements Predicate<Trooper> {
+
+    public boolean test(Trooper t) {
+        return t.hasMustache();
+    }
+}
+#+END_SRC
+
+An object of the ~HasMustache~ class is a ~Predicate<T>~.
+
+Here's the same ~Predicate<T>~ class as an anonymous inner class:
+#+BEGIN_SRC java
+new Predicate<Trooper>() {
+    public boolean test(Trooper t) {
+        return t.hasMustache();
+    }
+}
+#+END_SRC
+
+** A ~Predicate<T>~ Lambda Expression
+
+Here's the same ~Predicate<T>~ class as a lambda expression (in the context of the filter method -- why is that important?):
+
+#+BEGIN_SRC java
+troopers.stream().filter(t -> t.hasMustache()).count();
+#+END_SRC
+
+Here's the lambda expression above as a method reference:
+
+#+BEGIN_SRC java
+troopers.stream().filter(Trooper::hasMustache).count();
+#+END_SRC
+
+~Trooper::hasMustache~ supplies the body of the ~Predicate<T>~ ~test(T t)~ method by calling ~t.hasMustache()~.
+
+Play with [[../code/collections/super-troopers/StreamTroopers.java][StreamTroopers.java]] to see these ~Predicate<T>~ implementations in action.
+
+** A Bigger Stream Example: WordCount Pipeline
+
+Consider this example from ~WordCount~:
+
+#+BEGIN_SRC java
+Set<String> stopWords = new HashSet<>(Arrays.asList(
+    "a", "an", "and", "are", "as", "be", "by", "is", "in", "of",
+    "for", "from", "not", "to", "the", "that", "this", "with", "which"
+));
+wc.wordCounts.entrySet().stream()
+    .filter(entry -> !stopWords.contains(entry.getKey().toLowerCase()))
+    .sorted((e1, e2) -> e1.getValue() - e2.getValue())
+    .forEach(entry ->
+        System.out.printf("%s occurs %d times%n", entry.getKey(),
+                                                  entry.getValue()));
+#+END_SRC
+
+This code does the same tasks we did before with classes and for loops.
+
+** WordCount Pipeline - Stop Words
+
+#+BEGIN_SRC java
+Set<String> stopWords = new HashSet<>(Arrays.asList(
+    "a", "an", "and", "are", "as", "be", "by", "is", "in", "of",
+    "for", "from", "not", "to", "the", "that", "this", "with", "which"
+));
+
+#+END_SRC
+
+- Every document has information-carrying words and grammatical words that carry no information, like prepositions, verbs like to be or have, pronouns
+- In document processing we call these non-information-carrying words /stop words/
+
+Here we've implemented a naiive and terribly incomplete stop words list.
+
+BTW, why a ~HashSet~?
+
+** WordCount Pipeline - filter
+
+Consider this example from ~WordCount~s:
+#+BEGIN_SRC java
+Set<String> stopWords = new HashSet<>(Arrays.asList(
+    "a", "an", "and", "are", "as", "be", "by", "is", "in", "of",
+    "for", "from", "not", "to", "the", "that", "this", "with", "which"
+));
+wc.wordCounts.entrySet().stream()
+    .filter(entry -> !stopWords.contains(entry.getKey().toLowerCase()))
+    .sorted((e1, e2) -> e1.getValue() - e2.getValue())
+    .forEach(entry ->
+        System.out.printf("%s occurs %d times%n", entry.getKey(),
+                                                  entry.getValue()));
+#+END_SRC
+
+The filter operation takes a predicate function.
+
+- A predicate function returns a ~boolean~
+- If predicate function returns ~true~, element is retained in the stream
+
+Notice that we're also normalizing words to lower case.
+
+** WordCount Pipeline - sorted
+
+Consider this example from ~WordCount~s:
+#+BEGIN_SRC java
+Set<String> stopWords = new HashSet<>(Arrays.asList(
+    "a", "an", "and", "are", "as", "be", "by", "is", "in", "of",
+    "for", "from", "not", "to", "the", "that", "this", "with", "which"
+));
+wc.wordCounts.entrySet().stream()
+    .filter(entry -> !stopWords.contains(entry.getKey().toLowerCase()))
+    .sorted((e1, e2) -> e1.getValue() - e2.getValue())
+    .forEach(entry ->
+        System.out.printf("%s occurs %d times%n", entry.getKey(),
+                                                  entry.getValue()));
+#+END_SRC
+
+The sortd operation takes a ~Comparator~ that defines the ordering over the stream's elements.
+
+** WordCount Pipeline - forEach
+
+Consider this example from ~WordCount~s:
+#+BEGIN_SRC java
+Set<String> stopWords = new HashSet<>(Arrays.asList(
+    "a", "an", "and", "are", "as", "be", "by", "is", "in", "of",
+    "for", "from", "not", "to", "the", "that", "this", "with", "which"
+));
+wc.wordCounts.entrySet().stream()
+    .filter(entry -> !stopWords.contains(entry.getKey().toLowerCase()))
+    .sorted((e1, e2) -> e1.getValue() - e2.getValue())
+    .forEach(entry ->
+        System.out.printf("%s occurs %d times%n", entry.getKey(),
+                                                  entry.getValue()));
+#+END_SRC
+
+~forach~ is the terminal operation.
+
+- Called for its effect - no return value
+
+The underlying source is not modified.
+
+** Homework: Make the WordCount Pipeline Clearer
+
+Notice that we use anonymous lambda expressions in our WordCOunt pipeline:
+#+BEGIN_SRC java
+wc.wordCounts.entrySet().stream()
+    .filter(entry -> !stopWords.contains(entry.getKey().toLowerCase()))
+    .sorted((e1, e2) -> e1.getValue() - e2.getValue())
+    .forEach(entry ->
+        System.out.printf("%s occurs %d times%n", entry.getKey(),
+                                                  entry.getValue()));
+#+END_SRC
+
+- Functional-style code can easily become hard to read.
+- You can improve readability by introducing intermediate helper variables with informative names.
+
+Rewrite the WordCount pipeline with intermediate helper variables so that the pipeline is easy to understand.  You'll need to look up these aggregate operations in the Java API to get the types for these variables.
