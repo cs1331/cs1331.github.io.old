@@ -1,16 +1,16 @@
 public class GenericLinkedList<E> {
 
-    private class Node<E> {
+    protected class Node<E> {
         E data;
         Node<E> next;
 
-        public Node(E data, Node next) {
+        public Node(E data, Node<E> next) {
             this.data = data;
             this.next = next;
         }
     }
 
-    private Node<E> head;
+    protected Node<E> head;
 
     public GenericLinkedList() {
         head = null;
@@ -21,6 +21,19 @@ public class GenericLinkedList<E> {
      */
     public void addFront(E item) {
         head = new Node<E>(item, head);
+    }
+
+    public void add(E item) {
+        Node<E> newNode = new Node<E>(item, null);
+        Node<E> lastNode = head;
+        if (null == head) {
+            head = newNode;
+        } else {
+            while(lastNode.next != null) {
+                lastNode = lastNode.next;
+            }
+            lastNode.next = newNode;
+        }
     }
 
     /**
@@ -63,6 +76,18 @@ public class GenericLinkedList<E> {
         return sb.toString() + "]";
     }
 
+    public String toString2() {
+        return "[" + toStringHelper(head, "") + "]";
+    }
+
+    private String toStringHelper(Node<E> node, String accum) {
+        if (node == null) {
+            return accum;
+        } else {
+            return toStringHelper(node.next, accum + node.data + ",");
+        }
+    }
+
     public int length2() {
         int len = 0;
         for (Node<E> node = head; node != null; node = node.next, len++);
@@ -75,7 +100,7 @@ public class GenericLinkedList<E> {
                (curNode.next != null)) {
             curNode = curNode.next;
         }
-        Node<E> newNode = new Node(newItem, curNode.next);
+        Node<E> newNode = new Node<E>(newItem, curNode.next);
         curNode.next = newNode;
     }
 
