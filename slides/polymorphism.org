@@ -226,7 +226,6 @@ This makes sense for our ~Employee4~ class.  We don't ever want to instantiate ~
 
 ** Polymorphic Methods
 
-
 #+BEGIN_SRC java :exports code
 public class Company4 {
     private Employee4[] employees;
@@ -245,7 +244,6 @@ public class Company4 {
 - When a method is invoked on an object, the method of the dynamic (run-time) type is used, no matter what the static (compile-time) type is.
 
 - So though the static types of ~employees~ elements is ~Employee~, the ~monthlyPay~ methods invoked on them are the ones defined in ~SalariedEmployee4~ and ~HourlyEmployee4~.
-
 
 ** Refactoring Duplicate Code in a Class Hierarchy
 
