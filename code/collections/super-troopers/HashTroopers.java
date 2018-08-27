@@ -10,9 +10,8 @@ public class HashTroopers {
 
         // This class has a properly overriden hashCode
         @Override public int hashCode() {
-            int result = 17;
-            result = 31 * result + getName().hashCode();
-            result = 31 * result + (hasMustache() ? 1 : 0);
+            int result = getName().hashCode();
+            result = 31 * result + Boolean.hashCode(hasMustache());
             return result;
         }
     }

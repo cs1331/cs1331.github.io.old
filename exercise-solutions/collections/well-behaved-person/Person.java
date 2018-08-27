@@ -29,9 +29,8 @@ public final class Person implements Comparable<Person> {
     }
 
     public int hashCode() {
-        int result = 17;
-        result += 31 * result + name.hashCode();
-        result += 31 * result + birthYear;
+        int result = name.hashCode();
+        result = 31 * result + Integer.hashCode(birthYear);
         return result;
     }
 }

@@ -647,19 +647,20 @@ Bottom line: if you override {\tt equals} you must override {\tt hashCode}.\\
 You'll learn hashing in depth in your data structures and algorithms course.  For now, here's a recipe to follow:
 
 \begin{enumerate}
-\item Initialize {\tt result} with a constant non-zero value, e.g., 17
-\item For each significant field {\tt f} (i.e., compared in {\tt equals} method), compute an {\tt int} hash code {\tt c} and add it to {\tt 31 * result}.
+\item Initialize {\tt result} with the hash code of the first significant field.
+\item For each subsequent significant field {\tt f} (i.e., compared in {\tt equals} method), compute an {\tt int} hash code {\tt c} and add it to {\tt 31 * result}.
+\item {\tt return result}
+\end{enumerate}
+Computing the hash code of a field:
 \begin{itemize}
-\item For {\tt boolean} fields, {\tt c = (f ? 1 : 0)}
-\item For {\tt byte, char, short, int} fields, {\tt c = (int) f}
-\item For {\tt long} fields, {\tt c = (int) (f \^ (f >>> 32 ))}
-\item For {\tt float} fields, {\tt c = Float.floatToIntBits(f)}
-\item For {\tt double} fields, {\tt c = (int) (Double.doubleToLongBits(f) \^ (Double.doubleToLongBits(f) >>> 32))} (notice this converts to {\tt long} then uses recipe for {\tt long} fields)
+\item For {\tt boolean} fields, \verb@c = Boolean.hashCode(f)@
+\item For {\tt byte, char, short, int} fields, {\tt c = Integer.hashCode(f)}
+\item For {\tt long} fields, \verb@c = Long.hashCode(f)@
+\item For {\tt float} fields, {\tt c = Float.hashCode(f)}
+\item For {\tt double} fields, \verb@c = Double.hashCode(f)@
 \item For reference fields, if {\tt equals} calls {\tt equals} on the field, {\tt c = f.hashCode()}
 \item For array fields, {\tt c = Arrays.hashCode(f)}
 \end{itemize}
-\item {\tt return result}
-\end{enumerate}
 
 \end{frame}
 %------------------------------------------------------------------------
@@ -682,9 +683,8 @@ class Trooper implements Comparable<Trooper> {
                 && this.mustached == that.mustached;
     }
     public int hashCode() {
-        int result = 17;
-        result = 31 * result + name.hashCode();
-        result = 31 * result + (mustached ? 1 : 0);
+        int result = name.hashCode();
+        result = 31 * result + Boolean.hashCode(mustached);
         return result;
     }
 }
@@ -694,22 +694,22 @@ class Trooper implements Comparable<Trooper> {
 %------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
-\begin{frame}[fragile]{A Simpler Recipe for Implementing {\tt hashCode}}
-\vspace{-.05in}
-The basic idea is to add some {\tt int} value for each significant field.  Joshua Bloch's recipe works well for Java's collections, but a crude approximation is also fine:
-\begin{enumerate}
-\item Initialize {\tt result} with a constant non-zero value, e.g., 17
-\item For each significant field {\tt f} (i.e., compared in {\tt equals} method), compute an {\tt int} hash code {\tt c} and add it to {\tt 31 * result}.
-\begin{itemize}
-\item For {\tt boolean} fields, {\tt c = (f ? 1 : 0)}
-\item {\bf For all numeric primitives, perform an explicit conversion to {\tt int}, {\tt c = (int) f}}
-\item For reference fields, if {\tt equals} calls {\tt equals} on the field, {\tt c = f.hashCode()}
-\item For array fields, {\tt c = Arrays.hashCode(f)}
-\end{itemize}
-\item {\tt return result}
-\end{enumerate}
+% \begin{frame}[fragile]{A Simpler Recipe for Implementing {\tt hashCode}}
+% \vspace{-.05in}
+% The basic idea is to add some {\tt int} value for each significant field.  Joshua Bloch's recipe works well for Java's collections, but a crude approximation is also fine:
+% \begin{enumerate}
+% \item Initialize {\tt result} with a constant non-zero value, e.g., 17
+% \item For each significant field {\tt f} (i.e., compared in {\tt equals} method), compute an {\tt int} hash code {\tt c} and add it to {\tt 31 * result}.
+% \begin{itemize}
+% \item For {\tt boolean} fields, {\tt c = (f ? 1 : 0)}
+% \item {\bf For all numeric primitives, perform an explicit conversion to {\tt int}, {\tt c = (int) f}}
+% \item For reference fields, if {\tt equals} calls {\tt equals} on the field, {\tt c = f.hashCode()}
+% \item For array fields, {\tt c = Arrays.hashCode(f)}
+% \end{itemize}
+% \item {\tt return result}
+% \end{enumerate}
 
-\end{frame}
+% \end{frame}
 %------------------------------------------------------------------------
 
 %------------------------------------------------------------------------
